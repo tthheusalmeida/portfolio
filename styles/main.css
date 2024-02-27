@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+  --size-quark: 4px;
+  --size-nano: 8px;
+  --size-xs: 16px;
+  --size-sm: 24px;
+  --size-md: 32px;
+  --size-lg: 40px;
+
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-baseline: 16px;
+  --font-size-md: 20px;
+  --font-size-lg: 24px;
+  --font-size-xl: 32px;
+  --font-size-xxl: 40px;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --font-family: 'Merriweather Sans', sans-serif;
+
+  --dark-blue: #070E3C;
+  --dark-blue--hover: #C3C4CE;
+  --light-blue: #5BC0EB;
+  --white: #F2F2F2;
+}
+
+body {
+  margin: 0;
+  
+  display: flex;
+  justify-content: center;
+
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-style: normal;
+  background-color: var(--white);
+}
+
+.container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  /* min-height: calc(100dvh - 72px); */
+  min-width: 80dvw;
+  margin: 72px 0;
+  padding: 0 var(--size-xs);
+}
+
+.icon {
+  width: var(--size-sm);
+  height: var(--size-sm);
+  margin: 0 var(--size-nano) 0 0;
+}
+
+.image-perfil {
+  height: 75dvh;
+}
+
+.line {
+  background-color: var(--light-blue);
+
+  width: 120px;
+  height: var(--size-quark);
+  margin: 0 var(--size-xs);
+  border-radius: var(--size-nano);
+}
+
+.button {
+  height: var(--size-lg);
+  color: var(--dark-blue);
+  background-color: var(--light-blue);
+  border: 2px solid var(--dark-blue);
+  border-radius: var(--size-nano);
+  padding: 0 var(--size-sm);
+  font-size: var(--font-size-baseline);
+  font-weight: var(--font-weight-medium);
+}

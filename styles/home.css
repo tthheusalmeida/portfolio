@@ -1,0 +1,47 @@
+#home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#home .home__left-content {
+  width: fit-content;
+}
+
+#home .home__all-text {
+  padding-top: 20dvh;
+}
+
+#home .home__text {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-regular);
+  margin: 0;
+
+  display: flex;
+  align-items: baseline;
+}
+
+#home .home__text h2 {
+  margin: 0;
+}
+
+#home .home__text h2 {
+  font-weight: var(--font-weight-extrabold);
+  margin-left: var(--size-quark);
+}
+
+#home .home__text:first-child {
+  padding-bottom: var(--size-xs);
+}
+
+#home .home__button {
+  margin-top: 10dvh;
+  margin-bottom: 30dvh;
+}
+
+#home .home__check-out {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 24px;
+}
