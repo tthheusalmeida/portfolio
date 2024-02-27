@@ -1,7 +1,6 @@
 #skills {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 #skills .skills__left-content,
@@ -10,7 +9,7 @@
   flex-direction: column;
   width: 50dvh;
   height: fit-content;
-  padding: 72px 0;
+  padding-top: 72px;
 }
 
 #skills h2,
