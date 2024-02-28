@@ -30,14 +30,13 @@
   --light-blue: #5BC0EB;
   --blue-cobalt : #1C5A91;
   --white: #F2F2F2;
+  --form-placeholder: #9497A9;
 }
 
 body {
   margin: 0;
-  
   display: flex;
   justify-content: center;
-
   font-family: var(--font-family);
   font-weight: var(--font-weight-regular);
   font-style: normal;
@@ -62,8 +61,8 @@ body {
 }
 
 .icon {
-  width: var(--size-sm);
-  height: var(--size-sm);
+  width: 45px;
+  height: 45px;
   margin: 0 var(--size-nano) 0 0;
 }
 
@@ -80,14 +79,26 @@ body {
 }
 
 .button {
+  width: fit-content;
   height: var(--size-lg);
   color: var(--dark-blue);
   background-color: var(--light-blue);
   border: 2px solid var(--dark-blue);
   border-radius: var(--size-nano);
   padding: 0 var(--size-sm);
+  font-family: var(--font-family);
   font-size: var(--font-size-baseline);
   font-weight: var(--font-weight-medium);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button img {
+  height: var(--size-sm);
+  width: var(--size-sm);
+  padding-right: 12px;
 }
 
 .badge {

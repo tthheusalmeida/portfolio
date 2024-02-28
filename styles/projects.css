@@ -33,7 +33,7 @@
 }
 
 #projects .project-container {
-  max-width: 80dvw;
+  max-width: 80vw;
   display: flex;
   gap: var(--font-size-lg);
   padding: var(--size-md) var(--size-md);

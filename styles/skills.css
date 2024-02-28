@@ -8,7 +8,7 @@
 #skills .skills__right-content {
   display: flex;
   flex-direction: column;
-  width: 50dvh;
+  width: 35vw;
   height: fit-content;
   padding-top: 72px;
 }
