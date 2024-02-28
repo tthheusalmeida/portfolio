@@ -108,11 +108,18 @@
   font-family: var(--font-family);
   font-size: var(--font-size-baseline);
   font-weight: var(--font-weight-regular);
+  transition: 0.4s all;
 }
 
 #contact .contact__right-content input::placeholder,
 #contact .contact__right-content textarea::placeholder {
   color: var(--form-placeholder);
+}
+
+
+#contact .contact__right-content input:focus,
+#contact .contact__right-content textarea:focus {
+  box-shadow: var(--dark-blue) 0px 1px 2px, var(--dark-blue) 0px 0px 0px 2px;
 }
 
 #contact .contact__button {
