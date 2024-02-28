@@ -9,14 +9,15 @@
   <link rel="stylesheet" href="./styles/home.css">
   <link rel="stylesheet" href="./styles/skills.css">
   <link rel="stylesheet" href="./styles/projects.css">
+  <link rel="stylesheet" href="./styles/contact.css">
 </head>
 <body>
   <div class="container">
-    <header class="header">
+    <header id="header">
       <img
-        src="./image/icon/logo.png"
+        src="./image/logo.png"
         alt="Escrita Matheus DEV em maiúsculo"
-        class="header__image"
+        class="logo"
       >
 
       <nav class="header__tabs">
@@ -49,7 +50,7 @@
         </div>
       </div>
 
-      <img class="image-perfil" src="./image/icon/perfil.png" alt="Fundo azul desfocado com o uma foto do programador usando uma jaqueta jeans, camisa branca e barba curta feita, cabelos pretos">
+      <img class="image-perfil" src="./image/perfil.png" alt="Fundo azul desfocado com o uma foto do programador usando uma jaqueta jeans, camisa branca e barba curta feita, cabelos pretos">
     </section>
 
     <section id="skills" class="section">
@@ -146,7 +147,7 @@
       </div> 
     </section>
 
-    <section id="projects" class="projects section">
+    <section id="projects" class="section">
       <div class="projects__content">
         <h2>Projects</h2>
 
@@ -278,10 +279,76 @@
       </div>
     </section>
 
-    <!-- 
-    <section id="contact" class="contact section">
+    <section id="contact" class="contact">
+      <div class="contact-container section">
+        <div class="contact__logo">
+          <img
+            src="./image/logo.png"
+            alt="Escrita Matheus DEV em maiúsculo"
+            class="logo"
+          >
+        </div>
 
-    </section> -->
+        <h2>Contact</h2>
+
+        <div class="contact__content">
+          <div class="contact__left-content">
+            <h2>Social network</h2>
+
+            <div class="social-network">
+              <img src="./image/icon/linkedIn-dark.png" alt="LinkedIn icon">
+
+              <div class="social-network__description">
+                <div class="social-network__description--title">
+                  LinkedIn
+                </div>
+                <div class="social-network__description--text">
+                  matheus-almeida-602139182
+                </div>
+              </div>
+            </div>
+
+            <div class="social-network">
+              <img src="./image/icon/github-dark.png" alt="Github icon">
+
+              <div class="social-network__description">
+                <div class="social-network__description--title">
+                  Github
+                </div>
+                <div class="social-network__description--text">
+                  tthheusalmeida
+                </div>
+              </div>
+            </div>
+
+            <div class="social-network">
+              <img src="./image/icon/email-dark.png" alt="Email icon">
+
+              <div class="social-network__description">
+                <div class="social-network__description--title">
+                  E-mail
+                </div>
+                <div class="social-network__description--text">
+                  dev.almeida.matheus@gmail.com
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact__right-content">
+            <label>Name</label>
+            <input type="text" id="form-name" name="form-name">
+
+            <label>E-mail</label>
+            <input type="text" id="form-email" name="form-email">
+
+            <label>Message</label>
+            <textarea id="form-email" name="form-email" rows="10" cols="40"></textarea>
+          </form>
+        </div>
+      </div>
+      
+    </section>
   </div>
 </body>
 </html>

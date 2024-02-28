@@ -1,4 +1,4 @@
-.header {
+#header {
   height: 72px;
   width: 100dvw;
   display: flex;
@@ -11,26 +11,26 @@
   z-index: 1;
 }
 
-.header__tabs {
+#header .header__tabs {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.header__tabs__list {
+#header .header__tabs__list {
   margin: 0;
   padding: 0;
 
   display: flex;
 }
 
-.header__tabs__list li {
+#header .header__tabs__list li {
   list-style-type: none;
 
   padding: 0 var(--size-sm);
 }
 
-.header__tabs__list li a {
+#header .header__tabs__list li a {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--light-blue);

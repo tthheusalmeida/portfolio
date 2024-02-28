@@ -28,6 +28,7 @@
   --dark-blue: #070E3C;
   --dark-blue--hover: #C3C4CE;
   --light-blue: #5BC0EB;
+  --blue-cobalt : #1C5A91;
   --white: #F2F2F2;
 }
 
@@ -50,9 +51,14 @@ body {
 }
 
 .section {
-  min-width: 80dvw;
+  width: 80vw !important;
   margin-top: 72px;
   padding: 0 var(--size-xs);
+}
+
+.logo {
+  width: 250px;
+  height: 72px;
 }
 
 .icon {
