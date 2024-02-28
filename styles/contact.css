@@ -57,6 +57,17 @@
   align-items: center;
   gap: 0 12px;
   margin-bottom: 12px;
+  max-width: 328px;
+  border-radius: 8px;
+  padding: var(--size-nano);
+  transition: 0.4s all;
+  color: var(--dark-blue);
+  text-decoration: none;
+}
+
+#contact .social-network:hover {
+  background: rgb(from var(--white) r g b / 0.1);
+  backdrop-filter: blur(2px);
 }
 
 #contact .social-network__description {

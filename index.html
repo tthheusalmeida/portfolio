@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="./styles/projects.css">
   <link rel="stylesheet" href="./styles/contact.css">
   <link rel="stylesheet" href="./styles/footer.css">
+
+  <script src="./javascript/main.js" defer></script>
+  <script src="./javascript/home.js" defer></script>
 </head>
 <body>
   <div class="container">
@@ -19,6 +22,7 @@
         src="./image/logo.png"
         alt="Escrita Matheus DEV em maiúsculo"
         class="logo"
+        onclick="scrollToSection()"
       >
 
       <nav class="header__tabs">
@@ -41,13 +45,22 @@
           <div class="home__text">Front-End Developer</div>
         </div>
 
-        <button class="home__button button">Contact me</button>
+        <button
+          class="home__button button"
+          onclick="scrollToSection('contact')"
+        >
+          <span>Contact me</span>
+        </button>
 
         <div class="home__check-out">
           <span>Check out my</span>
           <div class="line"></div>
-          <img class="icon" src="./image/icon/linkedIn-dark.png" alt="LinkedIn">
-          <img class="icon" src="./image/icon/github-dark.png" alt="Github">
+          <a href="https://www.linkedin.com/in/matheus-almeida-602139182/" target="_blank">
+            <img class="icon" src="./image/icon/linkedIn-dark.png" alt="LinkedIn">
+          </a>
+          <a href="https://github.com/tthheusalmeida" target="_blank">
+            <img class="icon" src="./image/icon/github-dark.png" alt="Github">
+          </a>
         </div>
       </div>
 
@@ -287,6 +300,7 @@
             src="./image/logo.png"
             alt="Escrita Matheus DEV em maiúsculo"
             class="logo"
+            onclick="scrollToSection()"
           >
         </div>
 
@@ -296,7 +310,7 @@
           <div class="contact__left-content">
             <h2>Social network</h2>
 
-            <div class="social-network">
+            <a class="social-network" href="https://www.linkedin.com/in/matheus-almeida-602139182/" target="_blank">
               <img src="./image/icon/linkedIn-dark.png" alt="LinkedIn icon">
 
               <div class="social-network__description">
@@ -307,9 +321,9 @@
                   matheus-almeida-602139182
                 </div>
               </div>
-            </div>
+            </a>
 
-            <div class="social-network">
+            <a class="social-network" href="https://github.com/tthheusalmeida" target="_blank">
               <img src="./image/icon/github-dark.png" alt="Github icon">
 
               <div class="social-network__description">
@@ -320,9 +334,9 @@
                   tthheusalmeida
                 </div>
               </div>
-            </div>
+            </a>
 
-            <div class="social-network">
+            <a class="social-network" href="mailto:dev.almeida.matheus@gmail.com" target="_blank">
               <img src="./image/icon/email-dark.png" alt="Email icon">
 
               <div class="social-network__description">
@@ -333,7 +347,7 @@
                   dev.almeida.matheus@gmail.com
                 </div>
               </div>
-            </div>
+            </a>
           </div>
 
           <form class="contact__right-content">
@@ -363,7 +377,7 @@
               maxlength="500"
             ></textarea>
 
-            <button class="contact__button button" onclick="(event) => event.preventDefault()">
+            <button class="contact__button button" onclick="sendEmail(event)">
               <img src="./image/icon/send-email-dark.png" alt="Send email icon">
               <span>Contact me</span>
             </button>
