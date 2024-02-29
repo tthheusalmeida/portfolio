@@ -9,7 +9,8 @@ function sendEmail(event) {
   } = getSendEmailFieldsValues();
 
   if (error.length === 0) {
-    console.log('Email sent.', { name, email, message });
+    sendEmailUsingEmailJS({ name, email, message });
+    clearForm();
     return;
   }
 
@@ -69,4 +70,16 @@ function getSendEmailFieldsValues() {
     message: formMessage.value,
     error: error,
   };
+}
+
+function clearForm() {
+  const {
+    formName,
+    formEmail,
+    formMessage
+  } = getSendEmailFields();
+
+  formName.value = '';
+  formEmail.value = '';
+  formMessage.value = '';
 }
