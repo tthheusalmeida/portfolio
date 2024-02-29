@@ -45,23 +45,27 @@
   background-color: var(--dark-blue--hover);
 }
 
-#projects .project-container:hover .badge{
+#projects .project-container:hover .badge {
   background-color: var(--white);
 }
 
-#projects .project-container:hover a {
+#projects .project-container:hover .github-icon > img {
   background: var(--white);
 }
 
-#projects .project-container a {
-  position: relative;
+#projects .project-container .github-icon > img {
   display: inline-block;
   height: fit-content;
   border-radius: 50%;
   transition: 0.4s all;
 }
 
-#projects .project-container a:hover .overlay {
+#projects .project-container > a {
+  position: relative;
+  height: 180px;
+}
+
+#projects .project-container > a:hover .overlay { 
   opacity: 0.8;
 }
 
@@ -73,6 +77,7 @@
 
 #projects .project-container p {
   color: var(--dark-blue);
+  min-height: 100px;
   font-size: var(--font-size-baseline);
 }
 
@@ -98,4 +103,6 @@
 #projects .project__preview {
   width: 360px;
   transition: .4s all;
+  width: 360px;
+  height: 180px;
 }

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("../../src/image/contact-background.png");
+  background-image: url("../../src/image/contact-background.webp");
   width: calc(100vw - 18px);
   background-size: cover;
 }
@@ -18,6 +18,7 @@
 #contact .contact-container {
   display: flex;
   flex-direction: column;
+  margin-bottom: var(--size-md);
 }
 
 #contact .contact-container h2 {
@@ -102,7 +103,7 @@
 #contact .contact__right-content input,
 #contact .contact__right-content textarea {
   border-radius: var(--size-nano);
-  padding: 12px var(--size-nano);
+  padding: var(--size-xs);
   outline: none;
   border: none;
   color: var(--dark-blue);
