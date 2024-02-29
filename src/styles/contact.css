@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("../image/contact-background.png");
+  background-image: url("../../src/image/contact-background.png");
   width: calc(100vw - 18px);
   background-size: cover;
 }
@@ -87,6 +87,7 @@
   font-size: var(--font-size-baseline);
   font-weight: var(--font-weight-extrabold);
   margin-bottom: var(--size-nano);
+  transition: 0.4s all;
 }
 
 #contact .contact__right-content input {
@@ -116,10 +117,14 @@
   color: var(--form-placeholder);
 }
 
-
 #contact .contact__right-content input:focus,
 #contact .contact__right-content textarea:focus {
   box-shadow: var(--dark-blue) 0px 1px 2px, var(--dark-blue) 0px 0px 0px 2px;
+}
+
+#contact .contact__right-content input:focus input,
+#contact .contact__right-content textarea:focus textarea {
+  box-shadow: none;
 }
 
 #contact .contact__button {

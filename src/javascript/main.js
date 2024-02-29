@@ -10,8 +10,3 @@ function scrollToSection(sectionId) {
     });
   }
 }
-
-function sendEmail(event) {
-  event.preventDefault();
-  console.log('Email sent.');
-}

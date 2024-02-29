@@ -31,6 +31,7 @@
   --blue-cobalt : #1C5A91;
   --white: #F2F2F2;
   --form-placeholder: #9497A9;
+  --form-error: #B00020;
 }
 
 body {
@@ -100,6 +101,10 @@ html {
   cursor: pointer;
 }
 
+.button:active {
+  animation: buttonPress 0.2s 1 linear;
+}
+
 .button img {
   height: var(--size-sm);
   width: var(--size-sm);
@@ -135,4 +140,43 @@ html {
   font-size: var(--size-sm);
   font-weight: var(--font-weight-extrabold);
   transform: rotate(-22deg);
+}
+
+.field-error {
+  box-shadow: var(--form-error) 0px 1px 2px, var(--form-error) 0px 0px 0px 2px;
+}
+
+.label-error {
+  color: var(--form-error);
+  animation: shakeLabel 0.4s ease-in-out 0s 2;
+}
+
+@keyframes shakeLabel {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  to {
+    transform: scale(1);
+  }
 }
