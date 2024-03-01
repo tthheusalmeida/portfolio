@@ -40,6 +40,8 @@
 
 #header-modal {
   visibility: hidden;
+  z-index: -1;
+  opacity: 0;
 }
 
 @media screen and (max-width: 600px) {

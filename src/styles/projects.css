@@ -111,6 +111,10 @@
     padding: 0;
     flex-wrap: wrap;
   }
+
+  #projects .project-container > a:hover .overlay { 
+    opacity: 0;
+  }
   
   #projects .project-container:hover {
     background-color: var(--white);
