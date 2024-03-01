@@ -105,3 +105,40 @@
   padding-top: 0;
   align-self: flex-end;
 }
+
+@media screen and (max-width: 600px) {
+  #skills {
+    flex-wrap: wrap;
+  }
+
+  #skills .skills__left-content,
+  #skills .skills__right-content {
+    width: 100%;
+  }
+
+  #skills .skills__left-content h2 {
+    padding-top: 0;
+  }
+  
+  #skills h3 {
+    font-size: var(--size-sm);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  #skills p {
+    font-size: var(--size-xs);
+    text-align: justify;
+  }
+
+  #skills .skills__grouped-items {
+    justify-content: center;
+  }
+  
+  #skills .skills__right-content p {
+    font-size: var(--size-xs);
+  }
+  
+  #skills .skills__quote .author {
+    font-size: var(--size-xs);
+  }
+}

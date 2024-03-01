@@ -93,7 +93,8 @@
 
 #contact .contact__right-content input {
   margin-bottom: var(--size-xs);
-  height: 44px;
+  height: 20px;
+  max-height: 20px;
 }
 
 #contact .contact__right-content textarea {
@@ -103,7 +104,7 @@
 #contact .contact__right-content input,
 #contact .contact__right-content textarea {
   border-radius: var(--size-nano);
-  padding: var(--size-xs);
+  padding: var(--size-xs) var(--size-nano);
   outline: none;
   border: none;
   color: var(--dark-blue);
@@ -131,4 +132,49 @@
 #contact .contact__button {
   align-self: flex-end;
   margin-top: var(--size-md);
+}
+
+@media screen and (max-width: 600px) {
+  #contact {
+    background-position: center;
+  }
+
+  #contact .contact-container h2 {
+    align-self: center;
+  }
+
+  #contact .contact__content {
+    flex-wrap: wrap;
+  }
+  
+  #contact .contact__left-content,
+  #contact .contact__right-content {
+    width: 100%;
+  }
+
+  #contact .contact__left-content {
+    margin-bottom: var(--size-md);
+  }
+
+  #contact .contact__left-content h2 {
+    display: none;
+  }
+  
+  #contact .social-network__description--text {
+    font-size: var(--font-size-xs);
+  }
+  
+  #contact .contact__right-content label {
+    font-size: 12px;
+  }
+  
+  #contact .contact__right-content input,
+  #contact .contact__right-content textarea {
+    font-size: 12px;
+  }
+
+  #contact .contact__button {
+    align-self: center;
+    width: 100%;
+  }
 }

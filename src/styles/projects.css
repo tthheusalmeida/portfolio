@@ -101,8 +101,45 @@
 }
 
 #projects .project__preview {
-  width: 360px;
   transition: .4s all;
   width: 360px;
   height: 180px;
+}
+
+@media screen and (max-width: 600px) {  
+  #projects .project-container {
+    padding: 0;
+    flex-wrap: wrap;
+  }
+  
+  #projects .project-container:hover {
+    background-color: var(--white);
+  }
+  
+  #projects .project-container:hover .badge {
+    background-color: var(--dark-blue--hover);
+  }
+
+  #projects .project-container .github-icon {
+    align-self: flex-end;
+  }
+  
+  #projects .project-container p {
+    text-align: justify;
+  }
+
+  #projects .project__details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  #projects .project__badge-list {
+    margin-bottom: var(--size-xs);
+  }
+  
+  #projects .project__preview {
+    transition: .4s all;
+    width: 80vw;
+    height: 40vw;
+  }
 }

@@ -74,7 +74,8 @@ html {
 }
 
 .image-perfil {
-  height: 75dvh;
+  width: 30vw;
+  min-width: 400px;
 }
 
 .line {
@@ -180,4 +181,22 @@ html {
   to {
     transform: scale(1);
   }
+}
+
+@media screen and (max-width: 600px) {
+  .image-perfil {
+    height: auto;
+    width: 60vw;
+    min-width: 300px;
+  }
+
+  .badge {
+    font-size: 12px;
+    padding: var(--size-quark) var(--size-nano);
+  }
+
+  .overlay {
+    width: 80vw;
+    height: 40vw;
+  }  
 }
