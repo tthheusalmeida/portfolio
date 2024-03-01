@@ -80,7 +80,7 @@
     background-color: var(--light-blue);
     background-image: url("../../src/image/modal-background.webp");
     background-size: cover;
-    transition: all .4s ease-in-out;
+    transition: all .4s linear;
   }
 
   #header-modal .header__options {

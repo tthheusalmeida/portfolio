@@ -60,7 +60,7 @@
   }
 
   #home .home__all-text { 
-    padding-top: 4dvh;
+    padding-top: var(--size-xs);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,16 +68,11 @@
   }
 
   #home .home__button {
-    position: absolute;
-    width: calc(100% - var(--size-md));
-    top: calc(100% - 72px);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
+    margin: var(--size-sm) 0 var(--size-xs) 0;
   }
 
   #home .home__check-out {
-    margin-top: 4dvh;
+    margin-bottom: var(--size-xs);
     width: 152px;
     height: auto;
     flex-wrap: wrap;
