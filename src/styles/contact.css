@@ -163,11 +163,8 @@
   #contact .social-network__description--text {
     font-size: var(--font-size-xs);
   }
-  
-  #contact .contact__right-content label {
-    font-size: 12px;
-  }
-  
+
+  #contact .contact__right-content label,
   #contact .contact__right-content input,
   #contact .contact__right-content textarea {
     font-size: 12px;

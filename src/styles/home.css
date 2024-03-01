@@ -70,7 +70,7 @@
   #home .home__button {
     position: absolute;
     width: calc(100% - var(--size-md));
-    top: calc(100vh - 72px);
+    top: calc(100% - 72px);
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
