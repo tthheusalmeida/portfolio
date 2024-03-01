@@ -57,7 +57,7 @@
   height: fit-content;
   width: fit-content;
   border-radius: var(--size-nano);
-  transition: 0.4s all;
+  transition: .4s all;
 }
 
 #skills .skills__item:hover {
@@ -121,12 +121,12 @@
   }
   
   #skills h3 {
-    font-size: var(--size-sm);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
   }
   
   #skills p {
-    font-size: var(--size-xs);
+    font-size: var(--font-size-baseline);
     text-align: justify;
   }
 
@@ -135,10 +135,10 @@
   }
   
   #skills .skills__right-content p {
-    font-size: var(--size-xs);
+    font-size: var(--font-size-baseline);
   }
   
   #skills .skills__quote .author {
-    font-size: var(--size-xs);
+    font-size: var(--font-size-baseline);
   }
 }

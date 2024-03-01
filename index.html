@@ -23,6 +23,7 @@
   <script src="./src/javascript/plugin/notifications.js" defer></script>
   
   <script src="./src/javascript/main.js" defer></script>
+  <script src="./src/javascript/header.js" defer></script>
   <script src="./src/javascript/contact.js" defer></script>
 </head>
 <body>
@@ -36,11 +37,29 @@
       >
 
       <nav class="header__tabs">
-        <ul class="header__tabs__list">
+        <ul class="header__tabs-list">
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+      </nav>
+
+      <nav class="header__tabs-mobile">
+        <img class="icon" onclick="toggleModal()" src="./src/image/icon/menu.webp" alt="Hamburguer menu icon">
+
+        <div id="header-modal">
+          <div class="header__options">
+            <img class="icon" onclick="toggleModal()" src="./src/image/icon/close.webp" alt="Close icon">
+
+            <ul class="header__tabs-list">
+              <li><a onclick="toggleModal()" href="#skills">Skills</a></li>
+              <li><a onclick="toggleModal()" href="#projects">Projects</a></li>
+              <li><a onclick="toggleModal()" href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <span>Copyright © 2024 - Matheus Almeida</span>
+        </div>
       </nav>
     </header>
 

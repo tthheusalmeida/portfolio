@@ -61,7 +61,7 @@
   max-width: 328px;
   border-radius: 8px;
   padding: var(--size-nano);
-  transition: 0.4s all;
+  transition: .4s all;
   color: var(--dark-blue);
   text-decoration: none;
 }
@@ -88,7 +88,7 @@
   font-size: var(--font-size-baseline);
   font-weight: var(--font-weight-extrabold);
   margin-bottom: var(--size-nano);
-  transition: 0.4s all;
+  transition: .4s all;
 }
 
 #contact .contact__right-content input {
@@ -111,7 +111,7 @@
   font-family: var(--font-family);
   font-size: var(--font-size-baseline);
   font-weight: var(--font-weight-regular);
-  transition: 0.4s all;
+  transition: .4s all;
 }
 
 #contact .contact__right-content input::placeholder,
@@ -143,6 +143,10 @@
     align-self: center;
   }
 
+  #contact .contact-container {
+    margin-top: 64px;
+  }
+
   #contact .contact__content {
     flex-wrap: wrap;
   }
@@ -167,7 +171,7 @@
   #contact .contact__right-content label,
   #contact .contact__right-content input,
   #contact .contact__right-content textarea {
-    font-size: 12px;
+    font-size: var(--font-size-xs);
   }
 
   #contact .contact__button {

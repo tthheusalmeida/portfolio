@@ -57,7 +57,7 @@
   display: inline-block;
   height: fit-content;
   border-radius: 50%;
-  transition: 0.4s all;
+  transition: .4s all;
 }
 
 #projects .project-container > a {

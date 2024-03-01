@@ -68,8 +68,8 @@ html {
 }
 
 .icon {
-  width: 45px;
-  height: 45px;
+  width: 45px !important;
+  height: 45px !important;
   margin: 0 var(--size-nano) 0 0;
 }
 
@@ -139,7 +139,7 @@ html {
   color: var(--dark-blue);
   letter-spacing: 14%;
   font-style: italic;
-  font-size: var(--size-sm);
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-extrabold);
   transform: rotate(-22deg);
 }
@@ -191,12 +191,18 @@ html {
   }
 
   .badge {
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     padding: var(--size-quark) var(--size-nano);
   }
 
   .overlay {
     width: 80vw;
     height: 40vw;
-  }  
+  }
+
+  .icon {
+    width: var(--size-sm) !important;
+    height: var(--size-sm) !important;
+    margin: 0;
+  }
 }
