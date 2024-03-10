@@ -1,6 +1,10 @@
-// const PUBLIC_KEY = 'si5J95M0u8ZHN0p0r';
-// const SERVICE_ID = 'service_olo6ikj';
-// const TEMPLATE_ID = 'template_6716kh5';
+const encryptedData = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQVUJMSUNfS0VZIjoic2k1Sjk1TTB1OFpITjBwMHIiLCJTRVJWSUNFX0lEIjoic2VydmljZV9vbG82aWtqIiwiVEVNUExBVEVfSUQiOiJ0ZW1wbGF0ZV82NzE2a2g1IiwiaWF0IjoxNzEwMDY5OTI1fQ.SAgMlamdM-myMBdGdSrOwHJf8gxasK_7eSc99yY8k6c';
+
+const {
+  PUBLIC_KEY,
+  SERVICE_ID,
+  TEMPLATE_ID,
+} = window.getDataDecoded(encryptedData);
 
 function insertEmailJS() {
   const script = document.createElement('script');

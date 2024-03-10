@@ -68,6 +68,10 @@
     align-items: center;
   }
 
+  #hamburguer-menu-icon {
+    transition: all .8s ease-in-out !important;
+  }
+
   #header-modal {
     display: flex;
     flex-direction: column;
@@ -117,6 +121,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: 100%;
     min-height: 40px;
     background: var(--white);

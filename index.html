@@ -18,7 +18,25 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
-  <script src="./src/javascript/config.js" defer></script>
+  <script type="module">
+    import { jwtDecode } from 'https://cdn.jsdelivr.net/npm/jwt-decode@4.0/+esm';
+
+    function getDataDecoded(encryptedData) {
+      const {
+        PUBLIC_KEY,
+        SERVICE_ID,
+        TEMPLATE_ID,
+      } = jwtDecode(encryptedData);
+
+      return {
+        PUBLIC_KEY,
+        SERVICE_ID,
+        TEMPLATE_ID,
+      }
+    }
+
+    window.getDataDecoded = getDataDecoded;
+  </script>
 
   <script src="./src/javascript/plugin/emailjs.js" defer></script>
   <script src="./src/javascript/plugin/notifications.js" defer></script>
@@ -46,7 +64,7 @@
       </nav>
 
       <nav class="header__tabs-mobile">
-        <img class="icon" onclick="toggleModal()" src="./src/image/icon/menu.webp" alt="Hamburguer menu icon">
+        <img id="hamburguer-menu-icon" class="icon" onclick="toggleModal()" src="./src/image/icon/menu.webp" alt="Hamburguer menu icon">
 
         <div id="header-modal">
           <div class="header__options">
