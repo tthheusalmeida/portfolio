@@ -9,11 +9,13 @@ function toggleModal() {
     modal.style.opacity = '0';
 
     hambuerguerIcon.style.opacity = '1';
+    document.body.style.overflowY = 'auto';
   } else {
     modal.style.visibility = 'visible';
     modal.style.zIndex = '10';
     modal.style.opacity = '1';
 
     hambuerguerIcon.style.opacity = '0';
+    document.body.style.overflowY = 'hidden';
   }
 }
