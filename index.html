@@ -1,446 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MatheusDEV</title>
-  <meta name="description" content="Front-end developer portfolio with skills in HTML, CSS, JavaScript, Vue, Jest, Sass, Firebase, Git and Figma and in development Node.js, React, Tailwind and TypeScript. See creative, responsive projects from a front-end developer passionate about creating amazing web experiences.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MatheusDEV</title>
+    <meta
+      name="description"
+      content="Front-end developer portfolio with skills in HTML, CSS, JavaScript, Vue, Jest, Sass, Firebase, Git and Figma and in development Node.js, React, Tailwind and TypeScript. See creative, responsive projects from a front-end developer passionate about creating amazing web experiences."
+    />
 
-  <link rel="icon" type="image/x-icon" href="./src/image/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./src/image/favicon.ico" />
 
-  <link rel="stylesheet" href="./src/styles/main.css">
-  <link rel="stylesheet" href="./src/styles/header.css">
-  <link rel="stylesheet" href="./src/styles/home.css">
-  <link rel="stylesheet" href="./src/styles/skills.css">
-  <link rel="stylesheet" href="./src/styles/projects.css">
-  <link rel="stylesheet" href="./src/styles/contact.css">
-  <link rel="stylesheet" href="./src/styles/footer.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="./src/styles/main.css" />
+    <link rel="stylesheet" href="./src/styles/header.css" />
+    <link rel="stylesheet" href="./src/styles/home.css" />
+    <link rel="stylesheet" href="./src/styles/skills.css" />
+    <link rel="stylesheet" href="./src/styles/projects.css" />
+    <link rel="stylesheet" href="./src/styles/contact.css" />
+    <link rel="stylesheet" href="./src/styles/footer.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
 
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
-  <script type="module">
-    import { jwtDecode } from 'https://cdn.jsdelivr.net/npm/jwt-decode@4.0/+esm';
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+      defer
+    ></script>
+    <script type="module">
+      import { jwtDecode } from "https://cdn.jsdelivr.net/npm/jwt-decode@4.0/+esm";
 
-    function getDataDecoded(encryptedData) {
-      const {
-        PUBLIC_KEY,
-        SERVICE_ID,
-        TEMPLATE_ID,
-      } = jwtDecode(encryptedData);
+      function getDataDecoded(encryptedData) {
+        const { PUBLIC_KEY, SERVICE_ID, TEMPLATE_ID } =
+          jwtDecode(encryptedData);
 
-      return {
-        PUBLIC_KEY,
-        SERVICE_ID,
-        TEMPLATE_ID,
+        return {
+          PUBLIC_KEY,
+          SERVICE_ID,
+          TEMPLATE_ID,
+        };
       }
-    }
 
-    window.getDataDecoded = getDataDecoded;
-  </script>
+      window.getDataDecoded = getDataDecoded;
+    </script>
 
-  <script src="./src/javascript/plugin/emailjs.js" defer></script>
-  <script src="./src/javascript/plugin/notifications.js" defer></script>
-  
-  <script src="./src/javascript/main.js" defer></script>
-  <script src="./src/javascript/header.js" defer></script>
-  <script src="./src/javascript/contact.js" defer></script>
-</head>
-<body>
-  <div class="container">
-    <header id="header">
-      <img
-        src="./src/image/logo.webp"
-        alt="Writing Matheus DEV in capital letters"
-        class="logo"
-        onclick="scrollToSection()"
-      >
+    <script src="./src/javascript/plugin/emailjs.js" defer></script>
+    <script src="./src/javascript/plugin/notifications.js" defer></script>
 
-      <nav class="header__tabs">
-        <ul class="header__tabs-list">
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+    <script src="./src/javascript/main.js" defer></script>
+    <script src="./src/javascript/header.js" defer></script>
+    <script src="./src/javascript/contact.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <header id="header">
+        <img
+          src="./src/image/logo.webp"
+          alt="Writing Matheus DEV in capital letters"
+          class="logo"
+          onclick="scrollToSection()"
+        />
 
-      <nav class="header__tabs-mobile">
-        <img id="hamburguer-menu-icon" class="icon" onclick="toggleModal()" src="./src/image/icon/menu.webp" alt="Hamburguer menu icon">
+        <nav class="header__tabs">
+          <ul class="header__tabs-list">
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
 
-        <div id="header-modal">
-          <div class="header__options">
-            <img class="icon" onclick="toggleModal()" src="./src/image/icon/close.webp" alt="Close icon">
-
-            <ul class="header__tabs-list">
-              <li><a onclick="toggleModal()" href="#skills">Skills</a></li>
-              <li><a onclick="toggleModal()" href="#projects">Projects</a></li>
-              <li><a onclick="toggleModal()" href="#contact">Contact</a></li>
-            </ul>
-          </div>
-
-          <span>Copyright © 2024 - Matheus Almeida</span>
-        </div>
-      </nav>
-    </header>
-
-    <section id="home" class="section">
-      <div class="home__left-content">
-        <div class="home__all-text">
-          <div class="home__text">Hey There!</div>
-          <div class="home__text">
-            <span>I'm</span>
-            <h2>Matheus</h2>
-          </div>
-          <div class="home__text">Front-End Developer</div>
-        </div>
-
-        <button
-          class="home__button button"
-          onclick="scrollToSection('contact')"
-        >
-          <span>Contact me</span>
-        </button>
-
-        <div class="home__check-out">
-          <span>Check out my</span>
-          <div class="line"></div>
-          <a href="https://www.linkedin.com/in/matheus-almeida-602139182/" target="_blank">
-            <img class="icon" src="./src/image/icon/linkedIn-dark.webp" alt="LinkedIn">
-          </a>
-          <a href="https://github.com/tthheusalmeida" target="_blank">
-            <img class="icon" src="./src/image/icon/github-dark.webp" alt="Github">
-          </a>
-        </div>
-      </div>
-
-      <img class="image-perfil" src="./src/image/perfil.webp" alt="Blurred blue background with a photo of the programmer wearing a denim jacket, white shirt and short beard, black hair">
-    </section>
-
-    <section id="skills" class="section">
-      <div class="skills__left-content">
-        <h2>Skills</h2>
-
-        <div class="skills__grouped-items">
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/html-dark.webp" alt="HTML5 icon">
-            <span class="skills__item--text">HTML</span>
-          </div>
-
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/css-dark.webp" alt="CCS35 icon">
-            <span class="skills__item--text">CSS</span>
-          </div>
-
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/javascript-dark.webp" alt="JavaScript icon">
-            <span class="skills__item--text">JS</span>
-          </div>
-
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/vue-dark.webp" alt="Vue icon">
-            <span class="skills__item--text">VUE</span>
-          </div>
-
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/jest-dark.webp" alt="Jest icon">
-            <span class="skills__item--text">Jest</span>
-          </div>
-
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/sass-dark.webp" alt="Sass icon">
-            <span class="skills__item--text">Sass</span>
-          </div>
-
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/firebase-dark.webp" alt="Firebase icon">
-            <span class="skills__item--text">Firebase</span>
-          </div>
-
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/git-dark.webp" alt="Git icon">
-            <span class="skills__item--text">Git</span>
-          </div>
-
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/figma-dark.webp" alt="Figma icon">
-            <span class="skills__item--text">Figma</span>
-          </div>
-        </div>
-
-        <h3>In development</h3>
-        <div class="skills__grouped-items">
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/react-dark.webp" alt="React icon">
-            <span class="skills__item--text">React</span>
-          </div>
-
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/nodejs-dark.webp" alt="Node.js icon">
-            <span class="skills__item--text">Node.js</span>
-          </div>
-
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/tailwind-dark.webp" alt="Tailwind icon">
-            <span class="skills__item--text">Tailwind</span>
-          </div>
-
-          <div class="skills__item">
-            <img class="skills__item--image" src="./src/image/icon/typescript-dark.webp" alt="TypeScript icon">
-            <span class="skills__item--text">TS</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="skills__right-content">
-        <div class="skills__about-me">
-          <h3>Hey there,</h3>
-
-          <p>I'm Matheus Almeida, a Brazilian front-end developer with over 4 years of experience in the field and will graduate in 2024 on Computer Science.</p>
-          <p>During my undergraduate studies, I participated in programming marathons for a year and a half and tutored for a year in the Data Structures discipline.</p>
-          <p>I have extensive experience in developing dashboards and graphics for analyzing time series, threads, and other data, using componentization, SOLID, and Clean Code concepts.</p>
-          <p>Additionally, I have a strong interest and curiosity in UI and UX. I'm also familiar with project management, which I've been evolving in since before becoming a programmer.</p>
-        </div>
-
-        <div class="skills__quote">
-          <h4>Quote</h4>
-
-          <p><span>“</span>It always seems impossible until it’s done.<span>”</span></p>
-          <h4 class="author">- Nelson Mandela</h4>
-        </div>
-      </div> 
-    </section>
-
-    <section id="projects" class="section">
-      <div class="projects__content">
-        <h2>Projects</h2>
-
-        <div class="project">
-          <div class="project-container">
-            <div class="project__text-content">
-              <div>
-                <h3>Zelda Project</h3>
-                <p>Zelda Project is a personal project to practice video and iframe tag.</p>  
-              </div>
-
-              <div class="project__details">
-                <div class="project__badge-list">
-                  <span class="badge">HTML</span>
-                  <span class="badge">CSS</span>
-                  <span class="badge">Javascript</span>
-                </div>
-
-                <a class="github-icon" href="https://github.com/tthheusalmeida/zelda-project" target="_blank">
-                  <img src="./src/image/icon/github-dark.webp" alt="Github icon">
-                </a>
-              </div>
-            </div>
-
-            <a href="https://zelda-project.vercel.app/" target="_blank">
-              <img class="project__preview" src="./src/image/project/zelda-project.webp" alt="Zelda project splash screen image">
-              <div class="overlay"><span>IN ACTION</span></div>
-            </a>
-          </div>
-        </div>
-
-        <div class="project">
-          <div class="project-container">
-            <div class="project__text-content">
-              <div>
-                <h3>Pokedex</h3>
-                <p>Pokedex is a personal project to train some Vue js fundamentals and plugins.</p>  
-              </div>
-
-              <div class="project__details">
-                <div class="project__badge-list">
-                  <span class="badge">Vue</span>
-                  <span class="badge">VueCli</span>
-                  <span class="badge">Vuetify</span>
-                  <span class="badge">Vuex</span>
-                  <span class="badge">EsLint</span>
-                  <span class="badge">Lodash</span>
-                  <span class="badge">Jest</span>
-                  <span class="badge">Highcharts</span>
-                  <span class="badge">Vercel</span>
-                </div>
-
-                <a class="github-icon" href="https://github.com/tthheusalmeida/pokedex" target="_blank">
-                  <img src="./src/image/icon/github-dark.webp" alt="Github icon">
-                </a>
-              </div>
-            </div>
-
-            <a href="https://pokedex-phi-six.vercel.app/" target="_blank">
-              <img class="project__preview" src="./src/image/project/pokedex.webp" alt="Image of the pokedex project home screen">
-              <div class="overlay"><span>IN ACTION</span></div>
-            </a>
-          </div>
-        </div>
-
-        <div class="project">
-          <div class="project-container">
-            <div class="project__text-content">
-              <div>
-                <h3>Proffy</h3>
-                <p>
-                  Proffy is a project that connects students and teachers.
-                  Connections aims to find teachers with the best hours to serve students.
-                  On the platform there is area for students, where you have the option of looking for teachers at the desired times to assist you.
-                  and area for teachers, where they can register with class schedules.
-                </p>  
-              </div>
-
-              <div class="project__details">
-                <div class="project__badge-list">
-                  <span class="badge">React</span>
-                  <span class="badge">Knex</span>
-                  <span class="badge">Node.js</span>
-                  <span class="badge">TypeScript</span>
-                </div>
-
-                <a class="github-icon" href="https://github.com/tthheusalmeida/proffy" target="_blank">
-                  <img src="./src/image/icon/github-dark.webp" alt="Github icon">
-                </a>
-              </div>
-            </div>
-
-            <!-- <a href="https://pokedex-phi-six.vercel.app/" target="_blank">
-              <img class="project__preview" src="./src/image/project/pokedex.webp" alt="Imagem da tela inicial do projeto zelda project">
-              <div class="overlay"><span>IN ACTION</span></div>
-            </a> -->
-            <img class="project__preview" src="./src/image/project/proffy.webp" alt="Image of the proffy project home screen">
-          </div>
-        </div>
-
-        <div class="project">
-          <div class="project-container">
-            <div class="project__text-content">
-              <div>
-                <h3>Portfolio</h3>
-                <p>Here you will find a summary of what I have learned and developed as front end development.</p>  
-              </div>
-
-              <div class="project__details">
-                <div class="project__badge-list">
-                  <span class="badge">HTML</span>
-                  <span class="badge">CSS</span>
-                  <span class="badge">Javascript</span>
-                </div>
-
-                <a class="github-icon" href="https://github.com/tthheusalmeida/portfolio" target="_blank">
-                  <img src="./src/image/icon/github-dark.webp" alt="Github icon">
-                </a>
-              </div>
-            </div>
-
-            <!-- <a href="https://pokedex-phi-six.vercel.app/" target="_blank">
-              <img class="project__preview" src="./src/image/project/pokedex.webp" alt="Imagem da tela inicial do projeto zelda project">
-              <div class="overlay"><span>IN ACTION</span></div>
-            </a> -->
-            <img class="project__preview" src="./src/image/project/portfolio.webp" alt="Image of the portfolio project home screen">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="contact-container section">
-        <div class="contact__logo">
+        <nav class="header__tabs-mobile">
           <img
-            src="./src/image/logo.webp"
-            alt="Writing Matheus DEV in capital letters"
-            class="logo"
-            onclick="scrollToSection()"
-          >
-        </div>
+            id="hamburguer-menu-icon"
+            class="icon"
+            onclick="toggleModal()"
+            src="./src/image/icon/menu.webp"
+            alt="Hamburguer menu icon"
+          />
 
-        <h2>Contact</h2>
+          <div id="header-modal">
+            <div class="header__options">
+              <img
+                class="icon"
+                onclick="toggleModal()"
+                src="./src/image/icon/close.webp"
+                alt="Close icon"
+              />
 
-        <div class="contact__content">
-          <div class="contact__left-content">
-            <h2>Social network</h2>
+              <ul class="header__tabs-list">
+                <li><a onclick="toggleModal()" href="#skills">Skills</a></li>
+                <li>
+                  <a onclick="toggleModal()" href="#projects">Projects</a>
+                </li>
+                <li><a onclick="toggleModal()" href="#contact">Contact</a></li>
+              </ul>
+            </div>
 
-            <a class="social-network" href="https://www.linkedin.com/in/matheus-almeida-602139182/" target="_blank">
-              <img src="./src/image/icon/linkedIn-dark.webp" alt="LinkedIn icon">
+            <span>Copyright © 2024 - Matheus Almeida</span>
+          </div>
+        </nav>
+      </header>
 
-              <div class="social-network__description">
-                <div class="social-network__description--title">
-                  LinkedIn
-                </div>
-                <div class="social-network__description--text">
-                  matheus-almeida-602139182
-                </div>
-              </div>
-            </a>
-
-            <a class="social-network" href="https://github.com/tthheusalmeida" target="_blank">
-              <img src="./src/image/icon/github-dark.webp" alt="Github icon">
-
-              <div class="social-network__description">
-                <div class="social-network__description--title">
-                  Github
-                </div>
-                <div class="social-network__description--text">
-                  tthheusalmeida
-                </div>
-              </div>
-            </a>
-
-            <a class="social-network" href="mailto:dev.almeida.matheus@gmail.com" target="_blank">
-              <img src="./src/image/icon/email-dark.webp" alt="Email icon">
-
-              <div class="social-network__description">
-                <div class="social-network__description--title">
-                  E-mail
-                </div>
-                <div class="social-network__description--text">
-                  dev.almeida.matheus@gmail.com
-                </div>
-              </div>
-            </a>
+      <section id="home" class="section">
+        <div class="home__left-content">
+          <div class="home__all-text">
+            <div class="home__text">Hey There!</div>
+            <div class="home__text">
+              <span>I'm</span>
+              <h2>Matheus</h2>
+            </div>
+            <div class="home__text">Front-End Developer</div>
           </div>
 
-          <form class="contact__right-content">
-            <label>Name *</label>
-            <input
-              type="text"
-              id="form-name"
-              name="form-name"
-              placeholder="Your name"
-              onclick="removeErrorField(event.target)"
+          <button
+            class="home__button button"
+            onclick="scrollToSection('contact')"
+          >
+            <span>Contact me</span>
+          </button>
+
+          <div class="home__check-out">
+            <span>Check out my</span>
+            <div class="line"></div>
+            <a
+              href="https://www.linkedin.com/in/matheus-almeida-602139182/"
+              target="_blank"
             >
-
-            <label>E-mail *</label>
-            <input
-              type="email"
-              id="form-email"
-              name="form-email"
-              placeholder="Your email"
-              onclick="removeErrorField(event.target)"
-            >
-
-            <label>Message *</label>
-            <textarea
-              id="form-message"
-              name="form-message"
-              rows="10"
-              cols="40"
-              placeholder="Your message"
-              maxlength="500"
-              onclick="removeErrorField(event.target)"
-            ></textarea>
-
-            <button type="submit" class="contact__button button" onclick="sendEmail(event)">
-              <img src="./src/image/icon/send-email-dark.webp" alt="Send email icon">
-              <span>Contact me</span>
-            </button>
-          </form>
+              <img
+                class="icon"
+                src="./src/image/icon/linkedIn-dark.webp"
+                alt="LinkedIn"
+              />
+            </a>
+            <a href="https://github.com/tthheusalmeida" target="_blank">
+              <img
+                class="icon"
+                src="./src/image/icon/github-dark.webp"
+                alt="Github"
+              />
+            </a>
+          </div>
         </div>
-      </div>
-      
-    </section>
 
-    <section id="footer">
-      <span>Copyright © 2024 - Matheus Almeida</span>
-    </section>
-  </div>
-</body>
+        <img
+          class="image-perfil"
+          src="./src/image/perfil.webp"
+          alt="Blurred blue background with a photo of the programmer wearing a denim jacket, white shirt and short beard, black hair"
+        />
+      </section>
+
+      <section id="skills" class="section">
+        <div class="skills__left-content">
+          <h2>Skills</h2>
+
+          <div class="skills__grouped-items">
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/html-dark.webp"
+                alt="HTML5 icon"
+              />
+              <span class="skills__item--text">HTML</span>
+            </div>
+
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/css-dark.webp"
+                alt="CCS35 icon"
+              />
+              <span class="skills__item--text">CSS</span>
+            </div>
+
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/javascript-dark.webp"
+                alt="JavaScript icon"
+              />
+              <span class="skills__item--text">JS</span>
+            </div>
+
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/vue-dark.webp"
+                alt="Vue icon"
+              />
+              <span class="skills__item--text">VUE</span>
+            </div>
+
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/jest-dark.webp"
+                alt="Jest icon"
+              />
+              <span class="skills__item--text">Jest</span>
+            </div>
+
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/sass-dark.webp"
+                alt="Sass icon"
+              />
+              <span class="skills__item--text">Sass</span>
+            </div>
+
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/firebase-dark.webp"
+                alt="Firebase icon"
+              />
+              <span class="skills__item--text">Firebase</span>
+            </div>
+
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/git-dark.webp"
+                alt="Git icon"
+              />
+              <span class="skills__item--text">Git</span>
+            </div>
+
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/figma-dark.webp"
+                alt="Figma icon"
+              />
+              <span class="skills__item--text">Figma</span>
+            </div>
+          </div>
+
+          <h3>In development</h3>
+          <div class="skills__grouped-items">
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/react-dark.webp"
+                alt="React icon"
+              />
+              <span class="skills__item--text">React</span>
+            </div>
+
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/nodejs-dark.webp"
+                alt="Node.js icon"
+              />
+              <span class="skills__item--text">Node.js</span>
+            </div>
+
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/tailwind-dark.webp"
+                alt="Tailwind icon"
+              />
+              <span class="skills__item--text">Tailwind</span>
+            </div>
+
+            <div class="skills__item">
+              <img
+                class="skills__item--image"
+                src="./src/image/icon/typescript-dark.webp"
+                alt="TypeScript icon"
+              />
+              <span class="skills__item--text">TS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills__right-content">
+          <div class="skills__about-me">
+            <h3>Hey there,</h3>
+
+            <p>
+              I'm Matheus Almeida, a Brazilian front-end developer with over 4
+              years of experience in the field and will graduate in 2025 on
+              Computer Science.
+            </p>
+            <p>
+              During my undergraduate studies, I participated in programming
+              marathons for a year and a half and tutored for a year in the Data
+              Structures discipline.
+            </p>
+            <p>
+              I have extensive experience in developing dashboards and graphics
+              for analyzing time series, threads, and other data, using
+              componentization, SOLID, and Clean Code concepts.
+            </p>
+            <p>
+              Additionally, I have a strong interest and curiosity in UI and UX.
+              I'm also familiar with project management, which I've been
+              evolving in since before becoming a programmer.
+            </p>
+          </div>
+
+          <div class="skills__quote">
+            <h4>Quote</h4>
+
+            <p>
+              <span>“</span>It always seems impossible until it’s done.<span
+                >”</span
+              >
+            </p>
+            <h4 class="author">- Nelson Mandela</h4>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="projects__content">
+          <h2>Projects</h2>
+
+          <div class="project">
+            <div class="project-container">
+              <div class="project__text-content">
+                <div>
+                  <h3>Zelda Project</h3>
+                  <p>
+                    Zelda Project is a personal project to practice video and
+                    iframe tag.
+                  </p>
+                </div>
+
+                <div class="project__details">
+                  <div class="project__badge-list">
+                    <span class="badge">HTML</span>
+                    <span class="badge">CSS</span>
+                    <span class="badge">Javascript</span>
+                  </div>
+
+                  <a
+                    class="github-icon"
+                    href="https://github.com/tthheusalmeida/zelda-project"
+                    target="_blank"
+                  >
+                    <img
+                      src="./src/image/icon/github-dark.webp"
+                      alt="Github icon"
+                    />
+                  </a>
+                </div>
+              </div>
+
+              <a href="https://zelda-project.vercel.app/" target="_blank">
+                <img
+                  class="project__preview"
+                  src="./src/image/project/zelda-project.webp"
+                  alt="Zelda project splash screen image"
+                />
+                <div class="overlay"><span>IN ACTION</span></div>
+              </a>
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="project-container">
+              <div class="project__text-content">
+                <div>
+                  <h3>Pokedex</h3>
+                  <p>
+                    Pokedex is a personal project to train some Vue js
+                    fundamentals and plugins.
+                  </p>
+                </div>
+
+                <div class="project__details">
+                  <div class="project__badge-list">
+                    <span class="badge">Vue</span>
+                    <span class="badge">VueCli</span>
+                    <span class="badge">Vuetify</span>
+                    <span class="badge">Vuex</span>
+                    <span class="badge">EsLint</span>
+                    <span class="badge">Lodash</span>
+                    <span class="badge">Jest</span>
+                    <span class="badge">Highcharts</span>
+                    <span class="badge">Vercel</span>
+                  </div>
+
+                  <a
+                    class="github-icon"
+                    href="https://github.com/tthheusalmeida/pokedex"
+                    target="_blank"
+                  >
+                    <img
+                      src="./src/image/icon/github-dark.webp"
+                      alt="Github icon"
+                    />
+                  </a>
+                </div>
+              </div>
+
+              <a href="https://pokedex-phi-six.vercel.app/" target="_blank">
+                <img
+                  class="project__preview"
+                  src="./src/image/project/pokedex.webp"
+                  alt="Image of the pokedex project home screen"
+                />
+                <div class="overlay"><span>IN ACTION</span></div>
+              </a>
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="project-container">
+              <div class="project__text-content">
+                <div>
+                  <h3>Proffy</h3>
+                  <p>
+                    Proffy is a project that connects students and teachers.
+                    Connections aims to find teachers with the best hours to
+                    serve students. On the platform there is area for students,
+                    where you have the option of looking for teachers at the
+                    desired times to assist you. and area for teachers, where
+                    they can register with class schedules.
+                  </p>
+                </div>
+
+                <div class="project__details">
+                  <div class="project__badge-list">
+                    <span class="badge">React</span>
+                    <span class="badge">Knex</span>
+                    <span class="badge">Node.js</span>
+                    <span class="badge">TypeScript</span>
+                  </div>
+
+                  <a
+                    class="github-icon"
+                    href="https://github.com/tthheusalmeida/proffy"
+                    target="_blank"
+                  >
+                    <img
+                      src="./src/image/icon/github-dark.webp"
+                      alt="Github icon"
+                    />
+                  </a>
+                </div>
+              </div>
+
+              <!-- <a href="https://pokedex-phi-six.vercel.app/" target="_blank">
+              <img class="project__preview" src="./src/image/project/pokedex.webp" alt="Imagem da tela inicial do projeto zelda project">
+              <div class="overlay"><span>IN ACTION</span></div>
+            </a> -->
+              <img
+                class="project__preview"
+                src="./src/image/project/proffy.webp"
+                alt="Image of the proffy project home screen"
+              />
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="project-container">
+              <div class="project__text-content">
+                <div>
+                  <h3>Portfolio</h3>
+                  <p>
+                    Here you will find a summary of what I have learned and
+                    developed as front end development.
+                  </p>
+                </div>
+
+                <div class="project__details">
+                  <div class="project__badge-list">
+                    <span class="badge">HTML</span>
+                    <span class="badge">CSS</span>
+                    <span class="badge">Javascript</span>
+                  </div>
+
+                  <a
+                    class="github-icon"
+                    href="https://github.com/tthheusalmeida/portfolio"
+                    target="_blank"
+                  >
+                    <img
+                      src="./src/image/icon/github-dark.webp"
+                      alt="Github icon"
+                    />
+                  </a>
+                </div>
+              </div>
+
+              <!-- <a href="https://pokedex-phi-six.vercel.app/" target="_blank">
+              <img class="project__preview" src="./src/image/project/pokedex.webp" alt="Imagem da tela inicial do projeto zelda project">
+              <div class="overlay"><span>IN ACTION</span></div>
+            </a> -->
+              <img
+                class="project__preview"
+                src="./src/image/project/portfolio.webp"
+                alt="Image of the portfolio project home screen"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="contact-container section">
+          <div class="contact__logo">
+            <img
+              src="./src/image/logo.webp"
+              alt="Writing Matheus DEV in capital letters"
+              class="logo"
+              onclick="scrollToSection()"
+            />
+          </div>
+
+          <h2>Contact</h2>
+
+          <div class="contact__content">
+            <div class="contact__left-content">
+              <h2>Social network</h2>
+
+              <a
+                class="social-network"
+                href="https://www.linkedin.com/in/matheus-almeida-602139182/"
+                target="_blank"
+              >
+                <img
+                  src="./src/image/icon/linkedIn-dark.webp"
+                  alt="LinkedIn icon"
+                />
+
+                <div class="social-network__description">
+                  <div class="social-network__description--title">LinkedIn</div>
+                  <div class="social-network__description--text">
+                    matheus-almeida-602139182
+                  </div>
+                </div>
+              </a>
+
+              <a
+                class="social-network"
+                href="https://github.com/tthheusalmeida"
+                target="_blank"
+              >
+                <img
+                  src="./src/image/icon/github-dark.webp"
+                  alt="Github icon"
+                />
+
+                <div class="social-network__description">
+                  <div class="social-network__description--title">Github</div>
+                  <div class="social-network__description--text">
+                    tthheusalmeida
+                  </div>
+                </div>
+              </a>
+
+              <a
+                class="social-network"
+                href="mailto:dev.almeida.matheus@gmail.com"
+                target="_blank"
+              >
+                <img src="./src/image/icon/email-dark.webp" alt="Email icon" />
+
+                <div class="social-network__description">
+                  <div class="social-network__description--title">E-mail</div>
+                  <div class="social-network__description--text">
+                    dev.almeida.matheus@gmail.com
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <form class="contact__right-content">
+              <label>Name *</label>
+              <input
+                type="text"
+                id="form-name"
+                name="form-name"
+                placeholder="Your name"
+                onclick="removeErrorField(event.target)"
+              />
+
+              <label>E-mail *</label>
+              <input
+                type="email"
+                id="form-email"
+                name="form-email"
+                placeholder="Your email"
+                onclick="removeErrorField(event.target)"
+              />
+
+              <label>Message *</label>
+              <textarea
+                id="form-message"
+                name="form-message"
+                rows="10"
+                cols="40"
+                placeholder="Your message"
+                maxlength="500"
+                onclick="removeErrorField(event.target)"
+              ></textarea>
+
+              <button
+                type="submit"
+                class="contact__button button"
+                onclick="sendEmail(event)"
+              >
+                <img
+                  src="./src/image/icon/send-email-dark.webp"
+                  alt="Send email icon"
+                />
+                <span>Contact me</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="footer">
+        <span>Copyright © 2024 - Matheus Almeida</span>
+      </section>
+    </div>
+  </body>
 </html>
