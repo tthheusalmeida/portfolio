@@ -23,6 +23,10 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 
     <script
       type="text/javascript"
@@ -46,6 +50,7 @@
       window.getDataDecoded = getDataDecoded;
     </script>
 
+    <script src="./src/javascript/plugin/animate.js" defer></script>
     <script src="./src/javascript/plugin/emailjs.js" defer></script>
     <script src="./src/javascript/plugin/notifications.js" defer></script>
 
@@ -75,9 +80,10 @@
           alt="Writing Matheus DEV in capital letters"
           class="logo"
           onclick="scrollToSection()"
+          data-animate="animate__fadeInDown"
         />
 
-        <nav class="header__tabs">
+        <nav class="header__tabs" data-animate="animate__fadeInDown">
           <ul class="header__tabs-list">
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -119,7 +125,7 @@
 
       <section id="home" class="section">
         <div class="home__left-content">
-          <div class="home__all-text">
+          <div class="home__all-text" data-animate="fadeInLeft">
             <div class="home__text">Hey There!</div>
             <div class="home__text">
               <span>I'm</span>
@@ -131,11 +137,12 @@
           <button
             class="home__button button"
             onclick="scrollToSection('contact')"
+            data-animate="fadeInLeft"
           >
             <span>Contact me</span>
           </button>
 
-          <div class="home__check-out">
+          <div class="home__check-out" data-animate="fadeInLeft">
             <span>Check out my</span>
             <div class="line"></div>
             <a
@@ -162,14 +169,18 @@
           class="image-perfil"
           src="./src/image/perfil.webp"
           alt="Blurred blue background with a photo of the programmer wearing a denim jacket, white shirt and short beard, black hair"
+          data-animate="fadeInRight"
         />
       </section>
 
       <section id="skills" class="section">
         <div class="skills__left-content">
-          <h2>Skills</h2>
+          <h2 class="skills__already-has" data-animate="fadeInLeft">Skills</h2>
 
-          <div class="skills__grouped-items">
+          <div
+            class="skills__grouped-items grouped-one"
+            data-animate="fadeInLeft"
+          >
             <div class="skills__item">
               <img
                 class="skills__item--image"
@@ -288,8 +299,13 @@
             </div>
           </div>
 
-          <h3>In development</h3>
-          <div class="skills__grouped-items">
+          <h3 class="skills__in-development-title" data-animate="fadeInLeft">
+            In development
+          </h3>
+          <div
+            class="skills__grouped-items grouped-two"
+            data-animate="fadeInLeft"
+          >
             <div class="skills__item">
               <img
                 class="skills__item--image"
@@ -338,7 +354,7 @@
         </div>
 
         <div class="skills__right-content">
-          <div class="skills__about-me">
+          <div class="skills__about-me" data-animate="fadeInRight">
             <h3>Hey there,</h3>
 
             <p>
@@ -368,7 +384,7 @@
             </p>
           </div>
 
-          <div class="skills__quote">
+          <div class="skills__quote" data-animate="fadeInRight">
             <h4>Quote</h4>
 
             <p>
@@ -383,9 +399,11 @@
 
       <section id="projects" class="section">
         <div class="projects__content">
-          <h2>Projects</h2>
+          <h2 class="projects__content-title" data-animate="animate__fadeInUp">
+            Projects
+          </h2>
 
-          <div class="project">
+          <div class="project" data-animate="animate__fadeInUp">
             <div class="project-container">
               <div class="project__text-content">
                 <div>
@@ -428,7 +446,7 @@
             </div>
           </div>
 
-          <div class="project">
+          <div class="project" data-animate="animate__fadeInUp">
             <div class="project-container">
               <div class="project__text-content">
                 <div>
@@ -473,7 +491,7 @@
             </div>
           </div>
 
-          <div class="project">
+          <div class="project" data-animate="animate__fadeInUp">
             <div class="project-container">
               <div class="project__text-content">
                 <div>
@@ -515,7 +533,7 @@
             </div>
           </div>
 
-          <div class="project">
+          <div class="project" data-animate="animate__fadeInUp">
             <div class="project-container">
               <div class="project__text-content">
                 <div>
@@ -563,7 +581,7 @@
             </div>
           </div>
 
-          <div class="project">
+          <div class="project" data-animate="animate__fadeInUp">
             <div class="project-container">
               <div class="project__text-content">
                 <div>
@@ -610,7 +628,7 @@
 
       <section id="contact">
         <div class="contact-container section">
-          <div class="contact__logo">
+          <div class="contact__logo" data-animate="animate__fadeInLeft">
             <img
               src="./src/image/logo.webp"
               alt="Writing Matheus DEV in capital letters"
@@ -619,16 +637,24 @@
             />
           </div>
 
-          <h2>Contact</h2>
+          <h2 class="contact__title" data-animate="animate__fadeInRight">
+            Contact
+          </h2>
 
           <div class="contact__content">
             <div class="contact__left-content">
-              <h2>Social network</h2>
+              <h2
+                class="contact__left-content-title"
+                data-animate="animate__fadeInLeft"
+              >
+                Social network
+              </h2>
 
               <a
                 class="social-network"
                 href="https://www.linkedin.com/in/dev-almeida-matheus/"
                 target="_blank"
+                data-animate="animate__fadeInLeft"
               >
                 <img
                   src="./src/image/icon/linkedIn-dark.webp"
@@ -647,6 +673,7 @@
                 class="social-network"
                 href="https://github.com/tthheusalmeida"
                 target="_blank"
+                data-animate="animate__fadeInLeft"
               >
                 <img
                   src="./src/image/icon/github-dark.webp"
@@ -665,6 +692,7 @@
                 class="social-network"
                 href="mailto:dev.almeida.matheus@gmail.com"
                 target="_blank"
+                data-animate="animate__fadeInLeft"
               >
                 <img src="./src/image/icon/email-dark.webp" alt="Email icon" />
 
@@ -677,7 +705,10 @@
               </a>
             </div>
 
-            <form class="contact__right-content">
+            <form
+              class="contact__right-content"
+              data-animate="animate__fadeInRight"
+            >
               <label>Name *</label>
               <input
                 type="text"
