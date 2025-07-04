@@ -13,6 +13,12 @@ jobs:
       - name: 📦 Clone repository
         uses: actions/checkout@v3
 
+      - name: 📥 Instalar dependências
+        run: npm ci
+
+      - name: 🔨 Build para SSG
+        run: npm run build
+
       - name: 🚀 Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -22,3 +28,4 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
           protocol: ftp
+          local-dir: out/

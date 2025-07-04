@@ -1,5 +1,5 @@
 <h3 align="center">
-  <img alt="Portfolio" width="70%" title="#logo" src="src/image/readme/portfolio.png">
+  <!-- <img alt="Portfolio" width="70%" title="#logo" src="src/image/readme/portfolio.png"> -->
   <br>
 </h3>
 <p align="center">
@@ -14,11 +14,12 @@
 
 # 📂 Table of Contents
 
-- [Technology](#technology)
+<!-- - [Technology](#technology) -->
+
 - [In Action](#in-action)
 - [License](#license)
 
-<a id="technology"></a>
+<!-- <a id="technology"></a>
 
 ## 💡 Technology
 
@@ -26,13 +27,13 @@ The project was developed with the following technologies:
 
 - [HTML](https://html.com/) is a HyperText Markup Language that allows the creation and structure of sections, paragraphs, links and others tags.
 - [CSS](https://www.w3.org/Style/CSS/Overview.en.html) or Cascading Style Sheets (CSS) is a simple mechanism for adding style, fonts, colors, spacing to Web documents.
-- [Javascript](https://www.javascript.com/) is a scripting language for creating dynamic web page content.
+- [Javascript](https://www.javascript.com/) is a scripting language for creating dynamic web page content. -->
 
 <a id="in-action"></a>
 
-## 📸	In Action
+## 📸 In Action
 
-You can check it out [here](https://dev-almeida-matheus.vercel.app/).
+You can check it out [here](https://almeida-matheus.com/).
 
 <a id="license"></a>
 
@@ -40,7 +41,6 @@ You can check it out [here](https://dev-almeida-matheus.vercel.app/).
 
 This project is under the MIT license. see the [license page](https://opensource.org/licenses/MIT) for more details.
 
-
 <h4 align="center">
-  Made with ❤️ by <a href="https://www.linkedin.com/in/matheus-almeida-602139182/" target="_blank">Matheus Almeida</a>
+  Made with ❤️ by <a href="https://www.linkedin.com/in/dev-almeida-matheus/" target="_blank">Matheus Almeida</a>
 </h4>
