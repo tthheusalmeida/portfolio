@@ -5,7 +5,7 @@ import Button from "../atoms/Button";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { IoCloseSharp } from "react-icons/io5";
 import MenuItem from "./MenuItem";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import FooterLabels from "./FooterLabels";
 
 const LazyModal = lazy(() => import("./Modal"));
@@ -15,7 +15,6 @@ export default function Menu() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [pendingPath, setPendingPath] = useState<string | null>(null);
   const router = useRouter();
-  const pathname = usePathname();
 
   const items = useMemo(
     () => [
@@ -25,10 +24,6 @@ export default function Menu() {
     ],
     []
   );
-
-  useEffect(() => {
-    document.body.style.overflow = "auto";
-  }, [pathname]);
 
   useEffect(() => {
     items.forEach(({ path }) => {

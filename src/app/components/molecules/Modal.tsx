@@ -33,6 +33,7 @@ export default function Modal({
       document.body.style.overflow = "hidden";
       setShouldRender(true);
     } else if (!isOpen && shouldRender) {
+      document.body.style.overflow = "auto";
       setIsClosing(true);
     }
   }, [isOpen, shouldRender]);
