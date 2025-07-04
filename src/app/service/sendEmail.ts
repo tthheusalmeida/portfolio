@@ -10,7 +10,7 @@ export async function sendEmail(
   const controller = new AbortController();
   const timeoutId: ReturnType<typeof setTimeout> = setTimeout(() => {
     controller.abort();
-  }, 500);
+  }, 120000);
 
   try {
     const response: Response = await fetch(
