@@ -13,12 +13,15 @@ export async function sendEmail(
   }, 500);
 
   try {
-    const response: Response = await fetch("/api/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      signal: controller.signal,
-    });
+    const response: Response = await fetch(
+      "https://buddy-lemon-pi.vercel.app/api/send-email",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      }
+    );
     clearTimeout(timeoutId);
 
     if (!response.ok) {
