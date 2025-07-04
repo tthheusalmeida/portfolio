@@ -14,12 +14,10 @@ const typeStyles: Record<string, string> = {
 };
 
 const typeIcons: Record<string, React.ReactNode> = {
-  success: <HiCheckCircle className="w-5 h-5 mt-1 text-green-400" />,
-  error: (
-    <BsFillExclamationTriangleFill className="w-5 h-5 mt-1 text-red-400" />
-  ),
-  loading: <HiRefresh className="w-5 h-5 mt-1 animate-spin text-green-400" />,
-  info: <HiInformationCircle className="w-5 h-5 mt-1 text-blue-400" />,
+  success: <HiCheckCircle size={24} className="text-green-400" />,
+  error: <BsFillExclamationTriangleFill size={24} className="text-red-400" />,
+  loading: <HiRefresh size={24} className="animate-spin text-green-400" />,
+  info: <HiInformationCircle size={24} className="text-blue-400" />,
 };
 
 function showToast(
@@ -38,11 +36,13 @@ function showToast(
         )}
         onClick={() => baseToast.dismiss(t.id)}
       >
-        {typeIcons[type]}
+        <div className="min-w-6 h-min-w-6 flex items-center justify-center flex-shrink-0 mt-2">
+          {typeIcons[type]}
+        </div>
         <div className="text-sm font-medium my-1">{message}</div>
         <button
           onClick={() => baseToast.dismiss(t.id)}
-          className="ml-auto text-xs text-gray-200 mt-0.5"
+          className="ml-auto text-xs text-gray-200 mt-1"
           aria-label="Close notification"
         >
           <IoCloseSharp size={24} />
