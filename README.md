@@ -1,9 +1,10 @@
 <h3 align="center">
-  <img alt="Portfolio" width="70%" title="#logo" src="src/image/readme/portfolio.png">
+  <!-- <img alt="Portfolio" width="70%" title="#logo" src="src/image/readme/portfolio.png"> -->
   <br>
 </h3>
+
 <p align="center">
-  <strong>Porfolio</strong> is where you can find a little about me, my skills and experiences where I've worked.
+  <strong>Portfolio</strong> — A personal space to showcase who I am, what I build, and where I've been.
 </p>
 
 <p align="center">
@@ -14,33 +15,71 @@
 
 # 📂 Table of Contents
 
-- [Technology](#technology)
+- [About](#about)
+- [Technology Stack](#technology-stack)
 - [In Action](#in-action)
+- [Environment & Deployment](#environment--deployment)
 - [License](#license)
 
-<a id="technology"></a>
+<a id="about"></a>
 
-## 💡 Technology
+## 👤 About
 
-The project was developed with the following technologies:
+This is my personal portfolio, developed to present my professional background, skills, and recent projects. It serves as a hub for recruiters, collaborators, and tech enthusiasts to know more about my work and how to reach me.
 
-- [HTML](https://html.com/) is a HyperText Markup Language that allows the creation and structure of sections, paragraphs, links and others tags.
-- [CSS](https://www.w3.org/Style/CSS/Overview.en.html) or Cascading Style Sheets (CSS) is a simple mechanism for adding style, fonts, colors, spacing to Web documents.
-- [Javascript](https://www.javascript.com/) is a scripting language for creating dynamic web page content.
+<a id="technology-stack"></a>
+
+## 💻 Technology Stack
+
+The project was built with the following technologies:
+
+- [Next.js](https://nextjs.org/) — React framework for production with hybrid static & server rendering
+- [React](https://reactjs.org/) — Library for building user interfaces
+- [TypeScript](https://www.typescriptlang.org/) — Type-safe JavaScript
+- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS framework
+- [Node.js](https://nodejs.org/) — Server-side JavaScript runtime
+- [Nodemailer](https://nodemailer.com/) — Email sending module for Node.js
 
 <a id="in-action"></a>
 
-## 📸	In Action
+## 📸 In Action
 
-You can check it out [here](https://dev-almeida-matheus.vercel.app/).
+You can see the portfolio live at: [almeida-matheus.com](https://almeida-matheus.com/)
+
+<a id="environment--deployment"></a>
+
+## ⚙️ Environment & Deployment
+
+The project is deployed via **GitHub Actions** and hosted on **Hostinger via FTP**.
+
+### 🔐 Secrets and Environment
+
+All sensitive data and environment variables are managed using **GitHub Secrets** and injected during the CI/CD process.
+
+**⚠️ Never remove the following GitHub Secrets, as they are essential for deployment:**
+
+- `FTP_HOST`
+- `FTP_USERNAME`
+- `FTP_PASSWORD`
+- `FTP_PORT`
+- `FTP_SERVER_DIR`
+
+### 🌱 Runtime Environment Variables
+
+These variables are defined via GitHub Secrets and exposed in the CI/CD pipeline (e.g., in the `env` block of your `.yaml` workflow file), then accessed using `process.env` in the code.
+
+Examples:
+
+- `INTERNAL_JWT_SECRET`
 
 <a id="license"></a>
 
 ## 📝 License
 
-This project is under the MIT license. see the [license page](https://opensource.org/licenses/MIT) for more details.
+This project is licensed under the MIT License. See the [license page](https://opensource.org/licenses/MIT) for more information.
 
+---
 
 <h4 align="center">
-  Made with ❤️ by <a href="https://www.linkedin.com/in/matheus-almeida-602139182/" target="_blank">Matheus Almeida</a>
+  Made with ❤️ by <a href="https://www.linkedin.com/in/dev-almeida-matheus/" target="_blank">Matheus Almeida</a>
 </h4>
