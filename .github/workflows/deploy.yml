@@ -14,15 +14,6 @@ jobs:
           npm run build
           npx next export
 
-      - name: 📄 Criar arquivo .htaccess para SPA fallback no Hostiger
-        run: |
-          echo "RewriteEngine On
-                RewriteBase /
-                RewriteRule ^index\.html$ - [L]
-                RewriteCond %{REQUEST_FILENAME} !-f
-                RewriteCond %{REQUEST_FILENAME} !-d
-                RewriteRule . /index.html [L]" > out/.htaccess
-
       - name: 🚀 Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
