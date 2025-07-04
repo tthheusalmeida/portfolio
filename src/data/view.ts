@@ -112,8 +112,7 @@ const projects = [
       "Jest",
       "Node.js",
     ],
-    image:
-      "https://raw.githubusercontent.com/tthheusalmeida/vue-migration-tool/main/assets/logo.png",
+    image: "/projects/vmt.svg",
     link: "https://github.com/tthheusalmeida/vue-migration-tool",
     categories: ["personal"],
   },
@@ -125,8 +124,7 @@ const projects = [
       looking for teachers at the desired times to assist you and area for teachers, 
       where they can register with class schedules.`,
     technologies: ["React", "Knex", "Javascript", "Node.js"],
-    image:
-      "https://raw.githubusercontent.com/tthheusalmeida/proffy/master/screenshot/web_prev_1.PNG",
+    image: "/projects/proffy.svg",
     link: "https://github.com/tthheusalmeida/proffy",
     categories: ["personal"],
   },
@@ -141,8 +139,7 @@ const projects = [
       "Typescript",
       "Node.js",
     ],
-    image:
-      "https://raw.githubusercontent.com/tthheusalmeida/recipe/main/public/cover-mobile.png",
+    image: "/projects/recipe.svg",
     link: "https://recipe-five-rust.vercel.app/",
     categories: ["personal"],
   },
@@ -151,8 +148,7 @@ const projects = [
     about:
       "Personal project to practice lading page with video and iframe tag.",
     technologies: ["HTML", "CSS", "Javascript"],
-    image:
-      "https://raw.githubusercontent.com/tthheusalmeida/zelda-project/main/src/assets/logo.png",
+    image: "/projects/zelda_project.svg",
     link: "https://zelda-project.vercel.app/",
     categories: ["personal"],
   },
