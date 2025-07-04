@@ -101,19 +101,27 @@ export default function Form() {
     if (nameError || emailError || messageError) return;
 
     setLoading(true);
-    const result = await sendEmail({ name, email, message });
+    try {
+      const result = await sendEmail({ name, email, message });
 
-    if (result.success) {
-      Toast.success("Got it! We’ll get back to you soon.");
+      if (result.success) {
+        Toast.success("Got it! We’ll get back to you soon.");
 
-      setName("");
-      setEmail("");
-      setMessage("");
-    } else {
-      Toast.error("Uh-oh! That didn’t work. Try again?");
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        Toast.error("Uh-oh! That didn’t work. Try again?");
+      }
+    } catch (error) {
+      Toast.error(
+        error instanceof Error
+          ? error.message
+          : "Unexpected error. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   }
 
   return (
