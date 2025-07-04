@@ -28,7 +28,7 @@ export default function CoverSection() {
                 height={479}
                 priority={true}
                 alt="matheus, with a white shirt with a black print and blue glasses."
-                className="sm:hidden inline-block"
+                className="sm:hidden inline-block rounded-b-[40%]"
               />
 
               <div className="flex gap-6 pt-8 sm:w-[296px] w-full">
@@ -45,7 +45,7 @@ export default function CoverSection() {
               height={479}
               priority={true}
               alt="matheus, with a white shirt with a black print and blue glasses."
-              className="sm:inline-block hidden"
+              className="sm:inline-block hidden rounded-b-[40%]"
             />
           </div>
 
