@@ -24,7 +24,6 @@ export async function sendEmail(
     if (!response.ok) {
       throw new Error(
         "Oops! We had a little trouble getting a response from the server. How about trying us on WhatsApp? We’re ready to help you there!"
-        // "aaa"
       );
     }
 

@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppinsSans.variable} antialiased`}>
-        <Toaster position="bottom-center" toastOptions={{ duration: 500 }} />
+        <Toaster position="bottom-center" toastOptions={{ duration: 5000 }} />
         {children}
       </body>
     </html>
