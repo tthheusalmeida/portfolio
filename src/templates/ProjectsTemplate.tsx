@@ -10,6 +10,8 @@ import CTASection from "@/app/components/organisms/CTASection";
 import FiltersBar from "@/app/components/organisms/FiltersBar";
 import { useMemo } from "react";
 import { ProjectView } from "@/data/view";
+import { motion, AnimatePresence } from "motion/react"
+import AnimatedText from "@/app/components/molecules/AnimatedText";
 
 const createLabelValueObject = (labels: Array<string> | Set<string>) => {
   const labelsArray = [{ label: "All", value: "" }];
@@ -95,11 +97,29 @@ export default function ProjectsTemplate() {
             <FiltersBar filters={filters} onChange={handleFilterChange} />
           </div>
 
-          <div className="flex flex-wrap sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {projectsView.map((project, index) => (
-              <Project key={index} {...project} className="w-full" />
-            ))}
-          </div>
+          {projectsView.length
+            ? 
+            <div className="flex flex-wrap sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <AnimatePresence>
+                {projectsView.map((project) => (
+                  <motion.div
+                    layout
+                    key={`${project.title}`}
+                    initial={{ opacity: 0, transform: "scale(0.95) translateY(10px)" }}
+                    animate={{ opacity: 1, transform: "scale(1) translateY(0)" }}
+                    exit={{ opacity: 0, transform: "scale(0.95) translateY(-10px)" }}
+                    transition={{ duration: 0.3 }}
+                    className="w-full"
+                  >
+                    <Project {...project} />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+            : 
+            <AnimatedText text="Oops! No projects match your filter. Maybe in the future :)" />
+           }
+
         </TitleAndSubtitleSection>
 
         <CTASection />
