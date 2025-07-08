@@ -1,10 +1,10 @@
 import { motion } from "motion/react";
 
-interface AnimatedText {
-  text: string;
+interface AnimatedTextProps {
+  children: string;
 }
 
-export default function AnimatedText({text}: AnimatedText) {
+export default function AnimatedText({ children }: AnimatedTextProps) {
   return (
     <motion.div
       className="text-white w-full text-center p-6"
@@ -18,7 +18,7 @@ export default function AnimatedText({text}: AnimatedText) {
         },
       }}
     >
-      {(text ?? "").split("").map((char, index) => (
+      {(children ?? "").split("").map((char, index) => (
         <motion.span
           key={index}
           variants={{

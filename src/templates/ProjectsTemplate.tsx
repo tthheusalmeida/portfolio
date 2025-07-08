@@ -97,7 +97,7 @@ export default function ProjectsTemplate() {
             <FiltersBar filters={filters} onChange={handleFilterChange} />
           </div>
 
-          {projectsView.length
+          { projectsView.length
             ? 
             <div className="flex flex-wrap sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4">
               <AnimatePresence>
@@ -117,7 +117,9 @@ export default function ProjectsTemplate() {
               </AnimatePresence>
             </div>
             : 
-            <AnimatedText text="Oops! No projects match your filter. Maybe in the future :)" />
+            <AnimatedText>
+              Oops! No projects match your filter. Maybe in the future :)
+            </AnimatedText>
            }
 
         </TitleAndSubtitleSection>
