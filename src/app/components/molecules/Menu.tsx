@@ -68,19 +68,21 @@ export default function Menu() {
           onClose={() => setIsOpen(false)}
           onAnimationEnd={handleAnimationEnd}
           title="Menu"
-          className="flex flex-col h-full justify-between pb-8 pt-52"
+          className="flex flex-col h-full justify-between pb-8 pt-16"
         >
-          <ul className="flex flex-col items-end gap-10 w-[80vw] sm:w-auto">
-            {items.map(({ label, path }, index) => (
-              <li
-                className="w-full"
-                key={index}
-                onClick={() => handleItemClick(path)}
-              >
-                <MenuItem path={path} label={label} />
-              </li>
-            ))}
-          </ul>
+          <div className="h-full w-full flex items-center">
+              <ul className="flex flex-col items-end gap-10 max-w-[80vw] w-full">
+                {items.map(({ label, path }, index) => (
+                  <li
+                    className="w-full"
+                    key={index}
+                    onClick={() => handleItemClick(path)}
+                  >
+                    <MenuItem path={path} label={label} />
+                  </li>
+                ))}
+              </ul>
+          </div>  
 
           <FooterLabels />
         </LazyModal>
