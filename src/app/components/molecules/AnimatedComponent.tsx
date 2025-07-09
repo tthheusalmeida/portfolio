@@ -11,6 +11,7 @@ interface AnimatedComponentProps {
   disableAnimation?: boolean;
   className?: string;
   delay?: number;
+  slideUp?: boolean;
 }
 
 export default function AnimatedComponent({
@@ -20,6 +21,7 @@ export default function AnimatedComponent({
   forceView = false,
   disableAnimation = false,
   delay = 0,
+  slideUp = false,
   ...rest
 }: AnimatedComponentProps) {
   const ref = useRef(null);
@@ -28,14 +30,26 @@ export default function AnimatedComponent({
   const MotionComponent = motion[HTMLtag] as React.ElementType;
   const shouldAnimate = !disableAnimation && (forceView || isInView);
 
+  const motionDefaultProps = {
+    transition: { duration: 0.4, delay, ease: "easeOut" },
+  };
+
+  const motionProps = slideUp
+    ? {
+        initial: { opacity: 0, y: -60 },
+        animate: shouldAnimate ? { opacity: 1, y: 0 } : undefined,
+        ...motionDefaultProps,
+      }
+    : {
+        initial: { opacity: 0, y: 40, scale: 0.8 },
+        animate: shouldAnimate ? { opacity: 1, y: 0, scale: 1 } : undefined,
+        ...motionDefaultProps,
+      };
+
   return (
     <MotionComponent
       ref={ref}
-      {...(!disableAnimation && {
-        initial: { opacity: 0, y: 40, scale: 0.8 },
-        animate: shouldAnimate ? { opacity: 1, y: 0, scale: 1 } : undefined,
-        transition: { duration: 0.4, delay, ease: "easeOut" },
-      })}
+      {...(!disableAnimation && motionProps)}
       className={mergeClassNames(className)}
       {...rest}
     >
