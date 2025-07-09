@@ -1,5 +1,6 @@
 "use client";
 
+import AnimatedComponent from "../molecules/AnimatedComponent";
 import Select from "../molecules/Select";
 import { mergeClassNames } from "@/utils/classNames";
 
@@ -20,7 +21,8 @@ export interface FiltersBarProps {
 
 export default function FiltersBar({ filters, onChange }: FiltersBarProps) {
   return (
-    <div
+    <AnimatedComponent
+      HTMLtag="div"
       className={mergeClassNames(
         "flex items-center justify-center relative overflow-visible",
         "p-4 my-8 gap-4 rounded-lg w-full max-w-[640px]",
@@ -35,6 +37,6 @@ export default function FiltersBar({ filters, onChange }: FiltersBarProps) {
           onChange={(value) => onChange(key, value)}
         />
       ))}
-    </div>
+    </AnimatedComponent>
   );
 }

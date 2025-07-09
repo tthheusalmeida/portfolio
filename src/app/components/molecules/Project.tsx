@@ -2,6 +2,7 @@ import { mergeClassNames } from "@/utils/classNames";
 import Tag from "../atoms/Tag";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa6";
+import AnimatedComponent from "./AnimatedComponent";
 
 export type Category = "personal" | "freelancer" | "probono";
 
@@ -25,7 +26,8 @@ export default function Project({
 }: // categories,
 ProjectProps) {
   return (
-    <div
+    <AnimatedComponent
+      HTMLtag="div"
       className={mergeClassNames(
         "relative w-full h-60 sm:h-96 group drop-shadow-[0_0_16px_var(--background)]",
         className
@@ -85,6 +87,6 @@ ProjectProps) {
           </div>
         </div>
       </div>
-    </div>
+    </AnimatedComponent>
   );
 }

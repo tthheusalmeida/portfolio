@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { mergeClassNames } from "@/utils/classNames";
+import AnimatedComponent from "../molecules/AnimatedComponent";
 
 interface SVGGlowProps {
+  delay?: number;
   label: string;
   src: string;
   color: string;
@@ -34,6 +36,7 @@ const shadowMap: Record<string, string> = {
 };
 
 export default function SVGGlow({
+  delay,
   label,
   src,
   color,
@@ -51,7 +54,11 @@ export default function SVGGlow({
   );
 
   return (
-    <div className="group">
+    <AnimatedComponent
+      HTMLtag="div"
+      className="group"
+      delay={delay ? delay * 0.2 : 0}
+    >
       <div
         className={mergeClassNames(
           "flex items-center justify-center w-10 h-10 p-1",
@@ -70,6 +77,6 @@ export default function SVGGlow({
           className={imageComponentClasses}
         />
       </div>
-    </div>
+    </AnimatedComponent>
   );
 }

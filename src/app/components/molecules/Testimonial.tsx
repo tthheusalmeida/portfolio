@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { mergeClassNames } from "@/utils/classNames";
 import { BiSolidQuoteRight } from "react-icons/bi";
+import AnimatedComponent from "./AnimatedComponent";
 
 interface TestimonialProps {
   label: string;
@@ -16,7 +17,8 @@ export default function Testimonial({
   description,
 }: TestimonialProps) {
   return (
-    <div
+    <AnimatedComponent
+      HTMLtag="div"
       className={mergeClassNames(
         "w-full p-4 rounded",
         "bg-[var(--color-background)]/60 backdrop-blur-3xl"
@@ -58,6 +60,6 @@ export default function Testimonial({
           </span>
         </div>
       </div>
-    </div>
+    </AnimatedComponent>
   );
 }

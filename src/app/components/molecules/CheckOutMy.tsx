@@ -1,5 +1,6 @@
 import { mergeClassNames } from "@/utils/classNames";
 import SocialMedia from "./SocialMedia";
+import AnimatedComponent from "./AnimatedComponent";
 
 interface CheckOutMyProps {
   className?: string;
@@ -7,7 +8,8 @@ interface CheckOutMyProps {
 
 export default function CheckOutMy({ className }: CheckOutMyProps) {
   return (
-    <div
+    <AnimatedComponent
+      HTMLtag="div"
       className={mergeClassNames(
         "flex sm:flex-row flex-col items-center gap-4",
         className
@@ -18,6 +20,6 @@ export default function CheckOutMy({ className }: CheckOutMyProps) {
       <div className="hidden sm:block w-32 border border-gray-200 h-0 rounded-full" />
 
       <SocialMedia svgClassName="bg-transparent hover:border-transparent border-none" />
-    </div>
+    </AnimatedComponent>
   );
 }

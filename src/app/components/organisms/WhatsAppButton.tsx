@@ -16,6 +16,7 @@ export default function WhatsAppButton() {
       aria-label="Contact me on WhatsApp"
     >
       <SVGGlow
+        delay={1}
         label="WhatsApp button"
         src={`/footer/whatsapp.svg`}
         color="green"

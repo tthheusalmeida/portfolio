@@ -1,4 +1,5 @@
 import { mergeClassNames } from "@/utils/classNames";
+import AnimatedComponent from "../molecules/AnimatedComponent";
 
 interface SubtitleProps {
   children: React.ReactNode;
@@ -7,8 +8,11 @@ interface SubtitleProps {
 
 export default function Subtitle({ children, className }: SubtitleProps) {
   return (
-    <h2 className={mergeClassNames("text-base font-normal", className)}>
+    <AnimatedComponent
+      className={mergeClassNames("text-base font-normal", className)}
+      HTMLtag="h2"
+    >
       {children}
-    </h2>
+    </AnimatedComponent>
   );
 }

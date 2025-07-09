@@ -18,18 +18,17 @@ export default function Balloon({
   logo,
   role,
   descriptions,
-  arrow = "",
+  // arrow = "",
   dateStart,
   dateEnd,
 }: BaloonProps) {
-  const isArrowRight = arrow === "right";
+  // const isArrowRight = arrow === "right";
 
   return (
     <div
       className={mergeClassNames(
         "relative sm:w-[520px] p-3 sm:p-4 z-1",
-        "bg-[var(--color-background)]/60 backdrop-blur-3xl rounded transition-transform duration-200",
-        "sm:group-hover:scale-105"
+        "bg-[var(--color-background)]/60 backdrop-blur-3xl rounded"
       )}
     >
       <div className="flex justify-between">
@@ -77,7 +76,7 @@ export default function Balloon({
         ))}
       </ul>
 
-      {arrow && (
+      {/* {arrow && (
         <div
           className={mergeClassNames(
             "w-6 h-6 rotate-45",
@@ -86,7 +85,7 @@ export default function Balloon({
             `${isArrowRight ? "-left-3" : "-right-3"}`
           )}
         ></div>
-      )}
+      )} */}
     </div>
   );
 }

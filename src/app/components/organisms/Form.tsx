@@ -7,6 +7,7 @@ import Textarea from "../molecules/Textarea";
 import { useState } from "react";
 import { sendEmail } from "@/services/sendEmail";
 import { Toast } from "./Toast";
+import AnimatedComponent from "../molecules/AnimatedComponent";
 
 function validateName(name: string) {
   return name.trim().length < 3 ? "Name must be at least 3 characters." : "";
@@ -150,7 +151,8 @@ export default function Form() {
 
       <div className="relative">
         <div className="absolute flex justify-end items-center mb-2 right-0">
-          <span
+          <AnimatedComponent
+            HTMLtag="span"
             className={`text-sm ${
               message.length > inputMessage.maxLength
                 ? "text-red-400"
@@ -158,7 +160,7 @@ export default function Form() {
             }`}
           >
             {message.length} / {inputMessage.maxLength}
-          </span>
+          </AnimatedComponent>
         </div>
 
         <Textarea {...inputMessage} />

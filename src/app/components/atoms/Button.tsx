@@ -2,12 +2,14 @@
 
 import { mergeClassNames } from "@/utils/classNames";
 import { VscLoading } from "react-icons/vsc";
+import AnimatedComponent from "../molecules/AnimatedComponent";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   variant?: "primary" | "secondary";
   size?: "small" | "normal";
+  disableAnimation?: boolean;
   shadow?: boolean;
   isFull?: boolean;
   isLoading?: boolean;
@@ -35,6 +37,7 @@ export default function Button({
   shadow = false,
   isFull = true,
   isLoading = false,
+  disableAnimation = false,
   size = "normal",
   ...rest
 }: ButtonProps) {
@@ -64,9 +67,14 @@ export default function Button({
   ].join(" ");
 
   return (
-    <button className={`${mergeClassNames(componentClasses)} `} {...rest}>
+    <AnimatedComponent
+      HTMLtag="button"
+      className={`${mergeClassNames(componentClasses)} `}
+      disableAnimation={disableAnimation}
+      {...rest}
+    >
       <span className={childrenClasses}>{children}</span>
       {isLoading && <VscLoading size={20} className={loadingClasses} />}
-    </button>
+    </AnimatedComponent>
   );
 }

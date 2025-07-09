@@ -19,6 +19,7 @@ export default function SocialMedia({
         <a key={index} target="_blank" href={link}>
           <SVGGlow
             label={name}
+            delay={index}
             src={`/cover/${name}.svg`}
             color={color}
             className={svgClassName}

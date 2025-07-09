@@ -1,4 +1,5 @@
 import { mergeClassNames } from "@/utils/classNames";
+import AnimatedComponent from "./AnimatedComponent";
 
 interface CarouselProps {
   list: Array<React.ReactNode>;
@@ -6,7 +7,9 @@ interface CarouselProps {
 
 export default function Carousel({ list }: CarouselProps) {
   return (
-    <div
+    <AnimatedComponent
+      forceView
+      HTMLtag="div"
       className={mergeClassNames(
         "relative overflow-hidden py-4 whitespace-nowrap group bg-transparent"
         // "before:absolute before:top-0 before:left-0 before:w-52 before:h-52 before:z-1",
@@ -26,6 +29,6 @@ export default function Carousel({ list }: CarouselProps) {
           {list}
         </div>
       ))}
-    </div>
+    </AnimatedComponent>
   );
 }

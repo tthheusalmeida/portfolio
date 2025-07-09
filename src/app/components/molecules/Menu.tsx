@@ -58,6 +58,7 @@ export default function Menu() {
         disabled={isAnimating || isOpen}
         variant="secondary"
         className="w-12 bg-transparent"
+        disableAnimation
       >
         {isOpen ? <IoCloseSharp size={32} /> : <HiMenuAlt4 size={32} />}
       </Button>
@@ -71,18 +72,18 @@ export default function Menu() {
           className="flex flex-col h-full justify-between pb-8 pt-16"
         >
           <div className="h-full w-full flex items-center">
-              <ul className="flex flex-col items-end gap-10 max-w-[80vw] w-full">
-                {items.map(({ label, path }, index) => (
-                  <li
-                    className="w-full"
-                    key={index}
-                    onClick={() => handleItemClick(path)}
-                  >
-                    <MenuItem path={path} label={label} />
-                  </li>
-                ))}
-              </ul>
-          </div>  
+            <ul className="flex flex-col items-end gap-10 max-w-[80vw] w-full">
+              {items.map(({ label, path }, index) => (
+                <li
+                  className="w-full"
+                  key={index}
+                  onClick={() => handleItemClick(path)}
+                >
+                  <MenuItem path={path} label={label} />
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <FooterLabels />
         </LazyModal>

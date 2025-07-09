@@ -10,8 +10,8 @@ import CTASection from "@/app/components/organisms/CTASection";
 import FiltersBar from "@/app/components/organisms/FiltersBar";
 import { useMemo } from "react";
 import { ProjectView } from "@/data/view";
-import { motion, AnimatePresence } from "motion/react"
-import AnimatedText from "@/app/components/molecules/AnimatedText";
+import { motion, AnimatePresence } from "motion/react";
+import AnimatedComponent from "@/app/components/molecules/AnimatedComponent";
 
 const createLabelValueObject = (labels: Array<string> | Set<string>) => {
   const labelsArray = [{ label: "All", value: "" }];
@@ -97,17 +97,29 @@ export default function ProjectsTemplate() {
             <FiltersBar filters={filters} onChange={handleFilterChange} />
           </div>
 
-          { projectsView.length
-            ? 
-            <div className="flex flex-wrap sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {projectsView.length ? (
+            <AnimatedComponent
+              HTMLtag="div"
+              className="flex flex-wrap sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4"
+              forceView
+            >
               <AnimatePresence>
                 {projectsView.map((project) => (
                   <motion.div
                     layout
                     key={`${project.title}`}
-                    initial={{ opacity: 0, transform: "scale(0.95) translateY(10px)" }}
-                    animate={{ opacity: 1, transform: "scale(1) translateY(0)" }}
-                    exit={{ opacity: 0, transform: "scale(0.95) translateY(-10px)" }}
+                    initial={{
+                      opacity: 0,
+                      transform: "scale(0.95) translateY(10px)",
+                    }}
+                    animate={{
+                      opacity: 1,
+                      transform: "scale(1) translateY(0)",
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transform: "scale(0.95) translateY(-10px)",
+                    }}
                     transition={{ duration: 0.3 }}
                     className="w-full"
                   >
@@ -115,13 +127,15 @@ export default function ProjectsTemplate() {
                   </motion.div>
                 ))}
               </AnimatePresence>
-            </div>
-            : 
-            <AnimatedText>
+            </AnimatedComponent>
+          ) : (
+            <AnimatedComponent
+              HTMLtag="span"
+              className="w-full flex justify-center"
+            >
               Oops! No projects match your filter. Maybe in the future :)
-            </AnimatedText>
-           }
-
+            </AnimatedComponent>
+          )}
         </TitleAndSubtitleSection>
 
         <CTASection />

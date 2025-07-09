@@ -1,16 +1,18 @@
 import { mergeClassNames } from "@/utils/classNames";
+import AnimatedComponent from "../molecules/AnimatedComponent";
 
 interface TitleProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
 
 export default function Title({ children, className }: TitleProps) {
   return (
-    <h1
+    <AnimatedComponent
       className={mergeClassNames("text-4xl sm:text-6xl font-bold", className)}
+      HTMLtag="h1"
     >
       {children}
-    </h1>
+    </AnimatedComponent>
   );
 }

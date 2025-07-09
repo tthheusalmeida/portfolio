@@ -2,6 +2,7 @@ import { isEven } from "@/utils/math";
 import TimelineDate, { TimelineDateProps } from "../atoms/TimelineDate";
 import { mergeClassNames } from "@/utils/classNames";
 import Image from "next/image";
+import AnimatedComponent from "../molecules/AnimatedComponent";
 
 interface ImageTimeline {
   src: string;
@@ -32,7 +33,8 @@ export default function Timeline({ items }: TimelineProps) {
               key={index}
               className="flex flex-col sm:flex-row w-full sm:items-start sm:justify-between group"
             >
-              <div
+              <AnimatedComponent
+                HTMLtag="div"
                 className={mergeClassNames(
                   "hidden sm:block absolute left-1/2 -translate-x-1/2",
                   "w-6 h-6 mt-4",
@@ -43,10 +45,16 @@ export default function Timeline({ items }: TimelineProps) {
 
               {isLeft ? (
                 <>
-                  <div className="order-2 sm:order-1 w-full sm:w-1/2 sm:pr-12 flex flex-col sm:flex-row justify-end group-hover:translate-y-3 transition-all">
+                  <AnimatedComponent
+                    HTMLtag="div"
+                    className="order-2 sm:order-1 w-full sm:w-1/2 sm:pr-12 flex flex-col sm:flex-row justify-end group-hover:translate-y-3 transition-all"
+                  >
                     {component}
-                  </div>
-                  <div className="order-1 sm:order-2 relative w-full sm:w-1/2 pl-0 sm:pl-10 flex justify-end sm:justify-start mt-4 group">
+                  </AnimatedComponent>
+                  <AnimatedComponent
+                    HTMLtag="div"
+                    className="order-1 sm:order-2 relative w-full sm:w-1/2 pl-0 sm:pl-10 flex justify-end sm:justify-start mt-4 group"
+                  >
                     <TimelineDate
                       start={date.start}
                       end={date.end}
@@ -68,14 +76,20 @@ export default function Timeline({ items }: TimelineProps) {
                         className="object-cover"
                       />
                     </div>
-                  </div>
+                  </AnimatedComponent>
                 </>
               ) : (
                 <>
-                  <div className="order-2 w-full sm:w-1/2 sm:pl-12 flex flex-col sm:flex-row justify-end group-hover:translate-y-3 transition-all">
+                  <AnimatedComponent
+                    HTMLtag="div"
+                    className="order-2 w-full sm:w-1/2 sm:pl-12 flex flex-col sm:flex-row justify-end group-hover:translate-y-3 transition-all"
+                  >
                     {component}
-                  </div>
-                  <div className="order-1 relative w-full sm:w-1/2 pr-0 sm:pr-10 flex justify-end mt-4 group">
+                  </AnimatedComponent>
+                  <AnimatedComponent
+                    HTMLtag="div"
+                    className="order-1 relative w-full sm:w-1/2 pr-0 sm:pr-10 flex justify-end mt-4 group"
+                  >
                     <TimelineDate
                       start={date.start}
                       end={date.end}
@@ -97,7 +111,7 @@ export default function Timeline({ items }: TimelineProps) {
                         className="object-cover"
                       />
                     </div>
-                  </div>
+                  </AnimatedComponent>
                 </>
               )}
             </div>

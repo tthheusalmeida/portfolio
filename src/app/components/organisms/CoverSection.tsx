@@ -6,6 +6,7 @@ import Image from "next/image";
 import Title from "@/app/components/atoms/Title";
 import DownloadButton from "../molecules/DownloadButton";
 import RouterButton from "../atoms/RouterButton";
+import AnimatedComponent from "../molecules/AnimatedComponent";
 
 export default function CoverSection() {
   const cvFileName = "Matheus_Almeida_CV_Front-End_Software_Engineer.pdf";
@@ -21,15 +22,19 @@ export default function CoverSection() {
                 <Title>Software Engineer</Title>
                 <Title>Front-End</Title>
               </div>
-
-              <Image
-                src="/cover/me.png"
-                width={556}
-                height={479}
-                priority={true}
-                alt="matheus, with a white shirt with a black print and blue glasses."
-                className="sm:hidden inline-block rounded-b-[40%]"
-              />
+              <AnimatedComponent
+                HTMLtag="div"
+                className="sm:hidden inline-block"
+              >
+                <Image
+                  src="/cover/me.png"
+                  width={556}
+                  height={479}
+                  priority={true}
+                  alt="matheus, with a white shirt with a black print and blue glasses."
+                  className="rounded-b-[40%]"
+                />
+              </AnimatedComponent>
 
               <div className="flex gap-6 pt-8 sm:w-[296px] w-full">
                 <RouterButton path="contact">Contact me</RouterButton>
@@ -39,14 +44,16 @@ export default function CoverSection() {
               </div>
             </div>
 
-            <Image
-              src="/cover/me.png"
-              width={556}
-              height={479}
-              priority={true}
-              alt="matheus, with a white shirt with a black print and blue glasses."
-              className="sm:inline-block hidden rounded-b-[40%]"
-            />
+            <AnimatedComponent HTMLtag="div" className="sm:inline-block hidden">
+              <Image
+                src="/cover/me.png"
+                width={556}
+                height={479}
+                priority={true}
+                alt="matheus, with a white shirt with a black print and blue glasses."
+                className="rounded-b-[40%]"
+              />
+            </AnimatedComponent>
           </div>
 
           <div className="flex flex-col sm:flex-row justify-between mt-20 sm:mt-0 items-center sm:items-baseline-last sm:pr-20 sm:pt-0 pt-6 sm:gap-0 gap-8">
