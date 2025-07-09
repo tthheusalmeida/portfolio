@@ -32,9 +32,9 @@ export default function AnimatedComponent({
     <MotionComponent
       ref={ref}
       {...(!disableAnimation && {
-        initial: { opacity: 0, y: 40, scale: 0 },
+        initial: { opacity: 0, y: 40, scale: 0.8 },
         animate: shouldAnimate ? { opacity: 1, y: 0, scale: 1 } : undefined,
-        transition: { duration: 1, delay, ease: "easeOut" },
+        transition: { duration: 0.4, delay, ease: "easeOut" },
       })}
       className={mergeClassNames(className)}
       {...rest}

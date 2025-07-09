@@ -45,7 +45,7 @@ export default function Button({
     "flex relative inline-flex justify-center items-center",
     sizeVariants[size],
     "text-sm font-medium",
-    "transition-all duration-200 cursor-pointer",
+    "transition-colors duration-200 cursor-pointer",
     "disabled:cursor-not-allowed",
     "rounded-sm",
     isFull ? "w-full" : "",
