@@ -47,7 +47,7 @@ export default function Timeline({ items }: TimelineProps) {
                 <>
                   <AnimatedComponent
                     HTMLtag="div"
-                    className="order-2 sm:order-1 w-full sm:w-1/2 sm:pr-12 flex flex-col sm:flex-row justify-end group-hover:translate-y-3 transition-all"
+                    className="order-2 sm:order-1 w-full sm:w-1/2 sm:pr-12 flex flex-col sm:flex-row justify-end"
                   >
                     {component}
                   </AnimatedComponent>
@@ -82,7 +82,7 @@ export default function Timeline({ items }: TimelineProps) {
                 <>
                   <AnimatedComponent
                     HTMLtag="div"
-                    className="order-2 w-full sm:w-1/2 sm:pl-12 flex flex-col sm:flex-row justify-end group-hover:translate-y-3 transition-all"
+                    className="order-2 w-full sm:w-1/2 sm:pl-12 flex flex-col sm:flex-row justify-end"
                   >
                     {component}
                   </AnimatedComponent>
