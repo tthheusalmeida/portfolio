@@ -85,7 +85,7 @@ export default function Menu() {
             </ul>
           </div>
 
-          <FooterLabels />
+          <FooterLabels disableAnimation />
         </LazyModal>
       </Suspense>
     </>

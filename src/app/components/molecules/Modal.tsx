@@ -87,6 +87,7 @@ export default function Modal({
             onClick={onClose}
             variant="secondary"
             className="w-12 bg-transparent mt-2 mr-4"
+            disableAnimation
           >
             {isOpen ? <IoCloseSharp size={32} /> : <HiMenuAlt4 size={32} />}
           </Button>
