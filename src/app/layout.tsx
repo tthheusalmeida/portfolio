@@ -11,11 +11,11 @@ const poppinsSans = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "Matheus Almeida - Frontend Engineer | Vue, React, Tailwind",
+    default: "Matheus Almeida - Software Engineer Front End",
     template: "%s | Matheus Almeida",
   },
   description:
-    "Frontend Engineer especializado em Vue, React, Tailwind, HTML, CSS e JavaScript. Transformo ideias em experiências digitais modernas, acessíveis e performáticas.",
+    "Software Engineer Front-End specialized in Vue, React, Tailwind, HTML, CSS, and JavaScript. I transform ideas into modern, accessible, and high-performance digital experiences.",
   authors: [{ name: "Matheus Almeida", url: "https://almeida-matheus.com" }],
   creator: "Matheus Almeida",
   publisher: "Matheus Almeida",
@@ -27,7 +27,9 @@ export const metadata: Metadata = {
   keywords: [
     "Matheus Almeida",
     "Frontend",
+    "Software Engineer",
     "Desenvolvedor Frontend",
+    "Frontend Developer",
     "Vue",
     "React",
     "Tailwind",
@@ -35,6 +37,9 @@ export const metadata: Metadata = {
     "Next.js",
     "HTML",
     "CSS",
+    "Express",
+    "MongoBD",
+    "Firebase",
     "Programador Frontend",
     "Engenheiro de Software",
     "Web Developer",
@@ -46,7 +51,7 @@ export const metadata: Metadata = {
     title:
       "Matheus Almeida - Software Engineer Front End | Vue, React, Tailwind",
     description:
-      "Transformo ideias em experiências digitais modernas com Vue, React, Tailwind e tecnologias frontend de ponta.",
+      "Turning ideas into modern digital experiences using Vue, React, Tailwind, and cutting-edge frontend technologies.",
     url: "https://almeida-matheus.com",
     siteName: "Matheus Almeida",
     locale: "en_US",
