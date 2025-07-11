@@ -40,7 +40,7 @@ export default function Testimonial({
         <div className="flex sm:block flex-col w-full sm:w-auto gap-4">
           <BiSolidQuoteRight
             size={32}
-            className="inline-block sm:hidden rotate-180 text-orange-300/10 mr-2"
+            className="inline-block sm:hidden rotate-180 text-orange-300 mr-2"
           />
 
           <p className="font-normal text-base pt-4 sm:p-0">
