@@ -56,7 +56,6 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
   },
-  themeColor: "#161413",
   category: "technology",
   classification: "Software Engineer",
   applicationName: "Matheus Almeida Portfolio",

@@ -33,7 +33,7 @@ export default function CoverSection() {
                 <Image
                   src="/cover/me.png"
                   width={556}
-                  height={479}
+                  height={500}
                   priority
                   unoptimized
                   placeholder="empty"
@@ -53,7 +53,7 @@ export default function CoverSection() {
               <Image
                 src="/cover/me.png"
                 width={556}
-                height={479}
+                height={500}
                 priority
                 unoptimized
                 placeholder="empty"
