@@ -10,8 +10,56 @@ const poppinsSans = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Matheus Almeida",
-  description: "",
+  title: {
+    default: "Matheus Almeida - Frontend Engineer | Vue, React, Tailwind",
+    template: "%s | Matheus Almeida",
+  },
+  description:
+    "Frontend Engineer especializado em Vue, React, Tailwind, HTML, CSS e JavaScript. Transformo ideias em experiências digitais modernas, acessíveis e performáticas.",
+  authors: [{ name: "Matheus Almeida", url: "https://almeida-matheus.com" }],
+  creator: "Matheus Almeida",
+  publisher: "Matheus Almeida",
+  metadataBase: new URL("https://almeida-matheus.com"),
+  robots: {
+    index: true,
+    follow: true,
+  },
+  keywords: [
+    "Matheus Almeida",
+    "Frontend",
+    "Desenvolvedor Frontend",
+    "Vue",
+    "React",
+    "Tailwind",
+    "JavaScript",
+    "Next.js",
+    "HTML",
+    "CSS",
+    "Programador Frontend",
+    "Engenheiro de Software",
+    "Web Developer",
+    "Micro-SaaS",
+    "UI Developer",
+    "Developer Portfolio",
+  ],
+  openGraph: {
+    title:
+      "Matheus Almeida - Software Engineer Front End | Vue, React, Tailwind",
+    description:
+      "Transformo ideias em experiências digitais modernas com Vue, React, Tailwind e tecnologias frontend de ponta.",
+    url: "https://almeida-matheus.com",
+    siteName: "Matheus Almeida",
+    locale: "pt_BR",
+    type: "website",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
+  themeColor: "#161413",
+  category: "technology",
+  classification: "Software Engineer",
+  applicationName: "Matheus Almeida Portfolio",
 };
 
 export default function RootLayout({

@@ -34,8 +34,10 @@ export default function CoverSection() {
                   src="/cover/me.png"
                   width={556}
                   height={479}
-                  priority={true}
-                  alt="matheus, with a white shirt with a black print and blue glasses."
+                  priority
+                  unoptimized
+                  placeholder="empty"
+                  alt="matheus, focused programmer wearing a hoodie and headset, working on a laptop."
                 />
               </AnimatedComponent>
 
@@ -52,8 +54,10 @@ export default function CoverSection() {
                 src="/cover/me.png"
                 width={556}
                 height={479}
-                priority={true}
-                alt="matheus, with a white shirt with a black print and blue glasses."
+                priority
+                unoptimized
+                placeholder="empty"
+                alt="matheus, focused programmer wearing a hoodie and headset, working on a laptop."
               />
             </AnimatedComponent>
           </div>
