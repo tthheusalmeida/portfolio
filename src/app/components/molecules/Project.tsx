@@ -40,8 +40,8 @@ ProjectProps) {
           fill
           sizes="auto"
           className={mergeClassNames(
-            "object-cover object-center group-hover:scale-105",
-            "transition-transform duration-200 rounded-2xl"
+            "object-cover group-hover:scale-110",
+            "transition-transform rounded-2xl"
           )}
         />
 

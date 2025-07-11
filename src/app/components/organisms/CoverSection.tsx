@@ -31,11 +31,10 @@ export default function CoverSection() {
                 className="flex sm:hidden items-center justify-center px-4"
               >
                 <Image
-                  src="/cover/me.png"
+                  src="/cover/me.webp"
                   width={556}
                   height={500}
                   priority
-                  unoptimized
                   placeholder="empty"
                   alt="matheus, focused programmer wearing a hoodie and headset, working on a laptop."
                 />
@@ -51,11 +50,10 @@ export default function CoverSection() {
 
             <AnimatedComponent HTMLtag="div" className="sm:inline-block hidden">
               <Image
-                src="/cover/me.png"
+                src="/cover/me.webp"
                 width={556}
                 height={500}
                 priority
-                unoptimized
                 placeholder="empty"
                 alt="matheus, focused programmer wearing a hoodie and headset, working on a laptop."
               />

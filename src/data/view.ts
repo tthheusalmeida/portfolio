@@ -115,9 +115,9 @@ const projects = [
       "Firebase",
       "Axios",
       "Zod",
-      "SWR"
+      "SWR",
     ],
-    image: "/projects/melhor_preco_app.svg",
+    image: "/projects/melhor_preco_app.webp",
     link: "https://www.melhorprecoapp.com.br",
     categories: ["freelancer"],
   },
@@ -133,7 +133,7 @@ const projects = [
       "Jest",
       "Node.js",
     ],
-    image: "/projects/vmt.svg",
+    image: "/projects/vmt.webp",
     link: "https://github.com/tthheusalmeida/vue-migration-tool",
     categories: ["personal"],
   },
@@ -145,7 +145,7 @@ const projects = [
       looking for teachers at the desired times to assist you and area for teachers, 
       where they can register with class schedules.`,
     technologies: ["React", "Knex", "Javascript", "Node.js"],
-    image: "/projects/proffy.svg",
+    image: "/projects/proffy.webp",
     link: "https://github.com/tthheusalmeida/proffy",
     categories: ["personal"],
   },
@@ -160,7 +160,7 @@ const projects = [
       "Typescript",
       "Node.js",
     ],
-    image: "/projects/recipe.svg",
+    image: "/projects/recipe.webp",
     link: "https://recipe-five-rust.vercel.app/",
     categories: ["personal"],
   },
@@ -169,7 +169,7 @@ const projects = [
     about:
       "Personal project to practice lading page with video and iframe tag.",
     technologies: ["HTML", "CSS", "Javascript"],
-    image: "/projects/zelda_project.svg",
+    image: "/projects/zelda_project.webp",
     link: "https://zelda-project.vercel.app/",
     categories: ["personal"],
   },
@@ -178,7 +178,7 @@ const projects = [
 const companies = [
   {
     name: "Blip",
-    logo: "/work/blip.webp",
+    logo: "/work/blip.svg",
     role: "Software Engineer",
     descriptions: [
       "Modernized a critical legacy system, reducing technical complexity and improving maintainability.",
