@@ -66,7 +66,7 @@ export default function Timeline({ items }: TimelineProps) {
                       className={mergeClassNames(
                         "w-[520px] h-[348px] hidden sm:inline-block absolute -top-4 left-6 z-[-1]",
                         "opacity-0 invisible transition-all duration-300 rotate-90 scale-10",
-                        "group-hover:visible group-hover:opacity-50 group-hover:rotate-6 group-hover:scale-100 ease-out"
+                        "group-hover:visible group-hover:opacity-50 group-hover:rotate-6 group-hover:scale-100 ease-out bg-black"
                       )}
                     >
                       <Image
@@ -101,7 +101,7 @@ export default function Timeline({ items }: TimelineProps) {
                       className={mergeClassNames(
                         "w-[520px] h-[348px] hidden sm:inline-block absolute -top-4 left-10 z-[-1]",
                         "opacity-0 invisible transition-all duration-300 -rotate-90 scale-10",
-                        "group-hover:visible group-hover:opacity-50 group-hover:-rotate-6 group-hover:scale-100 ease-out"
+                        "group-hover:visible group-hover:opacity-50 group-hover:-rotate-6 group-hover:scale-100 ease-out bg-black"
                       )}
                     >
                       <Image

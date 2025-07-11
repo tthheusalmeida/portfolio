@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <AnimatedComponent
       HTMLtag="div"
-      className="fixed top-0 left-0 w-dvw z-50 bg-[var(--color-background)]/60 backdrop-blur-3xl"
+      className="fixed top-0 left-0 w-dvw z-50 bg-[var(--color-background)]/60 backdrop-blur-xl"
       slideUp
     >
       <PageTemplate>

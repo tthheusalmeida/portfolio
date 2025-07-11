@@ -16,15 +16,15 @@ export default function CoverSection() {
     <>
       <SectionTemplate className="flex flex-col justify-evenly sm:gap-0 gap-16">
         <div className="flex flex-col justify-center">
-          <div className="flex sm:flex-row flex-col items-center">
-            <div className="flex flex-col gap-6 sm:block w-full sm:w-auto pt-10 sm:pt-0">
+          <div className="flex sm:flex-row sm:justify-between flex-col items-center">
+            <div className="flex flex-col items gap-6 sm:block w-full sm:w-auto pt-10 sm:pt-0">
               <div className="flex flex-col select-none items-center sm:items-start">
                 <Title>Software Engineer</Title>
                 <Title>Front-End</Title>
               </div>
               <AnimatedComponent
                 HTMLtag="div"
-                className="sm:hidden inline-block"
+                className="flex sm:hidden items-center justify-center"
               >
                 <Image
                   src="/cover/me.png"
@@ -56,7 +56,7 @@ export default function CoverSection() {
             </AnimatedComponent>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between mt-20 sm:mt-0 items-center sm:items-baseline-last sm:pr-20 sm:pt-0 pt-6 sm:gap-0 gap-8">
+          <div className="flex flex-col sm:flex-row justify-between mt-20 sm:mt-0 items-center sm:items-baseline-last sm:pr-4 sm:pt-0 pt-6 sm:gap-0 gap-8">
             <Stack className="sm:order-1 order-2" />
             <CheckOutMy className="sm:order-2 order-1" />
           </div>

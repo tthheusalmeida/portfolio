@@ -17,7 +17,12 @@ export default function TitleAndSubtitleSection({
 }: TitleAndSubtitleSectionProps) {
   return (
     <>
-      <div className={mergeClassNames("w-full z-30 mb-6 sm:mb-12", className)}>
+      <div
+        className={mergeClassNames(
+          "flex flex-col items-center justify-center w-full z-30 mb-6 sm:mb-12",
+          className
+        )}
+      >
         <Title className="text-center">{title}</Title>
         <Subtitle className="pt-4 text-center">{subtitle}</Subtitle>
       </div>
