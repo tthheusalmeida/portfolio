@@ -49,7 +49,7 @@ export const metadata: Metadata = {
       "Transformo ideias em experiências digitais modernas com Vue, React, Tailwind e tecnologias frontend de ponta.",
     url: "https://almeida-matheus.com",
     siteName: "Matheus Almeida",
-    locale: "pt_BR",
+    locale: "en_US",
     type: "website",
   },
   icons: {
