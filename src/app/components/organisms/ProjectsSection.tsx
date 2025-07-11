@@ -9,7 +9,7 @@ export default function ProjectsSection() {
   const projects = VIEW.projects;
 
   return (
-    <SectionTemplate className="flex flex-col items-center">
+    <SectionTemplate className="flex flex-col items-center sm:rounded-t-2xl">
       <TitleAndSubtitleSection
         title="Projects"
         subtitle={
@@ -24,10 +24,10 @@ export default function ProjectsSection() {
 
       <RouterButton
         path="projects"
-        variant="secondary"
+        variant="primary"
         className="max-w-48 mt-20 sm:mt-0"
       >
-        See all projects{" "}
+        See all projects
         <FaArrowRight className="animate-arrow-bounce" size={18} />
       </RouterButton>
     </SectionTemplate>

@@ -177,7 +177,7 @@ export default function Form() {
       <div className="flex justify-end">
         <Button
           type="submit"
-          variant="secondary"
+          variant="primary"
           className="sm:w-40"
           onClick={(event) => handleOnClick(event)}
           isLoading={loading}

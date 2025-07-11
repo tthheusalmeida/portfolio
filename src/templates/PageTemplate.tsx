@@ -10,7 +10,7 @@ export default function PageTemplate({
   return (
     <div
       className={mergeClassNames(
-        "mx-auto max-w-[var(--page-width)] w-full px-4",
+        "mx-auto max-w-[var(--page-width)] w-full",
         className
       )}
     >

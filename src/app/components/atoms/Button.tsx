@@ -17,7 +17,8 @@ export interface ButtonProps
 
 const buttonVariants = {
   primary: "bg-gray-200 text-black hover:enabled:bg-gray-200/80",
-  secondary: "bg-gray-200/10 text-gray-200 hover:enabled:bg-gray-200/20",
+  secondary:
+    "bg-[var(--color-background)] text-gray-200 hover:enabled:bg-gray-200/20",
 };
 
 const isLodingVariants = {

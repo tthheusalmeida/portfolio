@@ -21,7 +21,6 @@ export default function WhatsAppButton() {
         src={`/footer/whatsapp.svg`}
         color="green"
         className="whatsapp-animated bg-transparent hover:border-transparent border-none w-16 h-16"
-        enableGrayScale={false}
         imgSize={48}
       />
     </a>

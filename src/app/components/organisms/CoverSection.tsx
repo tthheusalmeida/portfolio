@@ -14,7 +14,11 @@ export default function CoverSection() {
 
   return (
     <>
-      <SectionTemplate className="flex flex-col justify-evenly sm:gap-0 gap-16">
+      <SectionTemplate
+        className="relative flex flex-col justify-evenly sm:gap-0 gap-16"
+        isTranparentBackgroud
+        noPaddingInline
+      >
         <div className="flex flex-col justify-center">
           <div className="flex sm:flex-row sm:justify-between flex-col items-center">
             <div className="flex flex-col items gap-6 sm:block w-full sm:w-auto pt-10 sm:pt-0">
@@ -24,7 +28,7 @@ export default function CoverSection() {
               </div>
               <AnimatedComponent
                 HTMLtag="div"
-                className="flex sm:hidden items-center justify-center"
+                className="flex sm:hidden items-center justify-center px-4"
               >
                 <Image
                   src="/cover/me.png"
@@ -32,11 +36,10 @@ export default function CoverSection() {
                   height={479}
                   priority={true}
                   alt="matheus, with a white shirt with a black print and blue glasses."
-                  className="rounded-b-[40%]"
                 />
               </AnimatedComponent>
 
-              <div className="flex gap-6 pt-8 sm:w-[296px] w-full">
+              <div className="flex gap-6 pt-8 px-4 sm:px-0 sm:w-[296px] w-full">
                 <RouterButton path="contact">Contact me</RouterButton>
                 <DownloadButton fileName={cvFileName} filePath={cvFilePath}>
                   Download CV
@@ -51,12 +54,11 @@ export default function CoverSection() {
                 height={479}
                 priority={true}
                 alt="matheus, with a white shirt with a black print and blue glasses."
-                className="rounded-b-[40%]"
               />
             </AnimatedComponent>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between mt-20 sm:mt-0 items-center sm:items-baseline-last sm:pr-4 sm:pt-0 pt-6 sm:gap-0 gap-8">
+          <div className="flex flex-col sm:flex-row justify-between mt-20 sm:mt-0 items-center sm:items-baseline-last sm:pt-0 pt-6 sm:gap-0 gap-8">
             <Stack className="sm:order-1 order-2" />
             <CheckOutMy className="sm:order-2 order-1" />
           </div>

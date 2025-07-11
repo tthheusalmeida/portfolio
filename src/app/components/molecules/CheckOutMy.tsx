@@ -19,7 +19,7 @@ export default function CheckOutMy({ className }: CheckOutMyProps) {
 
       <div className="hidden sm:block w-32 border border-gray-200 h-0 rounded-full" />
 
-      <SocialMedia svgClassName="bg-transparent hover:border-transparent border-none" />
+      <SocialMedia svgClassName="hover:border-transparent border-none" />
     </AnimatedComponent>
   );
 }

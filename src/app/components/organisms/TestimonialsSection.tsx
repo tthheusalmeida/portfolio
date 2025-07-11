@@ -7,7 +7,7 @@ import VIEW from "@/data/view";
 export default function TestimonialsSection() {
   const testimonials = VIEW.testimonials;
   return (
-    <SectionTemplate className="flex flex-col items-center">
+    <SectionTemplate className="flex flex-col items-center sm:rounded-b-2xl">
       <TitleAndSubtitleSection
         title="Testimonials"
         subtitle={
