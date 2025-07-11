@@ -80,7 +80,7 @@ export default function ProjectsTemplate() {
 
   return (
     <PageLayout>
-      <SectionTemplate>
+      <SectionTemplate className="rounded-b-2xl">
         <TitleAndSubtitleSection
           title="Projects"
           subtitle={
@@ -137,9 +137,8 @@ export default function ProjectsTemplate() {
             </AnimatedComponent>
           )}
         </TitleAndSubtitleSection>
-
-        <CTASection />
       </SectionTemplate>
+      <CTASection />
     </PageLayout>
   );
 }
