@@ -31,8 +31,8 @@ export default function Balloon({
         "bg-[var(--color-background)]/60 backdrop-blur-3xl rounded"
       )}
     >
-      <div className="flex justify-between">
-        <div>
+      <div className="flex flex-col sm:flex-row justify-between">
+        <div className="order-2 sm:order-1">
           <h3 className="font-semibold text-2xl sm:text-4xl">{label}</h3>
 
           <div className="flex flex-col sm:flex-row gap-3 items-baseline mt-2 sm:mt-4">
@@ -52,7 +52,8 @@ export default function Balloon({
           <div
             className={mergeClassNames(
               "flex items-center justify-center",
-              "bg-white rounded-xl ml-2 p-1"
+              "bg-white rounded-xl sm:ml-2 mb-4 sm:p-1",
+              "order-1 sm:order-2 min-h-16 sm:min-h-auto"
             )}
           >
             <Image

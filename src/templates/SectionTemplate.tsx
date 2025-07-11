@@ -9,7 +9,10 @@ export default function SectionTemplate({
 }) {
   return (
     <div
-      className={`${mergeClassNames("min-h-screen w-full py-16", className)}`}
+      className={`${mergeClassNames(
+        "min-h-screen w-full pt-16 pb-8",
+        className
+      )}`}
     >
       {children}
     </div>

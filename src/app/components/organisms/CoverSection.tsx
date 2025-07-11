@@ -14,8 +14,8 @@ export default function CoverSection() {
 
   return (
     <>
-      <SectionTemplate className="flex flex-col justify-between sm:gap-0 gap-16">
-        <div className="flex flex-col sm:mt-16">
+      <SectionTemplate className="flex flex-col justify-evenly sm:gap-0 gap-16">
+        <div className="flex flex-col justify-center">
           <div className="flex sm:flex-row flex-col items-center">
             <div className="flex flex-col gap-6 sm:block w-full sm:w-auto pt-10 sm:pt-0">
               <div className="flex flex-col select-none items-center sm:items-start">

@@ -34,21 +34,21 @@ export default function FooterLabels({
           <AnimatedComponent
             disableAnimation={disableAnimation}
             HTMLtag="span"
-            delay={1}
+            delay={0}
           >
             Copyright © 2025
           </AnimatedComponent>
           <AnimatedComponent
             disableAnimation={disableAnimation}
             HTMLtag="span"
-            delay={1}
+            delay={0}
           >
             -
           </AnimatedComponent>
           <AnimatedComponent
             disableAnimation={disableAnimation}
             HTMLtag="span"
-            delay={1}
+            delay={0}
           >
             Matheus Almeida
           </AnimatedComponent>
@@ -56,7 +56,7 @@ export default function FooterLabels({
         <AnimatedComponent
           disableAnimation={disableAnimation}
           HTMLtag="span"
-          delay={1}
+          delay={0}
           className="hidden sm:inline"
         >
           -
@@ -64,7 +64,7 @@ export default function FooterLabels({
         <AnimatedComponent
           disableAnimation={disableAnimation}
           HTMLtag="span"
-          delay={1}
+          delay={0}
         >
           All Rights Reserved
         </AnimatedComponent>

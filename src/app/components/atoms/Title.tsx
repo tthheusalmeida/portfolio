@@ -9,7 +9,10 @@ interface TitleProps {
 export default function Title({ children, className }: TitleProps) {
   return (
     <AnimatedComponent
-      className={mergeClassNames("text-4xl sm:text-6xl font-bold", className)}
+      className={mergeClassNames(
+        "text-4xl sm:text-6xl font-bold text-center sm:text-left",
+        className
+      )}
       HTMLtag="h1"
     >
       {children}
