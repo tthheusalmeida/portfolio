@@ -3,10 +3,10 @@
 import { useState, useEffect, lazy, Suspense, useMemo } from "react";
 import Button from "../atoms/Button";
 import { HiMenuAlt4 } from "react-icons/hi";
-import { IoCloseSharp } from "react-icons/io5";
 import MenuItem from "./MenuItem";
 import { useRouter } from "next/navigation";
 import FooterLabels from "./FooterLabels";
+import { motion, AnimatePresence } from "motion/react";
 
 const LazyModal = lazy(() => import("./Modal"));
 
@@ -60,7 +60,22 @@ export default function Menu() {
         className="w-12 bg-transparent text-[var(--action)]"
         disableAnimation
       >
-        {isOpen ? <IoCloseSharp size={32} /> : <HiMenuAlt4 size={32} />}
+        <AnimatePresence mode="wait" initial={false}>
+          {!isOpen ? (
+            <motion.span
+              key="menu"
+              initial={{ opacity: 0, rotate: 90, scale: 0.5 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              exit={{ opacity: 0, rotate: -90, scale: 0.5 }}
+              transition={{ duration: 0.3 }}
+              style={{ display: "inline-block" }}
+            >
+              <HiMenuAlt4 size={32} />
+            </motion.span>
+          ) : (
+            ""
+          )}
+        </AnimatePresence>
       </Button>
 
       <Suspense>
