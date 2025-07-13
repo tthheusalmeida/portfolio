@@ -21,7 +21,8 @@ export interface CompanyView {
   name: string;
   logo: string;
   role: string;
-  descriptions: string | Array<string>;
+  description: string;
+  achievements: Array<string>;
   start: string;
   end: string;
   src: string;
@@ -180,14 +181,14 @@ const companies = [
     name: "Blip",
     logo: "/work/blip.svg",
     role: "Software Engineer",
-    descriptions: [
-      "Modernized a critical legacy system, reducing technical complexity and improving maintainability.",
-      "Improved performance by refactoring components, removing obsolete code, and reducing memory usage.",
-      "Enhanced security by implementing Google reCAPTCHA on the login screen.",
-      "Migrated key features from Python 2 to Python 3, ensuring system continuity and compatibility.",
-      "Developed generative AI features for social media analysis, automating insights for clients.",
-      "Achieved up to 60% reduction in clients manual effort analyzing social content.",
-      "Enabled faster delivery of new features by cleaning up the codebase and streamlining the development process.",
+    description:
+      "Improved a complex legacy system by cleaning the codebase, migrating technology, enhancing security, and adding AI features boosting performance, scalability, and client efficiency.",
+    achievements: [
+      "Removed 20+ obsolete feature flags, simplifying the codebase",
+      "Reduce client manual work by up to 60% with generative AI features",
+      "Migrated critical routes from Python 2 to Python 3, ensuring compatibility",
+      "Refactored legacy components to Vue.js, fixing memory leaks and improving load times",
+      "Implemented Google reCAPTCHA, strengthening security",
     ],
     start: "01/01/2023",
     end: "01/04/2025",
@@ -198,15 +199,14 @@ const companies = [
     name: "Stilingue",
     logo: "/work/stilingue.svg",
     role: "Junior Front-End Developer",
-    descriptions: [
-      "Improved dashboard UX and maintainability as a Junior Front-End Developer.",
-      "Created a global filter system to reduce manual configuration and improve usability.",
-      "Refactored Firebase data structure and added auto-refresh on login for real-time updates.",
-      "Developed 70+ dashboard components in one quarter, supporting various chart types.",
-      "Built a custom component builder to increase product flexibility and customization.",
-      "Wrote unit tests with Jest and contributed to the design system for consistent UI.",
-      "Reduced churn and increased user satisfaction through better performance and UX.",
-      "Accelerated delivery with reusable, modular components.",
+    description:
+      "Improved dashboard usability and maintainability by building dynamic filters, automating real-time updates, and creating modular components, reducing client churn and boosting internal delivery speed.",
+    achievements: [
+      "Developed 70+ reusable components in a single quarter",
+      "Built global filters, cutting setup time by up to 80%",
+      "Create component builder increasing product flexibility",
+      "Improved Firebase security and data structure",
+      "Wrote tests and improved design system",
     ],
     start: "01/02/2022",
     end: "01/01/2023",
@@ -217,13 +217,14 @@ const companies = [
     name: "Stilingue",
     logo: "/work/stilingue.svg",
     role: "Assistant Front-End Developer",
-    descriptions: [
-      "Built advanced Vue.js components for dashboards and internal products, improving data visualization and control.",
-      "Managed Firebase configurations, setting up secure and scalable access permissions.",
-      "Wrote unit tests with Jest to increase test coverage and reduce bugs in production.",
-      "Contributed to the design system by developing reusable, accessible, and visually consistent components.",
-      "Improved internal feature delivery speed with fewer reworks and greater reliability.",
-      "Enhanced visual consistency across products, boosting usability and maintainability.",
+    description:
+      "Contributed to scalable product development by creating advanced Vue.js components, improving Firebase management, enhancing test coverage, and maintaining a consistent, accessible design system.",
+    achievements: [
+      "Developed components improving data visualization",
+      "Managed Firebase permissions and security",
+      "Increased test coverage, reducing production bugs",
+      "Contributed to a reusable design system",
+      "Accelerated feature delivery with reusable code",
     ],
     start: "01/06/2021",
     end: "01/02/2022",
@@ -234,12 +235,14 @@ const companies = [
     name: "Stilingue",
     logo: "/work/stilingue.svg",
     role: "Developer Intern",
-    descriptions: [
-      "Developed front-end components using Vue.js with a focus on modularity, reusability, and clean communication via props and events.",
-      "Implemented lifecycle hooks and reactive data handling to create dynamic, responsive interfaces.",
-      "Contributed to the organization and structure of the Vue project, reinforcing core front-end skills.",
-      "Improved maintainability and quality of components delivered by the team.",
-      "Built a strong technical foundation in modern front-end development with Vue.js.",
+    description:
+      "Learned and applied core Vue.js principles to build scalable front-end components, enhancing team code quality and building a solid foundation for growth.",
+    achievements: [
+      "Created modular Vue.js components",
+      "Applied lifecycle and reactivity",
+      "Structured project for maintainability",
+      "Improved code quality",
+      "Gained practical front-end experience",
     ],
     start: "01/09/2020",
     end: "01/06/2021",

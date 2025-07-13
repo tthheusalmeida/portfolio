@@ -2,13 +2,14 @@ import Image from "next/image";
 import Tag from "../atoms/Tag";
 import { mergeClassNames } from "@/utils/classNames";
 import CompanyTime from "../atoms/CompanyTime";
+import { FaCheck } from "react-icons/fa";
 
 interface BaloonProps {
   label: string;
   logo?: string;
   role: string;
-  descriptions: Array<string>;
-  arrow?: "right" | "left" | "";
+  description: string;
+  achievements: Array<string>;
   dateStart?: string;
   dateEnd?: string;
 }
@@ -17,17 +18,15 @@ export default function Balloon({
   label,
   logo,
   role,
-  descriptions,
-  // arrow = "",
+  description,
+  achievements,
   dateStart,
   dateEnd,
 }: BaloonProps) {
-  // const isArrowRight = arrow === "right";
-
   return (
     <div
       className={mergeClassNames(
-        "relative sm:w-[520px] p-3 sm:p-4 z-1",
+        "relative sm:min-w-[520px] sm:p-4",
         "bg-[var(--color-background)]/60 backdrop-blur-3xl rounded"
       )}
     >
@@ -70,26 +69,22 @@ export default function Balloon({
       </div>
 
       <ul className="mt-4! text-base">
-        {descriptions.map((description, index) => (
-          <li
-            key={index}
-            className="leading-relaxed before:content-['-'] before:mr-2 before:text-[var(--color-foreground)]/25"
-          >
-            {description}
-          </li>
-        ))}
-      </ul>
+        <li className="font-normal">
+          <p>{description}</p>
 
-      {/* {arrow && (
-        <div
-          className={mergeClassNames(
-            "w-6 h-6 rotate-45",
-            "bg-[var(--color-background)]/60 backdrop-blur-3xl",
-            "hidden sm:block absolute top-4 z-0",
-            `${isArrowRight ? "-left-3" : "-right-3"}`
-          )}
-        ></div>
-      )} */}
+          <div className="flex flex-col gap-1 mt-4">
+            {achievements.map((achievement, index) => (
+              <span
+                key={index}
+                className="flex items-start gap-2 leading-relaxed"
+              >
+                <FaCheck className="mt-1 text-orange-300 flex-shrink-0" />
+                {achievement}
+              </span>
+            ))}
+          </div>
+        </li>
+      </ul>
     </div>
   );
 }

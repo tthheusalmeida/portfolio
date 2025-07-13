@@ -11,7 +11,7 @@ export default function Header() {
       slideUp
     >
       <PageTemplate>
-        <div className="flex items-center justify-between h-16 select-none">
+        <div className="flex items-center justify-between h-16 select-none mx-4">
           <Logo />
           <Menu />
         </div>

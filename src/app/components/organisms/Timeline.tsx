@@ -47,7 +47,7 @@ export default function Timeline({ items }: TimelineProps) {
                 <>
                   <AnimatedComponent
                     HTMLtag="div"
-                    className="order-2 sm:order-1 w-full sm:w-1/2 sm:pr-12 flex flex-col sm:flex-row justify-end"
+                    className="order-2 sm:order-1 w-full sm:w-1/2 sm:pr-4 flex flex-col sm:flex-row justify-end"
                   >
                     {component}
                   </AnimatedComponent>
@@ -59,7 +59,7 @@ export default function Timeline({ items }: TimelineProps) {
                       start={date.start}
                       end={date.end}
                       side="right"
-                      className="sm:group-hover:rotate-6 sm:group-hover:translate-x-6 rotate-0 transition-all duration-400 mb-2 sm:mb-0"
+                      className="sm:group-hover:rotate-6 sm:group-hover:translate-x-6 rotate-0 transition-all duration-400 mb-2 mr-3 sm:mb-0 sm:mr-0"
                     />
 
                     <div
@@ -82,7 +82,7 @@ export default function Timeline({ items }: TimelineProps) {
                 <>
                   <AnimatedComponent
                     HTMLtag="div"
-                    className="order-2 w-full sm:w-1/2 sm:pl-12 flex flex-col sm:flex-row justify-end"
+                    className="order-2 w-full sm:w-1/2 sm:pl-4 flex flex-col sm:flex-row justify-end"
                   >
                     {component}
                   </AnimatedComponent>
@@ -94,7 +94,7 @@ export default function Timeline({ items }: TimelineProps) {
                       start={date.start}
                       end={date.end}
                       side="right"
-                      className="sm:group-hover:-rotate-6 sm:group-hover:-translate-x-6 rotate-0 transition-all duration-400 mb-2 sm:mb-0"
+                      className="sm:group-hover:-rotate-6 sm:group-hover:-translate-x-6 rotate-0 transition-all duration-400 mb-2 mr-3 sm:mb-0 sm:mr-0"
                     />
 
                     <div

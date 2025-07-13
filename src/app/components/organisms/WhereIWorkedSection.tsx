@@ -2,24 +2,23 @@ import Timeline, { TimelineItem } from "./Timeline";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
 import Balloon from "./Balloon";
-import { isEven } from "@/utils/math";
 import VIEW from "@/data/view";
 
 export default function WhereIWorkedSection() {
   const companies = VIEW.companies;
 
   const items = companies.map(
-    ({ name, logo, role, descriptions, start, end, src, alt }, index) => {
+    ({ name, logo, role, description, achievements, start, end, src, alt }) => {
       return {
         component: (
           <Balloon
             label={name}
             logo={logo}
             role={role}
-            descriptions={
-              Array.isArray(descriptions) ? descriptions : [descriptions]
+            description={description}
+            achievements={
+              Array.isArray(achievements) ? achievements : [achievements]
             }
-            arrow={isEven(index) ? "left" : "right"}
             dateStart={start}
             dateEnd={end}
           />

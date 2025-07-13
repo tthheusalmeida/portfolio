@@ -19,7 +19,7 @@ export default function CoverSection() {
         isTranparentBackgroud
         noPaddingInline
       >
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center mx-4">
           <div className="flex sm:flex-row sm:justify-between flex-col items-center">
             <div className="flex flex-col items gap-6 sm:block w-full sm:w-auto pt-10 sm:pt-0">
               <div className="flex flex-col select-none items-center sm:items-start">
