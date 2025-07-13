@@ -7,6 +7,7 @@ import Title from "@/app/components/atoms/Title";
 import DownloadButton from "../molecules/DownloadButton";
 import RouterButton from "../atoms/RouterButton";
 import AnimatedComponent from "../molecules/AnimatedComponent";
+import { mergeClassNames } from "@/utils/classNames";
 
 export default function CoverSection() {
   const cvFileName = "Matheus_Almeida_CV_Front-End_Software_Engineer.pdf";
@@ -24,8 +25,9 @@ export default function CoverSection() {
             <div className="flex flex-col items gap-6 sm:block w-full sm:w-auto pt-10 sm:pt-0">
               <div className="flex flex-col select-none items-center sm:items-start">
                 <Title>Software Engineer</Title>
-                <Title>Front-End</Title>
+                <Title className="text-[var(--action)]">Front-End</Title>
               </div>
+
               <AnimatedComponent
                 HTMLtag="div"
                 className="flex sm:hidden items-center justify-center px-4"
@@ -37,6 +39,16 @@ export default function CoverSection() {
                   priority
                   placeholder="empty"
                   alt="matheus, focused programmer wearing a hoodie and headset, working on a laptop."
+                  className="relative block z-10"
+                />
+
+                <div
+                  className={mergeClassNames(
+                    "absolute top-[24%] left-[12%] ",
+                    "w-[240px] h-[240px]",
+                    "bg-[var(--action)]/60 opacity-40 rounded-full ",
+                    "blur-[24px] animate-pulse z-0"
+                  )}
                 />
               </AnimatedComponent>
 
@@ -48,7 +60,10 @@ export default function CoverSection() {
               </div>
             </div>
 
-            <AnimatedComponent HTMLtag="div" className="sm:inline-block hidden">
+            <AnimatedComponent
+              HTMLtag="div"
+              className="relative sm:inline-block hidden"
+            >
               <Image
                 src="/cover/me.webp"
                 width={556}
@@ -56,6 +71,16 @@ export default function CoverSection() {
                 priority
                 placeholder="empty"
                 alt="matheus, focused programmer wearing a hoodie and headset, working on a laptop."
+                className="relative block z-10"
+              />
+
+              <div
+                className={mergeClassNames(
+                  "absolute top-[20%] left-[10%] ",
+                  "sm:w-[400px] sm:h-[400px]",
+                  "bg-[var(--action)]/60 opacity-40 rounded-full ",
+                  "blur-[68px] animate-pulse z-0"
+                )}
               />
             </AnimatedComponent>
           </div>

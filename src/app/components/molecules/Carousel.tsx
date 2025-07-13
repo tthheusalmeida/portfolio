@@ -12,9 +12,9 @@ export default function Carousel({ list }: CarouselProps) {
       HTMLtag="div"
       className={mergeClassNames(
         "relative overflow-hidden py-4 whitespace-nowrap group bg-[var(--color-background)] sm:rounded-2xl",
-        "before:absolute before:top-0 before:left-0  before:w-20 before:sm:w-52 before:h-52 before:z-1",
+        "before:absolute before:pointer-events-none before:top-0 before:left-0  before:w-20 before:sm:w-52 before:h-52 before:z-1",
         "before:linear before:bg-gradient-to-l before:from-white/0 before:to-[var(--color-background)]",
-        "after:absolute after:top-0 after:right-0 after:w-20 after:sm:w-52 after:h-52 after:z-1",
+        "after:absolute after:pointer-events-none after:top-0 after:right-0 after:w-20 after:sm:w-52 after:h-52 after:z-1",
         "after:linear after:bg-gradient-to-r after:from-white/0 after:to-[var(--color-background)]"
       )}
     >

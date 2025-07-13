@@ -28,6 +28,7 @@ export default function Stack({ className }: StackProps) {
             label={name}
             src={`/cover/${name}.svg`}
             color={color}
+            enableGrayScale
           />
         ))}
       </AnimatedComponent>

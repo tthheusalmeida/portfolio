@@ -9,6 +9,7 @@ interface SVGGlowProps {
   color: string;
   className?: string;
   imgSize?: number;
+  enableGrayScale?: boolean;
 }
 
 const borderMap: Record<string, string> = {
@@ -41,11 +42,14 @@ export default function SVGGlow({
   color,
   className,
   imgSize,
+  enableGrayScale = false,
 }: SVGGlowProps) {
   const borderColor = `border-gray-200/0 ${borderMap[color] ?? ""}`;
   const shadowClass = shadowMap[color] ?? "";
 
   const imageComponentClasses = mergeClassNames(
+    enableGrayScale ? "sm:grayscale sm:brightness-50 sm:invert" : "",
+    "group-hover:grayscale-0 group-hover:brightness-100 group-hover:invert-0",
     "transition-all duration-300 ease-in-out"
   );
 

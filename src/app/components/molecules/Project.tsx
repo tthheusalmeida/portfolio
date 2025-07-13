@@ -41,21 +41,22 @@ ProjectProps) {
           sizes="auto"
           className={mergeClassNames(
             "object-cover group-hover:scale-110",
-            "transition-transform rounded-2xl"
+            "transition-transform rounded-2xl",
+            "group-hover:grayscale-100 group-hover:brightness-90"
           )}
         />
 
         <div
           className={mergeClassNames(
             "absolute top-0 left-0 opacity-100 sm:opacity-0",
-            "flex flex-col gap-2 sm:gap-4 justify-between bg-[var(--color-background)]/80",
+            "flex flex-col gap-2 sm:gap-4 justify-between bg-[var(--color-background)]/90",
             "w-full h-full p-4 sm:p-4 rounded-2xl",
             "sm:hover:opacity-100 transition-opacity duration-400"
           )}
         >
           <div>
             <div className="flex justify-between items-start">
-              <h3 className="text-lg sm:text-2xl font-semibold sm:font-bold max-w-[65%]">
+              <h3 className="text-lg sm:text-2xl text-[var(--action)] font-semibold sm:font-bold max-w-[65%]">
                 {title}
               </h3>
               <a
@@ -63,14 +64,16 @@ ProjectProps) {
                 target="_blank"
                 className="flex gap-2 items-center"
               >
-                <span className="text-xs sm:text-base">See project</span>
+                <span className="text-xs sm:text-base text-[var(--action)]">
+                  See project
+                </span>
                 <FaArrowRight
                   size={18}
-                  className="mb-0.5 sm:block hidden -rotate-45"
+                  className="mb-0.5 sm:block hidden -rotate-45 text-[var(--action)]"
                 />
                 <FaArrowRight
                   size={16}
-                  className="mb-0.5 sm:hidden block -rotate-45"
+                  className="mb-0.5 sm:hidden block -rotate-45 text-[var(--action)]"
                 />
               </a>
             </div>

@@ -89,8 +89,8 @@ export default function Selector({ label, options, onChange }: SelectorProps) {
           "rounded-md shadow-sm border-2",
           "transition-colors duration-300",
           isOpen
-            ? "border-gray-200"
-            : "border-[var(--color-foreground)]/25 hover:border-white"
+            ? "border-[var(--action)]"
+            : "border-[var(--color-foreground)]/25 hover:border-[var(--action)]"
         )}
       >
         <span
@@ -106,7 +106,7 @@ export default function Selector({ label, options, onChange }: SelectorProps) {
         </span>
         <FiChevronDown
           size={24}
-          className={`transition-all duration-300 text-[var(--color-foreground)]/25 group-hover:text-gray-200 ${
+          className={`transition-all duration-300 text-[var(--color-foreground)]/25 group-hover:text-[var(--action)] ${
             isOpen ? "rotate-180" : "rotate-0"
           }`}
         />

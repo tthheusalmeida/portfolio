@@ -3,6 +3,7 @@
 :root {
   --background: #161413;
   --foreground: #f0f0f0;
+  --action: #ffae23;
 }
 
 @theme inline {

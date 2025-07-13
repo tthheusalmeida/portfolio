@@ -12,6 +12,7 @@ import { useMemo } from "react";
 import { ProjectView } from "@/data/view";
 import { motion, AnimatePresence } from "motion/react";
 import AnimatedComponent from "@/app/components/molecules/AnimatedComponent";
+import HighlightText from "@/app/components/atoms/HighlightText";
 
 const createLabelValueObject = (labels: Array<string> | Set<string>) => {
   const labelsArray = [{ label: "All", value: "" }];
@@ -85,10 +86,10 @@ export default function ProjectsTemplate() {
           title="Projects"
           subtitle={
             <>
-              A collection of <span className="font-bold">freelance</span>,{" "}
-              <span className="font-bold">personal</span>, and{" "}
-              <span className="font-bold">pro bono</span> projects that shaped
-              my journey
+              A collection of <HighlightText>freelance</HighlightText>,{" "}
+              <HighlightText>personal</HighlightText>, and{" "}
+              <HighlightText>pro bono</HighlightText> projects that shaped my
+              journey
             </>
           }
           className="my-16 sm:mt-28 sm:mb-12"

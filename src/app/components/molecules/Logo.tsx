@@ -23,7 +23,11 @@ export default function Logo() {
       <span className="mix-blend-difference text-[var(--color-foreground)]">
         Matheus Almeida
       </span>
-      <span className="opacity-20">{"/>"}</span>
+
+      <span>
+        <span className="text-[var(--action)] opacity-100">{"/"}</span>
+        <span className="opacity-20">{">"}</span>
+      </span>
     </Link>
   );
 }

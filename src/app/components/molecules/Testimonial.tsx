@@ -2,6 +2,7 @@ import Image from "next/image";
 import { mergeClassNames } from "@/utils/classNames";
 import { BiSolidQuoteRight } from "react-icons/bi";
 import AnimatedComponent from "./AnimatedComponent";
+import HighlightText from "../atoms/HighlightText";
 
 interface TestimonialProps {
   label: string;
@@ -40,23 +41,23 @@ export default function Testimonial({
         <div className="flex sm:block flex-col w-full sm:w-auto gap-4">
           <BiSolidQuoteRight
             size={32}
-            className="inline-block sm:hidden rotate-180 text-orange-300 mr-2"
+            className="inline-block sm:hidden rotate-180 text-[var(--action)] mr-2"
           />
 
           <p className="font-normal text-base pt-4 sm:p-0">
             <BiSolidQuoteRight
               size={20}
-              className="hidden sm:inline-block rotate-180 text-orange-300 mr-2"
+              className="hidden sm:inline-block rotate-180 text-[var(--action)] mr-2"
             />
             {description}
             <BiSolidQuoteRight
               size={20}
-              className="hidden sm:inline-block text-orange-300 ml-2"
+              className="hidden sm:inline-block text-[var(--action)] ml-2"
             />
           </p>
 
           <span className="pt-6 font-normal text-xs block italic">
-            — {label}, {role}
+            <HighlightText>—</HighlightText> {label}, {role}
           </span>
         </div>
       </div>

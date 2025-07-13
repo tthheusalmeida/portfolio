@@ -5,11 +5,13 @@ import VIEW from "@/data/view";
 interface SocialMediaProps {
   svgClassName?: string;
   className?: string;
+  enableGrayScale?: boolean;
 }
 
 export default function SocialMedia({
   svgClassName,
   className,
+  enableGrayScale = false,
 }: SocialMediaProps) {
   const itens = VIEW.socialMedia;
 
@@ -23,6 +25,7 @@ export default function SocialMedia({
             src={`/cover/${name}.svg`}
             color={color}
             className={svgClassName}
+            enableGrayScale={enableGrayScale}
           />
         </a>
       ))}

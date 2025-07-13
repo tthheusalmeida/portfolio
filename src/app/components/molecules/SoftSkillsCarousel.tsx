@@ -7,7 +7,11 @@ export default function SoftSkillsCarousel() {
   const listItems = VIEW.softSkills;
 
   const listNode = listItems.map((item, index) => (
-    <SoftSkill key={index} label={item} />
+    <SoftSkill
+      key={index}
+      label={item}
+      className="hover:text-[var(--action)]"
+    />
   ));
 
   return <Carousel list={listNode} />;

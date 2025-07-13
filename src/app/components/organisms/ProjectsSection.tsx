@@ -4,6 +4,7 @@ import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
 import VIEW from "@/data/view";
 import { FaArrowRight } from "react-icons/fa6";
+import HighlightText from "../atoms/HighlightText";
 
 export default function ProjectsSection() {
   const projects = VIEW.projects;
@@ -14,8 +15,8 @@ export default function ProjectsSection() {
         title="Projects"
         subtitle={
           <>
-            A reflection of my <span className="font-bold">Growth</span> and{" "}
-            <span className="font-bold">Passion</span>
+            A reflection of my <HighlightText>Growth</HighlightText> and{" "}
+            <HighlightText>Passion</HighlightText>
           </>
         }
       >

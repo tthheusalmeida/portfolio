@@ -69,16 +69,16 @@ export default function Balloon({
       </div>
 
       <ul className="mt-4! text-base">
-        <li className="font-normal">
+        <li className="font-light">
           <p>{description}</p>
 
           <div className="flex flex-col gap-1 mt-4">
             {achievements.map((achievement, index) => (
               <span
                 key={index}
-                className="flex items-start gap-2 leading-relaxed"
+                className="flex items-start gap-2 font-semibold leading-relaxed"
               >
-                <FaCheck className="mt-1 text-orange-300 flex-shrink-0" />
+                <FaCheck className="mt-1 text-[var(--action)] flex-shrink-0" />
                 {achievement}
               </span>
             ))}

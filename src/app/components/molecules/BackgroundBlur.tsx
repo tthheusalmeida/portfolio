@@ -4,13 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function BackgroundBlur() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-[var(--color-background)] blur-[2px]">
-      {/* animated colorful blobs */}
-      <div className="absolute top-[-10%] left-[-25%] sm:left-[5%] w-[200px] sm:w-[400px] h-[200px] sm:h-[400px] bg-orange-400 opacity-30 rounded-full blur-[60px] sm:blur-[150px] animate-pulse-slow" />
-      <div className="absolute top-[40%] sm:top-[25%] left-[10%] sm:left-[58%] w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-orange-400 opacity-40 rounded-full blur-[68px] sm:blur-[120px] animate-float-slow" />
-      <div className="absolute bottom-[-30%] right-[-25%] sm:right-[40%] w-[200px] sm:w-[400px] h-[200px] sm:h-[400px] bg-orange-400 opacity-25 rounded-full blur-[92px] sm:blur-[180px] animate-pulse-slow animate-delay-[2s]" />
-
-      {/* lines drop */}
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-[var(--color-background)] blur-[1px]">
       <LineDrops />
     </div>
   );
@@ -18,8 +12,6 @@ export default function BackgroundBlur() {
 
 function LineDrops() {
   const [lines, setLines] = useState<number[]>([]);
-  const colorList = ["#ff8800", "#faa307", "#ffd60a", "#ffba08"];
-
   useEffect(() => {
     const isSmall = window.matchMedia("(max-width: 400px)").matches;
     const total = isSmall ? 30 : 80;
@@ -33,18 +25,16 @@ function LineDrops() {
         const delay = Math.random() * 5;
         const duration = 3 + Math.random() * 10;
         const fontSize = 12 + Math.random() * 8;
-        const color = colorList[Math.floor(Math.random() * colorList.length)];
 
         return (
           <div
             key={i}
-            className="absolute whitespace-pre text-xs font-mono"
+            className="absolute whitespace-pre text-xs font-mono text-[var(--foreground)]/6"
             style={{
               left: `${left}%`,
               top: "-200px",
               fontSize: `${fontSize}px`,
-              color,
-              opacity: 0.1 + Math.random() * 0.6,
+              opacity: 0.1,
               animation: `codeFall ${duration}s linear ${delay}s infinite`,
             }}
           >
@@ -57,7 +47,7 @@ function LineDrops() {
 }
 
 function generateRandomCode() {
-  const chars = `MY MAGIC IS NEVER GIVING UP`;
+  const chars = "TURNING COFFEE INTO CODE";
   let result = "";
   for (let i = 0; i < 20; i++) {
     const char = chars[Math.floor(Math.random() * chars.length)];

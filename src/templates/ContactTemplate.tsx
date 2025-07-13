@@ -2,6 +2,7 @@ import PageLayout from "@/layouts/PageLayout";
 import SectionTemplate from "./SectionTemplate";
 import TitleAndSubtitleSection from "@/app/components/molecules/TitleAndSubtitleSection";
 import Form from "@/app/components/organisms/Form";
+import HighlightText from "@/app/components/atoms/HighlightText";
 
 export default function ContactTemplate() {
   return (
@@ -12,9 +13,9 @@ export default function ContactTemplate() {
           subtitle={
             <>
               <span>
-                Have a <span className="font-bold">project in mind</span>, a{" "}
-                <span className="font-bold">question</span>, or just want to{" "}
-                <span className="font-bold">say hello</span>?<br />
+                Have a <HighlightText>project in mind</HighlightText>, a{" "}
+                <HighlightText>question</HighlightText>, or just want to{" "}
+                <HighlightText>say hello</HighlightText>?<br />
                 Feel free to reach out, I{`'`}m always open to connect!
               </span>
             </>

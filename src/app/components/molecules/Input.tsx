@@ -32,7 +32,7 @@ export default function Input({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        className="w-full px-2 py-2 rounded-md border-2 border-[var(--color-foreground)]/25 bg-[var(--color-background)]/60 text-gray-200 placeholder:text-[var(--color-foreground)]/40 backdrop-blur-3xl shadow-sm focus:outline-none focus:border-white transition-colors duration-300"
+        className="w-full px-2 py-2 rounded-md border-2 border-[var(--color-foreground)]/25 bg-[var(--color-background)]/60 text-gray-200 placeholder:text-[var(--color-foreground)]/40 backdrop-blur-3xl shadow-sm focus:outline-none focus:border-[var(--action)] transition-colors duration-300"
       />
     </AnimatedComponent>
   );

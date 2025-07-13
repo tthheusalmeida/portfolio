@@ -3,6 +3,7 @@ import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
 import Balloon from "./Balloon";
 import VIEW from "@/data/view";
+import HighlightText from "../atoms/HighlightText";
 
 export default function WhereIWorkedSection() {
   const companies = VIEW.companies;
@@ -41,10 +42,10 @@ export default function WhereIWorkedSection() {
         title="Where I worked"
         subtitle={
           <>
-            A summary of the <span className="font-bold">Roles</span>,{" "}
-            <span className="font-bold">Responsibilities</span>, and{" "}
-            <span className="font-bold">Experiences</span> that shaped my
-            professional path.
+            A summary of the <HighlightText>Roles</HighlightText>,{" "}
+            <HighlightText>Responsibilities</HighlightText>, and{" "}
+            <HighlightText>Experiences</HighlightText> that shaped my
+            professional path
           </>
         }
       >

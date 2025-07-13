@@ -1,8 +1,8 @@
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
-
 import Testimonial from "../molecules/Testimonial";
 import VIEW from "@/data/view";
+import HighlightText from "../atoms/HighlightText";
 
 export default function TestimonialsSection() {
   const testimonials = VIEW.testimonials;
@@ -12,10 +12,10 @@ export default function TestimonialsSection() {
         title="Testimonials"
         subtitle={
           <>
-            Honest testimonials from <span className="font-bold">Clients</span>,{" "}
-            <span className="font-bold">Teammates</span>, and{" "}
-            <span className="font-bold">Classmates</span> who have collaborated
-            with me along the way
+            Honest testimonials from <HighlightText>Clients</HighlightText>,{" "}
+            <HighlightText>Teammates</HighlightText>, and{" "}
+            <HighlightText>Classmates</HighlightText> who have collaborated with
+            me along the way
           </>
         }
       >

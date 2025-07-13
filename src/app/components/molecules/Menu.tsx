@@ -57,7 +57,7 @@ export default function Menu() {
         onClick={handleToggle}
         disabled={isAnimating || isOpen}
         variant="secondary"
-        className="w-12 bg-transparent"
+        className="w-12 bg-transparent text-[var(--action)]"
         disableAnimation
       >
         {isOpen ? <IoCloseSharp size={32} /> : <HiMenuAlt4 size={32} />}

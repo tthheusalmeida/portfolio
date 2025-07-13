@@ -10,10 +10,11 @@ export default function Tag({ children, className }: TagProps) {
     <span
       className={mergeClassNames(
         "px-3 py-1",
-        "text-xs font-normal capitalize select-none",
-        "rounded-full transition-all duration-200",
-        "bg-[var(--color-foreground)]/25",
-        "hover:bg-[var(--color-foreground)]/10",
+        "text-xs text-[var(--action)] font-bold capitalize select-none",
+        "rounded-full border border-[var(--action)]",
+        "transition-all duration-200",
+        "bg-[var(--action)]/30",
+        "hover:bg-[var(--action)]/60",
         className
       )}
     >

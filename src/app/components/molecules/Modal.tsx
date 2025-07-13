@@ -79,14 +79,14 @@ export default function Modal({
         {title && (
           <div className="sm:hidden flex items-center gap-2 absolute w-full justify-start max-w-[var(--page-width)] top-0 mt-5 ml-16">
             <div className="bg-transparent text-xl">{title}</div>
-            <div className="w-36 h-0.5 border border-gray-200"></div>
+            <div className="w-36 h-0.5 border border-[var(--action)]"></div>
           </div>
         )}
         <div className="flex absolute w-full justify-end max-w-[var(--page-width)] top-0">
           <Button
             onClick={onClose}
             variant="secondary"
-            className="w-12 bg-transparent mt-2 mr-4"
+            className="w-12 bg-transparent mt-2 mr-4 text-[var(--action)]"
             disableAnimation
           >
             {isOpen ? <IoCloseSharp size={32} /> : <HiMenuAlt4 size={32} />}
