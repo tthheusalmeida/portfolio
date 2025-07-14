@@ -304,6 +304,18 @@ const testimonials = [
       performance and clean code. I hope we can work together again sometime.
     `,
   },
+  {
+    name: "Caio Costa",
+    src: "https://media.licdn.com/dms/image/v2/C4E03AQE9lA1rTv5BSg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1583380974056?e=2147483647&v=beta&t=k0UssbUfQmtGmi_h3jJvurV89RoiTADKUNoalopcja0",
+    role: "Data Engineer",
+    descriptions: `I had the pleasure of studying alongside Matheus. From the beginning, it was clear 
+      that he stood out for his technical skills, critical thinking, and collaborative spirit. He 
+      consistently approached problems with creativity and was always willing to help others grasp 
+      complex topics. Whether working on academic projects or exploring personal tech interests, he 
+      brought a strong work ethic and a passion for learning that made him a valuable friend during 
+      the period we studied together and the years after.
+    `,
+  },
 ];
 
 const VIEW: ViewProps = {
