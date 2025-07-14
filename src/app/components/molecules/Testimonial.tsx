@@ -21,7 +21,7 @@ export default function Testimonial({
     <AnimatedComponent
       HTMLtag="div"
       className={mergeClassNames(
-        "w-full p-4 rounded",
+        "w-full sm:p-4 rounded",
         "bg-[var(--color-background)]/60 backdrop-blur-3xl"
       )}
     >
