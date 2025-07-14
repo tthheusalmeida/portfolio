@@ -294,6 +294,16 @@ const testimonials = [
       for any organization.
     `,
   },
+  {
+    name: "Levi Frota",
+    src: "https://media.licdn.com/dms/image/v2/D4D03AQGT_rpAqZTC_w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1701872417783?e=2147483647&v=beta&t=BeDd6sJkqbDtvLhf6dtp6Zo-rQ9HKb03y6n-JDa5N9s",
+    role: "Front-End Developer",
+    descriptions: `Matheus is one of the greatest developers I have worked with. He has great tech 
+      skills and is a team player, helping his coworkers and contributing to a better workplace. Also, 
+      he's an excellent problem solver, and helped the team to improve our platforms with good 
+      performance and clean code. I hope we can work together again sometime.
+    `,
+  },
 ];
 
 const VIEW: ViewProps = {
