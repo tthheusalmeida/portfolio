@@ -6,6 +6,10 @@
   --action: #ffae23;
 }
 
+::selection {
+  @apply bg-white text-black;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
