@@ -13,8 +13,8 @@ export default function Tag({ children, className }: TagProps) {
         "text-xs text-[var(--action)] font-bold capitalize select-none",
         "rounded-full border border-[var(--action)]",
         "transition-all duration-200",
-        "bg-[var(--action)]/30",
-        "hover:bg-[var(--action)]/60",
+        "bg-[var(--action)]/10",
+        "hover:bg-[var(--action)]/30",
         className
       )}
     >

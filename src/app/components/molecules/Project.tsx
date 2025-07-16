@@ -64,15 +64,12 @@ ProjectProps) {
                 target="_blank"
                 className="flex gap-2 items-center"
               >
-                <span className="text-xs sm:text-base text-[var(--action)]">
-                  See project
-                </span>
                 <FaArrowRight
-                  size={18}
+                  size={24}
                   className="mb-0.5 sm:block hidden -rotate-45 text-[var(--action)]"
                 />
                 <FaArrowRight
-                  size={16}
+                  size={20}
                   className="mb-0.5 sm:hidden block -rotate-45 text-[var(--action)]"
                 />
               </a>
