@@ -253,6 +253,25 @@ const companies = [
 
 const testimonials = [
   {
+    name: "João Marcos",
+    src: "https://media.licdn.com/dms/image/v2/D4D03AQHe_O4gnMONaw/profile-displayphoto-scale_100_100/B4DZgLS3T3H0Ao-/0/1752536152657?e=1758153600&v=beta&t=OkJytMvSNR6967L1X8TlGZUIVccexmGCaU4_dIrepRM",
+    role: "Front-end Engineering | Tech Lead | Chapter Lead",
+    descriptions: `I’ve had the pleasure of witnessing Matheus’ professional journey since 
+      his early days in the tech field, and I’ve always been impressed by how quickly and 
+      deeply he learns.
+      He approaches challenges with an open and collaborative mindset. Even when he’s not 
+      the most senior person on the team, he consistently steps up to support both projects 
+      and teammates.
+      Matheus is someone who’s always seeking to grow — whether by learning from his colleagues, 
+      reflecting on his own work, or understanding the broader impact of the products he helps 
+      build. On top of that, he maintains excellent interpersonal relationships and contributes 
+      to a positive team dynamic.
+      In a market where effective results through technology are increasingly sought, Matheus is 
+      the kind of professional you can rely on. Whenever I have the opportunity, I invite him to 
+      join my projects.
+    `,
+  },
+  {
     name: "Fábio Gomide",
     src: "https://media.licdn.com/dms/image/v2/D4D03AQFYQ_5UP59Mhw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1721774780020?e=1756944000&v=beta&t=vARqWB5IgM5KntMPOnriEGJjlVpur4HmO5z181yf5ws",
     role: "Senior Product Designer",
