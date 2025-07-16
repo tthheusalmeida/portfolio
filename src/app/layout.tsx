@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | Matheus Almeida",
   },
   description:
-    "Software Engineer Front-End specialized in Vue, React, Tailwind, HTML, CSS, and JavaScript. I transform ideas into modern, accessible, and high-performance digital experiences.",
+    "Software Engineer Front-End specialized in Vue, React, TypeScript, Tailwind, Node.js and Firebase. I transform ideas into modern, accessible, and high-performance digital experiences.",
   authors: [{ name: "Matheus Almeida", url: "https://almeida-matheus.com" }],
   creator: "Matheus Almeida",
   publisher: "Matheus Almeida",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     title:
       "Matheus Almeida - Software Engineer Front End | Vue, React, Tailwind",
     description:
-      "Turning ideas into modern digital experiences using Vue, React, Tailwind, and cutting-edge frontend technologies.",
+      "Software Engineer Front-End specialized in Vue, React, TypeScript, Tailwind, Node.js and Firebase. I transform ideas into modern, accessible, and high-performance digital experiences.",
     url: "https://almeida-matheus.com",
     siteName: "Matheus Almeida",
     locale: "en_US",
