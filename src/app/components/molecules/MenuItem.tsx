@@ -25,7 +25,7 @@ export default function MenuItem({ label, path, onClick }: MenuItemProps) {
     >
       <Link
         className={mergeClassNames(
-          "text-5xl font-semibold transition-all duration-200",
+          "text-4xl sm:text-5xl font-semibold transition-all duration-200",
           "sm:group-hover:text-gray-200/50",
           "text-gray-200"
         )}
