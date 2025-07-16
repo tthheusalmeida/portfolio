@@ -23,8 +23,8 @@ const buttonVariants = {
 };
 
 const isLodingVariants = {
-  primary: "animate-spin text-white",
-  secondary: "animate-spin text-white",
+  primary: "animate-spin text-[var(--color-background)]",
+  secondary: "animate-spin text-gray-200",
 };
 
 const sizeVariants = {
