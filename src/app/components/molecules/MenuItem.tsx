@@ -37,12 +37,12 @@ export default function MenuItem({ label, path, onClick }: MenuItemProps) {
       <div className="w-full relative mt-2">
         <div
           className={mergeClassNames(
-            "w-full group-hover:w-0 transition-all duration-200",
-            "border border-[var(--action)]/25 sm:border-[var(--action)]",
+            "hidden sm:block sm:w-full sm:group-hover:w-0 transition-all duration-200",
+            "border sm:border-[var(--action)]",
             "absolute top-0 left-0"
           )}
         />
-        <div className="w-full border border-[var(--action)]/50" />
+        <div className="block w-full border border-[var(--action)] sm:border-[var(--action)]/50" />
       </div>
     </div>
   );
