@@ -16,7 +16,7 @@ export default function ProjectHeader({
   return (
     <div
       className={mergeClassNames(
-        "flex justify-between gap-2 bg-[var(--color-background)]",
+        "flex justify-between gap-2 bg-stone-800",
         className
       )}
     >
@@ -31,7 +31,7 @@ export default function ProjectHeader({
         ))}
       </div>
 
-      <a href={link} target="_blank" className="flex items-center py-0 px-3">
+      <a href={link} target="_blank" className="flex items-center py-0 px-4">
         <FaArrowRight
           size={20}
           className="sm:block hidden -rotate-45 text-[var(--action)]"
