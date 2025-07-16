@@ -38,7 +38,7 @@ export default function ProjectsPreview({
     <div
       className={mergeClassNames(
         "relative w-full flex items-center",
-        "h-[1400px] sm:h-[1320px]",
+        "h-[1600px] sm:h-[1480px]",
         className
       )}
     >

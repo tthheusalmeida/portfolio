@@ -16,7 +16,7 @@ export default function ProjectHeader({
   return (
     <div
       className={mergeClassNames(
-        "flex justify-between gap-2 bg-[var(--color-foreground)]/6",
+        "flex justify-between gap-2 bg-[var(--color-background)]",
         className
       )}
     >

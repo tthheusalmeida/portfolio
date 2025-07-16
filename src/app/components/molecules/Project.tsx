@@ -29,7 +29,7 @@ export default function Project({
     <AnimatedComponent
       HTMLtag="div"
       className={mergeClassNames(
-        "relative w-full min-h-60 sm:min-h-96 group drop-shadow-[0_0_16px_var(--color-background)] rounded-2xl",
+        "relative w-full min-h-60 sm:min-h-96 group rounded-[18px] border-2 border-neutral-700 ",
         className
       )}
     >
