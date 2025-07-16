@@ -29,7 +29,7 @@ function LineDrops() {
         return (
           <div
             key={i}
-            className="absolute whitespace-pre text-xs font-mono text-[var(--foreground)]/6"
+            className="absolute whitespace-pre text-xs font-mono text-[var(--color-foreground)]/6"
             style={{
               left: `${left}%`,
               top: "-200px",

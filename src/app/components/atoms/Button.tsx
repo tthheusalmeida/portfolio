@@ -17,7 +17,7 @@ export interface ButtonProps
 
 const buttonVariants = {
   primary:
-    "bg-[var(--action)] text-[var(--background)] hover:enabled:bg-[var(--action)]/80",
+    "bg-[var(--action)] text-[var(--color-background)] hover:enabled:bg-[var(--action)]/80",
   secondary:
     "bg-[var(--color-background)] text-gray-200 hover:enabled:bg-gray-200/20",
 };

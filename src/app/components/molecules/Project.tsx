@@ -1,8 +1,8 @@
 import { mergeClassNames } from "@/utils/classNames";
 import Tag from "../atoms/Tag";
 import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa6";
 import AnimatedComponent from "./AnimatedComponent";
+import ProjectHeader from "../atoms/ProjectHeader";
 
 export type Category = "personal" | "freelancer" | "probono";
 
@@ -23,17 +23,23 @@ export default function Project({
   technologies,
   image,
   link,
-}: // categories,
-ProjectProps) {
+  categories,
+}: ProjectProps) {
   return (
     <AnimatedComponent
       HTMLtag="div"
       className={mergeClassNames(
-        "relative w-full h-60 sm:h-96 group drop-shadow-[0_0_16px_var(--background)]",
+        "relative w-full min-h-60 sm:min-h-96 group drop-shadow-[0_0_16px_var(--color-background)] rounded-2xl",
         className
       )}
     >
-      <div className="relative w-full h-60 sm:h-96 overflow-hidden rounded-2xl bg-[var(--background)]">
+      <ProjectHeader
+        className="rounded-t-2xl"
+        categories={categories}
+        link={link}
+      />
+
+      <div className="relative w-full h-60 sm:h-96 overflow-hidden rounded-b-2xl bg-[var(--color-background)]">
         <Image
           src={image}
           alt={title}
@@ -41,8 +47,7 @@ ProjectProps) {
           sizes="auto"
           className={mergeClassNames(
             "object-cover group-hover:scale-110",
-            "transition-transform rounded-2xl",
-            "group-hover:grayscale-100 group-hover:brightness-90"
+            "transition-transform rounded-b-2xl"
           )}
         />
 
@@ -50,8 +55,8 @@ ProjectProps) {
           className={mergeClassNames(
             "absolute top-0 left-0 opacity-100 sm:opacity-0",
             "flex flex-col gap-2 sm:gap-4 justify-between bg-[var(--color-background)]/90",
-            "w-full h-full p-4 sm:p-4 rounded-2xl",
-            "sm:hover:opacity-100 transition-opacity duration-400"
+            "w-full h-full p-4 sm:p-4 rounded-b-2xl",
+            "sm:group-hover:opacity-100 transition-opacity duration-400"
           )}
         >
           <div>
@@ -59,20 +64,6 @@ ProjectProps) {
               <h3 className="text-lg sm:text-2xl text-[var(--action)] font-semibold sm:font-bold max-w-[65%]">
                 {title}
               </h3>
-              <a
-                href={link}
-                target="_blank"
-                className="flex gap-2 items-center"
-              >
-                <FaArrowRight
-                  size={24}
-                  className="mb-0.5 sm:block hidden -rotate-45 text-[var(--action)]"
-                />
-                <FaArrowRight
-                  size={20}
-                  className="mb-0.5 sm:hidden block -rotate-45 text-[var(--action)]"
-                />
-              </a>
             </div>
 
             <p className="text-xs sm:text-base font-normal text-justify pt-2 sm:pt-4 mx-auto">

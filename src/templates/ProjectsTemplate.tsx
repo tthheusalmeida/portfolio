@@ -132,7 +132,7 @@ export default function ProjectsTemplate() {
           ) : (
             <AnimatedComponent
               HTMLtag="span"
-              className="w-full flex justify-center"
+              className="w-full flex justify-center text-center"
             >
               Oops! No projects match your filter. Maybe in the future :)
             </AnimatedComponent>
