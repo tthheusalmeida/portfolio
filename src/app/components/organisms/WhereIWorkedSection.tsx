@@ -9,13 +9,25 @@ export default function WhereIWorkedSection() {
   const companies = VIEW.companies;
 
   const items = companies.map(
-    ({ name, logo, role, description, achievements, start, end, src, alt }) => {
+    ({
+      name,
+      logo,
+      role,
+      type,
+      description,
+      achievements,
+      start,
+      end,
+      src,
+      alt,
+    }) => {
       return {
         component: (
           <Balloon
             label={name}
             logo={logo}
             role={role}
+            type={type}
             description={description}
             achievements={
               Array.isArray(achievements) ? achievements : [achievements]

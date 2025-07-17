@@ -17,10 +17,18 @@ export interface ProjectView {
   link: string;
 }
 
+type CompanyType =
+  | "full-time"
+  | "part-time"
+  | "freelancer"
+  | "intern"
+  | "volunteer";
+
 export interface CompanyView {
   name: string;
   logo: string;
   role: string;
+  type: CompanyType;
   description: string;
   achievements: Array<string>;
   start: string;
@@ -176,11 +184,12 @@ const projects = [
   },
 ];
 
-const companies = [
+const companies: CompanyView[] = [
   {
     name: "Blip",
     logo: "/work/blip.svg",
     role: "Software Engineer",
+    type: "full-time",
     description:
       "Improved a complex legacy system by cleaning the codebase, migrating technology, enhancing security, and adding AI features boosting performance, scalability, and client efficiency.",
     achievements: [
@@ -199,6 +208,7 @@ const companies = [
     name: "Stilingue",
     logo: "/work/stilingue.svg",
     role: "Junior Front-End Developer",
+    type: "full-time",
     description:
       "Improved dashboard usability and maintainability by building dynamic filters, automating real-time updates, and creating modular components, reducing client churn and boosting internal delivery speed.",
     achievements: [
@@ -217,6 +227,7 @@ const companies = [
     name: "Stilingue",
     logo: "/work/stilingue.svg",
     role: "Assistant Front-End Developer",
+    type: "full-time",
     description:
       "Contributed to scalable product development by creating advanced Vue.js components, improving Firebase management, enhancing test coverage, and maintaining a consistent, accessible design system.",
     achievements: [
@@ -235,6 +246,7 @@ const companies = [
     name: "Stilingue",
     logo: "/work/stilingue.svg",
     role: "Developer Intern",
+    type: "intern",
     description:
       "Learned and applied core Vue.js principles to build scalable front-end components, enhancing team code quality and building a solid foundation for growth.",
     achievements: [

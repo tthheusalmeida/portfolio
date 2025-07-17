@@ -6,8 +6,9 @@ import { FaCheck } from "react-icons/fa";
 
 interface BaloonProps {
   label: string;
-  logo?: string;
+  logo: string;
   role: string;
+  type: string;
   description: string;
   achievements: Array<string>;
   dateStart?: string;
@@ -18,6 +19,7 @@ export default function Balloon({
   label,
   logo,
   role,
+  type,
   description,
   achievements,
   dateStart,
@@ -32,7 +34,10 @@ export default function Balloon({
     >
       <div className="flex flex-col sm:flex-row justify-between">
         <div className="order-2 sm:order-1">
-          <h3 className="font-semibold text-2xl sm:text-4xl">{label}</h3>
+          <div className="flex gap-1 items-baseline">
+            <h3 className="font-semibold text-2xl sm:text-4xl">{label}</h3>
+            <span className="text-xs capitalize">({type})</span>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-3 items-baseline mt-2 sm:mt-4">
             <Tag className="order-2 sm:order-1">{role}</Tag>
