@@ -37,6 +37,28 @@ export interface CompanyView {
   alt: string;
 }
 
+interface EducationUniversity {
+  name: string;
+  originalName: string;
+  abbreviation: string;
+}
+
+interface EducationExperience {
+  role: string;
+  start: string;
+  end: string;
+  description: string;
+}
+
+export interface EducationView {
+  title: string;
+  abbreviation: string;
+  university: EducationUniversity;
+  start: string;
+  end: string;
+  experiences: Array<EducationExperience>;
+}
+
 interface TestimonialView {
   name: string;
   src: string;
@@ -50,6 +72,7 @@ interface ViewProps {
   softSkills: Array<string>;
   projects: Array<ProjectView>;
   companies: Array<CompanyView>;
+  educations: Array<EducationView>;
   testimonials: Array<TestimonialView>;
 }
 
@@ -263,6 +286,40 @@ const companies: CompanyView[] = [
   },
 ];
 
+const educations = [
+  {
+    title: "Bachelor of Computer Science",
+    abbreviation: "BSc",
+    university: {
+      name: "Federal University of Ouro Preto",
+      originalName: "Universidade Federal de Ouro Preto",
+      abbreviation: "UFOP",
+    },
+    start: "01/08/2018",
+    end: "01/04/2025",
+    experiences: [
+      {
+        role: "Teaching Assistant - Data Structures",
+        start: "01/09/2019",
+        end: "01/03/2020",
+        description: `Assisted in the Data Structures course by preparing exercises, correcting assignments, and helping students with practical questions. Covered topics included algorithm complexity, recursion, lists, stacks, queues, sorting, trees (binary, AVL), and hash tables.`,
+      },
+      {
+        role: "Undergraduate Research Volunteer - HPC",
+        start: "01/08/2019",
+        end: "01/09/2019",
+        description: `Developed JCL-Opt, a Java framework for optimization techniques (e.g., backtracking, permutation) running on parallel clusters using JCL. Worked on modular components, load balancing, and data handling with custom strategies.`,
+      },
+      {
+        role: "Participant - opCod3rs",
+        start: "31/08/2018",
+        end: "28/06/2019",
+        description: `Joined the opCod3rs training program focused on competitive programming and algorithmic problem solving. Participated in weekly contests, studied advanced data structures, graph algorithms, dynamic programming, and problem-solving strategies for ICPC-style competitions.`,
+      },
+    ],
+  },
+];
+
 const testimonials = [
   {
     name: "João Marcos",
@@ -355,6 +412,7 @@ const VIEW: ViewProps = {
   softSkills,
   projects,
   companies,
+  educations,
   testimonials,
 };
 

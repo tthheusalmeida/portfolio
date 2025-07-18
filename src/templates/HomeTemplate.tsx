@@ -4,6 +4,7 @@ import WhereIWorkedSection from "@/app/components/organisms/WhereIWorkedSection"
 import TestimonialsSection from "@/app/components/organisms/TestimonialsSection";
 import CTASection from "@/app/components/organisms/CTASection";
 import PageLayout from "@/layouts/PageLayout";
+import EducationSection from "@/app/components/organisms/EducationSection";
 
 export default function HomeTemplate() {
   return (
@@ -11,6 +12,7 @@ export default function HomeTemplate() {
       <CoverSection />
       <ProjectsSection />
       <WhereIWorkedSection />
+      <EducationSection />
       <TestimonialsSection />
       <CTASection />
     </PageLayout>
