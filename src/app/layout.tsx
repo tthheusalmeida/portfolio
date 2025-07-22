@@ -64,6 +64,9 @@ export const metadata: Metadata = {
   category: "technology",
   classification: "Software Engineer",
   applicationName: "Matheus Almeida Portfolio",
+  verification: {
+    google: "zLhULd-U4o_BOSFwid6TZQZacqB-hte1fgytIbGqVMY",
+  },
 };
 
 export default function RootLayout({
