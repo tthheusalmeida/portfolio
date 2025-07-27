@@ -16,7 +16,6 @@ export default function ErrorPageTemplate({
 }: ErrorPageTemplateProps) {
   return (
     <div className="w-dvw h-dvh flex items-center justify-center">
-      <BackgroundBlur />
       <div className="flex flex-col items-center justify-center">
         <Title className="text-8xl">{code}</Title>
         <Subtitle className="mt-4">{description}</Subtitle>
@@ -30,6 +29,8 @@ export default function ErrorPageTemplate({
           </Button>
         </div>
       </div>
+
+      <BackgroundBlur />
     </div>
   );
 }

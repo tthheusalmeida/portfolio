@@ -10,10 +10,10 @@ export default function PageLayout({
 }) {
   return (
     <PageTemplate>
-      <BackgroundBlur />
       <Header />
       {children}
       <WhatsAppButton />
+      <BackgroundBlur />
     </PageTemplate>
   );
 }
