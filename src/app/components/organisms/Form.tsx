@@ -178,12 +178,12 @@ export default function Form() {
         <Button
           type="submit"
           variant="primary"
-          className="sm:w-40"
+          className="sm:w-42"
           onClick={(event) => handleOnClick(event)}
           isLoading={loading}
         >
           <div className="flex gap-2 items-center justify-center">
-            Let{`'`}s start <IoIosSend size={24} />
+            Send Message <IoIosSend size={24} />
           </div>
         </Button>
       </div>

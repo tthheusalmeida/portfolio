@@ -1,20 +1,20 @@
+import PageLayout from "@/layouts/PageLayout";
 import CoverSection from "../app/components/organisms/CoverSection";
 import ProjectsSection from "@/app/components/organisms/ProjectsSection";
-import WhereIWorkedSection from "@/app/components/organisms/WhereIWorkedSection";
-import TestimonialsSection from "@/app/components/organisms/TestimonialsSection";
-import CTASection from "@/app/components/organisms/CTASection";
-import PageLayout from "@/layouts/PageLayout";
+import Experiences from "@/app/components/organisms/Experiences";
 import EducationSection from "@/app/components/organisms/EducationSection";
+import TestimonialsSection from "@/app/components/organisms/TestimonialsSection";
+import ContactSection from "@/app/components/organisms/ContactSection";
 
 export default function HomeTemplate() {
   return (
     <PageLayout>
       <CoverSection />
       <ProjectsSection />
-      <WhereIWorkedSection />
+      <Experiences />
       <EducationSection />
       <TestimonialsSection />
-      <CTASection />
+      <ContactSection />
     </PageLayout>
   );
 }

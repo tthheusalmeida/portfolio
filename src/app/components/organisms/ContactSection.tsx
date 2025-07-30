@@ -1,13 +1,13 @@
-import PageLayout from "@/layouts/PageLayout";
-import SectionTemplate from "./SectionTemplate";
-import TitleAndSubtitleSection from "@/app/components/molecules/TitleAndSubtitleSection";
+import SectionTemplate from "@/templates/SectionTemplate";
+import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import Form from "@/app/components/organisms/Form";
+import Footer from "./Footer";
 import HighlightText from "@/app/components/atoms/HighlightText";
 
-export default function ContactTemplate() {
+export default function CTASection() {
   return (
-    <PageLayout>
-      <SectionTemplate>
+    <>
+      <SectionTemplate className="flex flex-col justify-between min-h-0">
         <TitleAndSubtitleSection
           title="Do you like my work?"
           subtitle={
@@ -26,7 +26,9 @@ export default function ContactTemplate() {
             <Form />
           </div>
         </TitleAndSubtitleSection>
+
+        <Footer className="mt-24" />
       </SectionTemplate>
-    </PageLayout>
+    </>
   );
 }

@@ -16,13 +16,6 @@ export default function FooterLabels({
       <AnimatedComponent
         disableAnimation={disableAnimation}
         HTMLtag="span"
-        className="text-xs sm:text-base font-medium select-all"
-      >
-        dev.almeida.matheus@gmail.com
-      </AnimatedComponent>
-      <AnimatedComponent
-        disableAnimation={disableAnimation}
-        HTMLtag="span"
         className="flex flex-col sm:flex-row gap-2 text-xs sm:text-base font-normal text-gray-200/50 select-none text-center"
       >
         <AnimatedComponent

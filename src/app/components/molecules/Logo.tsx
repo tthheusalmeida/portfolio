@@ -25,7 +25,7 @@ export default function Logo() {
       </span>
 
       <span>
-        <span className="text-[var(--action)] opacity-100">{"/"}</span>
+        <span className="opacity-20">{"/"}</span>
         <span className="opacity-20">{">"}</span>
       </span>
     </Link>

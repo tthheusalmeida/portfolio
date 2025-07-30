@@ -17,18 +17,18 @@ export interface ProjectView {
   link: string;
 }
 
-type CompanyType =
+type ExperienceType =
   | "full-time"
   | "part-time"
   | "freelancer"
   | "intern"
   | "volunteer";
 
-export interface CompanyView {
+export interface ExperienceView {
   name: string;
   logo: string;
   role: string;
-  type: CompanyType;
+  type: ExperienceType;
   description: string;
   achievements: Array<string>;
   start: string;
@@ -71,7 +71,7 @@ interface ViewProps {
   socialMedia: Array<SocialMediaView>;
   softSkills: Array<string>;
   projects: Array<ProjectView>;
-  companies: Array<CompanyView>;
+  experiences: Array<ExperienceView>;
   educations: Array<EducationView>;
   testimonials: Array<TestimonialView>;
 }
@@ -106,7 +106,7 @@ const stack = [
 const socialMedia = [
   {
     name: "linkedin",
-    color: "sky",
+    color: "slate",
     link: "https://www.linkedin.com/in/dev-almeida-matheus/",
   },
   {
@@ -114,21 +114,31 @@ const socialMedia = [
     color: "slate",
     link: "https://github.com/tthheusalmeida",
   },
+  {
+    name: "whatsapp",
+    color: "slate",
+    link: "https://wa.me/5538999460104?text=Hi! I’m looking for help with a project and came across your site. Can we talk?",
+  },
+  {
+    name: "gmail",
+    color: "slate",
+    link: "mailto:dev.almeida.matheus@gmail.com",
+  },
 ];
 
 const softSkills = [
-  "Communication",
+  // "Communication",
   "Teamwork",
   "Problem-solving",
-  "Adaptability",
-  "Critical thinking",
+  // "Adaptability",
+  // "Critical thinking",
   "Creativity",
   "Open-mindedness",
   "Emotional intelligence",
   "Attention to detail",
   "Empathy",
-  "Growth mindset",
-  "Active listening",
+  // "Growth mindset",
+  // "Active listening",
 ];
 
 const projects = [
@@ -207,19 +217,19 @@ const projects = [
   },
 ];
 
-const companies: CompanyView[] = [
+const experiences: ExperienceView[] = [
   {
     name: "Blip",
     logo: "/work/blip.svg",
     role: "Software Engineer",
     type: "full-time",
     description:
-      "Improved a complex legacy system by cleaning the codebase, migrating technology, enhancing security, and adding AI features boosting performance, scalability, and client efficiency.",
+      "Revamped a complex legacy system to boost performance, scalability, and client efficiency through code cleanup, tech migration, security improvements, and AI integration.",
     achievements: [
-      "Removed 20+ obsolete feature flags, simplifying the codebase",
-      "Reduce client manual work by up to 60% with generative AI features",
-      "Migrated critical routes from Python 2 to Python 3, ensuring compatibility",
-      "Refactored legacy components to Vue.js, fixing memory leaks and improving load times",
+      "Removed 20+ outdated feature flags, simplifying the codebase",
+      "Introduced generative AI features, reducing manual client work by up to 60%",
+      "Migrated critical routes from Python 2 to Python 3, ensuring long-term stability",
+      "Refactored legacy components into Vue.js, resolving memory leaks and improving load times",
       "Implemented Google reCAPTCHA, strengthening security",
     ],
     start: "01/01/2023",
@@ -233,13 +243,13 @@ const companies: CompanyView[] = [
     role: "Junior Front-End Developer",
     type: "full-time",
     description:
-      "Improved dashboard usability and maintainability by building dynamic filters, automating real-time updates, and creating modular components, reducing client churn and boosting internal delivery speed.",
+      "Improved dashboard usability and delivery speed by building dynamic filters, automating real-time updates, and developing modular components.",
     achievements: [
       "Developed 70+ reusable components in a single quarter",
-      "Built global filters, cutting setup time by up to 80%",
-      "Create component builder increasing product flexibility",
-      "Improved Firebase security and data structure",
-      "Wrote tests and improved design system",
+      "Built global filters that cut setup time by up to 80%",
+      "Created a component builder to increase product flexibility",
+      "Improved Firebase security rules and optimized data structure",
+      "Strengthened the design system with test coverage and documentation",
     ],
     start: "01/02/2022",
     end: "01/01/2023",
@@ -252,13 +262,13 @@ const companies: CompanyView[] = [
     role: "Assistant Front-End Developer",
     type: "full-time",
     description:
-      "Contributed to scalable product development by creating advanced Vue.js components, improving Firebase management, enhancing test coverage, and maintaining a consistent, accessible design system.",
+      "Contributed to scalable product development by designing advanced Vue.js components, improving Firebase access control, and supporting a consistent, accessible design system.",
     achievements: [
-      "Developed components improving data visualization",
-      "Managed Firebase permissions and security",
+      "Built components that enhanced data visualization and reusability",
+      "Managed Firebase permissions and improved security practices",
       "Increased test coverage, reducing production bugs",
-      "Contributed to a reusable design system",
-      "Accelerated feature delivery with reusable code",
+      "Contributed to the evolution of a reusable design system",
+      "Accelerated feature delivery through modular, maintainable code",
     ],
     start: "01/06/2021",
     end: "01/02/2022",
@@ -271,13 +281,13 @@ const companies: CompanyView[] = [
     role: "Developer Intern",
     type: "intern",
     description:
-      "Learned and applied core Vue.js principles to build scalable front-end components, enhancing team code quality and building a solid foundation for growth.",
+      "Laid the groundwork for scalable front-end development by applying Vue.js principles to build maintainable components and improve code quality.",
     achievements: [
-      "Created modular Vue.js components",
-      "Applied lifecycle and reactivity",
-      "Structured project for maintainability",
-      "Improved code quality",
-      "Gained practical front-end experience",
+      "Created modular Vue.js components focused on reusability and clarity",
+      "Applied lifecycle methods and reactivity to improve interactivity",
+      "Structured the codebase for maintainability and collaboration",
+      "Contributed to improving code quality and consistency",
+      "Gained hands-on experience in front-end development within a fast-paced team",
     ],
     start: "01/09/2020",
     end: "01/06/2021",
@@ -299,22 +309,22 @@ const educations = [
     end: "01/04/2025",
     experiences: [
       {
-        role: "Teaching Assistant - Data Structures",
+        role: "Teaching Assistant – Data Structures",
         start: "01/09/2019",
         end: "01/03/2020",
-        description: `Assisted in the Data Structures course by preparing exercises, correcting assignments, and helping students with practical questions. Covered topics included algorithm complexity, recursion, lists, stacks, queues, sorting, trees (binary, AVL), and hash tables.`,
+        description: `Supported the Data Structures course by creating exercises, reviewing assignments, and assisting students with coding challenges. Topics included algorithm complexity, recursion, lists, stacks, queues, sorting algorithms, binary and AVL trees, and hash tables.`,
       },
       {
-        role: "Undergraduate Research Volunteer - HPC",
+        role: "Undergraduate Research – High Performance Computing (HPC)",
         start: "01/08/2019",
         end: "01/09/2019",
-        description: `Developed JCL-Opt, a Java framework for optimization techniques (e.g., backtracking, permutation) running on parallel clusters using JCL. Worked on modular components, load balancing, and data handling with custom strategies.`,
+        description: `Contributed to the development of JCL-Opt, a Java-based framework that applies optimization techniques like backtracking and permutations on distributed systems using JCL. Focused on modular design, load balancing, and efficient data handling strategies.`,
       },
       {
-        role: "Participant - opCod3rs",
+        role: "Participant – opCod3rs Program",
         start: "31/08/2018",
         end: "28/06/2019",
-        description: `Joined the opCod3rs training program focused on competitive programming and algorithmic problem solving. Participated in weekly contests, studied advanced data structures, graph algorithms, dynamic programming, and problem-solving strategies for ICPC-style competitions.`,
+        description: `Took part in a competitive programming training program aimed at preparing students for algorithmic challenges and ICPC-style contests. Regularly practiced advanced data structures, dynamic programming, and graph theory through weekly problem-solving sessions.`,
       },
     ],
   },
@@ -411,7 +421,7 @@ const VIEW: ViewProps = {
   socialMedia,
   softSkills,
   projects,
-  companies,
+  experiences,
   educations,
   testimonials,
 };

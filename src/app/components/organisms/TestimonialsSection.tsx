@@ -12,7 +12,7 @@ export default function TestimonialsSection() {
         title="Testimonials"
         subtitle={
           <>
-            Honest testimonials from <HighlightText>Clients</HighlightText>,{" "}
+            From <HighlightText>Clients</HighlightText>,{" "}
             <HighlightText>Teammates</HighlightText>, and{" "}
             <HighlightText>Classmates</HighlightText> who have collaborated with
             me along the way

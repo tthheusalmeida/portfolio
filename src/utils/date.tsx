@@ -1,3 +1,13 @@
+export function formatedDateMonthYear(currentDate: string) {
+  const [day, month, year] = currentDate.split("/").map(Number);
+  const date = new Date(year, month - 1, day);
+
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    year: "numeric",
+  }).format(date);
+}
+
 export function formatedDate(currentDate: string) {
   const [day, month, year] = currentDate.split("/").map(Number);
   const date = new Date(year, month - 1, day);

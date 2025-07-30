@@ -1,6 +1,6 @@
 import { mergeClassNames } from "@/utils/classNames";
 import Tag from "./Tag";
-import { FaArrowRight } from "react-icons/fa6";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 interface ProjectHeaderProps {
   categories?: Array<string>;
@@ -32,13 +32,13 @@ export default function ProjectHeader({
       </div>
 
       <a href={link} target="_blank" className="flex items-center py-0 px-4">
-        <FaArrowRight
-          size={20}
-          className="sm:block hidden -rotate-45 text-[var(--action)]"
+        <FaExternalLinkAlt
+          size={18}
+          className="sm:block hidden text-[var(--action)]"
         />
-        <FaArrowRight
-          size={20}
-          className="sm:hidden block -rotate-45 text-[var(--action)]"
+        <FaExternalLinkAlt
+          size={18}
+          className="sm:hidden block text-[var(--action)]"
         />
       </a>
     </div>

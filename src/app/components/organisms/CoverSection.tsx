@@ -1,4 +1,3 @@
-import CheckOutMy from "@/app/components/molecules/CheckOutMy";
 import SoftSkillsCarousel from "@/app/components/molecules/SoftSkillsCarousel";
 import Stack from "@/app/components/molecules/Stack";
 import SectionTemplate from "@/templates/SectionTemplate";
@@ -24,8 +23,8 @@ export default function CoverSection() {
           <div className="flex sm:flex-row sm:justify-between flex-col items-center">
             <div className="flex flex-col items gap-6 sm:block w-full sm:w-auto pt-10 sm:pt-0">
               <div className="flex flex-col select-none items-center sm:items-start">
-                <Title>Software Engineer</Title>
-                <Title className="text-[var(--action)]">Front-End</Title>
+                <Title className="font-normal">Software Engineer</Title>
+                <Title>Front-End</Title>
               </div>
 
               <AnimatedComponent
@@ -87,7 +86,6 @@ export default function CoverSection() {
 
           <div className="flex flex-col sm:flex-row justify-between mt-20 sm:mt-0 items-center sm:items-baseline-last sm:pt-0 pt-6 sm:gap-0 gap-8">
             <Stack className="sm:order-1 order-2" />
-            <CheckOutMy className="sm:order-2 order-1" />
           </div>
         </div>
 

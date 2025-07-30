@@ -54,7 +54,7 @@ export default function Project({
         <div
           className={mergeClassNames(
             "absolute top-0 left-0 opacity-100 sm:opacity-0",
-            "flex flex-col gap-2 sm:gap-4 justify-between bg-[var(--color-background)]/90",
+            "flex flex-col gap-2 sm:gap-4 justify-between bg-[var(--color-background)]/90 sm:bg-stone-800",
             "w-full h-full p-4 sm:p-4 rounded-b-2xl",
             "sm:group-hover:opacity-100 transition-opacity duration-400"
           )}

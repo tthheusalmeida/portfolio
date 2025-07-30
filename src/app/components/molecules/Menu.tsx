@@ -20,7 +20,6 @@ export default function Menu() {
     () => [
       { label: "home", path: "/" },
       { label: "projects", path: "/projects" },
-      { label: "contact", path: "/contact" },
     ],
     []
   );

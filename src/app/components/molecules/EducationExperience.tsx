@@ -1,4 +1,4 @@
-import { formatedDate, getCompactDuration } from "@/utils/date";
+import { getCompactDuration, formatedDateMonthYear } from "@/utils/date";
 import { BiBriefcase } from "react-icons/bi";
 import AnimatedComponent from "./AnimatedComponent";
 import { mergeClassNames } from "@/utils/classNames";
@@ -9,6 +9,7 @@ interface EducationExtraCurricularProps {
   end: string;
   description: string;
   className?: string;
+  university: string;
 }
 
 export default function EducationExtraCurricular({
@@ -17,6 +18,7 @@ export default function EducationExtraCurricular({
   start,
   end,
   className,
+  university,
 }: EducationExtraCurricularProps) {
   return (
     <AnimatedComponent
@@ -33,14 +35,21 @@ export default function EducationExtraCurricular({
         />
         <h3 className="font-semibold">{role}</h3>
       </div>
-      <p className="flex gap-3 text-[var(--color-foreground)]/40 py-1">
-        <span>
-          {formatedDate(start)} - {formatedDate(end)}
-        </span>
 
-        <span>{getCompactDuration(start, end)}</span>
-      </p>
-      <p className="leading-relaxed text-gray-200">{description}</p>
+      <div className="text-[var(--color-foreground)]/40">
+        <p className="flex items-center gap-2 py-1">
+          <span>{university}</span>
+
+          <span className="w-1 h-1 bg-[var(--color-foreground)]/40 rounded-full" />
+
+          <span>{getCompactDuration(start, end)}</span>
+        </p>
+        <p className="italic">
+          {formatedDateMonthYear(start)} - {formatedDateMonthYear(end)}
+        </p>
+      </div>
+
+      <p className="mt-2 leading-relaxed text-gray-200">{description}</p>
     </AnimatedComponent>
   );
 }

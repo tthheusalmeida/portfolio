@@ -19,6 +19,7 @@ const borderMap: Record<string, string> = {
   teal: "sm:group-hover:border-teal-500 border-teal-500 sm:border-black/0",
   lime: "sm:group-hover:border-lime-500 border-lime-500 sm:border-black/0",
   amber: "sm:group-hover:border-amber-500 border-amber-500 sm:border-black/0",
+  red: "sm:group-hover:border-red-500 border-red-500 sm:border-red/0",
   slate: "sm:group-hover:border-white border-white sm:border-black/0",
 };
 
@@ -31,6 +32,7 @@ const shadowMap: Record<string, string> = {
   lime: "sm:group-hover:drop-shadow-[0_0_4px_#84cc16] drop-shadow-[0_0_4px_#84cc16] sm:drop-shadow-none",
   amber:
     "sm:group-hover:drop-shadow-[0_0_4px_#f59e0b] drop-shadow-[0_0_4px_#f59e0b] sm:drop-shadow-none",
+  red: "sm:group-hover:drop-shadow-[0_0_4px_#fb2c36] drop-shadow-[0_0_4px_#fb2c36] sm:drop-shadow-none",
   slate:
     "sm:group-hover:drop-shadow-[0_0_4px_#ffffff] drop-shadow-[0_0_4px_#ffffff] sm:drop-shadow-none",
 };

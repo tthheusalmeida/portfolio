@@ -6,7 +6,7 @@ import TitleAndSubtitleSection from "@/app/components/molecules/TitleAndSubtitle
 import SectionTemplate from "./SectionTemplate";
 import VIEW from "@/data/view";
 import Project from "@/app/components/molecules/Project";
-import CTASection from "@/app/components/organisms/CTASection";
+import CTASection from "@/app/components/organisms/ContactSection";
 import FiltersBar from "@/app/components/organisms/FiltersBar";
 import { useMemo } from "react";
 import { ProjectView } from "@/data/view";

@@ -1,9 +1,9 @@
 import ProjectsPreview from "./ProjectsPreview";
-import RouterButton from "../atoms/RouterButton";
+// import RouterButton from "../atoms/RouterButton";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
 import VIEW from "@/data/view";
-import { FaArrowRight } from "react-icons/fa6";
+// import { FaArrowRight } from "react-icons/fa6";
 import HighlightText from "../atoms/HighlightText";
 
 export default function ProjectsSection() {
@@ -23,14 +23,14 @@ export default function ProjectsSection() {
         <ProjectsPreview projects={projects} />
       </TitleAndSubtitleSection>
 
-      <RouterButton
+      {/* <RouterButton
         path="projects"
         variant="primary"
         className="max-w-48 mt-20 sm:mt-0"
       >
         See all projects
         <FaArrowRight className="animate-arrow-bounce" size={18} />
-      </RouterButton>
+      </RouterButton> */}
     </SectionTemplate>
   );
 }

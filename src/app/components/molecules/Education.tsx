@@ -1,6 +1,6 @@
 import EducationExtraCurricular from "../molecules/EducationExperience";
 import { VscMortarBoard } from "react-icons/vsc";
-import { formatedDate } from "@/utils/date";
+import { formatedDateMonthYear } from "@/utils/date";
 import { EducationView } from "@/data/view";
 import AnimatedComponent from "./AnimatedComponent";
 
@@ -26,8 +26,8 @@ export default function Education({
           <VscMortarBoard size={24} className="mt-1 text-[var(--action)]" />
           <div className="flex flex-col items-baseline">
             <h2 className="text-xl font-semibold">
-              <span className="font-bold">({abbreviation}) </span>
               {title}
+              <span className="font-bold"> ({abbreviation})</span>
             </h2>
             <p className="text-[var(--color-foreground)]/40">
               {university.name} ({university.abbreviation})
@@ -35,11 +35,11 @@ export default function Education({
             <p className="text-[var(--color-foreground)]/40 italic">
               {university.originalName}
             </p>
+            <p className="text-[var(--color-foreground)]/40 text-sm mt-1">
+              {formatedDateMonthYear(start)} - {formatedDateMonthYear(end)}
+            </p>
           </div>
         </div>
-        <span className="ml-8 sm:m-0 text-[var(--color-foreground)]/40 text-sm mt-1">
-          {formatedDate(start)} - {formatedDate(end)}
-        </span>
       </AnimatedComponent>
 
       {/* Experiences */}
@@ -50,6 +50,7 @@ export default function Education({
             start={exp.start}
             end={exp.end}
             description={exp.description}
+            university={university.abbreviation}
             key={index}
             className={experiences.length - 1 == index ? "pb-0" : ""}
           />

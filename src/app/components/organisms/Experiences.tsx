@@ -5,8 +5,8 @@ import Balloon from "./Balloon";
 import VIEW from "@/data/view";
 import HighlightText from "../atoms/HighlightText";
 
-export default function WhereIWorkedSection() {
-  const companies = VIEW.companies;
+export default function Experiences() {
+  const companies = VIEW.experiences;
 
   const items = companies.map(
     ({
@@ -51,13 +51,12 @@ export default function WhereIWorkedSection() {
   return (
     <SectionTemplate className="flex flex-col items-center">
       <TitleAndSubtitleSection
-        title="Where I worked"
+        title="Experiences"
         subtitle={
           <>
             A summary of the <HighlightText>Roles</HighlightText>,{" "}
-            <HighlightText>Responsibilities</HighlightText>, and{" "}
-            <HighlightText>Experiences</HighlightText> that shaped my
-            professional path
+            <HighlightText>Responsibilities</HighlightText> that have shaped my
+            professional path so far
           </>
         }
       >

@@ -14,7 +14,7 @@ export default function Tag({ children, className }: TagProps) {
         "rounded-full border border-[var(--action)]",
         "transition-all duration-200",
         "bg-[var(--action)]/10",
-        "hover:bg-[var(--action)]/30",
+        // "hover:bg-[var(--action)]/30",
         className
       )}
     >
