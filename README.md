@@ -1,5 +1,5 @@
 <h3 align="center">
-  <!-- <img alt="Portfolio" width="70%" title="#logo" src="src/image/readme/portfolio.png"> -->
+  <img alt="Portfolio" width="70%" title="#logo" src="https://github.com/tthheusalmeida/portfolio/blob/main/public/cover/me.webp">
   <br>
 </h3>
 
