@@ -101,7 +101,7 @@ export default function ProjectsTemplate() {
           {projectsView.length ? (
             <AnimatedComponent
               HTMLtag="div"
-              className="flex flex-wrap sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4"
+              className="flex flex-wrap sm:grid sm:grid-cols-2 md:grid-cols-2 gap-4"
               forceView
             >
               <AnimatePresence>

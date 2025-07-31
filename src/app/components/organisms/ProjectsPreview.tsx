@@ -15,35 +15,22 @@ export default function ProjectsPreview({
   const leftStack = Array<ProjectProps>();
   const rightStack = Array<ProjectProps>();
 
-  projects.forEach((project, index) =>
+  const currentProjects = projects.slice(0, 6);
+
+  currentProjects.forEach((project, index) =>
     isEven(index) ? leftStack.push(project) : rightStack.push(project)
   );
-
-  // TODO remove this for correct projects sizes
-  // const height = {
-  //   mobileProjectComponent: 240,
-  //   desktopProjectComponent: 384,
-  //   projectComponentMarginBottom: 48,
-  // }
-  // const mobileHeight =
-  //   2 *
-  //   (Math.max(leftStack.length, rightStack.length) *
-  //     (height.mobileProjectComponent + height.projectComponentMarginBottom));
-  // const desktopHeight =
-  //   Math.max(leftStack.length, rightStack.length) *
-  //   (height.desktopProjectComponent + height.projectComponentMarginBottom);
-  // console.log(`'PROJECT: mobile(${mobileHeight}) desktop(${desktopHeight})`);
 
   return (
     <div
       className={mergeClassNames(
         "relative w-full flex items-center",
-        "h-[1600px] sm:h-[1480px]",
+        "h-[1900px] sm:h-[1480px]",
         className
       )}
     >
       <StickyStack
-        projects={projects}
+        projects={currentProjects}
         side="middle"
         keyPrefix="middle"
         className="block sm:hidden"

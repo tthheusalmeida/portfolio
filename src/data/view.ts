@@ -192,6 +192,26 @@ const projects = [
     categories: ["personal"],
   },
   {
+    title: "Finance.AI",
+    about: `Project that helps users manage their personal finances. 
+      Finance.AI uses artificial intelligence to analyze transactions and generate 
+      personalized insights. On the platform, users can register income and expenses, 
+      categorize movements, and view smart summaries to better understand their budget.`,
+    technologies: [
+      "React",
+      "Next.js",
+      "Typescript",
+      "Tailwind",
+      "Clerk",
+      "PostgreSQL",
+      "Gemini",
+      "Zod",
+    ],
+    image: "/projects/finance-ai.webp",
+    link: "https://github.com/tthheusalmeida/finance-ai",
+    categories: ["personal"],
+  },
+  {
     title: "Recipe",
     about: ` A recipe website built for my girlfriend using Nuxt.js, Node.js and MongoDB.`,
     technologies: [
