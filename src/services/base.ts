@@ -1,22 +1,22 @@
 const TIME = 120000;
-const GATEWAY = "https://buddy-lemon-pi.vercel.app";
+const GATEWAY = "https://buddy-jp90.onrender.com";
 
 interface BaseServiceProps<T> {
   payload: T;
   method: string;
   endPoint: string;
-  errorMessage: string,
+  errorMessage: string;
 }
 
-function timeoutRequestObject () {
+function timeoutRequestObject() {
   const controller = new AbortController();
   const timeoutId: ReturnType<typeof setTimeout> = setTimeout(() => {
     controller.abort();
   }, TIME);
 
   return {
-    timeoutId
-  }
+    timeoutId,
+  };
 }
 
 export async function baseService<T>({
