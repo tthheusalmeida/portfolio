@@ -1,5 +1,5 @@
 const TIME = 120000;
-const GATEWAY = "https://buddy-jp90.onrender.com";
+const GATEWAY = "https://server-mail-seven.vercel.app";
 
 interface BaseServiceProps<T> {
   payload: T;
