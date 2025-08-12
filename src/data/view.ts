@@ -180,18 +180,6 @@ const projects = [
     categories: ["personal"],
   },
   {
-    title: "Proffy",
-    about: `Project that connects students and teachers. 
-      Connections aims to find teachers with the best hours to serve students.
-      On the platform there is area for students, where you have the option of 
-      looking for teachers at the desired times to assist you and area for teachers, 
-      where they can register with class schedules.`,
-    technologies: ["React", "Knex", "Javascript", "Node.js"],
-    image: "/projects/proffy.webp",
-    link: "https://github.com/tthheusalmeida/proffy",
-    categories: ["personal"],
-  },
-  {
     title: "Finance.AI",
     about: `Project that helps users manage their personal finances. 
       Finance.AI uses artificial intelligence to analyze transactions and generate 
@@ -212,6 +200,46 @@ const projects = [
     categories: ["personal"],
   },
   {
+    title: "Room.IO",
+    about: ` Roomio is an online multiplayer gaming platform with real-time integration with Web Socket.`,
+    technologies: [
+      "Next.js",
+      "Firebase",
+      "Tailwind",
+      "SWR",
+      "Jest",
+      "Socket.IO",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+    ],
+    image: "/projects/room_io.webp",
+    link: "https://roomio-rust.vercel.app/",
+    categories: ["personal"],
+  },
+
+  {
+    title: "Proffy",
+    about: `Project that connects students and teachers. 
+      Connections aims to find teachers with the best hours to serve students.
+      On the platform there is area for students, where you have the option of 
+      looking for teachers at the desired times to assist you and area for teachers, 
+      where they can register with class schedules.`,
+    technologies: ["React", "Knex", "Javascript", "Node.js"],
+    image: "/projects/proffy.webp",
+    link: "https://github.com/tthheusalmeida/proffy",
+    categories: ["personal"],
+  },
+  {
+    title: "Zelda Project",
+    about:
+      "Personal project to practice lading page with video and iframe tag.",
+    technologies: ["HTML", "CSS", "Javascript"],
+    image: "/projects/zelda_project.webp",
+    link: "https://zelda-project.vercel.app/",
+    categories: ["personal"],
+  },
+  {
     title: "Recipe",
     about: ` A recipe website built for my girlfriend using Nuxt.js, Node.js and MongoDB.`,
     technologies: [
@@ -224,15 +252,6 @@ const projects = [
     ],
     image: "/projects/recipe.webp",
     link: "https://recipe-five-rust.vercel.app/",
-    categories: ["personal"],
-  },
-  {
-    title: "Zelda Project",
-    about:
-      "Personal project to practice lading page with video and iframe tag.",
-    technologies: ["HTML", "CSS", "Javascript"],
-    image: "/projects/zelda_project.webp",
-    link: "https://zelda-project.vercel.app/",
     categories: ["personal"],
   },
 ];
