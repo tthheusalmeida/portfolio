@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { mergeClassNames } from "@/utils/classNames";
+import { useTabs } from "@/contexts/TabsContext";
+import { useEffect } from "react";
 
 export const NAVIGATION_TAB_INDEX: Record<string, string> = {
   HOME: "home",
@@ -36,7 +37,7 @@ export default function NavigationTabs({
   className,
   isWithinMenu = false,
 }: NavigationTabsProps) {
-  const [activeTab, setActiveTab] = useState<string>("home");
+  const { activeTab, setActiveTab } = useTabs();
   const pathname = usePathname();
 
   if (pathname !== "/") return null;
