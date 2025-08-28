@@ -7,7 +7,10 @@ import HighlightText from "../atoms/HighlightText";
 export default function TestimonialsSection() {
   const testimonials = DATA.testimonials;
   return (
-    <SectionTemplate className="flex flex-col items-center sm:rounded-b-2xl">
+    <SectionTemplate
+      id="testimonials"
+      className="flex flex-col items-center sm:rounded-b-2xl"
+    >
       <TitleAndSubtitleSection
         title="Testimonials"
         subtitle={

@@ -12,7 +12,10 @@ export default function ProjectsSection() {
   const projects = DATA.projects;
 
   return (
-    <SectionTemplate className="flex flex-col items-center sm:rounded-t-2xl">
+    <SectionTemplate
+      id="projects"
+      className="flex flex-col items-center sm:rounded-t-2xl"
+    >
       <TitleAndSubtitleSection
         title="Projects"
         subtitle={

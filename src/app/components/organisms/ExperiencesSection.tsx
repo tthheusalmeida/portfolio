@@ -49,7 +49,7 @@ export default function Experiences() {
   );
 
   return (
-    <SectionTemplate className="flex flex-col items-center">
+    <SectionTemplate id="experiences" className="flex flex-col items-center">
       <TitleAndSubtitleSection
         title="Experiences"
         subtitle={

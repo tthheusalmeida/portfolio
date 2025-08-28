@@ -2,6 +2,7 @@ import { mergeClassNames } from "@/utils/classNames";
 
 interface SectionTemplateProps {
   children: React.ReactNode;
+  id?: string;
   className?: string;
   noPaddingInline?: boolean;
   isTranparentBackgroud?: boolean;
@@ -9,6 +10,7 @@ interface SectionTemplateProps {
 
 export default function SectionTemplate({
   children,
+  id,
   className,
   noPaddingInline = false,
   isTranparentBackgroud = false,
@@ -21,6 +23,7 @@ export default function SectionTemplate({
         isTranparentBackgroud ? "" : "bg-[var(--color-background)]",
         className
       )}
+      id={id}
     >
       {children}
     </div>

@@ -7,7 +7,10 @@ import HighlightText from "@/app/components/atoms/HighlightText";
 export default function CTASection() {
   return (
     <>
-      <SectionTemplate className="flex flex-col justify-between min-h-0">
+      <SectionTemplate
+        id="contact"
+        className="flex flex-col justify-between min-h-0"
+      >
         <TitleAndSubtitleSection
           title="Do you like my work?"
           subtitle={

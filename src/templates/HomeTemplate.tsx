@@ -1,7 +1,7 @@
 import PageLayout from "@/layouts/PageLayout";
 import CoverSection from "../app/components/organisms/CoverSection";
 import ProjectsSection from "@/app/components/organisms/ProjectsSection";
-import Experiences from "@/app/components/organisms/Experiences";
+import ExperiencesSection from "@/app/components/organisms/ExperiencesSection";
 import EducationSection from "@/app/components/organisms/EducationSection";
 import TestimonialsSection from "@/app/components/organisms/TestimonialsSection";
 import ContactSection from "@/app/components/organisms/ContactSection";
@@ -11,7 +11,7 @@ export default function HomeTemplate() {
     <PageLayout>
       <CoverSection />
       <ProjectsSection />
-      <Experiences />
+      <ExperiencesSection />
       <EducationSection />
       <TestimonialsSection />
       <ContactSection />

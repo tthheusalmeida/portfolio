@@ -9,7 +9,10 @@ export default function EducationSection() {
 
   return (
     <>
-      <SectionTemplate className="flex flex-col items-center justify-center">
+      <SectionTemplate
+        id="education"
+        className="flex flex-col items-center justify-center"
+      >
         <TitleAndSubtitleSection
           title="Education"
           subtitle={

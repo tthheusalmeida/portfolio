@@ -2,6 +2,7 @@ import AnimatedComponent from "../molecules/AnimatedComponent";
 import Logo from "../molecules/Logo";
 import Menu from "../molecules/Menu";
 import PageTemplate from "@/templates/PageTemplate";
+import NavigationTabs from "./NavigationTabs";
 
 export default function Header() {
   return (
@@ -13,6 +14,7 @@ export default function Header() {
       <PageTemplate>
         <div className="flex items-center justify-between h-16 select-none mx-4">
           <Logo />
+          <NavigationTabs className="hidden sm:inline" />
           <Menu />
         </div>
       </PageTemplate>

@@ -4,9 +4,9 @@ import SectionTemplate from "@/templates/SectionTemplate";
 import Image from "next/image";
 import Title from "@/app/components/atoms/Title";
 import DownloadButton from "../molecules/DownloadButton";
-import RouterButton from "../atoms/RouterButton";
 import AnimatedComponent from "../molecules/AnimatedComponent";
 import { mergeClassNames } from "@/utils/classNames";
+import NavigationButton from "../atoms/NavigationButton";
 
 export default function CoverSection() {
   const cvFileName = "Matheus_Almeida_CV_Front-End_Software_Engineer.pdf";
@@ -15,6 +15,7 @@ export default function CoverSection() {
   return (
     <>
       <SectionTemplate
+        id="home"
         className="relative flex flex-col justify-evenly sm:gap-0 gap-16"
         isTranparentBackgroud
         noPaddingInline
@@ -52,7 +53,7 @@ export default function CoverSection() {
               </AnimatedComponent>
 
               <div className="flex gap-6 pt-8 px-4 sm:px-0 sm:w-[296px] w-full">
-                <RouterButton path="contact">Contact me</RouterButton>
+                <NavigationButton>Contact me</NavigationButton>
                 <DownloadButton fileName={cvFileName} filePath={cvFilePath}>
                   Download CV
                 </DownloadButton>
