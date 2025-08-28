@@ -2,10 +2,10 @@ import SectionTemplate from "@/templates/SectionTemplate";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import HighlightText from "../atoms/HighlightText";
 import Education from "../molecules/Education";
-import VIEW from "@/data";
+import DATA from "@/data";
 
 export default function EducationSection() {
-  const educations = VIEW.educations;
+  const educations = DATA.educations;
 
   return (
     <>

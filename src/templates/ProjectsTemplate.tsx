@@ -4,12 +4,12 @@ import { useState } from "react";
 import PageLayout from "@/layouts/PageLayout";
 import TitleAndSubtitleSection from "@/app/components/molecules/TitleAndSubtitleSection";
 import SectionTemplate from "./SectionTemplate";
-import VIEW from "@/data";
+import DATA from "@/data";
 import Project from "@/app/components/molecules/Project";
 import CTASection from "@/app/components/organisms/ContactSection";
 import FiltersBar from "@/app/components/organisms/FiltersBar";
 import { useMemo } from "react";
-import { ProjectView } from "@/data";
+import { ProjectInterface } from "@/data/project";
 import { motion, AnimatePresence } from "motion/react";
 import AnimatedComponent from "@/app/components/molecules/AnimatedComponent";
 import HighlightText from "@/app/components/atoms/HighlightText";
@@ -25,7 +25,7 @@ const createLabelValueObject = (labels: Array<string> | Set<string>) => {
 
 export default function ProjectsTemplate() {
   const technologies = new Set<string>();
-  VIEW.projects.forEach((project) =>
+  DATA.projects.forEach((project) =>
     project.technologies.forEach((technology) => technologies.add(technology))
   );
 
@@ -50,7 +50,7 @@ export default function ProjectsTemplate() {
     return acc;
   }, {} as Record<string, string>);
   const [filterState, setFilterState] = useState(initialFilterState);
-  const filtersKeys = filters.map(({ key }) => key as keyof ProjectView);
+  const filtersKeys = filters.map(({ key }) => key as keyof ProjectInterface);
 
   const handleFilterChange = (label: string, value: string) => {
     setFilterState((prev) => ({
@@ -60,7 +60,7 @@ export default function ProjectsTemplate() {
   };
 
   const projectsView = useMemo(() => {
-    let filteredProjects = [...VIEW.projects];
+    let filteredProjects = [...DATA.projects];
 
     filtersKeys.forEach((key) => {
       const filterValue = filterState[key];

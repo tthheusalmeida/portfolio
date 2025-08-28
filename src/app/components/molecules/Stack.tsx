@@ -1,6 +1,6 @@
 import { mergeClassNames } from "@/utils/classNames";
 import SVGGlow from "./SVGGlow";
-import VIEW from "@/data";
+import DATA from "@/data";
 import AnimatedComponent from "./AnimatedComponent";
 
 interface StackProps {
@@ -8,7 +8,7 @@ interface StackProps {
 }
 
 export default function Stack({ className }: StackProps) {
-  const items = VIEW.stack;
+  const items = DATA.stack;
 
   return (
     <AnimatedComponent

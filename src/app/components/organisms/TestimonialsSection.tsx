@@ -1,11 +1,11 @@
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
 import Testimonial from "../molecules/Testimonial";
-import VIEW from "@/data";
+import DATA from "@/data";
 import HighlightText from "../atoms/HighlightText";
 
 export default function TestimonialsSection() {
-  const testimonials = VIEW.testimonials;
+  const testimonials = DATA.testimonials;
   return (
     <SectionTemplate className="flex flex-col items-center sm:rounded-b-2xl">
       <TitleAndSubtitleSection

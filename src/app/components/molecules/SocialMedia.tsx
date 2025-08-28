@@ -1,6 +1,6 @@
 import { mergeClassNames } from "@/utils/classNames";
 import SVGGlow from "./SVGGlow";
-import VIEW from "@/data";
+import DATA from "@/data";
 
 interface SocialMediaProps {
   svgClassName?: string;
@@ -13,7 +13,7 @@ export default function SocialMedia({
   className,
   enableGrayScale = false,
 }: SocialMediaProps) {
-  const itens = VIEW.socialMedia;
+  const itens = DATA.socialMedia;
 
   return (
     <div className={mergeClassNames("flex gap-4", className)}>

@@ -1,7 +1,7 @@
 import EducationExtraCurricular from "../molecules/EducationExperience";
 import { VscMortarBoard } from "react-icons/vsc";
 import { formatedDateMonthYear } from "@/utils/date";
-import { EducationView } from "@/data";
+import { EducationInterface } from "@/data/education";
 import AnimatedComponent from "./AnimatedComponent";
 
 export default function Education({
@@ -11,7 +11,7 @@ export default function Education({
   start,
   end,
   experiences,
-}: EducationView) {
+}: EducationInterface) {
   return (
     <AnimatedComponent
       HTMLtag="div"

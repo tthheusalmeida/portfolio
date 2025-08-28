@@ -2,14 +2,14 @@ import ProjectsPreview from "./ProjectsPreview";
 import RouterButton from "../atoms/RouterButton";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
-import VIEW from "@/data";
+import DATA from "@/data";
 import { FaArrowRight } from "react-icons/fa6";
 import HighlightText from "../atoms/HighlightText";
 
 const MAX_CARDS = 6;
 
 export default function ProjectsSection() {
-  const projects = VIEW.projects;
+  const projects = DATA.projects;
 
   return (
     <SectionTemplate className="flex flex-col items-center sm:rounded-t-2xl">
