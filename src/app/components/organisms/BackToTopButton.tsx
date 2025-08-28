@@ -8,7 +8,7 @@ import { useTabs } from "@/contexts/TabsContext";
 
 export default function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
-  const { setActiveTab } = useTabs();
+  const { setActiveTab, setIsOnClickScrolling } = useTabs();
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -25,7 +25,10 @@ export default function BackToTopButton() {
 
   const scrollToTop = () => {
     setActiveTab(NAVIGATION_TAB_INDEX.HOME);
+    setIsOnClickScrolling(true);
     scrollIntoSection(NAVIGATION_TAB_INDEX.HOME);
+
+    setTimeout(() => setIsOnClickScrolling(false), 1200);
   };
 
   return (

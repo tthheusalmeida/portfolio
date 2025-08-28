@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { mergeClassNames } from "@/utils/classNames";
 import { useTabs } from "@/contexts/TabsContext";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export const NAVIGATION_TAB_INDEX: Record<string, string> = {
   HOME: "home",
@@ -36,17 +37,37 @@ export default function NavigationTabs({
   className,
   isWithinMenu = false,
 }: NavigationTabsProps) {
-  const { activeTab, setActiveTab } = useTabs();
+  const { activeTab, isOnClickScrolling, setActiveTab, setIsOnClickScrolling } =
+    useTabs();
+  const tabsRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [underlineProps, setUnderlineProps] = useState({ left: 0, width: 0 });
+
   const pathname = usePathname();
 
   if (pathname !== "/") return null;
 
-  const tabs = isWithinMenu ? tabsList.slice(1) : tabsList;
+  const tabs = useMemo(() => {
+    return isWithinMenu ? tabsList.slice(1) : tabsList;
+  }, [isWithinMenu]);
 
   const handleClick = (id: string) => {
     setActiveTab(id);
+    setIsOnClickScrolling(true);
     scrollIntoSection(id);
+
+    setTimeout(() => setIsOnClickScrolling(false), 1200);
   };
+
+  useEffect(() => {
+    const index = tabs.findIndex((t) => t.id === activeTab);
+    const currentButton = tabsRefs.current[index];
+    if (currentButton) {
+      setUnderlineProps({
+        left: currentButton.offsetLeft,
+        width: currentButton.offsetWidth,
+      });
+    }
+  }, [activeTab, tabs]);
 
   return (
     <nav
@@ -56,9 +77,12 @@ export default function NavigationTabs({
         className
       )}
     >
-      {tabs.map((tab) => (
+      {tabs.map((tab, idx) => (
         <button
           key={tab.id}
+          ref={(el) => {
+            tabsRefs.current[idx] = el;
+          }}
           onClick={(e) => {
             e.preventDefault();
             handleClick(tab.id);
@@ -69,19 +93,20 @@ export default function NavigationTabs({
               ? "text-[var(--color-foreground)]"
               : "text-[var(--color-foreground)]/40",
             isWithinMenu
-              ? "text-xl text-[var(--color-foreground)] hover:text-[var(--color-foreground)]/40 mr-6"
+              ? "text-xl mr-6 hover:text-[var(--color-foreground)]/40"
               : ""
           )}
         >
           {tab.label}
-          {activeTab === tab.id && !isWithinMenu && (
-            <motion.div
-              layoutId="underline"
-              className="absolute left-0 right-0 -bottom-0.5 h-[2px] bg-[var(--action)] rounded"
-            />
-          )}
         </button>
       ))}
+      {!isWithinMenu && (
+        <motion.div
+          className="absolute -bottom-0.5 h-[2px] bg-[var(--action)] rounded"
+          animate={{ left: underlineProps.left, width: underlineProps.width }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        />
+      )}
     </nav>
   );
 }
