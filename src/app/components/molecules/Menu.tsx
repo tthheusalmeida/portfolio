@@ -7,6 +7,7 @@ import MenuItem from "./MenuItem";
 import { useRouter } from "next/navigation";
 import FooterLabels from "./FooterLabels";
 import { motion, AnimatePresence } from "motion/react";
+import NavigationTabs from "../organisms/NavigationTabs";
 
 const LazyModal = lazy(() => import("./Modal"));
 
@@ -18,7 +19,7 @@ export default function Menu() {
 
   const items = useMemo(
     () => [
-      { label: "home", path: "/" },
+      { label: "home", path: "/", navigation: <NavigationTabs isWithinMenu /> },
       { label: "projects", path: "/projects" },
     ],
     []
@@ -87,13 +88,15 @@ export default function Menu() {
         >
           <div className="h-full w-full flex items-center">
             <ul className="flex flex-col items-end gap-10 max-w-[80vw] w-full">
-              {items.map(({ label, path }, index) => (
+              {items.map(({ label, path, navigation }, index) => (
                 <li
                   className="w-full"
                   key={index}
                   onClick={() => handleItemClick(path)}
                 >
                   <MenuItem path={path} label={label} />
+
+                  <div className="py-4">{navigation}</div>
                 </li>
               ))}
             </ul>

@@ -18,7 +18,7 @@ export const scrollIntoSection = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 };
 
-const tabs = [
+const tabsList = [
   { id: NAVIGATION_TAB_INDEX.HOME, label: "Home" },
   { id: NAVIGATION_TAB_INDEX.PROJECTS, label: "Projects" },
   { id: NAVIGATION_TAB_INDEX.EXPERIENCECS, label: "Experiences" },
@@ -29,13 +29,19 @@ const tabs = [
 
 interface NavigationTabsProps {
   className?: string;
+  isWithinMenu?: boolean;
 }
 
-export default function NavigationTabs({ className }: NavigationTabsProps) {
+export default function NavigationTabs({
+  className,
+  isWithinMenu = false,
+}: NavigationTabsProps) {
   const [activeTab, setActiveTab] = useState<string>("home");
   const pathname = usePathname();
 
   if (pathname !== "/") return null;
+
+  const tabs = isWithinMenu ? tabsList.slice(1) : tabsList;
 
   const handleClick = (id: string) => {
     setActiveTab(id);
@@ -43,7 +49,13 @@ export default function NavigationTabs({ className }: NavigationTabsProps) {
   };
 
   return (
-    <nav className={mergeClassNames("flex space-x-6 relative", className)}>
+    <nav
+      className={mergeClassNames(
+        "flex space-x-6 relative",
+        isWithinMenu ? "flex-col items-end gap-2" : "flex-row",
+        className
+      )}
+    >
       {tabs.map((tab) => (
         <button
           key={tab.id}
@@ -51,14 +63,18 @@ export default function NavigationTabs({ className }: NavigationTabsProps) {
             e.preventDefault();
             handleClick(tab.id);
           }}
-          className={`relative pb-1 transition-colors ${
+          className={mergeClassNames(
+            "relative pb-1 transition-colors",
             activeTab === tab.id
               ? "text-[var(--color-foreground)]"
-              : "text-[var(--color-foreground)]/40"
-          }`}
+              : "text-[var(--color-foreground)]/40",
+            isWithinMenu
+              ? "text-xl text-[var(--color-foreground)] hover:text-[var(--color-foreground)]/40 mr-6"
+              : ""
+          )}
         >
           {tab.label}
-          {activeTab === tab.id && (
+          {activeTab === tab.id && !isWithinMenu && (
             <motion.div
               layoutId="underline"
               className="absolute left-0 right-0 -bottom-0.5 h-[2px] bg-[var(--action)] rounded"
