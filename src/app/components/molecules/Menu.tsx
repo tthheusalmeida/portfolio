@@ -4,7 +4,7 @@ import { useState, useEffect, lazy, Suspense, useMemo } from "react";
 import Button from "../atoms/Button";
 import { HiMenuAlt4 } from "react-icons/hi";
 import MenuItem from "./MenuItem";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import FooterLabels from "./FooterLabels";
 import { motion, AnimatePresence } from "motion/react";
 import NavigationTabs from "../organisms/NavigationTabs";
@@ -15,7 +15,9 @@ export default function Menu() {
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [pendingPath, setPendingPath] = useState<string | null>(null);
+
   const router = useRouter();
+  const pathname = usePathname();
 
   const items = useMemo(
     () => [
@@ -38,7 +40,9 @@ export default function Menu() {
   };
 
   const handleItemClick = (path: string) => {
-    setPendingPath(path);
+    if (path !== pathname) {
+      setPendingPath(path);
+    }
     setIsOpen(false);
   };
 
