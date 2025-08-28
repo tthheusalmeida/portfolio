@@ -37,26 +37,14 @@ export default function NavigationTabs({
   className,
   isWithinMenu = false,
 }: NavigationTabsProps) {
-  const { activeTab, isOnClickScrolling, setActiveTab, setIsOnClickScrolling } =
-    useTabs();
+  const { activeTab, setActiveTab, setIsOnClickScrolling } = useTabs();
   const tabsRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [underlineProps, setUnderlineProps] = useState({ left: 0, width: 0 });
 
   const pathname = usePathname();
-
-  if (pathname !== "/") return null;
-
   const tabs = useMemo(() => {
     return isWithinMenu ? tabsList.slice(1) : tabsList;
   }, [isWithinMenu]);
-
-  const handleClick = (id: string) => {
-    setActiveTab(id);
-    setIsOnClickScrolling(true);
-    scrollIntoSection(id);
-
-    setTimeout(() => setIsOnClickScrolling(false), 1200);
-  };
 
   useEffect(() => {
     const index = tabs.findIndex((t) => t.id === activeTab);
@@ -68,6 +56,16 @@ export default function NavigationTabs({
       });
     }
   }, [activeTab, tabs]);
+
+  if (pathname !== "/") return null;
+
+  const handleClick = (id: string) => {
+    setActiveTab(id);
+    setIsOnClickScrolling(true);
+    scrollIntoSection(id);
+
+    setTimeout(() => setIsOnClickScrolling(false), 1200);
+  };
 
   return (
     <nav

@@ -7,6 +7,8 @@ import { NAVIGATION_TAB_INDEX } from "./NavigationTabs";
 export default function ScrollSpy() {
   const { isOnClickScrolling, setActiveTab } = useTabs();
 
+  const isScrolling = Boolean(isOnClickScrolling);
+
   useEffect(() => {
     const ids = Object.values(NAVIGATION_TAB_INDEX);
     const sections = ids
@@ -14,8 +16,7 @@ export default function ScrollSpy() {
       .filter(Boolean) as HTMLElement[];
 
     if (!sections.length) return;
-
-    if (isOnClickScrolling) return;
+    if (isScrolling) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -35,7 +36,7 @@ export default function ScrollSpy() {
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
-  }, [!!isOnClickScrolling, setActiveTab]);
+  }, [isScrolling, setActiveTab]);
 
   return null;
 }
