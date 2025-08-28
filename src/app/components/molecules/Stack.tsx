@@ -1,6 +1,6 @@
 import { mergeClassNames } from "@/utils/classNames";
 import SVGGlow from "./SVGGlow";
-import VIEW from "@/data/view";
+import VIEW from "@/data";
 import AnimatedComponent from "./AnimatedComponent";
 
 interface StackProps {

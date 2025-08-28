@@ -1,7 +1,7 @@
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
 import Testimonial from "../molecules/Testimonial";
-import VIEW from "@/data/view";
+import VIEW from "@/data";
 import HighlightText from "../atoms/HighlightText";
 
 export default function TestimonialsSection() {

@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "./Carousel";
 import SoftSkill from "../atoms/SoftSkill";
-import VIEW from "@/data/view";
+import VIEW from "@/data";
 
 export default function SoftSkillsCarousel() {
   const listItems = VIEW.softSkills;

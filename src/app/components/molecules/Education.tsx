@@ -1,7 +1,7 @@
 import EducationExtraCurricular from "../molecules/EducationExperience";
 import { VscMortarBoard } from "react-icons/vsc";
 import { formatedDateMonthYear } from "@/utils/date";
-import { EducationView } from "@/data/view";
+import { EducationView } from "@/data";
 import AnimatedComponent from "./AnimatedComponent";
 
 export default function Education({

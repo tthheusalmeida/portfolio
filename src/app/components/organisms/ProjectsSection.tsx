@@ -2,7 +2,7 @@ import ProjectsPreview from "./ProjectsPreview";
 import RouterButton from "../atoms/RouterButton";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
-import VIEW from "@/data/view";
+import VIEW from "@/data";
 import { FaArrowRight } from "react-icons/fa6";
 import HighlightText from "../atoms/HighlightText";
 

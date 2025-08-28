@@ -2,7 +2,7 @@ import Timeline, { TimelineItem } from "./Timeline";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
 import Balloon from "./Balloon";
-import VIEW from "@/data/view";
+import VIEW from "@/data";
 import HighlightText from "../atoms/HighlightText";
 
 export default function Experiences() {

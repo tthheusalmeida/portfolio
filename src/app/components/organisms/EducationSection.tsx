@@ -2,7 +2,7 @@ import SectionTemplate from "@/templates/SectionTemplate";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import HighlightText from "../atoms/HighlightText";
 import Education from "../molecules/Education";
-import VIEW from "@/data/view";
+import VIEW from "@/data";
 
 export default function EducationSection() {
   const educations = VIEW.educations;
