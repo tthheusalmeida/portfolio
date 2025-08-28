@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { mergeClassNames } from "@/utils/classNames";
 import { useTabs } from "@/contexts/TabsContext";
-import { useEffect } from "react";
 
 export const NAVIGATION_TAB_INDEX: Record<string, string> = {
   HOME: "home",
