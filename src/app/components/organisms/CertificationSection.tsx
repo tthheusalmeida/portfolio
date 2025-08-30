@@ -14,7 +14,7 @@ export default function CertificationSection() {
         className="flex flex-col items-center justify-center"
       >
         <TitleAndSubtitleSection
-          title="Certification"
+          title="Certifications"
           subtitle={
             <>
               Milestones that validate my dedication to{" "}

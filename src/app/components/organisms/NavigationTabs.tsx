@@ -25,7 +25,7 @@ const tabsList = [
   { id: NAVIGATION_TAB_INDEX.PROJECTS, label: "Projects" },
   { id: NAVIGATION_TAB_INDEX.EXPERIENCES, label: "Experiences" },
   { id: NAVIGATION_TAB_INDEX.EDUCATION, label: "Education" },
-  { id: NAVIGATION_TAB_INDEX.CERTIFICATION, label: "Certification" },
+  { id: NAVIGATION_TAB_INDEX.CERTIFICATION, label: "Certifications" },
   { id: NAVIGATION_TAB_INDEX.TESTIMONIALS, label: "Testimonials" },
   { id: NAVIGATION_TAB_INDEX.CONTACT, label: "Contact" },
 ];

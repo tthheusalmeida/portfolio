@@ -33,7 +33,7 @@ export default function Certification({
           />
         )}
         <div className="flex gap-2">
-          <div className="flex flex-col items-baseline text-xs">
+          <div className="flex flex-col items-baseline text-xs sm:text-sm">
             <h2 className="text-base font-semibold">{title}</h2>
 
             <div className="flex items-center gap-2 pb-4">

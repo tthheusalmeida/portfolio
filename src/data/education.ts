@@ -2,6 +2,7 @@ export interface EducationUniversity {
   name: string;
   originalName: string;
   abbreviation: string;
+  image: string;
 }
 
 export interface EducationExperience {
@@ -22,12 +23,14 @@ export interface EducationInterface {
 
 export const educations = [
   {
-    title: "Bachelor of Computer Science",
-    abbreviation: "BSc",
+    title: "Bachelor of Science in Computer Science",
+    abbreviation: "B.Sc.",
     university: {
       name: "Federal University of Ouro Preto",
       originalName: "Universidade Federal de Ouro Preto",
       abbreviation: "UFOP",
+      image:
+        "https://media.licdn.com/dms/image/v2/C4D0BAQFFkWX04OZBbw/company-logo_100_100/company-logo_100_100/0/1630541326822/universidade_federal_de_ouro_preto_logo?e=1759363200&v=beta&t=ZW_qqv3bXj-szlM_ZuZzdlW-x0TWK1kAyq5qEVnf5gY",
     },
     start: "01/08/2018",
     end: "01/04/2025",
@@ -53,4 +56,3 @@ export const educations = [
     ],
   },
 ];
-

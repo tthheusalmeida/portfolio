@@ -1,5 +1,5 @@
 import { getCompactDuration, formatedDateMonthYear } from "@/utils/date";
-import { BiBriefcase } from "react-icons/bi";
+import { GoMilestone } from "react-icons/go";
 import AnimatedComponent from "./AnimatedComponent";
 import { mergeClassNames } from "@/utils/classNames";
 
@@ -24,19 +24,24 @@ export default function EducationExtraCurricular({
     <AnimatedComponent
       HTMLtag="div"
       className={mergeClassNames(
-        "text-md border-l-2 border-[var(--action)] ml-8 pl-4 pb-6",
+        "text-base sm:text-lg border-l-2 border-[var(--action)] ml-7 sm:ml-18 pl-4 pb-6",
         className
       )}
     >
       <div className="sm:mb-1 flex items-start sm:items-center gap-2">
-        <BiBriefcase
+        <GoMilestone
+          size={16}
+          className="sm:hidden inline text-[var(--action)] w-5 h-5 mt-1 shrink-0"
+        />
+
+        <GoMilestone
           size={18}
-          className="text-[var(--action)] w-5 h-5 shrink-0 mt-1 sm:mt-0"
+          className="sm:inline hidden text-[var(--action)] w-5 h-5 mt-1 shrink-0"
         />
         <h3 className="font-semibold">{role}</h3>
       </div>
 
-      <div className="text-[var(--color-foreground)]/40">
+      <div className="text-[var(--color-foreground)]/40 text-xs sm:text-base">
         <p className="flex items-center gap-2 py-1">
           <span>{university}</span>
 
@@ -49,7 +54,9 @@ export default function EducationExtraCurricular({
         </p>
       </div>
 
-      <p className="mt-2 leading-relaxed text-gray-200">{description}</p>
+      <p className="mt-2 leading-relaxed text-gray-200 text-xs sm:text-base">
+        {description}
+      </p>
     </AnimatedComponent>
   );
 }

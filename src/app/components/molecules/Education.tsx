@@ -1,8 +1,11 @@
-import EducationExtraCurricular from "../molecules/EducationExperience";
-import { VscMortarBoard } from "react-icons/vsc";
 import { formatedDateMonthYear } from "@/utils/date";
 import { EducationInterface } from "@/data/education";
+
+import Image from "next/image";
 import AnimatedComponent from "./AnimatedComponent";
+import EducationExtraCurricular from "../molecules/EducationExperience";
+import { mergeClassNames } from "@/utils/classNames";
+import { VscMortarBoard } from "react-icons/vsc";
 
 export default function Education({
   title,
@@ -22,20 +25,34 @@ export default function Education({
         HTMLtag="div"
         className="flex flex-col sm:flex-row justify-between items-start pb-2 mb-4"
       >
-        <div className="flex gap-2">
-          <VscMortarBoard size={24} className="mt-1 text-[var(--action)]" />
-          <div className="flex flex-col items-baseline">
+        <div className="flex flex-row gap-4 justify-between items-start pb-2 mb-4">
+          {university.image && (
+            <Image
+              src={university.image}
+              width={56}
+              height={56}
+              alt={`logo from ${university.name}`}
+              className={mergeClassNames("rounded-full sm:inline-block")}
+            />
+          )}
+
+          <div className="flex flex-col items-baseline text-xs sm:text-base">
             <h2 className="text-xl font-semibold">
+              <VscMortarBoard
+                size={24}
+                className="text-[var(--action)] inline mr-2"
+              />
               {title}
               <span className="font-bold"> ({abbreviation})</span>
             </h2>
+
             <p className="text-[var(--color-foreground)]/40">
               {university.name} ({university.abbreviation})
             </p>
             <p className="text-[var(--color-foreground)]/40 italic">
               {university.originalName}
             </p>
-            <p className="text-[var(--color-foreground)]/40 text-sm mt-1">
+            <p className="text-[var(--color-foreground)]/40 mt-1">
               {formatedDateMonthYear(start)} - {formatedDateMonthYear(end)}
             </p>
           </div>
