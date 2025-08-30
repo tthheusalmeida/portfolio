@@ -37,7 +37,7 @@ export default function Education({
           )}
 
           <div className="flex flex-col items-baseline text-xs sm:text-base">
-            <h2 className="text-xl font-semibold">
+            <h2 className="text-lg sm:text-xl font-semibold">
               <VscMortarBoard
                 size={24}
                 className="text-[var(--action)] inline mr-2"

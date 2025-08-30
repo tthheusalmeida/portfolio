@@ -9,7 +9,7 @@ interface SubtitleProps {
 export default function Subtitle({ children, className }: SubtitleProps) {
   return (
     <AnimatedComponent
-      className={mergeClassNames("text-base font-normal", className)}
+      className={mergeClassNames("text-xs sm:text-base font-normal", className)}
       HTMLtag="h2"
     >
       {children}

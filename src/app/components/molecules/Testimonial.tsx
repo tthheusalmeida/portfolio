@@ -44,7 +44,7 @@ export default function Testimonial({
             className="inline-block sm:hidden rotate-180 text-[var(--action)] mr-2"
           />
 
-          <p className="font-normal text-base pt-4 sm:p-0">
+          <p className="font-normal text-xs sm:text-base pt-4 sm:p-0">
             <BiSolidQuoteRight
               size={20}
               className="hidden sm:inline-block rotate-180 text-[var(--action)] mr-2"

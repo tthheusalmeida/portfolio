@@ -61,7 +61,7 @@ export default function Project({
         >
           <div>
             <div className="flex justify-between items-start">
-              <h3 className="text-lg sm:text-2xl text-[var(--action)] font-semibold sm:font-bold max-w-[65%]">
+              <h3 className="text-base sm:text-lg text-[var(--action)] font-semibold sm:font-bold max-w-[65%]">
                 {title}
               </h3>
             </div>

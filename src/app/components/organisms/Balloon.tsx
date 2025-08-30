@@ -73,7 +73,7 @@ export default function Balloon({
         )}
       </div>
 
-      <ul className="mt-4! text-base">
+      <ul className="mt-4! text-xs sm:text-lg">
         <li className="font-light">
           <p>{description}</p>
 
