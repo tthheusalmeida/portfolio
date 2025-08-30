@@ -9,8 +9,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 export const NAVIGATION_TAB_INDEX: Record<string, string> = {
   HOME: "home",
   PROJECTS: "projects",
-  EXPERIENCECS: "experiences",
+  EXPERIENCES: "experiences",
   EDUCATION: "education",
+  CERTIFICATION: "certification",
   TESTIMONIALS: "testimonials",
   CONTACT: "contact",
 };
@@ -22,8 +23,9 @@ export const scrollIntoSection = (id: string) => {
 const tabsList = [
   { id: NAVIGATION_TAB_INDEX.HOME, label: "Home" },
   { id: NAVIGATION_TAB_INDEX.PROJECTS, label: "Projects" },
-  { id: NAVIGATION_TAB_INDEX.EXPERIENCECS, label: "Experiences" },
+  { id: NAVIGATION_TAB_INDEX.EXPERIENCES, label: "Experiences" },
   { id: NAVIGATION_TAB_INDEX.EDUCATION, label: "Education" },
+  { id: NAVIGATION_TAB_INDEX.CERTIFICATION, label: "Certification" },
   { id: NAVIGATION_TAB_INDEX.TESTIMONIALS, label: "Testimonials" },
   { id: NAVIGATION_TAB_INDEX.CONTACT, label: "Contact" },
 ];
