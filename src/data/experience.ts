@@ -31,7 +31,7 @@ export const experiences: ExperienceInterface[] = [
       "Introduced generative AI features, reducing manual client work by up to 60%",
       "Migrated critical routes from Python 2 to Python 3, ensuring long-term stability",
       "Refactored legacy components into Vue.js, resolving memory leaks and improving load times",
-      "Implemented Google reCAPTCHA, strengthening security",
+      "Implemented XSS mitigation by blocking malicious scripts, protecting users and improving system security.",
     ],
     start: "01/01/2023",
     end: "01/04/2025",
