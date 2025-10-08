@@ -8,7 +8,7 @@ export interface TestimonialInterface {
 export const testimonials = [
   {
     name: "João Marcos",
-    src: "https://media.licdn.com/dms/image/v2/D4D03AQHe_O4gnMONaw/profile-displayphoto-scale_100_100/B4DZgLS3T3H0Ao-/0/1752536152657?e=1758153600&v=beta&t=OkJytMvSNR6967L1X8TlGZUIVccexmGCaU4_dIrepRM",
+    src: "https://media.licdn.com/dms/image/v2/D4D03AQHe_O4gnMONaw/profile-displayphoto-scale_100_100/B4DZgLS3T3H0Ao-/0/1752536152657?e=1762992000&v=beta&t=iXggon0I45V1Hu_T_oOBF9COWHYyeKeJ7yPUq7uEdAA",
     role: "Front-end Engineering | Tech Lead | Chapter Lead",
     descriptions: `I’ve had the pleasure of witnessing Matheus’ professional journey since 
       his early days in the tech field, and I’ve always been impressed by how quickly and 
@@ -27,7 +27,7 @@ export const testimonials = [
   },
   {
     name: "Fábio Gomide",
-    src: "https://media.licdn.com/dms/image/v2/D4D03AQFYQ_5UP59Mhw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1721774780020?e=1756944000&v=beta&t=vARqWB5IgM5KntMPOnriEGJjlVpur4HmO5z181yf5ws",
+    src: "https://media.licdn.com/dms/image/v2/D4D03AQFgN4M03tPHKQ/profile-displayphoto-scale_100_100/B4DZlTBGPTIEAc-/0/1758034441184?e=1762992000&v=beta&t=McRSme-0Prfp_Vk4x5GjAKDI7bjAkJVWY_llgB06CRY",
     role: "Senior Product Designer",
     descriptions: `Working with Matheus was an enriching experience.
       Since his very first professional role, his eagerness to learn 
@@ -44,7 +44,7 @@ export const testimonials = [
   },
   {
     name: "Gabriel Caetano Araújo",
-    src: "https://media.licdn.com/dms/image/v2/D4D03AQExvcsGhgUcrA/profile-displayphoto-shrink_100_100/B4DZYabxALHAAU-/0/1744200208928?e=1756944000&v=beta&t=_T10Q5IgXNwIFI78NvmdeDt1yMJD41xUACSFMOZhsn8",
+    src: "https://media.licdn.com/dms/image/v2/D4D03AQExvcsGhgUcrA/profile-displayphoto-shrink_100_100/B4DZYabxALHAAU-/0/1744200208928?e=1762992000&v=beta&t=5O6y0nikJxi4MBfDldVzzOgJeO5I7w7pA4vUPwU0YYY",
     role: "Product Tech Lead",
     descriptions: `Matheus is one of those people who naturally elevate the environment 
       just by being around. Whether solving a problem or helping someone along the way, he 
@@ -57,7 +57,7 @@ export const testimonials = [
   },
   {
     name: "Lucas Urzedo",
-    src: "https://media.licdn.com/dms/image/v2/C4E03AQFSVYpwxUc_VQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1622288701988?e=1756944000&v=beta&t=tUJF6bprsMhWj8CUInijfVi7iqERI-QWewGJiAUlzCM",
+    src: "https://media.licdn.com/dms/image/v2/C4E03AQFSVYpwxUc_VQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1622288701988?e=1762992000&v=beta&t=Zd0ylRNr02zQGaapImosNPHTqPzs1T3MNnSqK2Gzvbc",
     role: "DataOps Engineer",
     descriptions: `Matheus has excellent technical skills, the ability to solve complex
       problems, great strategic vision and leadership. Also, has qualities as a person, 
@@ -69,7 +69,7 @@ export const testimonials = [
   },
   {
     name: "Levi Frota",
-    src: "https://media.licdn.com/dms/image/v2/D4D03AQGT_rpAqZTC_w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1701872417783?e=2147483647&v=beta&t=BeDd6sJkqbDtvLhf6dtp6Zo-rQ9HKb03y6n-JDa5N9s",
+    src: "https://media.licdn.com/dms/image/v2/D4D03AQGT_rpAqZTC_w/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1701872417783?e=1762992000&v=beta&t=x34Dtdbb4dNgNKqJ5AjCIzt4TIWcQtHYRCtSBUCBvto",
     role: "Front-End Developer",
     descriptions: `Matheus is one of the greatest developers I have worked with. He has great tech 
       skills and is a team player, helping his coworkers and contributing to a better workplace. Also, 
@@ -79,7 +79,7 @@ export const testimonials = [
   },
   {
     name: "Caio Costa",
-    src: "https://media.licdn.com/dms/image/v2/C4E03AQE9lA1rTv5BSg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1583380974056?e=2147483647&v=beta&t=k0UssbUfQmtGmi_h3jJvurV89RoiTADKUNoalopcja0",
+    src: "https://media.licdn.com/dms/image/v2/C4E03AQE9lA1rTv5BSg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1583380974046?e=1762992000&v=beta&t=-4zaysUrDf-rFP4dQtLYK0vCYwyeSBRo604-1atOrLI",
     role: "Data Engineer",
     descriptions: `I had the pleasure of studying alongside Matheus. From the beginning, it was clear 
       that he stood out for his technical skills, critical thinking, and collaborative spirit. He 
