@@ -13,12 +13,31 @@ export interface ExperienceInterface {
   description: string;
   achievements: Array<string>;
   start: string;
-  end: string;
-  src: string;
-  alt: string;
+  end: string | null;
+  src: string | null;
+  alt: string | null;
 }
 
 export const experiences: ExperienceInterface[] = [
+  {
+    name: "MelhorPreço.app",
+    logo: "/work/melhorprecoapp.png",
+    role: "FrontEnd Engineer",
+    type: "full-time",
+    description:
+      "Evolved the shared lists app, focusing on usability, performance, and overall system stability.",
+    achievements: [
+      "Improved navigation efficiency and smoother app performance",
+      "Enhanced user experience, with more intuitive and visually consistent interaction",
+      "Boosted stability and responsiveness, reducing network overhead",
+      "Strengthened collaboration among users through the new shared lists features",
+      "Implemented cache-control headers on the backend to reduce API response time and enhance performance",
+    ],
+    start: "01/04/2025",
+    end: null,
+    src: null,
+    alt: null,
+  },
   {
     name: "Blip",
     logo: "/work/blip.svg",

@@ -23,7 +23,7 @@ export default function TimelineDate({
         className
       )}
     >
-      {`${formatedDate(start)} - ${formatedDate(end)}`}
+      {`${formatedDate(start)} - ${end ? formatedDate(end) : "Present"}`}
     </span>
   );
 }

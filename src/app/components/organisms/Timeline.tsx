@@ -62,20 +62,22 @@ export default function Timeline({ items }: TimelineProps) {
                       className="sm:group-hover:rotate-6 sm:group-hover:translate-x-6 rotate-0 transition-all duration-400 mb-2 mr-3 sm:mb-0 sm:mr-0"
                     />
 
-                    <div
-                      className={mergeClassNames(
-                        "w-[520px] h-[348px] hidden sm:inline-block absolute -top-4 left-6 z-[-1]",
-                        "opacity-0 invisible transition-all duration-300 rotate-90 scale-10",
-                        "group-hover:visible group-hover:opacity-50 group-hover:rotate-6 group-hover:scale-100 ease-out bg-black"
-                      )}
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                    {image.src && (
+                      <div
+                        className={mergeClassNames(
+                          "w-[520px] h-[348px] hidden sm:inline-block absolute -top-4 left-6 z-[-1]",
+                          "opacity-0 invisible transition-all duration-300 rotate-90 scale-10",
+                          "group-hover:visible group-hover:opacity-50 group-hover:rotate-6 group-hover:scale-100 ease-out bg-black"
+                        )}
+                      >
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
                   </AnimatedComponent>
                 </>
               ) : (
@@ -97,20 +99,22 @@ export default function Timeline({ items }: TimelineProps) {
                       className="sm:group-hover:-rotate-6 sm:group-hover:-translate-x-6 rotate-0 transition-all duration-400 mb-2 mr-3 sm:mb-0 sm:mr-0"
                     />
 
-                    <div
-                      className={mergeClassNames(
-                        "w-[520px] h-[348px] hidden sm:inline-block absolute -top-4 left-10 z-[-1]",
-                        "opacity-0 invisible transition-all duration-300 -rotate-90 scale-10",
-                        "group-hover:visible group-hover:opacity-50 group-hover:-rotate-6 group-hover:scale-100 ease-out bg-black"
-                      )}
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                    {image.src && (
+                      <div
+                        className={mergeClassNames(
+                          "w-[520px] h-[348px] hidden sm:inline-block absolute -top-4 left-10 z-[-1]",
+                          "opacity-0 invisible transition-all duration-300 -rotate-90 scale-10",
+                          "group-hover:visible group-hover:opacity-50 group-hover:-rotate-6 group-hover:scale-100 ease-out bg-black"
+                        )}
+                      >
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
                   </AnimatedComponent>
                 </>
               )}
