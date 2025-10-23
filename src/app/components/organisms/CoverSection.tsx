@@ -37,6 +37,7 @@ export default function CoverSection() {
                   width={556}
                   height={500}
                   priority
+                  fetchPriority="high"
                   placeholder="empty"
                   alt="matheus, focused programmer wearing a hoodie and headset, working on a laptop."
                   className="relative block z-10"
@@ -69,6 +70,7 @@ export default function CoverSection() {
                 width={556}
                 height={500}
                 priority
+                fetchPriority="high"
                 placeholder="empty"
                 alt="matheus, focused programmer wearing a hoodie and headset, working on a laptop."
                 className="relative block z-10"
