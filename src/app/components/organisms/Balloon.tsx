@@ -12,7 +12,7 @@ interface BaloonProps {
   description: string;
   achievements: Array<string>;
   dateStart?: string;
-  dateEnd?: string;
+  dateEnd?: string | null;
 }
 
 export default function Balloon({
