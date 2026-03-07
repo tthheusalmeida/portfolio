@@ -22,8 +22,8 @@ function validateMessage(message: string) {
   return message.trim().length < 4
     ? "Message must be at least 4 characters. (Hey!)"
     : message.trim().length > 300
-    ? "Message must have a maximum of 300 characters. "
-    : "";
+      ? "Message must have a maximum of 300 characters. "
+      : "";
 }
 
 export default function Form() {
@@ -103,7 +103,15 @@ export default function Form() {
 
     setLoading(true);
     try {
-      const result = await sendEmail({ name, email, message });
+      const mailPayload = {
+        name,
+        message,
+        type: "portfolio_job_offer",
+        from: email,
+        to: "dev.almeida.matheus@gmail.com",
+      };
+
+      const result = await sendEmail(mailPayload);
 
       if (result.success) {
         Toast.success("Got it! We’ll get back to you soon.");
@@ -118,7 +126,7 @@ export default function Form() {
       Toast.error(
         error instanceof Error
           ? error.message
-          : "Unexpected error. Please try again."
+          : "Unexpected error. Please try again.",
       );
     } finally {
       setLoading(false);
