@@ -44,7 +44,7 @@ export default function TestimonialsSection() {
           >
             <span className="flex items-center gap-1">
               Check it out here
-              <FaArrowRight />
+              <FaArrowRight className="animate-arrow-bounce" size={18} />
             </span>
           </a>
         </Button>
