@@ -10,7 +10,7 @@ export interface ExperienceInterface {
   logo: string;
   role: string;
   type: ExperienceType;
-  description: string;
+  description: string | null;
   achievements: Array<string>;
   start: string;
   end: string | null;
@@ -19,6 +19,37 @@ export interface ExperienceInterface {
 }
 
 export const experiences: ExperienceInterface[] = [
+  {
+    name: "MelhorPreço.app",
+    logo: "/work/melhorprecoapp.png",
+    role: "FrontEnd Engineer",
+    type: "full-time",
+    description: null,
+    achievements: [],
+    start: "01/03/2026",
+    end: null,
+    src: null,
+    alt: null,
+  },
+  {
+    name: "Convenia",
+    logo: "/work/convenia.png",
+    role: "Front-End Developer",
+    type: "full-time",
+    description:
+      "Supported the evolution of the HR platform by maintaining core features, resolving technical debt, and modernizing the front-end architecture through Vue.js upgrades and AI-assisted development.",
+    achievements: [
+      "Migrated legacy components from Vue 2 to Vue 3, improving maintainability and long-term scalability",
+      "Used AI-assisted workflows to accelerate component updates and development tasks",
+      "Acted in product sustainment, resolving production issues and handling support tickets",
+      "Fixed critical bugs and improved overall system reliability",
+      "Addressed technical debt to stabilize the codebase and improve development velocity",
+    ],
+    start: "01/12/2025",
+    end: "01/03/2026",
+    src: null,
+    alt: null,
+  },
   {
     name: "MelhorPreço.app",
     logo: "/work/melhorprecoapp.png",
@@ -34,7 +65,7 @@ export const experiences: ExperienceInterface[] = [
       "Implemented cache-control headers on the backend to reduce API response time and enhance performance",
     ],
     start: "01/04/2025",
-    end: null,
+    end: "01/12/2025",
     src: null,
     alt: null,
   },
