@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { mergeClassNames } from "@/utils/classNames";
 import { useTabs } from "@/contexts/TabsContext";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { MdFiberNew } from "react-icons/md";
 
 export const NAVIGATION_TAB_INDEX: Record<string, string> = {
   HOME: "home",
@@ -14,6 +15,7 @@ export const NAVIGATION_TAB_INDEX: Record<string, string> = {
   CERTIFICATION: "certification",
   TESTIMONIALS: "testimonials",
   CONTACT: "contact",
+  BLOG: "blog",
 };
 
 export const scrollIntoSection = (id: string) => {
@@ -28,6 +30,12 @@ const tabsList = [
   { id: NAVIGATION_TAB_INDEX.CERTIFICATION, label: "Certifications" },
   { id: NAVIGATION_TAB_INDEX.TESTIMONIALS, label: "Testimonials" },
   { id: NAVIGATION_TAB_INDEX.CONTACT, label: "Contact" },
+  {
+    id: NAVIGATION_TAB_INDEX.BLOG,
+    label: "Blog",
+    href: "https://tthheusalmeida.github.io/",
+    endDate: new Date(2026, 12, 31),
+  },
 ];
 
 interface NavigationTabsProps {
@@ -69,12 +77,20 @@ export default function NavigationTabs({
     setTimeout(() => setIsOnClickScrolling(false), 1200);
   };
 
+  const hasTimePassed = (date?: Date) => {
+    if (!date) {
+      return true;
+    }
+
+    return new Date().getTime() > date.getTime();
+  };
+
   return (
     <nav
       className={mergeClassNames(
         "flex space-x-6 relative",
         isWithinMenu ? "flex-col items-end gap-2" : "flex-row",
-        className
+        className,
       )}
     >
       {tabs.map((tab, idx) => (
@@ -85,6 +101,10 @@ export default function NavigationTabs({
           }}
           onClick={(e) => {
             e.preventDefault();
+            if (tab.href) {
+              window.open(tab.href, "_blank");
+            }
+
             handleClick(tab.id);
           }}
           className={mergeClassNames(
@@ -94,10 +114,19 @@ export default function NavigationTabs({
               : "text-[var(--color-foreground)]/40",
             isWithinMenu
               ? "text-xl mr-6 hover:text-[var(--color-foreground)]/40"
-              : ""
+              : "",
           )}
         >
-          {tab.label}
+          <span>{tab.label}</span>
+
+          <MdFiberNew
+            size={22}
+            className={mergeClassNames(
+              hasTimePassed(tab.endDate) ? "hidden" : "inline",
+              "absolute -top-4 -right-4",
+              "text-[var(--action)]",
+            )}
+          />
         </button>
       ))}
       {!isWithinMenu && (
