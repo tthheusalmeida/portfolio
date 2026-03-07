@@ -9,7 +9,7 @@ interface BaloonProps {
   logo: string;
   role: string;
   type: string;
-  description: string;
+  description: string | null;
   achievements: Array<string>;
   dateStart?: string;
   dateEnd?: string | null;
@@ -29,7 +29,7 @@ export default function Balloon({
     <div
       className={mergeClassNames(
         "relative sm:min-w-[520px] sm:p-4",
-        "bg-[var(--color-background)]/60 backdrop-blur-3xl rounded"
+        "bg-[var(--color-background)]/60 backdrop-blur-3xl rounded",
       )}
     >
       <div className="flex flex-col sm:flex-row justify-between">
@@ -57,7 +57,7 @@ export default function Balloon({
             className={mergeClassNames(
               "flex items-center justify-center",
               "bg-white rounded-xl sm:ml-2 mb-4 sm:p-1",
-              "order-1 sm:order-2 min-h-16 sm:min-h-auto"
+              "order-1 sm:order-2 min-h-16 sm:min-h-auto",
             )}
           >
             <Image
