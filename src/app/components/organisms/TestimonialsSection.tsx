@@ -26,11 +26,10 @@ export default function TestimonialsSection() {
         }
       >
         <div className="mt-11 flex flex-wrap justify-center gap-12 sm:gap-6">
-          {testimonials.map(({ name, src, role, descriptions }, index) => (
+          {testimonials.map(({ name, role, descriptions }, index) => (
             <Testimonial
               key={index}
               label={name}
-              src={src}
               role={role}
               description={descriptions}
             />
