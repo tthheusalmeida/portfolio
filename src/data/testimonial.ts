@@ -1,6 +1,5 @@
 export interface TestimonialInterface {
   name: string;
-  src: string;
   role: string;
   descriptions: string;
 }
