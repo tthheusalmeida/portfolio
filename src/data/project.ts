@@ -8,6 +8,38 @@ export interface ProjectInterface {
 
 export const projects = [
   {
+    title: "Humanamente",
+    about: `Platform developed for Humanamente to help companies comply with NR-1 
+    through structured mental health initiatives. Built by psychologists and a 
+    software engineer, it enables organizations to assess, monitor, and manage 
+    workplace mental health risks.`,
+    technologies: [
+      "Vue.js",
+      "Pinia",
+      "Axios",
+      "TypeScript",
+      "Shadcn/vue",
+      "Nest.js",
+      "PostgreSQL",
+      "Docker",
+      "Hostinger",
+    ],
+    image: "/projects/humanamente.png",
+    link: "https://www.somoshumanamente.com.br",
+    categories: ["freelancer"],
+  },
+  {
+    title: "Jéssica Rodrigues | Psychologist",
+    about: `Professional website designed to present psychological services in a 
+    clear, welcoming, and accessible way. The platform highlights the therapist’s 
+    approach, areas of expertise, and makes it easy for patients to get in touch 
+    through an intuitive and responsive interface.`,
+    technologies: ["React", "Next.js", "Tailwind", "TypeScript", "Hostinger"],
+    image: "/projects/jessica_rodrigues_psychologist.png",
+    link: "https://psijessicar.com/",
+    categories: ["freelancer"],
+  },
+  {
     title: "MelhorPreço.app",
     about: `PWA that helps users find the best prices for products across 
       small local markets. Prices are crowd-sourced through a gamified experience 
