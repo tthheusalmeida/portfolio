@@ -3,7 +3,8 @@ export type ExperienceType =
   | "part-time"
   | "freelancer"
   | "intern"
-  | "volunteer";
+  | "volunteer"
+  | "self-employed";
 
 export interface ExperienceInterface {
   name: string;
@@ -20,12 +21,19 @@ export interface ExperienceInterface {
 
 export const experiences: ExperienceInterface[] = [
   {
-    name: "MelhorPreço.app",
-    logo: "/work/melhorprecoapp.png",
-    role: "FrontEnd Engineer",
-    type: "full-time",
+    name: "Humanamente",
+    logo: "/work/humanamente.png",
+    role: "Co-Founder & Lead Software Engineer",
+    type: "self-employed",
     description: null,
-    achievements: [],
+    achievements: [
+      "Led the development of the Humanamente SaaS platform, defining the application UI/UX, architecture, APIs, and infrastructure",
+      "Built the application using implementing a multi-tenant architecture with Role-Based Access Control (RBAC).",
+      "Developed security mechanisms including encryption, data anonymization, and sensitive data validation to ensure LGPD compliance.",
+      "Implemented automated backup and disaster recovery routines to improve platform reliability.",
+      "Leveraged Generative AI to accelerate software development, documentation, and code refactoring.",
+      "Established observability with Prometheus and Grafana for platform monitoring and diagnostics.",
+    ],
     start: "01/03/2026",
     end: null,
     src: null,
