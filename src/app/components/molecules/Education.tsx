@@ -43,7 +43,9 @@ export default function Education({
                 className="text-[var(--action)] inline mr-2"
               />
               {title}
-              <span className="font-bold"> ({abbreviation})</span>
+              {abbreviation && (
+                <span className="font-bold"> ({abbreviation})</span>
+              )}
             </h2>
 
             <p className="text-[var(--color-foreground)]/40">
@@ -53,7 +55,8 @@ export default function Education({
               {university.originalName}
             </p>
             <p className="text-[var(--color-foreground)]/40 mt-1">
-              {formatedDateMonthYear(start)} - {formatedDateMonthYear(end)}
+              {formatedDateMonthYear(start)}
+              {end ? <> - {formatedDateMonthYear(end)}</> : " - Present"}
             </p>
           </div>
         </div>
@@ -61,7 +64,7 @@ export default function Education({
 
       {/* Experiences */}
       <div>
-        {experiences.map((exp, index) => (
+        {experiences?.map((exp, index) => (
           <EducationExtraCurricular
             role={exp.role}
             start={exp.start}

@@ -14,10 +14,10 @@ export interface EducationExperience {
 
 export interface EducationInterface {
   title: string;
-  abbreviation: string;
+  abbreviation: string | null;
   university: EducationUniversity;
   start: string;
-  end: string;
+  end: string | null;
   experiences: Array<EducationExperience>;
 }
 
@@ -53,5 +53,19 @@ export const educations = [
         description: `Took part in a competitive programming training program aimed at preparing students for algorithmic challenges and ICPC-style contests. Regularly practiced advanced data structures, dynamic programming, and graph theory through weekly problem-solving sessions.`,
       },
     ],
+  },
+  {
+    title:
+      "Postgraduate Degree of DevOps & Cloud Platform Engineering with Artificial Intelligence",
+    abbreviation: null,
+    university: {
+      name: "Pontifical Catholic University of Minas Gerais",
+      originalName: "Pontifícia Universidade Católica de Minas Gerais",
+      abbreviation: "PUC Minas",
+      image: "/educations/puc_minas_logo.png",
+    },
+    start: "01/07/2018",
+    end: null,
+    experiences: [],
   },
 ];

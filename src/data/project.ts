@@ -26,7 +26,7 @@ export const projects = [
     ],
     image: "/projects/humanamente.png",
     link: "https://www.somoshumanamente.com.br",
-    categories: ["freelancer"],
+    categories: ["owner"],
   },
   {
     title: "Jéssica Rodrigues | Psychologist",

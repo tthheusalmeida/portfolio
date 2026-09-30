@@ -2,13 +2,14 @@ export type ExperienceType =
   | "full-time"
   | "part-time"
   | "freelancer"
+  | "owner"
   | "intern"
   | "volunteer"
   | "self-employed";
 
 export interface ExperienceInterface {
   name: string;
-  logo: string;
+  logo: string | null;
   role: string;
   type: ExperienceType;
   description: string | null;
@@ -20,6 +21,25 @@ export interface ExperienceInterface {
 }
 
 export const experiences: ExperienceInterface[] = [
+  {
+    name: "Ouro Preto State School",
+    logo: null,
+    role: "Information Technology & Systems Development Teacher",
+    type: "full-time",
+    description: null,
+    achievements: [
+      "Taught Information Technology and Systems Development subjects for high school technical education students.",
+      "Delivered practical and theoretical lessons covering programming, software development, computer networks, systems architecture, operating systems, and software maintenance.",
+      "Designed hands-on activities and technical exercises to develop students' problem-solving, programming, and systems thinking skills.",
+      "Introduced software development concepts including object-oriented programming, algorithms, application development, and software architecture.",
+      "Taught computer networking fundamentals, including DNS, DHCP and core networking concepts.",
+      "Developed teaching materials, exercises, and assessments adapted to students' technical level and learning objectives.",
+    ],
+    start: "01/09/2026",
+    end: null,
+    src: null,
+    alt: null,
+  },
   {
     name: "Humanamente",
     logo: "/work/humanamente.png",
@@ -35,7 +55,7 @@ export const experiences: ExperienceInterface[] = [
       "Established observability with Prometheus and Grafana for platform monitoring and diagnostics.",
     ],
     start: "01/03/2026",
-    end: null,
+    end: "01/10/2026",
     src: null,
     alt: null,
   },

@@ -24,9 +24,11 @@ export default function EducationSection() {
             </>
           }
         >
-          {educations.map((education, index) => (
-            <Education key={index} {...education} />
-          ))}
+          <div className="flex flex-col">
+            {educations.map((education, index) => (
+              <Education key={index} {...education} />
+            ))}
+          </div>
         </TitleAndSubtitleSection>
       </SectionTemplate>
     </>

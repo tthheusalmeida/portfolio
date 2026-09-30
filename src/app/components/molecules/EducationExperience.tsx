@@ -25,7 +25,7 @@ export default function EducationExtraCurricular({
       HTMLtag="div"
       className={mergeClassNames(
         "text-base sm:text-lg border-l-2 border-[var(--action)] ml-7 sm:ml-18 pl-4 pb-6",
-        className
+        className,
       )}
     >
       <div className="sm:mb-1 flex items-start sm:items-center gap-2">
