@@ -1,5 +1,15 @@
 import { Lang, dictionary } from "@/i18n/dictionary";
 
+// Year the portfolio was created (first commit: Feb 2024).
+export const PORTFOLIO_START_YEAR = 2024;
+
+// "2024" in the first year, "2024–2026" afterwards.
+export function getCopyrightYears(currentYear: number): string {
+  return currentYear > PORTFOLIO_START_YEAR
+    ? `${PORTFOLIO_START_YEAR}–${currentYear}`
+    : `${PORTFOLIO_START_YEAR}`;
+}
+
 const LOCALES: Record<Lang, string> = { pt: "pt-BR", en: "en-US" };
 
 export function formatedDateMonthYear(currentDate: string, lang: Lang = "en") {

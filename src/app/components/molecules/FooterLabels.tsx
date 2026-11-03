@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { getCopyrightYears } from "@/utils/date";
 import AnimatedComponent from "./AnimatedComponent";
 
 interface FooterLabelsProps {
@@ -11,6 +13,13 @@ export default function FooterLabels({
   disableAnimation = false,
 }: FooterLabelsProps) {
   const { t } = useLanguage();
+  // Starts with the build year (matches the static HTML) and then switches to
+  // the real current year, so the footer never goes stale between deploys.
+  const [year, setYear] = useState(Number(process.env.NEXT_PUBLIC_BUILD_YEAR));
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
 
   return (
     <AnimatedComponent
@@ -34,7 +43,7 @@ export default function FooterLabels({
             HTMLtag="span"
             delay={0}
           >
-            Copyright © 2025
+            Copyright © {getCopyrightYears(year)}
           </AnimatedComponent>
           <AnimatedComponent
             disableAnimation={disableAnimation}
