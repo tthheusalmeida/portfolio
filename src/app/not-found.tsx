@@ -1,15 +1,12 @@
+"use client";
+
 import ErrorPageTemplate from "@/templates/ErrorPageTemplate";
-import HighlightText from "@/app/components/atoms/HighlightText";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function NotFound() {
+  const { rich } = useLanguage();
+
   return (
-    <ErrorPageTemplate
-      code={404}
-      description={
-        <>
-          This page could <HighlightText>not be found.</HighlightText>
-        </>
-      }
-    />
+    <ErrorPageTemplate code={404} description={rich("notFound.description")} />
   );
 }

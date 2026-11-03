@@ -1,3 +1,6 @@
+"use client";
+
+import { useLanguage } from "@/contexts/LanguageContext";
 import AnimatedComponent from "./AnimatedComponent";
 
 interface FooterLabelsProps {
@@ -7,6 +10,8 @@ interface FooterLabelsProps {
 export default function FooterLabels({
   disableAnimation = false,
 }: FooterLabelsProps) {
+  const { t } = useLanguage();
+
   return (
     <AnimatedComponent
       disableAnimation={disableAnimation}
@@ -59,7 +64,7 @@ export default function FooterLabels({
           HTMLtag="span"
           delay={0}
         >
-          All Rights Reserved
+          {t("footer.rights")}
         </AnimatedComponent>
       </AnimatedComponent>
     </AnimatedComponent>

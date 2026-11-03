@@ -1,25 +1,34 @@
-export function formatedDateMonthYear(currentDate: string) {
+import { Lang, dictionary } from "@/i18n/dictionary";
+
+const LOCALES: Record<Lang, string> = { pt: "pt-BR", en: "en-US" };
+
+export function formatedDateMonthYear(currentDate: string, lang: Lang = "en") {
   const [day, month, year] = currentDate.split("/").map(Number);
   const date = new Date(year, month - 1, day);
 
-  return new Intl.DateTimeFormat("en-US", {
+  return new Intl.DateTimeFormat(LOCALES[lang], {
     month: "short",
     year: "numeric",
   }).format(date);
 }
 
-export function formatedDate(currentDate: string) {
+export function formatedDate(currentDate: string, lang: Lang = "en") {
   const [day, month, year] = currentDate.split("/").map(Number);
   const date = new Date(year, month - 1, day);
 
-  return new Intl.DateTimeFormat("en-US", {
+  return new Intl.DateTimeFormat(LOCALES[lang], {
     month: "short",
     day: "2-digit",
     year: "numeric",
   }).format(date);
 }
 
-export function getCompactDuration(startStr: string, endStr: string): string {
+export function getCompactDuration(
+  startStr: string,
+  endStr: string,
+  lang: Lang = "en",
+): string {
+  const dict = dictionary[lang];
   const [, startMonth, startYear] = startStr.split("/").map(Number);
   const [, endMonth, endYear] = endStr.split("/").map(Number);
 
@@ -30,8 +39,12 @@ export function getCompactDuration(startStr: string, endStr: string): string {
   const years = Math.floor(diff / 12);
   const months = diff % 12;
 
-  const yearStr = years > 0 ? `${years} year${years > 1 ? "s" : ""}` : "";
-  const monthStr = months > 0 ? `${months} month${months > 1 ? "s" : ""}` : "";
+  const yearStr =
+    years > 0 ? `${years} ${years > 1 ? dict["date.years"] : dict["date.year"]}` : "";
+  const monthStr =
+    months > 0
+      ? `${months} ${months > 1 ? dict["date.months"] : dict["date.month"]}`
+      : "";
 
   return [yearStr, monthStr].filter(Boolean).join(", ");
 }

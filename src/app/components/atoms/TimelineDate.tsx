@@ -1,4 +1,7 @@
+"use client";
+
 import { mergeClassNames } from "@/utils/classNames";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { formatedDate } from "@/utils/date";
 export interface TimelineDateProps {
   start: string;
@@ -13,6 +16,7 @@ export default function TimelineDate({
   side,
   className,
 }: TimelineDateProps) {
+  const { lang, t } = useLanguage();
   const isSideRight = side === "right";
 
   return (
@@ -23,7 +27,7 @@ export default function TimelineDate({
         className
       )}
     >
-      {`${formatedDate(start)} - ${end ? formatedDate(end) : "Present"}`}
+      {`${formatedDate(start, lang)} - ${end ? formatedDate(end, lang) : t("date.present")}`}
     </span>
   );
 }

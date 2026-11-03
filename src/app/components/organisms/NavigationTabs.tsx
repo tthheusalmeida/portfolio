@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { mergeClassNames } from "@/utils/classNames";
 import { useTabs } from "@/contexts/TabsContext";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { DictionaryKey } from "@/i18n/dictionary";
 import { MdFiberNew } from "react-icons/md";
 
 export const NAVIGATION_TAB_INDEX: Record<string, string> = {
@@ -23,16 +25,15 @@ export const scrollIntoSection = (id: string) => {
 };
 
 const tabsList = [
-  { id: NAVIGATION_TAB_INDEX.HOME, label: "Home" },
-  { id: NAVIGATION_TAB_INDEX.PROJECTS, label: "Projects" },
-  { id: NAVIGATION_TAB_INDEX.EXPERIENCES, label: "Experiences" },
-  { id: NAVIGATION_TAB_INDEX.EDUCATION, label: "Education" },
-  { id: NAVIGATION_TAB_INDEX.CERTIFICATION, label: "Certifications" },
-  { id: NAVIGATION_TAB_INDEX.TESTIMONIALS, label: "Testimonials" },
-  { id: NAVIGATION_TAB_INDEX.CONTACT, label: "Contact" },
+  { id: NAVIGATION_TAB_INDEX.HOME },
+  { id: NAVIGATION_TAB_INDEX.PROJECTS },
+  { id: NAVIGATION_TAB_INDEX.EXPERIENCES },
+  { id: NAVIGATION_TAB_INDEX.EDUCATION },
+  { id: NAVIGATION_TAB_INDEX.CERTIFICATION },
+  { id: NAVIGATION_TAB_INDEX.TESTIMONIALS },
+  { id: NAVIGATION_TAB_INDEX.CONTACT },
   {
     id: NAVIGATION_TAB_INDEX.BLOG,
-    label: "Blog",
     href: "https://tthheusalmeida.github.io/",
     endDate: new Date(2026, 12, 31),
   },
@@ -47,6 +48,7 @@ export default function NavigationTabs({
   className,
   isWithinMenu = false,
 }: NavigationTabsProps) {
+  const { t } = useLanguage();
   const { activeTab, setActiveTab, setIsOnClickScrolling } = useTabs();
   const tabsRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [underlineProps, setUnderlineProps] = useState({ left: 0, width: 0 });
@@ -117,7 +119,7 @@ export default function NavigationTabs({
               : "",
           )}
         >
-          <span>{tab.label}</span>
+          <span>{t(`nav.${tab.id}` as DictionaryKey)}</span>
 
           <MdFiberNew
             size={22}

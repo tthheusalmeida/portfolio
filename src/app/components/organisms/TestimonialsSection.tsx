@@ -1,29 +1,24 @@
+"use client";
+
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
 import Testimonial from "../molecules/Testimonial";
-import DATA from "@/data";
-import HighlightText from "../atoms/HighlightText";
+import { useLanguage, useData } from "@/contexts/LanguageContext";
 import Button from "../atoms/Button";
 
 import { FaArrowRight } from "react-icons/fa6";
 
 export default function TestimonialsSection() {
-  const testimonials = DATA.testimonials;
+  const { t, rich } = useLanguage();
+  const testimonials = useData().testimonials;
   return (
     <SectionTemplate
       id="testimonials"
       className="flex flex-col items-center sm:rounded-b-2xl"
     >
       <TitleAndSubtitleSection
-        title="Testimonials"
-        subtitle={
-          <>
-            From <HighlightText>Clients</HighlightText>,{" "}
-            <HighlightText>Teammates</HighlightText>, and{" "}
-            <HighlightText>Classmates</HighlightText> who have collaborated with
-            me along the way
-          </>
-        }
+        title={t("testimonials.title")}
+        subtitle={rich("testimonials.subtitle")}
       >
         <div className="mt-11 flex flex-wrap justify-center gap-12 sm:gap-6">
           {testimonials.map(({ name, role, descriptions }, index) => (
@@ -42,7 +37,7 @@ export default function TestimonialsSection() {
             target="_blank"
           >
             <span className="flex items-center gap-1">
-              Check it out here
+              {t("testimonials.link")}
               <FaArrowRight className="animate-arrow-bounce" size={18} />
             </span>
           </a>

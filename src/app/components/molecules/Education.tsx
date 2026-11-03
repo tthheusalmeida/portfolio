@@ -1,6 +1,9 @@
+"use client";
+
 import { formatedDateMonthYear } from "@/utils/date";
 import { EducationInterface } from "@/data/education";
 
+import { useLanguage } from "@/contexts/LanguageContext";
 import Image from "next/image";
 import AnimatedComponent from "./AnimatedComponent";
 import EducationExtraCurricular from "../molecules/EducationExperience";
@@ -15,6 +18,8 @@ export default function Education({
   end,
   experiences,
 }: EducationInterface) {
+  const { lang, t } = useLanguage();
+
   return (
     <AnimatedComponent
       HTMLtag="div"
@@ -51,12 +56,18 @@ export default function Education({
             <p className="text-[var(--color-foreground)]/40">
               {university.name} ({university.abbreviation})
             </p>
-            <p className="text-[var(--color-foreground)]/40 italic">
-              {university.originalName}
-            </p>
+            {university.originalName && (
+              <p className="text-[var(--color-foreground)]/40 italic">
+                {university.originalName}
+              </p>
+            )}
             <p className="text-[var(--color-foreground)]/40 mt-1">
-              {formatedDateMonthYear(start)}
-              {end ? <> - {formatedDateMonthYear(end)}</> : " - Present"}
+              {formatedDateMonthYear(start, lang)}
+              {end ? (
+                <> - {formatedDateMonthYear(end, lang)}</>
+              ) : (
+                ` - ${t("date.present")}`
+              )}
             </p>
           </div>
         </div>

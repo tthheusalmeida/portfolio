@@ -1,3 +1,5 @@
+"use client";
+
 import SoftSkillsCarousel from "@/app/components/molecules/SoftSkillsCarousel";
 import Stack from "@/app/components/molecules/Stack";
 import SectionTemplate from "@/templates/SectionTemplate";
@@ -6,9 +8,11 @@ import Title from "@/app/components/atoms/Title";
 import DownloadButton from "../molecules/DownloadButton";
 import AnimatedComponent from "../molecules/AnimatedComponent";
 import { mergeClassNames } from "@/utils/classNames";
+import { useLanguage } from "@/contexts/LanguageContext";
 import NavigationButton from "../atoms/NavigationButton";
 
 export default function CoverSection() {
+  const { t } = useLanguage();
   const cvFileName = "Matheus_Almeida_CV_Front-End_Software_Engineer.pdf";
   const cvFilePath = `/files/${cvFileName}`;
 
@@ -54,9 +58,9 @@ export default function CoverSection() {
               </AnimatedComponent>
 
               <div className="flex gap-6 pt-8 px-4 sm:px-0 sm:w-[296px] w-full">
-                <NavigationButton>Contact me</NavigationButton>
+                <NavigationButton>{t("cover.contact")}</NavigationButton>
                 <DownloadButton fileName={cvFileName} filePath={cvFilePath}>
-                  Download CV
+                  {t("cover.cv")}
                 </DownloadButton>
               </div>
             </div>

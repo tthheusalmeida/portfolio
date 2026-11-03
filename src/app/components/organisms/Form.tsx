@@ -8,25 +8,30 @@ import { useState } from "react";
 import { sendEmail } from "@/services/sendEmail";
 import { Toast } from "./Toast";
 import AnimatedComponent from "../molecules/AnimatedComponent";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { DictionaryKey } from "@/i18n/dictionary";
 
-function validateName(name: string) {
-  return name.trim().length < 3 ? "Name must be at least 3 characters." : "";
+type Translate = (key: DictionaryKey) => string;
+
+function validateName(name: string, t: Translate) {
+  return name.trim().length < 3 ? t("form.error.name") : "";
 }
 
-function validateEmail(email: string) {
+function validateEmail(email: string, t: Translate) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return !regex.test(email) ? "Please enter a valid email." : "";
+  return !regex.test(email) ? t("form.error.email") : "";
 }
 
-function validateMessage(message: string) {
+function validateMessage(message: string, t: Translate) {
   return message.trim().length < 4
-    ? "Message must be at least 4 characters. (Hey!)"
+    ? t("form.error.messageShort")
     : message.trim().length > 300
-      ? "Message must have a maximum of 300 characters. "
+      ? t("form.error.messageLong")
       : "";
 }
 
 export default function Form() {
+  const { t } = useLanguage();
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -39,8 +44,8 @@ export default function Form() {
 
   const inputName = {
     id: "form-name",
-    label: "Name",
-    placeholder: "Your name",
+    label: t("form.name"),
+    placeholder: t("form.name.placeholder"),
     required: true,
     value: name,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,15 +53,15 @@ export default function Form() {
       setName(value);
       setErrors((prev) => ({
         ...prev,
-        name: validateName(value),
+        name: validateName(value, t),
       }));
     },
   };
 
   const inputEmail = {
     id: "form-email",
-    label: "E-mail",
-    placeholder: "Your e-mail",
+    label: t("form.email"),
+    placeholder: t("form.email.placeholder"),
     required: true,
     value: email,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,15 +69,15 @@ export default function Form() {
       setEmail(value);
       setErrors((prev) => ({
         ...prev,
-        email: validateEmail(value),
+        email: validateEmail(value, t),
       }));
     },
   };
 
   const inputMessage = {
     id: "form-message",
-    label: "Message",
-    placeholder: "Your message",
+    label: t("form.message"),
+    placeholder: t("form.message.placeholder"),
     required: true,
     value: message,
     maxLength: 300,
@@ -81,7 +86,7 @@ export default function Form() {
       setMessage(value);
       setErrors((prev) => ({
         ...prev,
-        message: validateMessage(value),
+        message: validateMessage(value, t),
       }));
     },
   };
@@ -89,9 +94,9 @@ export default function Form() {
   async function handleOnClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
 
-    const nameError = validateName(name);
-    const emailError = validateEmail(email);
-    const messageError = validateMessage(message);
+    const nameError = validateName(name, t);
+    const emailError = validateEmail(email, t);
+    const messageError = validateMessage(message, t);
 
     setErrors({
       name: nameError,
@@ -114,19 +119,19 @@ export default function Form() {
       const result = await sendEmail(mailPayload);
 
       if (result.success) {
-        Toast.success("Got it! We’ll get back to you soon.");
+        Toast.success(t("form.success"));
 
         setName("");
         setEmail("");
         setMessage("");
       } else {
-        Toast.error("Uh-oh! That didn’t work. Try again?");
+        Toast.error(t("form.fail"));
       }
     } catch (error) {
       Toast.error(
         error instanceof Error
           ? error.message
-          : "Unexpected error. Please try again.",
+          : t("form.unexpected"),
       );
     } finally {
       setLoading(false);
@@ -191,7 +196,7 @@ export default function Form() {
           isLoading={loading}
         >
           <div className="flex gap-2 items-center justify-center">
-            Send Message <IoIosSend size={24} />
+            {t("form.send")} <IoIosSend size={24} />
           </div>
         </Button>
       </div>

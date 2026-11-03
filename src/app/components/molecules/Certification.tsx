@@ -1,4 +1,7 @@
+"use client";
+
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { formatedDateMonthYear } from "@/utils/date";
 import { mergeClassNames } from "@/utils/classNames";
 
@@ -14,6 +17,8 @@ export default function Certification({
   link,
   skills,
 }: CertificationInterface) {
+  const { lang } = useLanguage();
+
   return (
     <AnimatedComponent
       HTMLtag="div"
@@ -41,7 +46,7 @@ export default function Certification({
 
               <span className="w-1 h-1 bg-[var(--color-foreground)]/40 rounded-full" />
               <p className="text-[var(--color-foreground)]/40">
-                {formatedDateMonthYear(date)}
+                {formatedDateMonthYear(date, lang)}
               </p>
             </div>
 

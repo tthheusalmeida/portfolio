@@ -1,11 +1,13 @@
+"use client";
+
 import SectionTemplate from "@/templates/SectionTemplate";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
-import HighlightText from "../atoms/HighlightText";
 import Education from "../molecules/Education";
-import DATA from "@/data";
+import { useLanguage, useData } from "@/contexts/LanguageContext";
 
 export default function EducationSection() {
-  const educations = DATA.educations;
+  const { t, rich } = useLanguage();
+  const educations = useData().educations;
 
   return (
     <>
@@ -14,15 +16,8 @@ export default function EducationSection() {
         className="flex flex-col items-center justify-center"
       >
         <TitleAndSubtitleSection
-          title="Education"
-          subtitle={
-            <>
-              Where <HighlightText>theory</HighlightText>,{" "}
-              <HighlightText>research</HighlightText>, and{" "}
-              <HighlightText>teaching</HighlightText> shaped the foundations of
-              how I think and build
-            </>
-          }
+          title={t("education.title")}
+          subtitle={rich("education.subtitle")}
         >
           <div className="flex flex-col">
             {educations.map((education, index) => (

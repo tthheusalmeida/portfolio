@@ -1,6 +1,8 @@
+"use client";
+
 import { mergeClassNames } from "@/utils/classNames";
 import SVGGlow from "./SVGGlow";
-import DATA from "@/data";
+import { useLanguage, useData } from "@/contexts/LanguageContext";
 import AnimatedComponent from "./AnimatedComponent";
 
 interface StackProps {
@@ -8,7 +10,8 @@ interface StackProps {
 }
 
 export default function Stack({ className }: StackProps) {
-  const items = DATA.stack;
+  const { t } = useLanguage();
+  const items = useData().stack;
 
   return (
     <AnimatedComponent
@@ -18,7 +21,7 @@ export default function Stack({ className }: StackProps) {
         className
       )}
     >
-      <span className="text-base">My favorite stack</span>
+      <span className="text-base">{t("cover.stack")}</span>
 
       <AnimatedComponent HTMLtag="div" className="flex gap-4">
         {items.map(({ name, color }, index) => (

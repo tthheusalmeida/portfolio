@@ -1,3 +1,6 @@
+"use client";
+
+import { useLanguage } from "@/contexts/LanguageContext";
 import { getCompactDuration, formatedDateMonthYear } from "@/utils/date";
 import { GoMilestone } from "react-icons/go";
 import AnimatedComponent from "./AnimatedComponent";
@@ -20,6 +23,8 @@ export default function EducationExtraCurricular({
   className,
   university,
 }: EducationExtraCurricularProps) {
+  const { lang } = useLanguage();
+
   return (
     <AnimatedComponent
       HTMLtag="div"
@@ -47,10 +52,10 @@ export default function EducationExtraCurricular({
 
           <span className="w-1 h-1 bg-[var(--color-foreground)]/40 rounded-full" />
 
-          <span>{getCompactDuration(start, end)}</span>
+          <span>{getCompactDuration(start, end, lang)}</span>
         </p>
         <p className="italic">
-          {formatedDateMonthYear(start)} - {formatedDateMonthYear(end)}
+          {formatedDateMonthYear(start, lang)} - {formatedDateMonthYear(end, lang)}
         </p>
       </div>
 

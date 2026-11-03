@@ -1,15 +1,17 @@
+"use client";
+
 import ProjectsPreview from "./ProjectsPreview";
 import RouterButton from "../atoms/RouterButton";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
-import DATA from "@/data";
+import { useLanguage, useData } from "@/contexts/LanguageContext";
 import { FaArrowRight } from "react-icons/fa6";
-import HighlightText from "../atoms/HighlightText";
 
 const MAX_CARDS = 6;
 
 export default function ProjectsSection() {
-  const projects = DATA.projects;
+  const { t, rich } = useLanguage();
+  const projects = useData().projects;
 
   return (
     <SectionTemplate
@@ -17,13 +19,8 @@ export default function ProjectsSection() {
       className="flex flex-col items-center sm:rounded-t-2xl"
     >
       <TitleAndSubtitleSection
-        title="Projects"
-        subtitle={
-          <>
-            A reflection of my <HighlightText>Growth</HighlightText> and{" "}
-            <HighlightText>Passion</HighlightText>
-          </>
-        }
+        title={t("projects.title")}
+        subtitle={rich("projects.subtitle")}
       >
         <ProjectsPreview projects={projects} />
       </TitleAndSubtitleSection>
@@ -34,7 +31,7 @@ export default function ProjectsSection() {
           variant="primary"
           className="max-w-48 mt-20 sm:mt-0"
         >
-          See all projects
+          {t("projects.seeAll")}
           <FaArrowRight className="animate-arrow-bounce" size={18} />
         </RouterButton>
       )}

@@ -1,4 +1,7 @@
+"use client";
+
 import { mergeClassNames } from "@/utils/classNames";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { getCompactDuration } from "@/utils/date";
 
 interface CompanyTimeProps {
@@ -12,9 +15,11 @@ export default function CompanyTime({
   end,
   className,
 }: CompanyTimeProps) {
+  const { lang } = useLanguage();
+
   return (
     <span className={mergeClassNames("text-xs", className)}>
-      {getCompactDuration(start, end)}
+      {getCompactDuration(start, end, lang)}
     </span>
   );
 }

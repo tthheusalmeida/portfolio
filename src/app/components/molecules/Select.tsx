@@ -13,13 +13,21 @@ type Option = {
 
 type SelectorProps = {
   label: string;
+  title?: string;
   options: Option[];
   onChange: (value: string) => void;
 };
 
-export default function Selector({ label, options, onChange }: SelectorProps) {
+export default function Selector({
+  label,
+  title,
+  options,
+  onChange,
+}: SelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<Option>(options[0]);
+  const [selectedValue, setSelectedValue] = useState(options[0].value);
+  const selected =
+    options.find((option) => option.value === selectedValue) ?? options[0];
   const portalRoot = usePortal(`select-${label}`);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -66,7 +74,7 @@ export default function Selector({ label, options, onChange }: SelectorProps) {
   const isFirstOptionSelected = selected.value === options[0].value;
 
   const handleSelect = (option: Option) => {
-    setSelected(option);
+    setSelectedValue(option.value);
     onChange(option.value);
     setIsOpen(false);
   };
@@ -75,7 +83,7 @@ export default function Selector({ label, options, onChange }: SelectorProps) {
     <div className="relative w-full max-w-xs group">
       {label && (
         <label className="capitalize block mb-2 text-sm font-medium text-gray-200">
-          {label}
+          {title ?? label}
         </label>
       )}
       <button

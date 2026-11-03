@@ -7,6 +7,7 @@ import MenuItem from "./MenuItem";
 import { useRouter, usePathname } from "next/navigation";
 import FooterLabels from "./FooterLabels";
 import { motion, AnimatePresence } from "motion/react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import NavigationTabs from "../organisms/NavigationTabs";
 
 const LazyModal = lazy(() => import("./Modal"));
@@ -16,15 +17,16 @@ export default function Menu() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [pendingPath, setPendingPath] = useState<string | null>(null);
 
+  const { t } = useLanguage();
   const router = useRouter();
   const pathname = usePathname();
 
   const items = useMemo(
     () => [
-      { label: "home", path: "/", navigation: <NavigationTabs isWithinMenu /> },
-      { label: "projects", path: "/projects" },
+      { label: t("nav.home"), path: "/", navigation: <NavigationTabs isWithinMenu /> },
+      { label: t("nav.projects"), path: "/projects" },
     ],
-    []
+    [t]
   );
 
   useEffect(() => {

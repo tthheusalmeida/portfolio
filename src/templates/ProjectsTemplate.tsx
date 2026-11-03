@@ -4,7 +4,7 @@ import { useState } from "react";
 import PageLayout from "@/layouts/PageLayout";
 import TitleAndSubtitleSection from "@/app/components/molecules/TitleAndSubtitleSection";
 import SectionTemplate from "./SectionTemplate";
-import DATA from "@/data";
+import { useLanguage, useData } from "@/contexts/LanguageContext";
 import Project from "@/app/components/molecules/Project";
 import CTASection from "@/app/components/organisms/ContactSection";
 import FiltersBar from "@/app/components/organisms/FiltersBar";
@@ -12,18 +12,22 @@ import { useMemo } from "react";
 import { ProjectInterface } from "@/data/project";
 import { motion, AnimatePresence } from "motion/react";
 import AnimatedComponent from "@/app/components/molecules/AnimatedComponent";
-import HighlightText from "@/app/components/atoms/HighlightText";
 
-const createLabelValueObject = (labels: Array<string> | Set<string>) => {
-  const labelsArray = [{ label: "All", value: "" }];
+const createLabelValueObject = (
+  labels: Array<string> | Set<string>,
+  allLabel: string
+) => {
+  const labelsArray = Array<{ label: string; value: string }>();
 
   labels.forEach((label) => labelsArray.push({ label: label, value: label }));
 
   labelsArray.sort((a, b) => (a.label >= b.label ? 1 : -1));
-  return labelsArray;
+  return [{ label: allLabel, value: "" }, ...labelsArray];
 };
 
 export default function ProjectsTemplate() {
+  const { t, rich } = useLanguage();
+  const DATA = useData();
   const technologies = new Set<string>();
   DATA.projects.forEach((project) =>
     project.technologies.forEach((technology) => technologies.add(technology))
@@ -32,16 +36,18 @@ export default function ProjectsTemplate() {
   const filters = [
     {
       key: "categories",
+      title: t("projects.filter.categories"),
       options: [
-        { label: "All", value: "" },
-        { label: "Personal", value: "personal" },
-        { label: "Freelancer", value: "freelancer" },
-        { label: "Pro bono", value: "probono" },
+        { label: t("projects.filter.all"), value: "" },
+        { label: t("projects.category.personal"), value: "personal" },
+        { label: t("projects.category.freelancer"), value: "freelancer" },
+        { label: t("projects.category.probono"), value: "probono" },
       ],
     },
     {
       key: "technologies",
-      options: createLabelValueObject(technologies),
+      title: t("projects.filter.technologies"),
+      options: createLabelValueObject(technologies, t("projects.filter.all")),
     },
   ];
 
@@ -77,21 +83,14 @@ export default function ProjectsTemplate() {
     });
 
     return filteredProjects;
-  }, [filterState, filtersKeys]);
+  }, [DATA.projects, filterState, filtersKeys]);
 
   return (
     <PageLayout>
       <SectionTemplate className="rounded-b-2xl">
         <TitleAndSubtitleSection
-          title="Projects"
-          subtitle={
-            <>
-              A collection of <HighlightText>freelance</HighlightText>,{" "}
-              <HighlightText>personal</HighlightText>, and{" "}
-              <HighlightText>pro bono</HighlightText> projects that shaped my
-              journey
-            </>
-          }
+          title={t("projects.title")}
+          subtitle={rich("projects.pageSubtitle")}
           className="my-16 sm:mt-28 sm:mb-12"
         >
           <div className="w-full flex justify-center">
@@ -134,7 +133,7 @@ export default function ProjectsTemplate() {
               HTMLtag="span"
               className="w-full flex justify-center text-center"
             >
-              Oops! No projects match your filter. Maybe in the future :)
+              {t("projects.empty")}
             </AnimatedComponent>
           )}
         </TitleAndSubtitleSection>

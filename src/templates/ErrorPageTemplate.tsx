@@ -1,3 +1,6 @@
+"use client";
+
+import { useLanguage } from "@/contexts/LanguageContext";
 import Button from "@/app/components/atoms/Button";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa6";
@@ -14,6 +17,8 @@ export default function ErrorPageTemplate({
   code,
   description,
 }: ErrorPageTemplateProps) {
+  const { t } = useLanguage();
+
   return (
     <div className="w-dvw h-dvh flex items-center justify-center">
       <div className="flex flex-col items-center justify-center">
@@ -24,7 +29,7 @@ export default function ErrorPageTemplate({
           <Button variant="primary" className="w-44">
             <FaArrowLeft className="animate-arrow-bounce" size={18} />
             <Link href="/" className="text-nowrap">
-              Back to Home
+              {t("notFound.back")}
             </Link>
           </Button>
         </div>

@@ -1,4 +1,8 @@
+"use client";
+
 import { mergeClassNames } from "@/utils/classNames";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { DictionaryKey } from "@/i18n/dictionary";
 import Tag from "./Tag";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
@@ -13,6 +17,8 @@ export default function ProjectHeader({
   className,
   link,
 }: ProjectHeaderProps) {
+  const { t } = useLanguage();
+
   return (
     <div
       className={mergeClassNames(
@@ -26,7 +32,7 @@ export default function ProjectHeader({
             key={index}
             className="border-none text-sm sm:text-base hover:bg-transparent bg-transparent text-gray-200 font-normal"
           >
-            {category}
+            {t(`projects.category.${category}` as DictionaryKey)}
           </Tag>
         ))}
       </div>

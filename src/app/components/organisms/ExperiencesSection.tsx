@@ -1,12 +1,15 @@
+"use client";
+
 import Timeline, { TimelineItem } from "./Timeline";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
 import Balloon from "./Balloon";
-import DATA from "@/data";
-import HighlightText from "../atoms/HighlightText";
+import { useLanguage, useData } from "@/contexts/LanguageContext";
+import { DictionaryKey } from "@/i18n/dictionary";
 
 export default function Experiences() {
-  const companies = DATA.experiences;
+  const { t, rich } = useLanguage();
+  const companies = useData().experiences;
 
   const items = companies.map(
     ({
@@ -27,7 +30,7 @@ export default function Experiences() {
             label={name}
             logo={logo}
             role={role}
-            type={type}
+            type={t(`experiences.type.${type}` as DictionaryKey)}
             description={description}
             achievements={
               Array.isArray(achievements) ? achievements : [achievements]
@@ -51,14 +54,8 @@ export default function Experiences() {
   return (
     <SectionTemplate id="experiences" className="flex flex-col items-center">
       <TitleAndSubtitleSection
-        title="Experiences"
-        subtitle={
-          <>
-            A summary of the <HighlightText>Roles</HighlightText>,{" "}
-            <HighlightText>Responsibilities</HighlightText> that have shaped my
-            professional path so far
-          </>
-        }
+        title={t("experiences.title")}
+        subtitle={rich("experiences.subtitle")}
       >
         <div className="w-full mt-11">
           <Timeline items={items} />

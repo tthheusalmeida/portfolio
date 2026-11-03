@@ -5,6 +5,8 @@ import { ExperienceInterface, experiences } from "./experience";
 import { EducationInterface, educations } from "./education";
 import { CertificationInterface, certifications } from "./certification";
 import { TestimonialInterface, testimonials } from "./testimonial";
+import * as pt from "./pt";
+import { Lang } from "@/i18n/dictionary";
 
 interface DataProps {
   stack: Array<StackInterface>;
@@ -44,3 +46,35 @@ const DATA: DataProps = {
 };
 
 export default DATA;
+
+const DATA_PT: DataProps = {
+  ...DATA,
+  softSkills: pt.softSkills,
+  socialMedia: socialMedia.map((item) =>
+    item.name === "whatsapp" ? { ...item, link: pt.whatsappLink } : item,
+  ),
+  projects: projects.map((item, i) => ({ ...item, ...pt.projects[i] })),
+  experiences: experiences.map((item, i) => ({
+    ...item,
+    ...pt.experiences[i],
+  })),
+  educations: educations.map((item, i) => ({
+    ...item,
+    ...pt.educations[i],
+    university: { ...item.university, ...pt.educations[i].university },
+    experiences: item.experiences.map((exp, j) => ({
+      ...exp,
+      ...pt.educations[i].experiences[j],
+    })),
+  })),
+  certifications: certifications.map((item, i) => ({
+    ...item,
+    ...pt.certifications[i],
+  })),
+  testimonials: testimonials.map((item, i) => ({
+    ...item,
+    ...pt.testimonials[i],
+  })),
+};
+
+export const DATA_BY_LANG: Record<Lang, DataProps> = { en: DATA, pt: DATA_PT };
