@@ -113,7 +113,7 @@ export const experiences: ExperienceInterface[] = [
     ],
     start: "01/01/2023",
     end: "01/04/2025",
-    src: "/work/blip-meet-up.jfif",
+    src: "/work/blip-meet-up.webp",
     alt: "Blip meet up",
   },
   {
@@ -132,7 +132,7 @@ export const experiences: ExperienceInterface[] = [
     ],
     start: "01/02/2022",
     end: "01/01/2023",
-    src: "/work/stilingue-off-site.jfif",
+    src: "/work/stilingue-off-site.webp",
     alt: "Stilingue Off Site",
   },
   {
@@ -151,7 +151,7 @@ export const experiences: ExperienceInterface[] = [
     ],
     start: "01/06/2021",
     end: "01/02/2022",
-    src: "/work/stilingue-assistant.jpeg",
+    src: "/work/stilingue-assistant.webp",
     alt: "Stilingue Off Site",
   },
   {
@@ -170,7 +170,7 @@ export const experiences: ExperienceInterface[] = [
     ],
     start: "01/09/2020",
     end: "01/06/2021",
-    src: "/work/stilingue-intern.jpeg",
+    src: "/work/stilingue-intern.webp",
     alt: "Stilingue Off Site",
   },
 ];

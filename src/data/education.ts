@@ -62,7 +62,7 @@ export const educations = [
       name: "Pontifical Catholic University of Minas Gerais",
       originalName: "Pontifícia Universidade Católica de Minas Gerais",
       abbreviation: "PUC Minas",
-      image: "/educations/puc_minas_logo.png",
+      image: "/educations/puc_minas_logo.webp",
     },
     start: "01/07/2018",
     end: null,

@@ -24,7 +24,7 @@ export const projects = [
       "Docker",
       "Hostinger",
     ],
-    image: "/projects/humanamente.png",
+    image: "/projects/humanamente.webp",
     link: "https://www.somoshumanamente.com.br",
     categories: ["owner"],
   },
@@ -35,7 +35,7 @@ export const projects = [
     approach, areas of expertise, and makes it easy for patients to get in touch 
     through an intuitive and responsive interface.`,
     technologies: ["React", "Next.js", "Tailwind", "TypeScript", "Hostinger"],
-    image: "/projects/jessica_rodrigues_psychologist.png",
+    image: "/projects/jessica_rodrigues_psychologist.webp",
     link: "https://psijessicar.com/",
     categories: ["freelancer"],
   },

@@ -65,8 +65,6 @@ export default function Balloon({
               width={120}
               height={48}
               alt={`${label} company`}
-              unoptimized
-              priority
               style={{ objectFit: "contain" }}
             />
           </div>
