@@ -5,10 +5,12 @@ import { FaArrowUp } from "react-icons/fa";
 
 import { NAVIGATION_TAB_INDEX, scrollIntoSection } from "./NavigationTabs";
 import { useTabs } from "@/contexts/TabsContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
   const { setActiveTab, setIsOnClickScrolling } = useTabs();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -19,7 +21,8 @@ export default function BackToTopButton() {
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    toggleVisibility();
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
@@ -34,6 +37,8 @@ export default function BackToTopButton() {
   return (
     <button
       onClick={scrollToTop}
+      aria-label={t("a11y.backToTop")}
+      tabIndex={isVisible ? 0 : -1}
       className={`fixed bottom-6 right-6 z-20 p-4 rounded-full shadow-lg transition-all duration-300
         bg-stone-800 hover:bg-stone-700 text-[var(--action)]
         ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}

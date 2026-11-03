@@ -43,7 +43,7 @@ export default function CoverSection() {
                   priority
                   fetchPriority="high"
                   placeholder="empty"
-                  alt="matheus, focused programmer wearing a hoodie and headset, working on a laptop."
+                  alt={t("cover.alt")}
                   className="relative block z-10"
                 />
 
@@ -76,7 +76,7 @@ export default function CoverSection() {
                 priority
                 fetchPriority="high"
                 placeholder="empty"
-                alt="matheus, focused programmer wearing a hoodie and headset, working on a laptop."
+                alt={t("cover.alt")}
                 className="relative block z-10"
               />
 

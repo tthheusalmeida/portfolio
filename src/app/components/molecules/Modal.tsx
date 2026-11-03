@@ -6,6 +6,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import Button from "../atoms/Button";
 import { mergeClassNames } from "@/utils/classNames";
 import { motion, AnimatePresence } from "motion/react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ModalProps {
   isOpen: boolean;
@@ -24,6 +25,7 @@ export default function Modal({
   onAnimationEnd,
   className,
 }: ModalProps) {
+  const { t } = useLanguage();
   const [shouldRender, setShouldRender] = useState(isOpen);
   const [isClosing, setIsClosing] = useState(false);
   const modalRef = useRef<HTMLDivElement | null>(null);
@@ -85,6 +87,7 @@ export default function Modal({
         <div className="flex absolute w-full justify-end max-w-[var(--page-width)] top-0">
           <Button
             onClick={onClose}
+            aria-label={t("a11y.close")}
             variant="secondary"
             className="w-12 bg-transparent mt-2 mr-4 text-[var(--action)]"
             disableAnimation
