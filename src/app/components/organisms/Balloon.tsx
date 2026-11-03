@@ -6,7 +6,7 @@ import { FaCheck } from "react-icons/fa";
 
 interface BaloonProps {
   label: string;
-  logo: string;
+  logo: string | null;
   role: string;
   type: string;
   description: string | null;
