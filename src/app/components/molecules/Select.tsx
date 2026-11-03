@@ -117,7 +117,7 @@ export default function Selector({ label, options, onChange }: SelectorProps) {
         createPortal(
           <div
             ref={dropdownRef}
-            className="absolute z-40 rounded-md bg-[var(--color-background)]/60 backdrop-blur-3xl shadow-md overflow-y-auto max-h-[200px] custom-scrollbar"
+            className="absolute z-40 rounded-md bg-[var(--color-background)]/60 backdrop-blur-sm shadow-md overflow-y-auto max-h-[200px] custom-scrollbar"
             style={{
               position: "absolute",
               top: coords.top,

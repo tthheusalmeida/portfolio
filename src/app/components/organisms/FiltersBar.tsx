@@ -26,7 +26,7 @@ export default function FiltersBar({ filters, onChange }: FiltersBarProps) {
       className={mergeClassNames(
         "flex items-center justify-center relative overflow-visible",
         "sm:pb-4 mb-8 gap-4 rounded-lg w-full max-w-[640px]",
-        "bg-[var(--color-background)]/60 backdrop-blur-3xl"
+        "bg-[var(--color-background)]/60 backdrop-blur-sm"
       )}
     >
       {filters.map(({ key, options }, index) => (

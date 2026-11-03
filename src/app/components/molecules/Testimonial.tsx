@@ -20,7 +20,7 @@ export default function Testimonial({
       HTMLtag="div"
       className={mergeClassNames(
         "w-full sm:p-4 rounded",
-        "bg-[var(--color-background)]/60 backdrop-blur-3xl",
+        "bg-[var(--color-background)]/60 backdrop-blur-sm",
       )}
     >
       <div className="flex items-start gap-4">

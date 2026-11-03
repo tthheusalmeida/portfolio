@@ -71,8 +71,8 @@ export default function Modal({
         ref={modalRef}
         className={mergeClassNames(
           "h-dvh w-full px-4 flex flex-col items-center justify-center",
-          "bg-[var(--color-background)]/60 backdrop-blur-3xl",
-          "transition-all duration-300 ease-in-out",
+          "bg-[var(--color-background)]/60 backdrop-blur-sm",
+          "transition-[background-color,transform] duration-300 ease-in-out",
           animationClass
         )}
       >
