@@ -35,7 +35,9 @@ export default function Testimonial({
               size={20}
               className="hidden sm:inline-block rotate-180 text-[var(--action)] mr-2"
             />
-            {description}
+            {Array.isArray(description)
+              ? description.join(" ")
+              : description.replace(/\s+/g, " ").trim()}
             <BiSolidQuoteRight
               size={20}
               className="hidden sm:inline-block text-[var(--action)] ml-2"
