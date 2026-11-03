@@ -1,15 +1,8 @@
 "use client";
 
-import {
-  createContext,
-  Fragment,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, Fragment, useContext, useMemo } from "react";
 import { DATA_BY_LANG } from "@/data";
+import { localizedPath } from "@/i18n/routes";
 import HighlightText from "@/app/components/atoms/HighlightText";
 import {
   DEFAULT_LANG,
@@ -18,20 +11,19 @@ import {
   dictionary,
 } from "@/i18n/dictionary";
 
-const STORAGE_KEY = "lang";
-
 type LanguageContextType = {
   lang: Lang;
-  setLang: (lang: Lang) => void;
   t: (key: DictionaryKey) => string;
   rich: (key: DictionaryKey) => React.ReactNode;
+  // Localized URL of a page: path("/projects") -> "/en/projects/" in English.
+  path: (path: string) => string;
 };
 
 const LanguageContext = createContext<LanguageContextType>({
   lang: DEFAULT_LANG,
-  setLang: () => {},
   t: (key) => dictionary[DEFAULT_LANG][key],
   rich: (key) => dictionary[DEFAULT_LANG][key],
+  path: (path) => localizedPath(DEFAULT_LANG, path),
 });
 
 export function useLanguage() {
@@ -51,31 +43,21 @@ function renderRich(text: string) {
   ));
 }
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(DEFAULT_LANG);
-
-  useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === "pt" || saved === "en") setLangState(saved);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
-  }, [lang]);
-
-  const setLang = useCallback((next: Lang) => {
-    setLangState(next);
-    localStorage.setItem(STORAGE_KEY, next);
-  }, []);
-
+export function LanguageProvider({
+  lang,
+  children,
+}: {
+  lang: Lang;
+  children: React.ReactNode;
+}) {
   const value = useMemo<LanguageContextType>(
     () => ({
       lang,
-      setLang,
       t: (key) => dictionary[lang][key],
       rich: (key) => renderRich(dictionary[lang][key]),
+      path: (path) => localizedPath(lang, path),
     }),
-    [lang, setLang],
+    [lang],
   );
 
   return (

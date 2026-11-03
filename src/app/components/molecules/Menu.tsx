@@ -17,16 +17,16 @@ export default function Menu() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [pendingPath, setPendingPath] = useState<string | null>(null);
 
-  const { t } = useLanguage();
+  const { t, path: localePath } = useLanguage();
   const router = useRouter();
   const pathname = usePathname();
 
   const items = useMemo(
     () => [
-      { label: t("nav.home"), path: "/", navigation: <NavigationTabs isWithinMenu /> },
-      { label: t("nav.projects"), path: "/projects" },
+      { label: t("nav.home"), path: localePath("/"), navigation: <NavigationTabs isWithinMenu /> },
+      { label: t("nav.projects"), path: localePath("/projects") },
     ],
-    [t]
+    [t, localePath]
   );
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Menu() {
   };
 
   const handleItemClick = (path: string) => {
-    if (path !== pathname) {
+    if (path !== pathname && path !== `${pathname}/`) {
       setPendingPath(path);
     }
     setIsOpen(false);
@@ -63,6 +63,7 @@ export default function Menu() {
         onClick={handleToggle}
         disabled={isAnimating || isOpen}
         variant="secondary"
+        aria-label={t("a11y.menu")}
         className="w-12 bg-transparent text-[var(--action)]"
         disableAnimation
       >

@@ -19,6 +19,12 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   output: "export",
+  // Emits /projects/index.html instead of /projects.html, which works on any
+  // static host (FTP/Apache) without rewrite rules.
+  trailingSlash: true,
+  env: {
+    NEXT_PUBLIC_BUILD_YEAR: String(new Date().getFullYear()),
+  },
 };
 
 export default nextConfig;

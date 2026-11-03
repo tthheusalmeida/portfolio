@@ -16,6 +16,13 @@ const en = {
   "cover.contact": "Contact me",
   "cover.cv": "Download CV",
   "cover.stack": "My favorite stack",
+  "cover.alt":
+    "Matheus, a focused programmer wearing a hoodie and headset, working on a laptop.",
+
+  "a11y.menu": "Open menu",
+  "a11y.close": "Close",
+  "a11y.backToTop": "Back to top",
+  "a11y.language": "Language",
 
   "projects.title": "Projects",
   "projects.subtitle": "A reflection of my **Growth** and **Passion**",
@@ -101,6 +108,13 @@ const pt: Record<DictionaryKey, string> = {
   "cover.contact": "Fale comigo",
   "cover.cv": "Baixar CV",
   "cover.stack": "Minha stack favorita",
+  "cover.alt":
+    "Matheus, programador concentrado, de moletom e headset, trabalhando em um notebook.",
+
+  "a11y.menu": "Abrir menu",
+  "a11y.close": "Fechar",
+  "a11y.backToTop": "Voltar ao topo",
+  "a11y.language": "Idioma",
 
   "projects.title": "Projetos",
   "projects.subtitle": "Um reflexo do meu **Crescimento** e da minha **Paixão**",

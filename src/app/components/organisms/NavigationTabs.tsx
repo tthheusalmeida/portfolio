@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
+import { stripLocale } from "@/i18n/routes";
 import { mergeClassNames } from "@/utils/classNames";
 import { useTabs } from "@/contexts/TabsContext";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -35,7 +36,7 @@ const tabsList = [
   {
     id: NAVIGATION_TAB_INDEX.BLOG,
     href: "https://tthheusalmeida.github.io/",
-    endDate: new Date(2026, 12, 31),
+    endDate: new Date(2026, 11, 31, 23, 59, 59),
   },
 ];
 
@@ -69,7 +70,7 @@ export default function NavigationTabs({
     }
   }, [activeTab, tabs]);
 
-  if (pathname !== "/") return null;
+  if (stripLocale(pathname) !== "/") return null;
 
   const handleClick = (id: string) => {
     setActiveTab(id);

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/contexts/LanguageContext";
 import Button from "./Button";
 
 interface RouterButtonProps {
@@ -17,13 +18,14 @@ export default function RouterButton({
   variant = "primary",
 }: RouterButtonProps) {
   const router = useRouter();
+  const { path: localePath } = useLanguage();
 
   if (!router) {
     return;
   }
 
   const handleOnClick = () => {
-    router.push(`/${path}`);
+    router.push(localePath(`/${path}`));
   };
 
   return (

@@ -17,7 +17,7 @@ export default function ErrorPageTemplate({
   code,
   description,
 }: ErrorPageTemplateProps) {
-  const { t } = useLanguage();
+  const { t, path } = useLanguage();
 
   return (
     <div className="w-dvw h-dvh flex items-center justify-center">
@@ -28,7 +28,7 @@ export default function ErrorPageTemplate({
         <div className="w-full h-full flex justify-center items-center pt-16">
           <Button variant="primary" className="w-44">
             <FaArrowLeft className="animate-arrow-bounce" size={18} />
-            <Link href="/" className="text-nowrap">
+            <Link href={path("/")} className="text-nowrap">
               {t("notFound.back")}
             </Link>
           </Button>
