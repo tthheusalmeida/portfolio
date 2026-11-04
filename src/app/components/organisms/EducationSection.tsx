@@ -19,7 +19,7 @@ export default function EducationSection() {
           title={t("education.title")}
           subtitle={rich("education.subtitle")}
         >
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-14 sm:gap-16">
             {educations.map((education, index) => (
               <Education key={index} {...education} />
             ))}
