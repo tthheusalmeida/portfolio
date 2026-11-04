@@ -20,8 +20,8 @@ export default function WhatsAppButton() {
       aria-label={t("a11y.whatsapp")}
       className="fixed bottom-6 right-6 z-20 flex items-center justify-center
         w-[52px] h-[52px] rounded-full shadow-lg
-        bg-stone-800 text-[var(--action)]
-        transition-colors duration-300 hover:bg-[var(--action)] hover:text-stone-900"
+        bg-[var(--action)] text-stone-900
+        transition-colors duration-300 hover:bg-stone-800 hover:text-[var(--action)]"
     >
       <span
         aria-hidden="true"
