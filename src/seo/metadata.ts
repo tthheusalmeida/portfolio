@@ -4,23 +4,27 @@ import { SITE_URL, absoluteUrl } from "@/i18n/routes";
 
 const KEYWORDS = [
   "Matheus Almeida",
-  "Frontend",
+  "Full Stack",
+  "DevOps",
   "Software Engineer",
-  "Desenvolvedor Frontend",
-  "Frontend Developer",
+  "Full Stack Developer",
+  "Desenvolvedor Full Stack",
+  "DevOps Engineer",
+  "TypeScript",
+  "Node.js",
   "Vue",
   "React",
-  "Tailwind",
-  "JavaScript",
-  "TypeScript",
   "Next.js",
-  "HTML",
-  "CSS",
-  "Express",
-  "MongoDB",
   "Firebase",
-  "Programador Frontend",
+  "PostgreSQL",
+  "Docker",
+  "GitHub Actions",
+  "CI/CD",
+  "AWS",
+  "GCP",
+  "Observabilidade",
   "Engenheiro de Software",
+  "Engenheiro Full Stack",
   "Web Developer",
   "Micro-SaaS",
   "UI Developer",
@@ -31,23 +35,23 @@ const KEYWORDS = [
 const TEXTS = {
   pt: {
     homeTitle:
-      "Matheus Almeida - Engenheiro de Software Front-End | Vue, React, Tailwind",
+      "Matheus Almeida - Engenheiro de Software Full Stack & DevOps | TypeScript, Node.js, React",
     homeDescription:
-      "Engenheiro de Software Front-End especialista em Vue, React, TypeScript, Tailwind, Node.js e Firebase. Transformo ideias em experiências digitais modernas, acessíveis e de alto desempenho.",
+      "Engenheiro de Software Full Stack & DevOps com TypeScript, Node.js, React, PostgreSQL, Docker e CI/CD na AWS e GCP. Construo, entrego e opero software com monitoramento e visão de design e negócio.",
     projectsTitle: "Projetos",
     projectsDescription:
-      "Projetos freelance, pessoais e voluntários de Matheus Almeida, engenheiro de software front-end: Vue, React, Next.js, Node.js e mais.",
+      "Projetos freelance, pessoais e voluntários de Matheus Almeida, engenheiro de software full stack e DevOps: TypeScript, Node.js, React, PostgreSQL e mais.",
     locale: "pt_BR",
     hreflang: "pt-BR",
   },
   en: {
     homeTitle:
-      "Matheus Almeida - Software Engineer Front End | Vue, React, Tailwind",
+      "Matheus Almeida - Full Stack & DevOps Software Engineer | TypeScript, Node.js, React",
     homeDescription:
-      "Software Engineer Front-End specialized in Vue, React, TypeScript, Tailwind, Node.js and Firebase. I transform ideas into modern, accessible, and high-performance digital experiences.",
+      "Full Stack & DevOps Software Engineer working with TypeScript, Node.js, React, PostgreSQL, Docker and CI/CD on AWS and GCP. I build, ship and run software with monitoring and a design and business mindset.",
     projectsTitle: "Projects",
     projectsDescription:
-      "Freelance, personal and pro bono projects by Matheus Almeida, front-end software engineer: Vue, React, Next.js, Node.js and more.",
+      "Freelance, personal and pro bono projects by Matheus Almeida, full stack and DevOps software engineer: TypeScript, Node.js, React, PostgreSQL and more.",
     locale: "en_US",
     hreflang: "en",
   },
@@ -112,8 +116,8 @@ export function pageMetadata(lang: Lang, path: "/" | "/projects"): Metadata {
 }
 
 const JOB_TITLE = {
-  pt: "Engenheiro de Software Front-End",
-  en: "Front-End Software Engineer",
+  pt: "Engenheiro de Software Full Stack & DevOps",
+  en: "Full Stack & DevOps Software Engineer",
 } as const;
 
 export function personJsonLd(lang: Lang) {
@@ -125,13 +129,17 @@ export function personJsonLd(lang: Lang) {
     jobTitle: JOB_TITLE[lang],
     inLanguage: TEXTS[lang].hreflang,
     knowsAbout: [
+      "TypeScript",
+      "Node.js",
       "Vue.js",
       "React",
       "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Node.js",
       "Firebase",
+      "PostgreSQL",
+      "Docker",
+      "GitHub Actions",
+      "AWS",
+      "Google Cloud",
     ],
     sameAs: [
       "https://www.linkedin.com/in/dev-almeida-matheus/",

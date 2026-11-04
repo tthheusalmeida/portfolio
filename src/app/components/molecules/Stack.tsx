@@ -23,7 +23,10 @@ export default function Stack({ className }: StackProps) {
     >
       <span className="text-base">{t("cover.stack")}</span>
 
-      <AnimatedComponent HTMLtag="div" className="flex gap-4">
+      <AnimatedComponent
+        HTMLtag="div"
+        className="flex flex-wrap justify-center sm:justify-start gap-4"
+      >
         {items.map(({ name, color }, index) => (
           <SVGGlow
             key={index}

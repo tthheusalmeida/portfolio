@@ -10,6 +10,7 @@ import AnimatedComponent from "../molecules/AnimatedComponent";
 import { mergeClassNames } from "@/utils/classNames";
 import { useLanguage } from "@/contexts/LanguageContext";
 import NavigationButton from "../atoms/NavigationButton";
+import Subtitle from "../atoms/Subtitle";
 
 export default function CoverSection() {
   const { t } = useLanguage();
@@ -29,7 +30,10 @@ export default function CoverSection() {
             <div className="flex flex-col items gap-6 sm:block w-full sm:w-auto pt-10 sm:pt-0">
               <div className="flex flex-col select-none items-center sm:items-start">
                 <Title className="font-normal">Software Engineer</Title>
-                <Title>Front-End</Title>
+                <Title>Full Stack & DevOps</Title>
+                <Subtitle className="mt-4 max-w-md text-center sm:text-left sm:text-lg text-sm">
+                  {t("cover.tagline")}
+                </Subtitle>
               </div>
 
               <AnimatedComponent
