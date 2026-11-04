@@ -24,6 +24,7 @@ const en = {
   "a11y.menu": "Open menu",
   "a11y.close": "Close",
   "a11y.backToTop": "Back to top",
+  "a11y.whatsapp": "Chat on WhatsApp",
   "a11y.language": "Language",
 
   "projects.title": "Projects",
@@ -118,6 +119,7 @@ const pt: Record<DictionaryKey, string> = {
   "a11y.menu": "Abrir menu",
   "a11y.close": "Fechar",
   "a11y.backToTop": "Voltar ao topo",
+  "a11y.whatsapp": "Conversar no WhatsApp",
   "a11y.language": "Idioma",
 
   "projects.title": "Projetos",
