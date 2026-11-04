@@ -29,8 +29,16 @@ export default function CoverSection() {
           <div className="flex sm:flex-row sm:justify-between flex-col items-center">
             <div className="flex flex-col items gap-6 sm:block w-full sm:w-auto pt-10 sm:pt-0">
               <div className="flex flex-col select-none items-center sm:items-start">
-                <Title className="font-normal">Software Engineer</Title>
-                <Title>Full Stack & DevOps</Title>
+                <AnimatedComponent
+                  HTMLtag="h1"
+                  className="mb-2 text-sm sm:text-lg font-semibold uppercase tracking-[0.25em] text-[var(--action)]"
+                >
+                  Matheus Almeida
+                </AnimatedComponent>
+                <Title as="h2" className="font-normal">
+                  Software Engineer
+                </Title>
+                <Title as="h2">Full Stack & DevOps</Title>
                 <Subtitle className="mt-4 max-w-md text-center sm:text-left sm:text-lg text-sm">
                   {t("cover.tagline")}
                 </Subtitle>
