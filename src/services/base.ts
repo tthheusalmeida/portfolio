@@ -1,4 +1,4 @@
-const TIME = 120000;
+const TIME = 20000;
 const GATEWAY = "https://server-mail-seven.vercel.app";
 
 interface BaseServiceProps<T> {
@@ -16,6 +16,7 @@ function timeoutRequestObject() {
 
   return {
     timeoutId,
+    signal: controller.signal,
   };
 }
 
@@ -25,11 +26,12 @@ export async function baseService<T>({
   endPoint,
   errorMessage,
 }: BaseServiceProps<T>): Promise<{ success: boolean }> {
-  const { timeoutId } = timeoutRequestObject();
+  const { timeoutId, signal } = timeoutRequestObject();
 
   try {
     const response = await fetch(`${GATEWAY}${endPoint}`, {
       method,
+      signal,
       body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
@@ -45,6 +47,8 @@ export async function baseService<T>({
     const data = (await response.json()) as { success: boolean };
     return data;
   } catch (error: unknown) {
+    clearTimeout(timeoutId);
+
     if (error instanceof DOMException && error.name === "AbortError") {
       throw new Error("Timeout: Request takes too much time");
     }
