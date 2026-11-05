@@ -3,19 +3,20 @@
 import { mergeClassNames } from "@/utils/classNames";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { DictionaryKey } from "@/i18n/dictionary";
-import Tag from "./Tag";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 interface ProjectHeaderProps {
   categories?: Array<string>;
   className?: string;
   link?: string;
+  title: string;
 }
 
 export default function ProjectHeader({
   categories,
   className,
   link,
+  title,
 }: ProjectHeaderProps) {
   const { t } = useLanguage();
 
@@ -23,29 +24,25 @@ export default function ProjectHeader({
     <div
       className={mergeClassNames(
         "flex justify-between gap-2 bg-stone-800",
-        className
+        className,
       )}
     >
-      <div className="flex justify-between gap-2 py-2 px-1">
-        {categories?.map((category, index) => (
-          <Tag
-            key={index}
-            className="border-none text-sm sm:text-base hover:bg-transparent bg-transparent text-gray-200 font-normal"
-          >
+      <div className="flex gap-2 py-2 px-3 text-sm sm:text-base text-gray-200">
+        {categories?.map((category) => (
+          <span key={category}>
             {t(`projects.category.${category}` as DictionaryKey)}
-          </Tag>
+          </span>
         ))}
       </div>
 
-      <a href={link} target="_blank" className="flex items-center py-0 px-4">
-        <FaExternalLinkAlt
-          size={18}
-          className="sm:block hidden text-[var(--action)]"
-        />
-        <FaExternalLinkAlt
-          size={18}
-          className="sm:hidden block text-[var(--action)]"
-        />
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={title}
+        className="flex items-center px-4 text-[var(--action)] focus-visible:outline-2 focus-visible:outline-[var(--action)]"
+      >
+        <FaExternalLinkAlt size={18} aria-hidden />
       </a>
     </div>
   );

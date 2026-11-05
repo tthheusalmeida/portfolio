@@ -3,8 +3,7 @@ import Tag from "../atoms/Tag";
 import Image from "next/image";
 import AnimatedComponent from "./AnimatedComponent";
 import ProjectHeader from "../atoms/ProjectHeader";
-
-export type Category = "personal" | "freelancer" | "probono";
+import { Category } from "@/data/project";
 
 export interface ProjectProps {
   className?: string;
@@ -16,6 +15,9 @@ export interface ProjectProps {
   categories?: Array<Category>;
 }
 
+// Mobile: image on top, details always visible below it.
+// Desktop: image fills the card, the title stays visible at the bottom and the
+// details slide up on hover/focus. The text is always in the DOM (SEO).
 export default function Project({
   className,
   title,
@@ -28,53 +30,61 @@ export default function Project({
   return (
     <AnimatedComponent
       HTMLtag="div"
-      className={mergeClassNames(
-        "relative w-full min-h-60 sm:min-h-96 group rounded-b-2xl",
-        className
-      )}
+      className={mergeClassNames("relative w-full group", className)}
     >
       <ProjectHeader
         className="rounded-t-2xl"
         categories={categories}
         link={link}
+        title={title}
       />
 
-      <div className="relative w-full h-60 sm:h-96 overflow-hidden rounded-b-2xl bg-[var(--color-background)]">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          sizes="auto"
-          className={mergeClassNames(
-            "object-cover group-hover:scale-110",
-            "transition-transform rounded-b-2xl"
-          )}
-        />
+      <div className="relative sm:h-96 overflow-hidden rounded-b-2xl bg-stone-800">
+        <div className="relative h-48 sm:absolute sm:inset-0 sm:h-full">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(min-width: 640px) 50vw, 100vw"
+            className="object-cover transition-transform duration-500 sm:group-hover:scale-105 sm:group-focus-within:scale-105 motion-reduce:transition-none"
+          />
+        </div>
 
         <div
-          className={mergeClassNames(
-            "absolute top-0 left-0 opacity-100 sm:opacity-0",
-            "flex flex-col gap-2 sm:gap-4 justify-between bg-[var(--color-background)]/90 sm:bg-stone-800",
-            "w-full h-full p-4 sm:p-4 rounded-b-2xl",
-            "sm:group-hover:opacity-100 transition-opacity duration-400"
-          )}
-        >
-          <div>
-            <div className="flex justify-between items-start">
-              <h3 className="text-base sm:text-lg text-[var(--action)] font-semibold sm:font-bold max-w-[65%]">
-                {title}
-              </h3>
+          aria-hidden
+          className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"
+        />
+        <div
+          aria-hidden
+          className="hidden sm:block absolute inset-0 bg-black/75 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100"
+        />
+
+        <div className="relative p-4 sm:absolute sm:inset-x-0 sm:bottom-0">
+          <h3 className="text-base sm:text-lg text-[var(--action)] font-bold">
+            {title}
+          </h3>
+
+          <div
+            className={mergeClassNames(
+              "grid grid-rows-[1fr] sm:grid-rows-[0fr] sm:opacity-0",
+              "sm:group-hover:grid-rows-[1fr] sm:group-hover:opacity-100",
+              "sm:group-focus-within:grid-rows-[1fr] sm:group-focus-within:opacity-100",
+              "transition-[grid-template-rows,opacity] duration-500 ease-out motion-reduce:transition-none",
+            )}
+          >
+            <div className="min-h-0 overflow-hidden">
+              <p className="pt-2 sm:pt-3 text-xs sm:text-sm font-normal">
+                {about}
+              </p>
+
+              <ul className="flex gap-2 flex-wrap mt-4 sm:mt-5 pb-1">
+                {technologies.map((item) => (
+                  <li key={item} className="flex">
+                    <Tag>{item}</Tag>
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <p className="text-xs sm:text-base font-normal text-justify pt-2 sm:pt-4 mx-auto">
-              {about}
-            </p>
-          </div>
-
-          <div className="flex gap-2 sm:gap-4 flex-wrap">
-            {technologies.map((item, index) => (
-              <Tag key={index}>{item}</Tag>
-            ))}
           </div>
         </div>
       </div>
