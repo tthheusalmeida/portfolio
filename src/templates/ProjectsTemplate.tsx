@@ -10,7 +10,6 @@ import CTASection from "@/app/components/organisms/ContactSection";
 import FiltersBar from "@/app/components/organisms/FiltersBar";
 import { Category } from "@/data/project";
 import { DictionaryKey } from "@/i18n/dictionary";
-import { motion, AnimatePresence } from "motion/react";
 import AnimatedComponent from "@/app/components/molecules/AnimatedComponent";
 
 const CATEGORIES: Array<Category> = [
@@ -143,30 +142,11 @@ export default function ProjectsTemplate() {
               className="grid grid-cols-1 sm:grid-cols-2 gap-4"
               forceView
             >
-              <AnimatePresence>
-                {projectsView.map((project) => (
-                  <motion.div
-                    layout
-                    key={`${project.title}`}
-                    initial={{
-                      opacity: 0,
-                      transform: "scale(0.95) translateY(10px)",
-                    }}
-                    animate={{
-                      opacity: 1,
-                      transform: "scale(1) translateY(0)",
-                    }}
-                    exit={{
-                      opacity: 0,
-                      transform: "scale(0.95) translateY(-10px)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full"
-                  >
-                    <Project {...project} />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
+              {projectsView.map((project) => (
+                <div key={project.title} className="w-full animate-project-in">
+                  <Project {...project} />
+                </div>
+              ))}
             </AnimatedComponent>
           ) : (
             <AnimatedComponent
