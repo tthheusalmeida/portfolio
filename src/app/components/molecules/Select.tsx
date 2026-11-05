@@ -15,6 +15,7 @@ type SelectorProps = {
   label: string;
   title?: string;
   options: Option[];
+  value?: string;
   onChange: (value: string) => void;
 };
 
@@ -22,10 +23,12 @@ export default function Selector({
   label,
   title,
   options,
+  value,
   onChange,
 }: SelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(options[0].value);
+  const [internalValue, setInternalValue] = useState(options[0].value);
+  const selectedValue = value ?? internalValue;
   const selected =
     options.find((option) => option.value === selectedValue) ?? options[0];
   const portalRoot = usePortal(`select-${label}`);
@@ -74,7 +77,7 @@ export default function Selector({
   const isFirstOptionSelected = selected.value === options[0].value;
 
   const handleSelect = (option: Option) => {
-    setSelectedValue(option.value);
+    setInternalValue(option.value);
     onChange(option.value);
     setIsOpen(false);
   };

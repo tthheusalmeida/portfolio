@@ -12,6 +12,7 @@ interface Option {
 export interface Filter {
   key: string;
   title?: string;
+  value?: string;
   options: Array<Option>;
 }
 
@@ -30,9 +31,10 @@ export default function FiltersBar({ filters, onChange }: FiltersBarProps) {
         "bg-[var(--color-background)]/60 backdrop-blur-sm"
       )}
     >
-      {filters.map(({ key, title, options }, index) => (
+      {filters.map(({ key, title, value, options }) => (
         <Select
-          key={index}
+          key={key}
+          value={value}
           label={key}
           title={title}
           options={options}

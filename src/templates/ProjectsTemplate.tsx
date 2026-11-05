@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import PageLayout from "@/layouts/PageLayout";
 import TitleAndSubtitleSection from "@/app/components/molecules/TitleAndSubtitleSection";
 import SectionTemplate from "./SectionTemplate";
@@ -8,82 +8,116 @@ import { useLanguage, useData } from "@/contexts/LanguageContext";
 import Project from "@/app/components/molecules/Project";
 import CTASection from "@/app/components/organisms/ContactSection";
 import FiltersBar from "@/app/components/organisms/FiltersBar";
-import { useMemo } from "react";
-import { ProjectInterface } from "@/data/project";
+import { Category } from "@/data/project";
+import { DictionaryKey } from "@/i18n/dictionary";
 import { motion, AnimatePresence } from "motion/react";
 import AnimatedComponent from "@/app/components/molecules/AnimatedComponent";
 
+const CATEGORIES: Array<Category> = [
+  "personal",
+  "freelancer",
+  "probono",
+  "owner",
+];
+
+// Query-string name for each filter, so a filtered view can be shared.
+const FILTER_PARAMS = {
+  categories: "category",
+  technologies: "technology",
+} as const;
+
+type FilterKey = keyof typeof FILTER_PARAMS;
+type FilterState = Record<FilterKey, string>;
+
+const EMPTY_FILTERS: FilterState = { categories: "", technologies: "" };
+
 const createLabelValueObject = (
   labels: Array<string> | Set<string>,
-  allLabel: string
+  allLabel: string,
 ) => {
-  const labelsArray = Array<{ label: string; value: string }>();
-
-  labels.forEach((label) => labelsArray.push({ label: label, value: label }));
-
-  labelsArray.sort((a, b) => (a.label >= b.label ? 1 : -1));
-  return [{ label: allLabel, value: "" }, ...labelsArray];
+  const options = Array.from(labels, (label) => ({ label, value: label }));
+  options.sort((a, b) => a.label.localeCompare(b.label));
+  return [{ label: allLabel, value: "" }, ...options];
 };
 
 export default function ProjectsTemplate() {
   const { t, rich } = useLanguage();
   const DATA = useData();
-  const technologies = new Set<string>();
-  DATA.projects.forEach((project) =>
-    project.technologies.forEach((technology) => technologies.add(technology))
+
+  const technologies = useMemo(
+    () => new Set(DATA.projects.flatMap((project) => project.technologies)),
+    [DATA.projects],
   );
 
-  const filters = [
-    {
-      key: "categories",
-      title: t("projects.filter.categories"),
-      options: [
-        { label: t("projects.filter.all"), value: "" },
-        { label: t("projects.category.personal"), value: "personal" },
-        { label: t("projects.category.freelancer"), value: "freelancer" },
-        { label: t("projects.category.probono"), value: "probono" },
-      ],
-    },
-    {
-      key: "technologies",
-      title: t("projects.filter.technologies"),
-      options: createLabelValueObject(technologies, t("projects.filter.all")),
-    },
-  ];
+  const filters = useMemo(
+    () => [
+      {
+        key: "categories" as const,
+        title: t("projects.filter.categories"),
+        options: [
+          { label: t("projects.filter.all"), value: "" },
+          ...CATEGORIES.filter((category) =>
+            DATA.projects.some((project) =>
+              project.categories.includes(category),
+            ),
+          ).map((category) => ({
+            label: t(`projects.category.${category}` as DictionaryKey),
+            value: category,
+          })),
+        ],
+      },
+      {
+        key: "technologies" as const,
+        title: t("projects.filter.technologies"),
+        options: createLabelValueObject(technologies, t("projects.filter.all")),
+      },
+    ],
+    [DATA.projects, technologies, t],
+  );
 
-  const initialFilterState = filters.reduce((acc, { key }) => {
-    acc[key] = "";
-    return acc;
-  }, {} as Record<string, string>);
-  const [filterState, setFilterState] = useState(initialFilterState);
-  const filtersKeys = filters.map(({ key }) => key as keyof ProjectInterface);
+  const [filterState, setFilterState] = useState<FilterState>(EMPTY_FILTERS);
 
-  const handleFilterChange = (label: string, value: string) => {
-    setFilterState((prev) => ({
-      ...prev,
-      [label]: value,
-    }));
-  };
+  // Restore filters from the URL (client only, keeps the page static).
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const restored = { ...EMPTY_FILTERS };
 
-  const projectsView = useMemo(() => {
-    let filteredProjects = [...DATA.projects];
-
-    filtersKeys.forEach((key) => {
-      const filterValue = filterState[key];
-      if (filterValue) {
-        filteredProjects = filteredProjects.filter((project) => {
-          const field = project[key];
-          if (Array.isArray(field)) {
-            return field.includes(filterValue);
-          } else {
-            return field === filterValue;
-          }
-        });
+    filters.forEach(({ key, options }) => {
+      const value = params.get(FILTER_PARAMS[key]) ?? "";
+      if (options.some((option) => option.value === value)) {
+        restored[key] = value;
       }
     });
 
-    return filteredProjects;
-  }, [DATA.projects, filterState, filtersKeys]);
+    setFilterState(restored);
+    // Only on mount: later changes are driven by the user.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleFilterChange = (key: string, value: string) => {
+    const filterKey = key as FilterKey;
+    setFilterState((prev) => ({ ...prev, [filterKey]: value }));
+
+    const url = new URL(window.location.href);
+    if (value) {
+      url.searchParams.set(FILTER_PARAMS[filterKey], value);
+    } else {
+      url.searchParams.delete(FILTER_PARAMS[filterKey]);
+    }
+    window.history.replaceState(null, "", url);
+  };
+
+  const projectsView = useMemo(
+    () =>
+      DATA.projects.filter(
+        (project) =>
+          (!filterState.categories ||
+            project.categories.includes(filterState.categories as Category)) &&
+          (!filterState.technologies ||
+            project.technologies.includes(filterState.technologies)),
+      ),
+    [DATA.projects, filterState],
+  );
 
   return (
     <PageLayout>
@@ -94,13 +128,19 @@ export default function ProjectsTemplate() {
           className="my-16 sm:mt-28 sm:mb-12"
         >
           <div className="w-full flex justify-center">
-            <FiltersBar filters={filters} onChange={handleFilterChange} />
+            <FiltersBar
+              filters={filters.map((filter) => ({
+                ...filter,
+                value: filterState[filter.key],
+              }))}
+              onChange={handleFilterChange}
+            />
           </div>
 
           {projectsView.length ? (
             <AnimatedComponent
               HTMLtag="div"
-              className="flex flex-wrap sm:grid sm:grid-cols-2 md:grid-cols-2 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
               forceView
             >
               <AnimatePresence>
