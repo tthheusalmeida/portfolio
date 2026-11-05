@@ -2,9 +2,11 @@ export interface TestimonialInterface {
   name: string;
   role: string;
   descriptions: string;
+  highlight: string;
+  relationship: string;
 }
 
-export const testimonials = [
+export const testimonials: TestimonialInterface[] = [
   {
     name: "João Marcos",
     role: "Front-end Engineering | Tech Lead | Chapter Lead",
@@ -22,6 +24,8 @@ export const testimonials = [
       the kind of professional you can rely on. Whenever I have the opportunity, I invite him to 
       join my projects.
     `,
+    highlight: "Whenever I have the opportunity, I invite him to join my projects.",
+    relationship: "Worked together",
   },
   {
     name: "Fábio Gomide",
@@ -38,6 +42,8 @@ export const testimonials = [
       quality in our context, always going above and beyond to contribute. His growth is 
       inevitable, and any team would be lucky to have him. A highly recommended professional!
     `,
+    highlight: "His growth is inevitable, and any team would be lucky to have him.",
+    relationship: "Worked together",
   },
   {
     name: "Gabriel Caetano Araújo",
@@ -50,6 +56,8 @@ export const testimonials = [
       He has an energy that inspires and drives those around him. Working with him was always 
       a smooth and motivating experience.
     `,
+    highlight: "He brings clarity, focus, and a calm energy that makes everything flow more smoothly.",
+    relationship: "Studied together",
   },
   {
     name: "Lucas Urzedo",
@@ -61,6 +69,8 @@ export const testimonials = [
       conditions to develop further in his career, constituting an asset of enormous value 
       for any organization.
     `,
+    highlight: "Excellent technical skills, great strategic vision and leadership.",
+    relationship: "Studied together",
   },
   {
     name: "Levi Frota",
@@ -70,6 +80,8 @@ export const testimonials = [
       he's an excellent problem solver, and helped the team to improve our platforms with good 
       performance and clean code. I hope we can work together again sometime.
     `,
+    highlight: "One of the greatest developers I have worked with.",
+    relationship: "Worked together",
   },
   {
     name: "Caio Costa",
@@ -81,5 +93,7 @@ export const testimonials = [
       brought a strong work ethic and a passion for learning that made him a valuable friend during 
       the period we studied together and the years after.
     `,
+    highlight: "A strong work ethic and a passion for learning.",
+    relationship: "Studied together",
   },
 ];

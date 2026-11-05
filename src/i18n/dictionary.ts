@@ -69,6 +69,8 @@ const en = {
   "testimonials.subtitle":
     "From **Clients**, **Teammates**, and **Classmates** who have collaborated with me along the way",
   "testimonials.link": "Check it out here",
+  "testimonials.readMore": "Read more",
+  "testimonials.readLess": "Read less",
 
   "contact.title": "Do you like my work?",
   "contact.subtitle":
@@ -170,6 +172,8 @@ const pt: Record<DictionaryKey, string> = {
   "testimonials.subtitle":
     "De **Clientes**, **Colegas de equipe** e **Colegas de faculdade** que colaboraram comigo ao longo do caminho",
   "testimonials.link": "Veja aqui",
+  "testimonials.readMore": "Ler mais",
+  "testimonials.readLess": "Ler menos",
 
   "contact.title": "Gostou do meu trabalho?",
   "contact.subtitle":

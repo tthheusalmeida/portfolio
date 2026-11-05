@@ -210,6 +210,8 @@ export const testimonials = [
       o tipo de profissional em quem você pode confiar. Sempre que tenho oportunidade, o convido para
       participar dos meus projetos.
     `,
+    highlight: "Sempre que tenho oportunidade, o convido para participar dos meus projetos.",
+    relationship: "Trabalhamos juntos",
   },
   {
     role: "Product Designer Sênior",
@@ -224,6 +226,8 @@ export const testimonials = [
       qualidade do design no nosso contexto, sempre indo além para contribuir. O crescimento dele é
       inevitável, e qualquer time teria sorte de contar com ele. Um profissional altamente recomendado!
     `,
+    highlight: "O crescimento dele é inevitável, e qualquer time teria sorte de contar com ele.",
+    relationship: "Trabalhamos juntos",
   },
   {
     role: "Product Tech Lead",
@@ -235,6 +239,8 @@ export const testimonials = [
       Ele tem uma energia que inspira e impulsiona quem está ao redor. Trabalhar com ele sempre foi
       uma experiência leve e motivadora.
     `,
+    highlight: "Ele traz clareza, foco e uma energia tranquila que faz tudo fluir melhor.",
+    relationship: "Estudamos juntos",
   },
   {
     role: "Engenheiro DataOps",
@@ -245,6 +251,8 @@ export const testimonials = [
       condições de se desenvolver ainda mais na carreira, sendo um ativo de enorme valor
       para qualquer organização.
     `,
+    highlight: "Excelentes habilidades técnicas, ótima visão estratégica e liderança.",
+    relationship: "Estudamos juntos",
   },
   {
     role: "Desenvolvedor Front-End",
@@ -253,6 +261,8 @@ export const testimonials = [
       é um excelente solucionador de problemas e ajudou o time a melhorar nossas plataformas com bom
       desempenho e código limpo. Espero que possamos trabalhar juntos novamente algum dia.
     `,
+    highlight: "Um dos melhores desenvolvedores com quem já trabalhei.",
+    relationship: "Trabalhamos juntos",
   },
   {
     role: "Engenheiro de Dados",
@@ -263,6 +273,8 @@ export const testimonials = [
       demonstrava uma forte ética de trabalho e paixão por aprender, o que fez dele um grande amigo durante
       o período em que estudamos juntos e nos anos seguintes.
     `,
+    highlight: "Uma forte ética de trabalho e paixão por aprender.",
+    relationship: "Estudamos juntos",
   },
 ];
 
