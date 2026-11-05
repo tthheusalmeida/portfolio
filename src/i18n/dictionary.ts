@@ -39,7 +39,7 @@ const en = {
   "projects.category.personal": "Personal",
   "projects.category.freelancer": "Freelancer",
   "projects.category.probono": "Pro bono",
-  "projects.category.owner": "owner",
+  "projects.category.owner": "Owner",
 
   "experiences.title": "Experiences",
   "experiences.subtitle":
@@ -135,7 +135,7 @@ const pt: Record<DictionaryKey, string> = {
   "projects.category.personal": "Pessoal",
   "projects.category.freelancer": "Freelancer",
   "projects.category.probono": "Voluntário",
-  "projects.category.owner": "sócio",
+  "projects.category.owner": "Sócio",
 
   "experiences.title": "Experiências",
   "experiences.subtitle":

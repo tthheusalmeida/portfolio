@@ -1,12 +1,15 @@
+export type Category = "owner" | "personal" | "freelancer" | "probono";
+
 export interface ProjectInterface {
   title: string;
   about: string;
   technologies: Array<string>;
   image: string;
   link: string;
+  categories: Array<Category>;
 }
 
-export const projects = [
+export const projects: ProjectInterface[] = [
   {
     title: "Humanamente",
     about: `Platform developed for Humanamente to help companies comply with NR-1 
