@@ -1,7 +1,6 @@
 "use client";
 
 import { useId, useRef, useState } from "react";
-import { useReducedMotion } from "motion/react";
 import { BiSolidQuoteRight } from "react-icons/bi";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { mergeClassNames } from "@/utils/classNames";
@@ -42,7 +41,6 @@ export default function Testimonial({
   const [expanded, setExpanded] = useState(false);
   const textId = useId();
   const textRef = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
 
   const text = Array.isArray(description)
     ? description.join(" ")
@@ -65,10 +63,6 @@ export default function Testimonial({
   const maskSize = expanded
     ? `100% 100%, 100% ${FADE}`
     : `100% calc(100% - ${FADE}), 100% ${FADE}`;
-  const transition = reduceMotion
-    ? "none"
-    : "max-height 500ms ease-in-out, mask-size 500ms ease-in-out, -webkit-mask-size 500ms ease-in-out";
-
   return (
     <AnimatedComponent
       HTMLtag="figure"
@@ -103,7 +97,7 @@ export default function Testimonial({
               textRef.current.style.maxHeight = "none";
             }
           }}
-          className="min-h-[6.5em] max-h-[6.5em] overflow-hidden text-xs sm:text-sm font-normal leading-relaxed text-[var(--foreground)]/70"
+          className="min-h-[6.5em] max-h-[6.5em] overflow-hidden transition-[max-height,mask-size] duration-500 ease-in-out text-xs sm:text-sm font-normal leading-relaxed text-[var(--foreground)]/70"
           style={{
             WebkitMaskImage: MASK_LAYERS,
             maskImage: MASK_LAYERS,
@@ -113,7 +107,6 @@ export default function Testimonial({
             maskPosition: "top, bottom",
             WebkitMaskSize: maskSize,
             maskSize,
-            transition,
           }}
         >
           <p>{text}</p>
