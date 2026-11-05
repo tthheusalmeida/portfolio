@@ -2,32 +2,51 @@
 
 import { mergeClassNames } from "@/utils/classNames";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { formatedDate } from "@/utils/date";
+import { formatedDateMonthYear } from "@/utils/date";
+
 export interface TimelineDateProps {
   start: string;
-  end: string;
-  side: "right" | "left";
+  end: string | null;
+}
+
+interface TimelineDateComponentProps extends TimelineDateProps {
+  align?: "left" | "right";
   className?: string;
 }
 
+// Highlights the start year and keeps the full period as a secondary line.
 export default function TimelineDate({
   start,
   end,
-  side,
+  align = "left",
   className,
-}: TimelineDateProps) {
+}: TimelineDateComponentProps) {
   const { lang, t } = useLanguage();
-  const isSideRight = side === "right";
+  const [startDay, startMonth, year] = start.split("/");
 
   return (
-    <span
+    <time
+      dateTime={`${year}-${startMonth}-${startDay}`}
       className={mergeClassNames(
-        "text-sm sm:text-base",
-        isSideRight ? "text-right" : "text-left",
-        className
+        "flex flex-col",
+        align === "right" ? "items-end text-right" : "items-start text-left",
+        className,
       )}
     >
-      {`${formatedDate(start, lang)} - ${end ? formatedDate(end, lang) : t("date.present")}`}
-    </span>
+      <span
+        className={mergeClassNames(
+          "font-bold leading-none tracking-tight tabular-nums",
+          "text-4xl sm:text-7xl text-[var(--foreground)]/25",
+          "transition-colors duration-500",
+          "group-has-[article:hover]/row:text-[var(--action)] group-has-[article:focus-within]/row:text-[var(--action)]",
+        )}
+      >
+        {year}
+      </span>
+      <span className="mt-1 text-xs sm:text-sm text-[var(--foreground)]/70">
+        {formatedDateMonthYear(start, lang)} –{" "}
+        {end ? formatedDateMonthYear(end, lang) : t("date.present")}
+      </span>
+    </time>
   );
 }

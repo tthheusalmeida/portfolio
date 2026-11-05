@@ -1,18 +1,11 @@
 import { isEven } from "@/utils/math";
 import TimelineDate, { TimelineDateProps } from "../atoms/TimelineDate";
 import { mergeClassNames } from "@/utils/classNames";
-import Image from "next/image";
 import AnimatedComponent from "../molecules/AnimatedComponent";
-
-interface ImageTimeline {
-  src: string;
-  alt: string;
-}
 
 export interface TimelineItem {
   component: React.ReactNode;
   date: TimelineDateProps;
-  image: ImageTimeline;
 }
 
 interface TimelineProps {
@@ -22,102 +15,55 @@ interface TimelineProps {
 export default function Timeline({ items }: TimelineProps) {
   return (
     <div className="relative w-full">
-      <div className="hidden sm:block absolute left-1/2 top-0 h-full border-l-2 border-gray-300 -translate-x-1/2 z-0" />
+      <div className="absolute left-2 sm:left-1/2 top-0 h-full border-l-2 border-gray-300/40 -translate-x-1/2" />
 
-      <div className="flex flex-col gap-20 relative z-10">
-        {items.map(({ component, date, image }, index) => {
-          const isLeft = isEven(index);
+      <div className="flex flex-col gap-16 sm:gap-20 relative">
+        {items.map(({ component, date }, index) => {
+          const cardOnLeft = isEven(index);
 
           return (
             <div
-              key={index}
-              className="flex flex-col sm:flex-row w-full sm:items-start sm:justify-between group"
+              key={`${date.start}-${index}`}
+              className="group/row relative flex flex-col sm:flex-row sm:items-start pl-8 sm:pl-0"
             >
-              <AnimatedComponent
-                HTMLtag="div"
+              <span
+                aria-hidden
                 className={mergeClassNames(
-                  "hidden sm:block absolute left-1/2 -translate-x-1/2",
-                  "w-6 h-6 mt-4",
-                  "bg-gray-200 rounded-full z-10",
-                  "group-hover:drop-shadow-[0_0_4px_#ffffff] transition-all duration-200"
+                  "absolute left-2 sm:left-1/2 top-3 sm:top-5 -translate-x-1/2 z-10",
+                  "size-4 sm:size-6 rounded-full bg-gray-200",
+                  "transition-all duration-300",
+                  "group-has-[article:hover]/row:bg-[var(--action)] group-has-[article:hover]/row:scale-125",
+                  "group-has-[article:hover]/row:drop-shadow-[0_0_6px_var(--action)]",
+                  "group-has-[article:focus-within]/row:bg-[var(--action)] group-has-[article:focus-within]/row:scale-125",
                 )}
               />
 
-              {isLeft ? (
-                <>
-                  <AnimatedComponent
-                    HTMLtag="div"
-                    className="order-2 sm:order-1 w-full sm:w-1/2 sm:pr-4 flex flex-col sm:flex-row justify-end"
-                  >
-                    {component}
-                  </AnimatedComponent>
-                  <AnimatedComponent
-                    HTMLtag="div"
-                    className="order-1 sm:order-2 relative w-full sm:w-1/2 pl-0 sm:pl-10 flex justify-end sm:justify-start mt-4 group"
-                  >
-                    <TimelineDate
-                      start={date.start}
-                      end={date.end}
-                      side="right"
-                      className="sm:group-hover:rotate-6 sm:group-hover:translate-x-6 rotate-0 transition-all duration-400 mb-2 mr-3 sm:mb-0 sm:mr-0"
-                    />
+              <AnimatedComponent
+                HTMLtag="div"
+                className={mergeClassNames(
+                  "w-full sm:w-1/2 mb-3 sm:mb-0 sm:pt-2",
+                  cardOnLeft
+                    ? "sm:order-2 sm:pl-12"
+                    : "sm:order-1 sm:pr-12 sm:flex sm:justify-end",
+                )}
+              >
+                <TimelineDate
+                  {...date}
+                  align={cardOnLeft ? "left" : "right"}
+                />
+              </AnimatedComponent>
 
-                    {image.src && (
-                      <div
-                        className={mergeClassNames(
-                          "w-[520px] h-[348px] hidden sm:inline-block absolute -top-4 left-6 z-[-1]",
-                          "opacity-0 invisible transition-all duration-300 rotate-90 scale-10",
-                          "group-hover:visible group-hover:opacity-50 group-hover:rotate-6 group-hover:scale-100 ease-out bg-black"
-                        )}
-                      >
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    )}
-                  </AnimatedComponent>
-                </>
-              ) : (
-                <>
-                  <AnimatedComponent
-                    HTMLtag="div"
-                    className="order-2 w-full sm:w-1/2 sm:pl-4 flex flex-col sm:flex-row justify-end"
-                  >
-                    {component}
-                  </AnimatedComponent>
-                  <AnimatedComponent
-                    HTMLtag="div"
-                    className="order-1 relative w-full sm:w-1/2 pr-0 sm:pr-10 flex justify-end mt-4 group"
-                  >
-                    <TimelineDate
-                      start={date.start}
-                      end={date.end}
-                      side="right"
-                      className="sm:group-hover:-rotate-6 sm:group-hover:-translate-x-6 rotate-0 transition-all duration-400 mb-2 mr-3 sm:mb-0 sm:mr-0"
-                    />
-
-                    {image.src && (
-                      <div
-                        className={mergeClassNames(
-                          "w-[520px] h-[348px] hidden sm:inline-block absolute -top-4 left-10 z-[-1]",
-                          "opacity-0 invisible transition-all duration-300 -rotate-90 scale-10",
-                          "group-hover:visible group-hover:opacity-50 group-hover:-rotate-6 group-hover:scale-100 ease-out bg-black"
-                        )}
-                      >
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    )}
-                  </AnimatedComponent>
-                </>
-              )}
+              <AnimatedComponent
+                HTMLtag="div"
+                className={mergeClassNames(
+                  "w-full sm:w-1/2 flex",
+                  cardOnLeft
+                    ? "sm:order-1 sm:pr-12 sm:justify-end"
+                    : "sm:order-2 sm:pl-12 sm:justify-start",
+                )}
+              >
+                {component}
+              </AnimatedComponent>
             </div>
           );
         })}

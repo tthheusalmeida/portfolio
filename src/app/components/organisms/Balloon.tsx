@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Tag from "../atoms/Tag";
+import RoleBadge from "../atoms/RoleBadge";
 import { mergeClassNames } from "@/utils/classNames";
 import CompanyTime from "../atoms/CompanyTime";
 import { FaCheck } from "react-icons/fa";
@@ -11,9 +11,19 @@ interface BaloonProps {
   type: string;
   description: string | null;
   achievements: Array<string>;
+  highlights: Array<string>;
+  image?: { src: string | null; alt: string | null };
   dateStart?: string;
   dateEnd?: string | null;
 }
+
+// Collapsible block: on mobile it is always open; from `sm` it follows the
+// card hover/focus. The content stays in the DOM (only clipped), so
+// the full text remains available to crawlers and screen readers.
+const EXPANDED =
+  "sm:group-hover/card:grid-rows-[1fr] sm:group-focus-within/card:grid-rows-[1fr]";
+const COLLAPSED =
+  "sm:group-hover/card:grid-rows-[0fr] sm:group-focus-within/card:grid-rows-[0fr]";
 
 export default function Balloon({
   label,
@@ -22,72 +32,118 @@ export default function Balloon({
   type,
   description,
   achievements,
+  highlights,
+  image,
   dateStart,
   dateEnd,
 }: BaloonProps) {
   return (
-    <div
+    <article
+      tabIndex={0}
       className={mergeClassNames(
-        "relative sm:min-w-[520px] sm:p-4",
-        "bg-[var(--color-background)]/60 backdrop-blur-3xl rounded",
+        "group/card relative w-full min-w-0 max-w-full overflow-hidden",
+        "p-4 rounded-lg outline-none border border-white/10",
+        "bg-white/[0.04] backdrop-blur-3xl",
+        "sm:w-[26rem] sm:hover:w-[34rem] sm:focus-within:w-[34rem]",
+        "hover:bg-white/[0.08] focus-within:bg-white/[0.08]",
+        "hover:shadow-lg hover:shadow-black/30",
+        "focus-visible:ring-2 focus-visible:ring-[var(--action)]",
+        "transition-[width,background-color,box-shadow] duration-500 ease-out motion-reduce:transition-none",
       )}
     >
-      <div className="flex flex-col sm:flex-row justify-between">
-        <div className="order-2 sm:order-1">
-          <div className="flex gap-1 items-baseline">
-            <h3 className="font-semibold text-2xl sm:text-4xl">{label}</h3>
-            <span className="text-xs capitalize">({type})</span>
-          </div>
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          <h3 className="font-semibold text-2xl sm:text-3xl break-words">
+            {label}
+          </h3>
 
-          <div className="flex flex-col sm:flex-row gap-3 items-baseline mt-2 sm:mt-4">
-            <Tag className="order-2 sm:order-1">{role}</Tag>
-
-            {dateStart && dateEnd && (
-              <CompanyTime
-                start={dateStart}
-                end={dateEnd}
-                className="order-1 sm:order-2"
-              />
-            )}
+          <div className="mt-2 sm:mt-3 flex flex-col items-start gap-1.5">
+            <div className="flex flex-wrap items-center gap-x-2 text-xs">
+              {dateStart && dateEnd && (
+                <>
+                  <CompanyTime start={dateStart} end={dateEnd} />
+                  <span aria-hidden>·</span>
+                </>
+              )}
+              <span className="capitalize font-semibold text-[var(--foreground)]/80">
+                {type}
+              </span>
+            </div>
+            <RoleBadge>{role}</RoleBadge>
           </div>
         </div>
 
         {logo && (
-          <div
-            className={mergeClassNames(
-              "flex items-center justify-center",
-              "bg-white rounded-xl sm:ml-2 mb-4 sm:p-1",
-              "order-1 sm:order-2 min-h-16 sm:min-h-auto",
-            )}
-          >
+          <div className="flex h-14 w-32 shrink-0 items-center justify-center rounded-xl bg-white p-1">
             <Image
               src={logo}
               width={120}
               height={48}
               alt={`${label} company`}
-              style={{ objectFit: "contain" }}
+              className="h-auto max-h-full w-auto max-w-full object-contain"
             />
           </div>
         )}
       </div>
 
-      <ul className="mt-4! text-xs sm:text-lg">
-        <li className="font-light">
-          <p>{description}</p>
+      {/* Summary: key deliveries, visible only while collapsed (desktop). */}
+      <div
+        className={mergeClassNames(
+          "hidden sm:grid grid-rows-[1fr] mt-4",
+          "transition-[grid-template-rows,opacity,margin] duration-500 ease-out motion-reduce:transition-none",
+          COLLAPSED,
+          "sm:group-hover/card:opacity-0 sm:group-hover/card:mt-0",
+          "sm:group-focus-within/card:opacity-0 sm:group-focus-within/card:mt-0",
+        )}
+      >
+        <ul className="min-h-0 overflow-hidden flex flex-col gap-1.5 text-sm font-medium">
+          {highlights.map((highlight) => (
+            <li key={highlight} className="flex items-start gap-2">
+              <FaCheck className="mt-1 text-[var(--action)] flex-shrink-0" />
+              {highlight}
+            </li>
+          ))}
+        </ul>
+      </div>
 
-          <div className="flex flex-col gap-1 mt-4">
+      {/* Details: image, description and full achievements. */}
+      <div
+        className={mergeClassNames(
+          "grid grid-rows-[1fr] sm:grid-rows-[0fr] mt-4 sm:mt-0",
+          "sm:opacity-0 sm:group-hover/card:opacity-100 sm:group-focus-within/card:opacity-100",
+          "sm:group-hover/card:mt-4 sm:group-focus-within/card:mt-4",
+          "transition-[grid-template-rows,opacity,margin] duration-500 ease-out motion-reduce:transition-none",
+          EXPANDED,
+        )}
+      >
+        <div className="min-h-0 overflow-hidden text-xs sm:text-base">
+          {image?.src && (
+            <div className="relative hidden sm:block w-full h-44 mb-4 rounded overflow-hidden bg-black">
+              <Image
+                src={image.src}
+                alt={image.alt ?? ""}
+                fill
+                sizes="544px"
+                className="object-cover"
+              />
+            </div>
+          )}
+
+          {description && <p className="font-light">{description}</p>}
+
+          <ul className={mergeClassNames("flex flex-col gap-1", description && "mt-4")}>
             {achievements.map((achievement, index) => (
-              <span
+              <li
                 key={index}
                 className="flex items-start gap-2 font-semibold leading-relaxed"
               >
                 <FaCheck className="mt-1 text-[var(--action)] flex-shrink-0" />
                 {achievement}
-              </span>
+              </li>
             ))}
-          </div>
-        </li>
-      </ul>
-    </div>
+          </ul>
+        </div>
+      </div>
+    </article>
   );
 }

@@ -19,6 +19,7 @@ export default function Experiences() {
       type,
       description,
       achievements,
+      highlights,
       start,
       end,
       src,
@@ -35,6 +36,8 @@ export default function Experiences() {
             achievements={
               Array.isArray(achievements) ? achievements : [achievements]
             }
+            highlights={highlights}
+            image={{ src, alt }}
             dateStart={start}
             dateEnd={end}
           />
@@ -43,11 +46,7 @@ export default function Experiences() {
           start,
           end,
         },
-        image: {
-          src,
-          alt,
-        },
-      } as TimelineItem;
+      } satisfies TimelineItem;
     }
   );
 
