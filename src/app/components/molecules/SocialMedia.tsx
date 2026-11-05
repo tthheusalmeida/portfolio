@@ -25,10 +25,11 @@ export default function SocialMedia({
         <a
           key={index}
           className="block"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={link}
-          aria-label={name === "whatsapp" ? name : undefined}
+          {...(link.startsWith("mailto:")
+            ? {}
+            : { target: "_blank", rel: "noopener noreferrer" })}
+          href={encodeURI(link)}
+          aria-label={name}
         >
           {name === "whatsapp" ? (
             <AnimatedComponent
