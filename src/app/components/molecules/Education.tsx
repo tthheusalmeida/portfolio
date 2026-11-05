@@ -111,7 +111,12 @@ export default function Education({
             {t("education.activities")}
           </h4>
 
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {/* Mobile: list with a line on the left. Desktop: columns split by
+              thin vertical lines. No boxes inside the education card. */}
+          <ul
+            style={{ "--cols": experiences.length } as React.CSSProperties}
+            className="flex flex-col gap-6 border-l-2 border-[var(--action)]/40 pl-4 lg:grid lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))] lg:grid-rows-[auto_auto_1fr] lg:gap-y-0 lg:divide-x lg:divide-white/10 lg:border-l-0 lg:pl-0"
+          >
             {experiences.map((exp) => (
               <EducationExtraCurricular key={exp.role} {...exp} />
             ))}

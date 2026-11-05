@@ -22,16 +22,26 @@ export default function EducationExtraCurricular({
   const { lang } = useLanguage();
 
   return (
+    // On desktop each item is a subgrid spanning the parent's three rows
+    // (title, period, description), so those rows line up across the columns.
     <li
       className={mergeClassNames(
-        "flex flex-col gap-2 p-4 rounded-lg",
-        "bg-white/[0.03] border border-white/10",
+        "flex flex-col gap-2",
+        "lg:grid lg:row-span-3 lg:grid-rows-subgrid lg:gap-y-2",
+        "lg:px-6 lg:first:pl-0 lg:last:pr-0",
         className,
       )}
     >
-      <h4 className="font-semibold text-base sm:text-lg leading-snug">
-        {role}
-      </h4>
+      <div>
+        {/* Short accent on top of each column (desktop only). */}
+        <span
+          aria-hidden
+          className="hidden lg:block mb-3 h-0.5 w-8 rounded bg-[var(--action)]"
+        />
+        <h4 className="font-semibold text-base sm:text-lg leading-snug">
+          {role}
+        </h4>
+      </div>
 
       <p className="text-xs sm:text-sm text-[var(--action)] font-medium">
         {getCompactDuration(start, end, lang)}
