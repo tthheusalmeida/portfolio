@@ -6,7 +6,6 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import MenuItem from "./MenuItem";
 import { useRouter, usePathname } from "next/navigation";
 import FooterLabels from "./FooterLabels";
-import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import NavigationTabs from "../organisms/NavigationTabs";
 
@@ -15,6 +14,7 @@ const LazyModal = lazy(() => import("./Modal"));
 export default function Menu() {
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [hasToggled, setHasToggled] = useState(false);
   const [pendingPath, setPendingPath] = useState<string | null>(null);
 
   const { t, path: localePath } = useLanguage();
@@ -38,6 +38,7 @@ export default function Menu() {
   const handleToggle = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setHasToggled(true);
     setIsOpen((prev) => !prev);
   };
 
@@ -67,22 +68,14 @@ export default function Menu() {
         className="w-12 bg-transparent text-[var(--action)]"
         disableAnimation
       >
-        <AnimatePresence mode="wait" initial={false}>
-          {!isOpen ? (
-            <motion.span
-              key="menu"
-              initial={{ opacity: 0, rotate: 90, scale: 0.5 }}
-              animate={{ opacity: 1, rotate: 0, scale: 1 }}
-              exit={{ opacity: 0, rotate: -90, scale: 0.5 }}
-              transition={{ duration: 0.3 }}
-              style={{ display: "inline-block" }}
-            >
-              <HiMenuAlt4 size={32} />
-            </motion.span>
-          ) : (
-            ""
-          )}
-        </AnimatePresence>
+        {!isOpen && (
+          <span
+            key="menu"
+            className={hasToggled ? "animate-icon-in" : "inline-block"}
+          >
+            <HiMenuAlt4 size={32} />
+          </span>
+        )}
       </Button>
 
       <Suspense>
