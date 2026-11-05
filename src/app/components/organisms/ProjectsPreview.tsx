@@ -1,53 +1,57 @@
 import { mergeClassNames } from "@/utils/classNames";
-import { ProjectProps } from "../molecules/Project";
-import StickyStack from "../molecules/StickyStack";
+import Project, { ProjectProps } from "../molecules/Project";
 import { isEven } from "@/utils/math";
+
+export const MAX_PREVIEW_PROJECTS = 6;
 
 interface ProjectsPreviewProps {
   projects: Array<ProjectProps>;
   className?: string;
 }
 
+// Each project is rendered once. On desktop they are split into two sticky
+// columns (even/odd); on mobile the column wrappers use `display: contents`,
+// so every card becomes a child of the same flex column and `order` keeps the
+// original sequence.
 export default function ProjectsPreview({
   projects,
   className,
 }: ProjectsPreviewProps) {
-  const leftStack = Array<ProjectProps>();
-  const rightStack = Array<ProjectProps>();
+  const entries = projects
+    .slice(0, MAX_PREVIEW_PROJECTS)
+    .map((project, index) => ({ project, index }));
 
-  const currentProjects = projects.slice(0, 6);
-
-  currentProjects.forEach((project, index) =>
-    isEven(index) ? leftStack.push(project) : rightStack.push(project)
-  );
+  const columns = [
+    { side: "left", items: entries.filter(({ index }) => isEven(index)) },
+    { side: "right", items: entries.filter(({ index }) => !isEven(index)) },
+  ] as const;
 
   return (
     <div
       className={mergeClassNames(
-        "relative w-full flex items-center",
-        "h-[1900px] sm:h-[1480px]",
-        className
+        "relative w-full flex flex-col sm:flex-row",
+        className,
       )}
     >
-      <StickyStack
-        projects={currentProjects}
-        side="middle"
-        keyPrefix="middle"
-        className="block sm:hidden"
-      />
-
-      <StickyStack
-        projects={leftStack}
-        side="left"
-        keyPrefix="left"
-        className="hidden sm:block"
-      />
-      <StickyStack
-        projects={rightStack}
-        side="right"
-        keyPrefix="right"
-        className="hidden sm:block"
-      />
+      {columns.map(({ side, items }) => (
+        <div
+          key={side}
+          className={mergeClassNames(
+            "contents sm:flex sm:flex-col sm:w-1/2",
+            side === "left" ? "sm:items-start sm:pr-4" : "sm:items-end sm:pl-4",
+          )}
+        >
+          {items.map(({ project, index }) => (
+            <div
+              key={project.title}
+              className="sticky top-16 flex w-full mb-12"
+              style={{ order: index, zIndex: index }}
+            >
+              <Project {...project} />
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }

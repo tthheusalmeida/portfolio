@@ -1,13 +1,11 @@
 "use client";
 
-import ProjectsPreview from "./ProjectsPreview";
+import ProjectsPreview, { MAX_PREVIEW_PROJECTS } from "./ProjectsPreview";
 import RouterButton from "../atoms/RouterButton";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
 import SectionTemplate from "@/templates/SectionTemplate";
 import { useLanguage, useData } from "@/contexts/LanguageContext";
 import { FaArrowRight } from "react-icons/fa6";
-
-const MAX_CARDS = 6;
 
 export default function ProjectsSection() {
   const { t, rich } = useLanguage();
@@ -25,7 +23,7 @@ export default function ProjectsSection() {
         <ProjectsPreview projects={projects} />
       </TitleAndSubtitleSection>
 
-      {projects.length > MAX_CARDS && (
+      {projects.length > MAX_PREVIEW_PROJECTS && (
         <RouterButton
           path="projects"
           variant="primary"
