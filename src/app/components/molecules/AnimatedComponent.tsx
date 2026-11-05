@@ -1,11 +1,11 @@
 "use client";
 
+import { createElement, useEffect, useRef } from "react";
 import { mergeClassNames } from "@/utils/classNames";
-import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { onceInView } from "@/utils/reveal";
 
 interface AnimatedComponentProps {
-  HTMLtag: keyof typeof motion;
+  HTMLtag: keyof React.JSX.IntrinsicElements;
   children?: React.ReactNode;
   forceView?: boolean;
   disableAnimation?: boolean;
@@ -14,6 +14,11 @@ interface AnimatedComponentProps {
   slideUp?: boolean;
 }
 
+// Reveal-on-scroll done in CSS. The element renders hidden
+// (`data-reveal="pending"`), a shared observer flips it to "in" when it
+// enters the viewport (a CSS transition does the animation) and to "done"
+// afterwards, so the reveal rules stop overriding the element's own styles.
+// See the `[data-reveal]` rules in globals.css.
 export default function AnimatedComponent({
   children,
   className,
@@ -24,36 +29,43 @@ export default function AnimatedComponent({
   slideUp = false,
   ...rest
 }: AnimatedComponentProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const ref = useRef<HTMLElement>(null);
 
-  const MotionComponent = motion[HTMLtag] as React.ElementType;
-  const shouldAnimate = !disableAnimation && (forceView || isInView);
+  useEffect(() => {
+    const element = ref.current;
+    if (!element || disableAnimation) return;
 
-  const motionDefaultProps = {
-    transition: { duration: 0.4, delay, ease: "easeOut" },
-  };
+    const reveal = () => {
+      element.dataset.reveal = "in";
 
-  const motionProps = slideUp
-    ? {
-        initial: { opacity: 0, y: -60 },
-        animate: shouldAnimate ? { opacity: 1, y: 0 } : undefined,
-        ...motionDefaultProps,
-      }
-    : {
-        initial: { opacity: 0, y: 40, scale: 0.8 },
-        animate: shouldAnimate ? { opacity: 1, y: 0, scale: 1 } : undefined,
-        ...motionDefaultProps,
+      const finish = (event: TransitionEvent) => {
+        if (event.target !== element) return;
+        element.dataset.reveal = "done";
+        element.removeEventListener("transitionend", finish);
       };
+      element.addEventListener("transitionend", finish);
+    };
 
-  return (
-    <MotionComponent
-      ref={ref}
-      {...(!disableAnimation && motionProps)}
-      className={mergeClassNames(className)}
-      {...rest}
-    >
-      {children}
-    </MotionComponent>
+    if (forceView) {
+      const frame = requestAnimationFrame(reveal);
+      return () => cancelAnimationFrame(frame);
+    }
+
+    return onceInView(element, reveal);
+  }, [forceView, disableAnimation]);
+
+  return createElement(
+    HTMLtag,
+    {
+      ref,
+      className: mergeClassNames(className),
+      ...(!disableAnimation && {
+        "data-reveal": "pending",
+        "data-reveal-from": slideUp ? "top" : undefined,
+        style: delay ? { "--reveal-delay": `${delay}s` } : undefined,
+      }),
+      ...rest,
+    },
+    children,
   );
 }
