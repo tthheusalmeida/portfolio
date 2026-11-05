@@ -1,9 +1,9 @@
 "use client";
 
-import { useId, useRef } from "react";
-import { useInView, useReducedMotion } from "motion/react";
+import { useEffect, useId, useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { mergeClassNames } from "@/utils/classNames";
+import { onceInView } from "@/utils/reveal";
 
 interface CertificationStampProps {
   className?: string;
@@ -58,11 +58,10 @@ const BOTTOM_STARS = [
 const TOP_ARC = `M ${CENTER - 52} ${CENTER} A 52 52 0 0 1 ${CENTER + 52} ${CENTER}`;
 const BOTTOM_ARC = `M ${CENTER - 65} ${CENTER} A 65 65 0 0 0 ${CENTER + 65} ${CENTER}`;
 
-// Class names must be written out in full: Tailwind only generates classes it
-// can find as literal strings in the source.
-// Entering the viewport: the seal is "pressed" onto the card (keyframes live in
-// globals.css). Hovering or focusing the card only tilts it a bit more.
-const PRESS = "[animation:stamp-press_0.8s_cubic-bezier(0.2,0.9,0.3,1.2)_both]";
+// Entering the viewport: the seal is "pressed" onto the card (CSS keyframes
+// triggered through `data-stamp`, see globals.css). Hovering or focusing the
+// card only tilts it a bit more. Class names must be written out in full:
+// Tailwind only generates classes it finds as literal strings.
 const TILT =
   "transition-[rotate] duration-300 ease-out " +
   "group-hover/card:[rotate:-18deg] group-focus-within/card:[rotate:-18deg]";
@@ -75,23 +74,29 @@ export default function CertificationStamp({
   const sealMask = `${id}-seal`;
   const bannerMask = `${id}-banner`;
   const ref = useRef<SVGSVGElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.6 });
-  const reduceMotion = useReducedMotion();
   const label = t("certifications.stamp");
   const arcFontSize = label.length > 9 ? 14 : 17;
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    return onceInView(element, () => {
+      element.dataset.stamp = "in";
+    });
+  }, []);
 
   return (
     <svg
       ref={ref}
+      data-stamp="pending"
       viewBox="0 0 200 200"
       role="img"
       aria-label={label}
       className={mergeClassNames(
         "text-[var(--action)]",
         "[rotate:-8deg]",
-        !reduceMotion && TILT,
-        !reduceMotion &&
-          (isInView ? `${PRESS} [animation-delay:0.3s]` : "opacity-0"),
+        TILT,
         className,
       )}
     >
