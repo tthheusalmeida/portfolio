@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { MotionConfig } from "motion/react";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Lang } from "@/i18n/dictionary";
 
@@ -35,11 +34,8 @@ export default function Providers({
 }) {
   return (
     <LanguageProvider lang={lang}>
-      {/* Respects the user's "reduce motion" system setting. */}
-      <MotionConfig reducedMotion="user">
-        {children}
-        <AnalyticsInit />
-      </MotionConfig>
+      {children}
+      <AnalyticsInit />
     </LanguageProvider>
   );
 }
