@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { stripLocale } from "@/i18n/routes";
 import { mergeClassNames } from "@/utils/classNames";
@@ -133,10 +132,10 @@ export default function NavigationTabs({
         </button>
       ))}
       {!isWithinMenu && (
-        <motion.div
-          className="absolute -bottom-0.5 h-[2px] bg-[var(--action)] rounded"
-          animate={{ left: underlineProps.left, width: underlineProps.width }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        <div
+          aria-hidden
+          className="absolute -bottom-0.5 h-[2px] bg-[var(--action)] rounded transition-[left,width] duration-300 ease-[cubic-bezier(0.34,1.3,0.64,1)]"
+          style={{ left: underlineProps.left, width: underlineProps.width }}
         />
       )}
     </nav>
