@@ -7,16 +7,23 @@ export type ExperienceType =
   | "volunteer"
   | "self-employed";
 
+export interface ExperienceRole {
+  role: string;
+  type: ExperienceType;
+  start: string;
+  end: string | null;
+}
+
+// One entry per company. `roles` is ordered from the most recent to the
+// oldest, and the description, achievements and highlights belong to the
+// company as a whole.
 export interface ExperienceInterface {
   name: string;
   logo: string | null;
-  role: string;
-  type: ExperienceType;
   description: string | null;
   achievements: Array<string>;
   highlights: Array<string>;
-  start: string;
-  end: string | null;
+  roles: Array<ExperienceRole>;
   src: string | null;
   alt: string | null;
 }
@@ -25,8 +32,6 @@ export const experiences: ExperienceInterface[] = [
   {
     name: "Ouro Preto State School",
     logo: null,
-    role: "Information Technology & Systems Development Teacher",
-    type: "full-time",
     description: null,
     achievements: [
       "Taught Information Technology and Systems Development subjects for high school technical education students.",
@@ -41,16 +46,20 @@ export const experiences: ExperienceInterface[] = [
       "Networking fundamentals: DNS and DHCP",
       "Own teaching materials and assessments",
     ],
-    start: "01/09/2026",
-    end: null,
+    roles: [
+      {
+        role: "Information Technology & Systems Development Teacher",
+        type: "full-time",
+        start: "01/09/2026",
+        end: null,
+      },
+    ],
     src: null,
     alt: null,
   },
   {
     name: "Humanamente",
     logo: "/work/humanamente.png",
-    role: "Co-Founder & Lead Software Engineer",
-    type: "self-employed",
     description: null,
     achievements: [
       "Led the development of the Humanamente SaaS platform, defining the application UI/UX, architecture, APIs, and infrastructure",
@@ -65,18 +74,21 @@ export const experiences: ExperienceInterface[] = [
       "LGPD-compliant security and encryption",
       "Observability with Prometheus & Grafana",
     ],
-    start: "01/03/2026",
-    end: "01/10/2026",
+    roles: [
+      {
+        role: "Co-Founder & Lead Software Engineer",
+        type: "self-employed",
+        start: "01/03/2026",
+        end: "01/10/2026",
+      },
+    ],
     src: null,
     alt: null,
   },
   {
     name: "Convenia",
     logo: "/work/convenia.png",
-    role: "Front-End Developer",
-    type: "full-time",
-    description:
-      "Supported the evolution of the HR platform by maintaining core features, resolving technical debt, and modernizing the front-end architecture through Vue.js upgrades and AI-assisted development.",
+    description: "Supported the evolution of the HR platform by maintaining core features, resolving technical debt, and modernizing the front-end architecture through Vue.js upgrades and AI-assisted development.",
     achievements: [
       "Migrated legacy components from Vue 2 to Vue 3, improving maintainability and long-term scalability",
       "Used AI-assisted workflows to accelerate component updates and development tasks",
@@ -89,18 +101,21 @@ export const experiences: ExperienceInterface[] = [
       "Critical production bugs fixed",
       "Technical debt reduced",
     ],
-    start: "01/12/2025",
-    end: "01/03/2026",
+    roles: [
+      {
+        role: "Front-End Developer",
+        type: "full-time",
+        start: "01/12/2025",
+        end: "01/03/2026",
+      },
+    ],
     src: null,
     alt: null,
   },
   {
     name: "MelhorPreço.app",
     logo: "/work/melhorprecoapp.png",
-    role: "FrontEnd Engineer",
-    type: "full-time",
-    description:
-      "Evolved the shared lists app, focusing on usability, performance, and overall system stability.",
+    description: "Evolved the shared lists app, focusing on usability, performance, and overall system stability.",
     achievements: [
       "Improved navigation efficiency and smoother app performance",
       "Enhanced user experience, with more intuitive and visually consistent interaction",
@@ -113,18 +128,21 @@ export const experiences: ExperienceInterface[] = [
       "New shared lists features",
       "Cache-control cut API response time",
     ],
-    start: "01/04/2025",
-    end: "01/12/2025",
+    roles: [
+      {
+        role: "FrontEnd Engineer",
+        type: "full-time",
+        start: "01/04/2025",
+        end: "01/12/2025",
+      },
+    ],
     src: null,
     alt: null,
   },
   {
     name: "Blip",
     logo: "/work/blip.svg",
-    role: "Software Engineer",
-    type: "full-time",
-    description:
-      "Revamped a complex legacy system to boost performance, scalability, and client efficiency through code cleanup, tech migration, security improvements, and AI integration.",
+    description: "Revamped a complex legacy system to boost performance, scalability, and client efficiency through code cleanup, tech migration, security improvements, and AI integration.",
     achievements: [
       "Removed 20+ outdated feature flags, simplifying the codebase",
       "Introduced generative AI features, reducing manual client work by up to 60%",
@@ -137,81 +155,54 @@ export const experiences: ExperienceInterface[] = [
       "Python 2 → 3 migration",
       "20+ feature flags removed",
     ],
-    start: "01/01/2023",
-    end: "01/04/2025",
+    roles: [
+      {
+        role: "Software Engineer",
+        type: "full-time",
+        start: "01/01/2023",
+        end: "01/04/2025",
+      },
+    ],
     src: "/work/blip-meet-up.webp",
     alt: "Blip meet up",
   },
   {
     name: "Stilingue",
     logo: "/work/stilingue.svg",
-    role: "Junior Front-End Developer",
-    type: "full-time",
-    description:
-      "Improved dashboard usability and delivery speed by building dynamic filters, automating real-time updates, and developing modular components.",
+    description: "Grew from intern to junior front-end developer, building a reusable Vue.js design system, dashboards with dynamic filters and Firebase security rules.",
     achievements: [
       "Developed 70+ reusable components in a single quarter",
       "Built global filters that cut setup time by up to 80%",
       "Created a component builder to increase product flexibility",
       "Improved Firebase security rules and optimized data structure",
-      "Strengthened the design system with test coverage and documentation",
+      "Increased test coverage, reducing production bugs, and strengthened the design system with documentation",
     ],
     highlights: [
       "70+ reusable components in one quarter",
       "Up to 80% faster filter setup",
       "Component builder",
     ],
-    start: "01/02/2022",
-    end: "01/01/2023",
+    roles: [
+      {
+        role: "Junior Front-End Developer",
+        type: "full-time",
+        start: "01/02/2022",
+        end: "01/01/2023",
+      },
+      {
+        role: "Assistant Front-End Developer",
+        type: "full-time",
+        start: "01/06/2021",
+        end: "01/02/2022",
+      },
+      {
+        role: "Developer Intern",
+        type: "intern",
+        start: "01/09/2020",
+        end: "01/06/2021",
+      },
+    ],
     src: "/work/stilingue-off-site.webp",
-    alt: "Stilingue Off Site",
-  },
-  {
-    name: "Stilingue",
-    logo: "/work/stilingue.svg",
-    role: "Assistant Front-End Developer",
-    type: "full-time",
-    description:
-      "Contributed to scalable product development by designing advanced Vue.js components, improving Firebase access control, and supporting a consistent, accessible design system.",
-    achievements: [
-      "Built components that enhanced data visualization and reusability",
-      "Managed Firebase permissions and improved security practices",
-      "Increased test coverage, reducing production bugs",
-      "Contributed to the evolution of a reusable design system",
-      "Accelerated feature delivery through modular, maintainable code",
-    ],
-    highlights: [
-      "Higher test coverage, fewer production bugs",
-      "Firebase permissions and security",
-      "Reusable design system",
-    ],
-    start: "01/06/2021",
-    end: "01/02/2022",
-    src: "/work/stilingue-assistant.webp",
-    alt: "Stilingue Off Site",
-  },
-  {
-    name: "Stilingue",
-    logo: "/work/stilingue.svg",
-    role: "Developer Intern",
-    type: "intern",
-    description:
-      "Laid the groundwork for scalable front-end development by applying Vue.js principles to build maintainable components and improve code quality.",
-    achievements: [
-      "Created modular Vue.js components focused on reusability and clarity",
-      "Applied lifecycle methods and reactivity to improve interactivity",
-      "Structured the codebase for maintainability and collaboration",
-      "Contributed to improving code quality and consistency",
-      "Gained hands-on experience in front-end development within a fast-paced team",
-    ],
-    highlights: [
-      "Modular Vue.js components",
-      "Reactivity and lifecycle applied",
-      "Cleaner, maintainable code",
-    ],
-    start: "01/09/2020",
-    end: "01/06/2021",
-    src: "/work/stilingue-intern.webp",
     alt: "Stilingue Off Site",
   },
 ];

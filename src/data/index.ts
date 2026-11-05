@@ -57,6 +57,10 @@ const DATA_PT: DataProps = {
   experiences: experiences.map((item, i) => ({
     ...item,
     ...pt.experiences[i],
+    roles: item.roles.map((role, j) => ({
+      ...role,
+      ...pt.experiences[i].roles[j],
+    })),
   })),
   educations: educations.map((item, i) => ({
     ...item,

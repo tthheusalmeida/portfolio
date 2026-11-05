@@ -12,42 +12,27 @@ export default function Experiences() {
   const companies = useData().experiences;
 
   const items = companies.map(
-    ({
-      name,
-      logo,
-      role,
-      type,
-      description,
-      achievements,
-      highlights,
-      start,
-      end,
-      src,
-      alt,
-    }) => {
-      return {
+    ({ name, logo, roles, description, achievements, highlights, src, alt }) =>
+      ({
         component: (
           <Balloon
             label={name}
             logo={logo}
-            role={role}
-            type={t(`experiences.type.${type}` as DictionaryKey)}
+            roles={roles.map((role) => ({
+              ...role,
+              type: t(`experiences.type.${role.type}` as DictionaryKey),
+            }))}
             description={description}
-            achievements={
-              Array.isArray(achievements) ? achievements : [achievements]
-            }
+            achievements={achievements}
             highlights={highlights}
             image={{ src, alt }}
-            dateStart={start}
-            dateEnd={end}
           />
         ),
         date: {
-          start,
-          end,
+          start: roles[roles.length - 1].start,
+          end: roles[0].end,
         },
-      } satisfies TimelineItem;
-    }
+      }) satisfies TimelineItem,
   );
 
   return (

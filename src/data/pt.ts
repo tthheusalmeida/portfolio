@@ -16,7 +16,6 @@ export const whatsappLink =
 export const experiences = [
   {
     name: "Escola Estadual de Ouro Preto",
-    role: "Professor de Tecnologia da Informação e Desenvolvimento de Sistemas",
     achievements: [
       "Lecionei disciplinas de Tecnologia da Informação e Desenvolvimento de Sistemas para alunos do ensino técnico de nível médio.",
       "Ministrei aulas práticas e teóricas sobre programação, desenvolvimento de software, redes de computadores, arquitetura de sistemas, sistemas operacionais e manutenção de software.",
@@ -30,9 +29,13 @@ export const experiences = [
       "Fundamentos de redes: DNS e DHCP",
       "Materiais didáticos e avaliações próprios",
     ],
+    roles: [
+      {
+        role: "Professor de Tecnologia da Informação e Desenvolvimento de Sistemas",
+      },
+    ],
   },
   {
-    role: "Co-Fundador & Engenheiro de Software Líder",
     achievements: [
       "Liderei o desenvolvimento da plataforma SaaS Humanamente, definindo UI/UX, arquitetura, APIs e infraestrutura da aplicação",
       "Construí a aplicação com arquitetura multi-tenant e controle de acesso baseado em papéis (RBAC).",
@@ -46,11 +49,14 @@ export const experiences = [
       "Segurança e criptografia em conformidade com a LGPD",
       "Observabilidade com Prometheus e Grafana",
     ],
+    roles: [
+      {
+        role: "Co-Fundador & Engenheiro de Software Líder",
+      },
+    ],
   },
   {
-    role: "Desenvolvedor Front-End",
-    description:
-      "Apoiei a evolução da plataforma de RH mantendo funcionalidades essenciais, resolvendo débitos técnicos e modernizando a arquitetura front-end por meio de atualizações do Vue.js e desenvolvimento assistido por IA.",
+    description: "Apoiei a evolução da plataforma de RH mantendo funcionalidades essenciais, resolvendo débitos técnicos e modernizando a arquitetura front-end por meio de atualizações do Vue.js e desenvolvimento assistido por IA.",
     achievements: [
       "Migrei componentes legados do Vue 2 para o Vue 3, melhorando a manutenibilidade e a escalabilidade a longo prazo",
       "Utilizei fluxos assistidos por IA para acelerar atualizações de componentes e tarefas de desenvolvimento",
@@ -63,11 +69,14 @@ export const experiences = [
       "Bugs críticos em produção corrigidos",
       "Débito técnico reduzido",
     ],
+    roles: [
+      {
+        role: "Desenvolvedor Front-End",
+      },
+    ],
   },
   {
-    role: "Engenheiro Front-End",
-    description:
-      "Evoluí o aplicativo de listas compartilhadas, com foco em usabilidade, desempenho e estabilidade geral do sistema.",
+    description: "Evoluí o aplicativo de listas compartilhadas, com foco em usabilidade, desempenho e estabilidade geral do sistema.",
     achievements: [
       "Melhorei a eficiência da navegação e o desempenho do aplicativo",
       "Aprimorei a experiência do usuário, com interações mais intuitivas e visualmente consistentes",
@@ -80,11 +89,14 @@ export const experiences = [
       "Novas funcionalidades de listas compartilhadas",
       "Cache-control reduziu o tempo de resposta da API",
     ],
+    roles: [
+      {
+        role: "Engenheiro Front-End",
+      },
+    ],
   },
   {
-    role: "Engenheiro de Software",
-    description:
-      "Reformulei um sistema legado complexo para aumentar o desempenho, a escalabilidade e a eficiência dos clientes por meio de limpeza de código, migração de tecnologias, melhorias de segurança e integração de IA.",
+    description: "Reformulei um sistema legado complexo para aumentar o desempenho, a escalabilidade e a eficiência dos clientes por meio de limpeza de código, migração de tecnologias, melhorias de segurança e integração de IA.",
     achievements: [
       "Removi mais de 20 feature flags obsoletas, simplificando a base de código",
       "Introduzi recursos de IA generativa, reduzindo em até 60% o trabalho manual dos clientes",
@@ -97,59 +109,37 @@ export const experiences = [
       "Migração do Python 2 para o 3",
       "20+ feature flags removidas",
     ],
+    roles: [
+      {
+        role: "Engenheiro de Software",
+      },
+    ],
     alt: "Encontro da Blip",
   },
   {
-    role: "Desenvolvedor Front-End Júnior",
-    description:
-      "Melhorei a usabilidade dos dashboards e a velocidade de entrega construindo filtros dinâmicos, automatizando atualizações em tempo real e desenvolvendo componentes modulares.",
+    description: "Evoluí de estagiário a desenvolvedor front-end júnior, construindo um design system reutilizável em Vue.js, dashboards com filtros dinâmicos e regras de segurança no Firebase.",
     achievements: [
       "Desenvolvi mais de 70 componentes reutilizáveis em um único trimestre",
       "Construí filtros globais que reduziram em até 80% o tempo de configuração",
       "Criei um construtor de componentes para aumentar a flexibilidade do produto",
       "Melhorei as regras de segurança do Firebase e otimizei a estrutura de dados",
-      "Fortaleci o design system com cobertura de testes e documentação",
+      "Aumentei a cobertura de testes, reduzindo bugs em produção, e fortaleci o design system com documentação",
     ],
     highlights: [
       "70+ componentes reutilizáveis em um trimestre",
       "Configuração de filtros até 80% mais rápida",
       "Construtor de componentes",
     ],
-    alt: "Off-site da Stilingue",
-  },
-  {
-    role: "Desenvolvedor Front-End Assistente",
-    description:
-      "Contribuí para o desenvolvimento escalável do produto projetando componentes Vue.js avançados, melhorando o controle de acesso do Firebase e apoiando um design system consistente e acessível.",
-    achievements: [
-      "Construí componentes que aprimoraram a visualização de dados e a reutilização",
-      "Gerenciei permissões do Firebase e melhorei as práticas de segurança",
-      "Aumentei a cobertura de testes, reduzindo bugs em produção",
-      "Contribuí para a evolução de um design system reutilizável",
-      "Acelerei a entrega de funcionalidades com código modular e de fácil manutenção",
-    ],
-    highlights: [
-      "Mais cobertura de testes, menos bugs em produção",
-      "Permissões e segurança do Firebase",
-      "Design system reutilizável",
-    ],
-    alt: "Off-site da Stilingue",
-  },
-  {
-    role: "Estagiário de Desenvolvimento",
-    description:
-      "Estabeleci a base para o desenvolvimento front-end escalável aplicando os princípios do Vue.js para construir componentes de fácil manutenção e melhorar a qualidade do código.",
-    achievements: [
-      "Criei componentes Vue.js modulares focados em reutilização e clareza",
-      "Apliquei métodos de ciclo de vida e reatividade para melhorar a interatividade",
-      "Estruturei a base de código para facilitar a manutenção e a colaboração",
-      "Contribuí para melhorar a qualidade e a consistência do código",
-      "Ganhei experiência prática em desenvolvimento front-end em uma equipe dinâmica",
-    ],
-    highlights: [
-      "Componentes Vue.js modulares",
-      "Reatividade e ciclo de vida aplicados",
-      "Código mais limpo e de fácil manutenção",
+    roles: [
+      {
+        role: "Desenvolvedor Front-End Júnior",
+      },
+      {
+        role: "Desenvolvedor Front-End Assistente",
+      },
+      {
+        role: "Estagiário de Desenvolvimento",
+      },
     ],
     alt: "Off-site da Stilingue",
   },

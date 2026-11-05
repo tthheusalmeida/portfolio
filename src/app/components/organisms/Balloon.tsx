@@ -4,17 +4,23 @@ import { mergeClassNames } from "@/utils/classNames";
 import CompanyTime from "../atoms/CompanyTime";
 import { FaCheck } from "react-icons/fa";
 
+interface BalloonRole {
+  role: string;
+  type: string;
+  start: string;
+  end: string | null;
+}
+
 interface BaloonProps {
   label: string;
   logo: string | null;
-  role: string;
-  type: string;
+  // Most recent first. More than one role means a career path inside the
+  // same company.
+  roles: Array<BalloonRole>;
   description: string | null;
   achievements: Array<string>;
   highlights: Array<string>;
   image?: { src: string | null; alt: string | null };
-  dateStart?: string;
-  dateEnd?: string | null;
 }
 
 // Collapsible block: on mobile it is always open; from `sm` it follows the
@@ -28,15 +34,16 @@ const COLLAPSED =
 export default function Balloon({
   label,
   logo,
-  role,
-  type,
+  roles,
   description,
   achievements,
   highlights,
   image,
-  dateStart,
-  dateEnd,
 }: BaloonProps) {
+  const hasCareerPath = roles.length > 1;
+  const companyStart = roles[roles.length - 1].start;
+  const companyEnd = roles[0].end;
+
   return (
     <article
       tabIndex={0}
@@ -57,20 +64,37 @@ export default function Balloon({
             {label}
           </h3>
 
-          <div className="mt-2 sm:mt-3 flex flex-col items-start gap-1.5">
-            <div className="flex flex-wrap items-center gap-x-2 text-xs">
-              {dateStart && dateEnd && (
-                <>
-                  <CompanyTime start={dateStart} end={dateEnd} />
-                  <span aria-hidden>·</span>
-                </>
-              )}
-              <span className="capitalize font-semibold text-[var(--foreground)]/80">
-                {type}
-              </span>
-            </div>
-            <RoleBadge>{role}</RoleBadge>
-          </div>
+          {hasCareerPath && companyEnd && (
+            <CompanyTime
+              start={companyStart}
+              end={companyEnd}
+              className="mt-1 block"
+            />
+          )}
+
+          <ol
+            className={mergeClassNames(
+              "mt-2 sm:mt-3 flex flex-col items-start gap-3",
+              hasCareerPath && "border-l-2 border-[var(--action)]/40 pl-3",
+            )}
+          >
+            {roles.map(({ role, type, start, end }) => (
+              <li key={role} className="flex max-w-full flex-col items-start gap-1.5">
+                <div className="flex flex-wrap items-center gap-x-2 text-xs">
+                  {end && (
+                    <>
+                      <CompanyTime start={start} end={end} />
+                      <span aria-hidden>·</span>
+                    </>
+                  )}
+                  <span className="capitalize font-semibold text-[var(--foreground)]/80">
+                    {type}
+                  </span>
+                </div>
+                <RoleBadge>{role}</RoleBadge>
+              </li>
+            ))}
+          </ol>
         </div>
 
         {logo && (
