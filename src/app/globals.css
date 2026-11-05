@@ -35,10 +35,13 @@ button {
   cursor: pointer;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+/* In a layer so Tailwind utilities (mt-*, p-*) can override it. */
+@layer base {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 /* ===== Selection Style ===== */
