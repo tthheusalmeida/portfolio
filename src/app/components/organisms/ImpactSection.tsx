@@ -2,6 +2,7 @@
 
 import SectionTemplate from "@/templates/SectionTemplate";
 import { useLanguage, useData } from "@/contexts/LanguageContext";
+import CountUp from "../atoms/CountUp";
 import AnimatedComponent from "../molecules/AnimatedComponent";
 
 export default function ImpactSection() {
@@ -36,10 +37,7 @@ export default function ImpactSection() {
                   aria-hidden
                   className="mt-1 text-4xl font-bold leading-none tabular-nums text-[var(--action)] sm:text-6xl"
                 >
-                  <span
-                    className="count-up"
-                    style={{ "--target": value } as React.CSSProperties}
-                  />
+                  <CountUp value={value} delay={300 + index * 100} />
                   {suffix}
                 </span>
 

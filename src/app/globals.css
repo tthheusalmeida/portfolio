@@ -112,35 +112,6 @@ button {
   }
 }
 
-/* Count-up for the impact numbers: the integer custom property is animated
-   and shown through a CSS counter, so no JavaScript runs per frame. It shows
-   the final value by default, and counts up once its card is revealed. */
-@property --num {
-  syntax: "<integer>";
-  initial-value: 0;
-  inherits: false;
-}
-
-.count-up {
-  --num: var(--target);
-  counter-reset: num var(--num);
-}
-
-.count-up::after {
-  content: counter(num);
-}
-
-[data-reveal="in"] .count-up,
-[data-reveal="done"] .count-up {
-  animation: count-up 1.6s ease-out 0.2s both;
-}
-
-@keyframes count-up {
-  from {
-    --num: 0;
-  }
-}
-
 /* ===== Animation Keyframes ===== */
 /* Rubber-stamp hit: starts big and faded, lands with a small bounce. */
 @keyframes stamp-press {
