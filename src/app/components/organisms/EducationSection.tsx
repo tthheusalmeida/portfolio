@@ -7,7 +7,11 @@ import { useLanguage, useData } from "@/contexts/LanguageContext";
 
 export default function EducationSection() {
   const { t, rich } = useLanguage();
-  const educations = useData().educations;
+  // Postgraduate first: it is the highest and most recent level.
+  const educations = [...useData().educations].sort(
+    (a, b) =>
+      Number(b.level === "postgraduate") - Number(a.level === "postgraduate"),
+  );
 
   return (
     <>
@@ -19,9 +23,9 @@ export default function EducationSection() {
           title={t("education.title")}
           subtitle={rich("education.subtitle")}
         >
-          <div className="flex flex-col gap-14 sm:gap-16">
-            {educations.map((education, index) => (
-              <Education key={index} {...education} />
+          <div className="flex flex-col gap-6 sm:gap-8">
+            {educations.map((education) => (
+              <Education key={`${education.level}-${education.university.abbreviation}`} {...education} />
             ))}
           </div>
         </TitleAndSubtitleSection>

@@ -2,8 +2,6 @@
 
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getCompactDuration, formatedDateMonthYear } from "@/utils/date";
-import { GoMilestone } from "react-icons/go";
-import AnimatedComponent from "./AnimatedComponent";
 import { mergeClassNames } from "@/utils/classNames";
 
 interface EducationExtraCurricularProps {
@@ -12,7 +10,6 @@ interface EducationExtraCurricularProps {
   end: string;
   description: string;
   className?: string;
-  university: string;
 }
 
 export default function EducationExtraCurricular({
@@ -21,47 +18,33 @@ export default function EducationExtraCurricular({
   start,
   end,
   className,
-  university,
 }: EducationExtraCurricularProps) {
   const { lang } = useLanguage();
 
   return (
-    <AnimatedComponent
-      HTMLtag="div"
+    <li
       className={mergeClassNames(
-        "text-base sm:text-lg border-l-2 border-[var(--action)] ml-7 sm:ml-18 pl-4 pb-6",
+        "flex flex-col gap-2 p-4 rounded-lg",
+        "bg-white/[0.03] border border-white/10",
         className,
       )}
     >
-      <div className="sm:mb-1 flex items-start sm:items-center gap-2">
-        <GoMilestone
-          size={16}
-          className="sm:hidden inline text-[var(--action)] w-5 h-5 mt-1 shrink-0"
-        />
+      <h4 className="font-semibold text-base sm:text-lg leading-snug">
+        {role}
+      </h4>
 
-        <GoMilestone
-          size={18}
-          className="sm:inline hidden text-[var(--action)] w-5 h-5 mt-1 shrink-0"
-        />
-        <h3 className="font-semibold">{role}</h3>
-      </div>
+      <p className="text-xs sm:text-sm text-[var(--action)] font-medium">
+        {getCompactDuration(start, end, lang)}
+        <span className="text-[var(--foreground)]/50 font-normal">
+          {" · "}
+          {formatedDateMonthYear(start, lang)} –{" "}
+          {formatedDateMonthYear(end, lang)}
+        </span>
+      </p>
 
-      <div className="text-[var(--color-foreground)]/40 text-xs sm:text-base">
-        <p className="flex items-center gap-2 py-1">
-          <span>{university}</span>
-
-          <span className="w-1 h-1 bg-[var(--color-foreground)]/40 rounded-full" />
-
-          <span>{getCompactDuration(start, end, lang)}</span>
-        </p>
-        <p className="italic">
-          {formatedDateMonthYear(start, lang)} - {formatedDateMonthYear(end, lang)}
-        </p>
-      </div>
-
-      <p className="mt-2 leading-relaxed text-gray-200 text-xs sm:text-base">
+      <p className="leading-relaxed text-gray-200 text-xs sm:text-sm">
         {description}
       </p>
-    </AnimatedComponent>
+    </li>
   );
 }
