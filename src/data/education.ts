@@ -12,7 +12,10 @@ export interface EducationExperience {
   description: string;
 }
 
+export type EducationLevel = "undergraduate" | "postgraduate";
+
 export interface EducationInterface {
+  level: EducationLevel;
   title: string;
   abbreviation: string | null;
   university: EducationUniversity;
@@ -21,8 +24,9 @@ export interface EducationInterface {
   experiences: Array<EducationExperience>;
 }
 
-export const educations = [
+export const educations: EducationInterface[] = [
   {
+    level: "undergraduate",
     title: "Bachelor of Science in Computer Science",
     abbreviation: "B.Sc.",
     university: {
@@ -55,6 +59,7 @@ export const educations = [
     ],
   },
   {
+    level: "postgraduate",
     title:
       "Postgraduate Degree of DevOps & Cloud Platform Engineering with Artificial Intelligence",
     abbreviation: null,
