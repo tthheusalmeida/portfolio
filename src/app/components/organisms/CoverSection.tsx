@@ -1,6 +1,5 @@
 "use client";
 
-import SoftSkillsCarousel from "@/app/components/molecules/SoftSkillsCarousel";
 import Stack from "@/app/components/molecules/Stack";
 import SectionTemplate from "@/templates/SectionTemplate";
 import Image from "next/image";
@@ -107,8 +106,6 @@ export default function CoverSection() {
             <Stack className="sm:order-1 order-2" />
           </div>
         </div>
-
-        <SoftSkillsCarousel />
       </SectionTemplate>
     </>
   );
