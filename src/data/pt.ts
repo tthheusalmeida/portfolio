@@ -25,6 +25,11 @@ export const experiences = [
       "Ensinei fundamentos de redes de computadores, incluindo DNS, DHCP e conceitos essenciais de redes.",
       "Desenvolvi materiais didáticos, exercícios e avaliações adaptados ao nível técnico e aos objetivos de aprendizagem dos alunos.",
     ],
+    highlights: [
+      "Aulas de programação e desenvolvimento de software",
+      "Fundamentos de redes: DNS e DHCP",
+      "Materiais didáticos e avaliações próprios",
+    ],
   },
   {
     role: "Co-Fundador & Engenheiro de Software Líder",
@@ -35,6 +40,11 @@ export const experiences = [
       "Implementei rotinas automatizadas de backup e recuperação de desastres para aumentar a confiabilidade da plataforma.",
       "Utilizei IA Generativa para acelerar o desenvolvimento, a documentação e a refatoração de código.",
       "Estabeleci a observabilidade com Prometheus e Grafana para monitoramento e diagnóstico da plataforma.",
+    ],
+    highlights: [
+      "SaaS multi-tenant com RBAC",
+      "Segurança e criptografia em conformidade com a LGPD",
+      "Observabilidade com Prometheus e Grafana",
     ],
   },
   {
@@ -48,6 +58,11 @@ export const experiences = [
       "Corrigi bugs críticos e melhorei a confiabilidade geral do sistema",
       "Tratei débitos técnicos para estabilizar a base de código e aumentar a velocidade de desenvolvimento",
     ],
+    highlights: [
+      "Migração do Vue 2 para o Vue 3",
+      "Bugs críticos em produção corrigidos",
+      "Débito técnico reduzido",
+    ],
   },
   {
     role: "Engenheiro Front-End",
@@ -60,6 +75,11 @@ export const experiences = [
       "Fortaleci a colaboração entre usuários com as novas funcionalidades de listas compartilhadas",
       "Implementei cabeçalhos de cache-control no backend para reduzir o tempo de resposta da API e melhorar o desempenho",
     ],
+    highlights: [
+      "Navegação e desempenho mais rápidos",
+      "Novas funcionalidades de listas compartilhadas",
+      "Cache-control reduziu o tempo de resposta da API",
+    ],
   },
   {
     role: "Engenheiro de Software",
@@ -71,6 +91,11 @@ export const experiences = [
       "Migrei rotas críticas do Python 2 para o Python 3, garantindo estabilidade a longo prazo",
       "Refatorei componentes legados para Vue.js, resolvendo vazamentos de memória e melhorando os tempos de carregamento",
       "Implementei mitigação de XSS bloqueando scripts maliciosos, protegendo os usuários e melhorando a segurança do sistema.",
+    ],
+    highlights: [
+      "Até 60% menos trabalho manual com IA",
+      "Migração do Python 2 para o 3",
+      "20+ feature flags removidas",
     ],
     alt: "Encontro da Blip",
   },
@@ -85,6 +110,11 @@ export const experiences = [
       "Melhorei as regras de segurança do Firebase e otimizei a estrutura de dados",
       "Fortaleci o design system com cobertura de testes e documentação",
     ],
+    highlights: [
+      "70+ componentes reutilizáveis em um trimestre",
+      "Configuração de filtros até 80% mais rápida",
+      "Construtor de componentes",
+    ],
     alt: "Off-site da Stilingue",
   },
   {
@@ -98,6 +128,11 @@ export const experiences = [
       "Contribuí para a evolução de um design system reutilizável",
       "Acelerei a entrega de funcionalidades com código modular e de fácil manutenção",
     ],
+    highlights: [
+      "Mais cobertura de testes, menos bugs em produção",
+      "Permissões e segurança do Firebase",
+      "Design system reutilizável",
+    ],
     alt: "Off-site da Stilingue",
   },
   {
@@ -110,6 +145,11 @@ export const experiences = [
       "Estruturei a base de código para facilitar a manutenção e a colaboração",
       "Contribuí para melhorar a qualidade e a consistência do código",
       "Ganhei experiência prática em desenvolvimento front-end em uma equipe dinâmica",
+    ],
+    highlights: [
+      "Componentes Vue.js modulares",
+      "Reatividade e ciclo de vida aplicados",
+      "Código mais limpo e de fácil manutenção",
     ],
     alt: "Off-site da Stilingue",
   },

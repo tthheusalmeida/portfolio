@@ -14,6 +14,7 @@ export interface ExperienceInterface {
   type: ExperienceType;
   description: string | null;
   achievements: Array<string>;
+  highlights: Array<string>;
   start: string;
   end: string | null;
   src: string | null;
@@ -35,6 +36,11 @@ export const experiences: ExperienceInterface[] = [
       "Taught computer networking fundamentals, including DNS, DHCP and core networking concepts.",
       "Developed teaching materials, exercises, and assessments adapted to students' technical level and learning objectives.",
     ],
+    highlights: [
+      "Programming & software development classes",
+      "Networking fundamentals: DNS and DHCP",
+      "Own teaching materials and assessments",
+    ],
     start: "01/09/2026",
     end: null,
     src: null,
@@ -53,6 +59,11 @@ export const experiences: ExperienceInterface[] = [
       "Implemented automated backup and disaster recovery routines to improve platform reliability.",
       "Leveraged Generative AI to accelerate software development, documentation, and code refactoring.",
       "Established observability with Prometheus and Grafana for platform monitoring and diagnostics.",
+    ],
+    highlights: [
+      "Multi-tenant SaaS with RBAC",
+      "LGPD-compliant security and encryption",
+      "Observability with Prometheus & Grafana",
     ],
     start: "01/03/2026",
     end: "01/10/2026",
@@ -73,6 +84,11 @@ export const experiences: ExperienceInterface[] = [
       "Fixed critical bugs and improved overall system reliability",
       "Addressed technical debt to stabilize the codebase and improve development velocity",
     ],
+    highlights: [
+      "Vue 2 → Vue 3 migration",
+      "Critical production bugs fixed",
+      "Technical debt reduced",
+    ],
     start: "01/12/2025",
     end: "01/03/2026",
     src: null,
@@ -91,6 +107,11 @@ export const experiences: ExperienceInterface[] = [
       "Boosted stability and responsiveness, reducing network overhead",
       "Strengthened collaboration among users through the new shared lists features",
       "Implemented cache-control headers on the backend to reduce API response time and enhance performance",
+    ],
+    highlights: [
+      "Faster navigation and performance",
+      "New shared lists features",
+      "Cache-control cut API response time",
     ],
     start: "01/04/2025",
     end: "01/12/2025",
@@ -111,6 +132,11 @@ export const experiences: ExperienceInterface[] = [
       "Refactored legacy components into Vue.js, resolving memory leaks and improving load times",
       "Implemented XSS mitigation by blocking malicious scripts, protecting users and improving system security.",
     ],
+    highlights: [
+      "Up to 60% less manual work with AI",
+      "Python 2 → 3 migration",
+      "20+ feature flags removed",
+    ],
     start: "01/01/2023",
     end: "01/04/2025",
     src: "/work/blip-meet-up.webp",
@@ -129,6 +155,11 @@ export const experiences: ExperienceInterface[] = [
       "Created a component builder to increase product flexibility",
       "Improved Firebase security rules and optimized data structure",
       "Strengthened the design system with test coverage and documentation",
+    ],
+    highlights: [
+      "70+ reusable components in one quarter",
+      "Up to 80% faster filter setup",
+      "Component builder",
     ],
     start: "01/02/2022",
     end: "01/01/2023",
@@ -149,6 +180,11 @@ export const experiences: ExperienceInterface[] = [
       "Contributed to the evolution of a reusable design system",
       "Accelerated feature delivery through modular, maintainable code",
     ],
+    highlights: [
+      "Higher test coverage, fewer production bugs",
+      "Firebase permissions and security",
+      "Reusable design system",
+    ],
     start: "01/06/2021",
     end: "01/02/2022",
     src: "/work/stilingue-assistant.webp",
@@ -167,6 +203,11 @@ export const experiences: ExperienceInterface[] = [
       "Structured the codebase for maintainability and collaboration",
       "Contributed to improving code quality and consistency",
       "Gained hands-on experience in front-end development within a fast-paced team",
+    ],
+    highlights: [
+      "Modular Vue.js components",
+      "Reactivity and lifecycle applied",
+      "Cleaner, maintainable code",
     ],
     start: "01/09/2020",
     end: "01/06/2021",
