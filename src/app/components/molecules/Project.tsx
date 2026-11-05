@@ -15,7 +15,9 @@ export interface ProjectProps {
   categories?: Array<Category>;
 }
 
-// Mobile: image on top, details always visible below it.
+// Cards have a fixed height on purpose: they are stacked with `position:
+// sticky`, and a taller card behind a shorter one would peek out from under it.
+// Mobile: image on top (it absorbs the leftover height), details always visible below.
 // Desktop: image fills the card, the title stays visible at the bottom and the
 // details slide up on hover/focus. The text is always in the DOM (SEO).
 export default function Project({
@@ -39,8 +41,8 @@ export default function Project({
         title={title}
       />
 
-      <div className="relative sm:h-96 overflow-hidden rounded-b-2xl bg-stone-800">
-        <div className="relative h-48 sm:absolute sm:inset-0 sm:h-full">
+      <div className="relative flex flex-col h-[30rem] sm:block sm:h-96 overflow-hidden rounded-b-2xl bg-stone-800">
+        <div className="relative flex-1 min-h-40 sm:absolute sm:inset-0 sm:min-h-0">
           <Image
             src={image}
             alt={title}
