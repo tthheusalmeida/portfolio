@@ -145,6 +145,23 @@ export const experiences = [
   },
 ];
 
+export const impacts = [
+  {
+    prefix: "Até",
+    label: "menos trabalho manual dos clientes com IA generativa",
+  },
+  {
+    prefix: "Até",
+    label: "menos tempo de configuração com filtros globais",
+  },
+  {
+    label: "componentes reutilizáveis criados em um único trimestre",
+  },
+  {
+    label: "feature flags legadas removidas",
+  },
+];
+
 export const educations = [
   {
     title: "Bacharelado em Ciência da Computação",

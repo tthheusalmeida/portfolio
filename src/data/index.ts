@@ -2,6 +2,7 @@ import { StackInterface, stack } from "./stack";
 import { SocialMediaInterface, socialMedia } from "./social-media";
 import { ProjectInterface, projects } from "./project";
 import { ExperienceInterface, experiences } from "./experience";
+import { ImpactInterface, impacts } from "./impact";
 import { EducationInterface, educations } from "./education";
 import { CertificationInterface, certifications } from "./certification";
 import { TestimonialInterface, testimonials } from "./testimonial";
@@ -14,6 +15,7 @@ interface DataProps {
   softSkills: Array<string>;
   projects: Array<ProjectInterface>;
   experiences: Array<ExperienceInterface>;
+  impacts: Array<ImpactInterface>;
   educations: Array<EducationInterface>;
   certifications: Array<CertificationInterface>;
   testimonials: Array<TestimonialInterface>;
@@ -40,6 +42,7 @@ const DATA: DataProps = {
   softSkills,
   projects,
   experiences,
+  impacts,
   educations,
   certifications,
   testimonials,
@@ -62,6 +65,7 @@ const DATA_PT: DataProps = {
       ...pt.experiences[i].roles[j],
     })),
   })),
+  impacts: impacts.map((item, i) => ({ ...item, ...pt.impacts[i] })),
   educations: educations.map((item, i) => ({
     ...item,
     ...pt.educations[i],

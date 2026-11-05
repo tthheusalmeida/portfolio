@@ -41,6 +41,8 @@ const en = {
   "projects.category.probono": "Pro bono",
   "projects.category.owner": "Owner",
 
+  "impact.title": "Impact in numbers",
+
   "experiences.title": "Experiences",
   "experiences.subtitle":
     "A summary of the **Roles**, **Responsibilities** that have shaped my professional path so far",
@@ -153,6 +155,8 @@ const pt: Record<DictionaryKey, string> = {
   "projects.category.freelancer": "Freelancer",
   "projects.category.probono": "Voluntário",
   "projects.category.owner": "Sócio",
+
+  "impact.title": "Impacto em números",
 
   "experiences.title": "Experiências",
   "experiences.subtitle":
