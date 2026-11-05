@@ -76,6 +76,16 @@ const en = {
   "contact.subtitle":
     "Have a **project in mind**, a **question**, or just want to **say hello**?\nFeel free to reach out, I'm always open to connect!",
 
+  "contact.direct.title": "Prefer to talk directly?",
+  "contact.email": "E-mail",
+  "contact.email.copy": "Copy e-mail",
+  "contact.email.copied": "E-mail copied!",
+  "contact.whatsapp": "WhatsApp",
+  "contact.whatsapp.cta": "Chat now",
+  "contact.linkedin": "LinkedIn",
+  "footer.sections": "Sections",
+  "footer.social": "Find me online",
+
   "form.name": "Name",
   "form.name.placeholder": "Your name",
   "form.email": "E-mail",
@@ -178,6 +188,16 @@ const pt: Record<DictionaryKey, string> = {
   "contact.title": "Gostou do meu trabalho?",
   "contact.subtitle":
     "Tem um **projeto em mente**, uma **dúvida** ou só quer **dizer olá**?\nFique à vontade para entrar em contato, estou sempre aberto a conversar!",
+
+  "contact.direct.title": "Prefere falar direto?",
+  "contact.email": "E-mail",
+  "contact.email.copy": "Copiar e-mail",
+  "contact.email.copied": "E-mail copiado!",
+  "contact.whatsapp": "WhatsApp",
+  "contact.whatsapp.cta": "Conversar agora",
+  "contact.linkedin": "LinkedIn",
+  "footer.sections": "Seções",
+  "footer.social": "Me encontre online",
 
   "form.name": "Nome",
   "form.name.placeholder": "Seu nome",
