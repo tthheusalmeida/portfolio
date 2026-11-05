@@ -60,6 +60,7 @@ const en = {
   "education.subtitle":
     "Where **theory**, **research**, and **teaching** shaped the foundations of how I think and build",
 
+  "certifications.stamp": "CERTIFIED",
   "certifications.title": "Certifications",
   "certifications.subtitle":
     "Milestones that validate my dedication to **learning**, **growth**, and **professional excellence**",
@@ -160,6 +161,7 @@ const pt: Record<DictionaryKey, string> = {
   "education.subtitle":
     "Onde **teoria**, **pesquisa** e **ensino** moldaram as bases de como penso e construo",
 
+  "certifications.stamp": "CERTIFICADO",
   "certifications.title": "Certificações",
   "certifications.subtitle":
     "Marcos que validam minha dedicação ao **aprendizado**, ao **crescimento** e à **excelência profissional**",

@@ -73,6 +73,27 @@ button {
 }
 
 /* ===== Animation Keyframes ===== */
+/* Rubber-stamp hit: starts big and faded, lands with a small bounce. */
+@keyframes stamp-press {
+  0% {
+    transform: scale(1.9) rotate(-25deg);
+    opacity: 0;
+  }
+  55% {
+    transform: scale(0.9) rotate(4deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 6px var(--action));
+  }
+  75% {
+    transform: scale(1.05) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+    filter: none;
+  }
+}
+
 @keyframes slideInRight {
   from {
     transform: translateX(100%);
