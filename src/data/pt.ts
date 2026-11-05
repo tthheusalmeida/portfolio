@@ -173,15 +173,15 @@ export const educations = [
     experiences: [
       {
         role: "Monitor – Estruturas de Dados",
-        description: `Apoiei a disciplina de Estruturas de Dados criando exercícios, corrigindo trabalhos e auxiliando os alunos em desafios de programação. Os tópicos incluíam complexidade de algoritmos, recursão, listas, pilhas, filas, algoritmos de ordenação, árvores binárias e AVL e tabelas hash.`,
+        description: `Criei exercícios, corrigi trabalhos e apoiei alunos em Estruturas de Dados: complexidade, recursão, árvores, hash e ordenação.`,
       },
       {
         role: "Iniciação Científica – Computação de Alto Desempenho (HPC)",
-        description: `Contribuí para o desenvolvimento do JCL-Opt, um framework em Java que aplica técnicas de otimização, como backtracking e permutações, em sistemas distribuídos usando JCL. Foco em design modular, balanceamento de carga e estratégias eficientes de manipulação de dados.`,
+        description: `Contribuí com o JCL-Opt, framework Java de otimização distribuída (backtracking e permutações), com foco em modularidade e balanceamento de carga.`,
       },
       {
         role: "Participante – Programa opCod3rs",
-        description: `Participei de um programa de treinamento em programação competitiva voltado a preparar estudantes para desafios algorítmicos e maratonas no estilo ICPC. Pratiquei regularmente estruturas de dados avançadas, programação dinâmica e teoria dos grafos em sessões semanais de resolução de problemas.`,
+        description: `Treinamento semanal de programação competitiva para maratonas estilo ICPC: estruturas de dados avançadas, programação dinâmica e grafos.`,
       },
     ],
   },
