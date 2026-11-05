@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState } from "react";
+import { useId, useState } from "react";
 import { BiSolidQuoteRight } from "react-icons/bi";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { mergeClassNames } from "@/utils/classNames";
@@ -14,13 +14,6 @@ interface TestimonialProps {
   relationship?: string;
 }
 
-// Four lines of text (leading-relaxed = 1.625). The collapsed text is clipped at
-// this height with a soft fade, so the expand/collapse can animate max-height.
-const COLLAPSED_HEIGHT = "6.5em";
-const FADE = "1.75em";
-const MASK_LAYERS =
-  "linear-gradient(#000, #000), linear-gradient(to bottom, #000, transparent)";
-
 function getInitials(name: string) {
   const parts = name.trim().split(/\s+/);
   const first = parts[0]?.[0] ?? "";
@@ -28,7 +21,7 @@ function getInitials(name: string) {
   return `${first}${last}`.toUpperCase();
 }
 
-// The full text is always in the DOM: collapsing is only a CSS line clamp, so
+// The full text is always in the DOM: collapsing only clips it with a grid row, so
 // crawlers and screen readers still get the whole testimonial.
 export default function Testimonial({
   label,
@@ -40,29 +33,11 @@ export default function Testimonial({
   const { t } = useLanguage();
   const [expanded, setExpanded] = useState(false);
   const textId = useId();
-  const textRef = useRef<HTMLDivElement>(null);
 
   const text = Array.isArray(description)
     ? description.join(" ")
     : description.replace(/\s+/g, " ").trim();
 
-  const toggle = () => {
-    const el = textRef.current;
-    if (!el) return;
-
-    // Animate between two known pixel heights; `none` is restored on
-    // transition end so the open text can still reflow on resize.
-    el.style.maxHeight = `${el.scrollHeight}px`;
-    if (expanded) {
-      void el.offsetHeight; // flush so the transition starts from the pixel height
-      el.style.maxHeight = COLLAPSED_HEIGHT;
-    }
-    setExpanded(!expanded);
-  };
-
-  const maskSize = expanded
-    ? `100% 100%, 100% ${FADE}`
-    : `100% calc(100% - ${FADE}), 100% ${FADE}`;
   return (
     <AnimatedComponent
       HTMLtag="figure"
@@ -84,32 +59,19 @@ export default function Testimonial({
         </p>
       )}
 
-      <blockquote className="mt-3">
-        <div
-          id={textId}
-          ref={textRef}
-          onTransitionEnd={(event) => {
-            if (
-              expanded &&
-              event.propertyName === "max-height" &&
-              textRef.current
-            ) {
-              textRef.current.style.maxHeight = "none";
-            }
-          }}
-          className="min-h-[6.5em] max-h-[6.5em] overflow-hidden transition-[max-height,mask-size] duration-500 ease-in-out text-xs sm:text-sm font-normal leading-relaxed text-[var(--foreground)]/70"
-          style={{
-            WebkitMaskImage: MASK_LAYERS,
-            maskImage: MASK_LAYERS,
-            WebkitMaskRepeat: "no-repeat",
-            maskRepeat: "no-repeat",
-            WebkitMaskPosition: "top, bottom",
-            maskPosition: "top, bottom",
-            WebkitMaskSize: maskSize,
-            maskSize,
-          }}
-        >
-          <p>{text}</p>
+      {/* Collapsed: only the highlight. Expanded: the full text. The text is
+          always in the DOM (clipped by a 0fr grid row), so it stays readable by
+          crawlers and screen readers. */}
+      <blockquote
+        className={mergeClassNames(
+          "grid transition-[grid-template-rows,margin] duration-500 ease-in-out",
+          expanded ? "mt-3 grid-rows-[1fr]" : "mt-0 grid-rows-[0fr]",
+        )}
+      >
+        <div id={textId} className="min-h-0 overflow-hidden">
+          <p className="text-xs sm:text-sm font-normal leading-relaxed text-[var(--foreground)]/70">
+            {text}
+          </p>
         </div>
       </blockquote>
 
@@ -117,7 +79,7 @@ export default function Testimonial({
         type="button"
         aria-expanded={expanded}
         aria-controls={textId}
-        onClick={toggle}
+        onClick={() => setExpanded((prev) => !prev)}
         className="self-start mt-2 text-xs font-semibold text-[var(--action)] hover:underline"
       >
         {expanded ? t("testimonials.readLess") : t("testimonials.readMore")}

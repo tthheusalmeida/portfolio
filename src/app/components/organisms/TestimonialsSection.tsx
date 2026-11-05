@@ -9,7 +9,9 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export default function TestimonialsSection() {
   const { t, rich } = useLanguage();
-  const testimonials = useData().testimonials;
+  const testimonials = useData().testimonials.filter(
+    ({ featured }) => featured,
+  );
   return (
     <SectionTemplate
       id="testimonials"

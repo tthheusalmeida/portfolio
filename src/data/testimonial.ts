@@ -4,6 +4,8 @@ export interface TestimonialInterface {
   descriptions: string;
   highlight: string;
   relationship: string;
+  // Only featured testimonials are shown on the page.
+  featured: boolean;
 }
 
 export const testimonials: TestimonialInterface[] = [
@@ -26,6 +28,7 @@ export const testimonials: TestimonialInterface[] = [
     `,
     highlight: "Whenever I have the opportunity, I invite him to join my projects.",
     relationship: "Worked together",
+    featured: true,
   },
   {
     name: "Fábio Gomide",
@@ -44,6 +47,7 @@ export const testimonials: TestimonialInterface[] = [
     `,
     highlight: "His growth is inevitable, and any team would be lucky to have him.",
     relationship: "Worked together",
+    featured: true,
   },
   {
     name: "Gabriel Caetano Araújo",
@@ -58,6 +62,7 @@ export const testimonials: TestimonialInterface[] = [
     `,
     highlight: "He brings clarity, focus, and a calm energy that makes everything flow more smoothly.",
     relationship: "Studied together",
+    featured: false,
   },
   {
     name: "Lucas Urzedo",
@@ -71,6 +76,7 @@ export const testimonials: TestimonialInterface[] = [
     `,
     highlight: "Excellent technical skills, great strategic vision and leadership.",
     relationship: "Studied together",
+    featured: true,
   },
   {
     name: "Levi Frota",
@@ -82,6 +88,7 @@ export const testimonials: TestimonialInterface[] = [
     `,
     highlight: "One of the greatest developers I have worked with.",
     relationship: "Worked together",
+    featured: true,
   },
   {
     name: "Caio Costa",
@@ -95,5 +102,6 @@ export const testimonials: TestimonialInterface[] = [
     `,
     highlight: "A strong work ethic and a passion for learning.",
     relationship: "Studied together",
+    featured: false,
   },
 ];
