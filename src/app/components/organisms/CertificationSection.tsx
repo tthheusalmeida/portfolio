@@ -19,7 +19,7 @@ export default function CertificationSection() {
           title={t("certifications.title")}
           subtitle={rich("certifications.subtitle")}
         >
-          <div className="flex flex-row flex-wrap items-center justify-center">
+          <div className="flex flex-row flex-wrap items-stretch justify-center gap-6">
             {certifications.map((certification, index) => (
               <Certification key={index} {...certification} />
             ))}
