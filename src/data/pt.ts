@@ -205,6 +205,22 @@ export const certifications = [
 
 export const testimonials = [
   {
+    role: "Gerente de Engenharia | Gerente de Tecnologia",
+    descriptions: `Tive a oportunidade de trabalhar com Matheus e posso dizer que é um profissional incrível.
+      Com um conhecimento técnico sólido em front-end, ele aprende rápido, se adapta facilmente a novos
+      desafios e está sempre comprometido em entregar o melhor resultado.
+
+      Além da parte técnica, o que mais se destaca é o quanto ele é solícito e colaborativo — sempre
+      disposto a ajudar o time, compartilhar conhecimento e contribuir para a melhoria dos processos.
+
+      É aquele tipo de pessoa que faz diferença tanto pelo talento quanto pelo jeito de ser: gente boa,
+      responsável e com uma energia positiva que contagia o ambiente. Uma parceria que qualquer equipe
+      teria sorte em ter!
+    `,
+    highlight: "Uma parceria que qualquer equipe teria sorte em ter!",
+    relationship: "Foi meu gestor",
+  },
+  {
     role: "Engenharia Front-end | Tech Lead | Chapter Lead",
     descriptions: `Tive o prazer de acompanhar a trajetória profissional do Matheus desde o início
       de sua carreira na área de tecnologia, e sempre me impressionei com a rapidez e a
@@ -221,26 +237,69 @@ export const testimonials = [
       participar dos meus projetos.
     `,
     highlight: "Sempre que tenho oportunidade, o convido para participar dos meus projetos.",
-    relationship: "Trabalhamos juntos",
+    relationship: "Foi meu gestor",
   },
   {
-    role: "Product Designer Sênior",
-    descriptions: `Trabalhar com o Matheus foi uma experiência enriquecedora.
-      Desde o seu primeiro cargo profissional, a vontade de aprender
-      e superar desafios sempre se destacou. Tive o privilégio
-      de acompanhar de perto seu crescimento, pois fazíamos parte do mesmo time,
-      e posso dizer com confiança: ele é incansável. Sempre dá o seu melhor,
-      colabora de forma excelente, está pronto para ajudar e busca constantemente novos conhecimentos.
-      Um ótimo exemplo disso foram nossas muitas conversas sobre design — não apenas design
-      de produto, mas design como disciplina. O Matheus foi um dos principais defensores da
-      qualidade do design no nosso contexto, sempre indo além para contribuir. O crescimento dele é
-      inevitável, e qualquer time teria sorte de contar com ele. Um profissional altamente recomendado!
+    role: "DBA | DBRE | Take Blip",
+    descriptions: `Tive a oportunidade de trabalhar com Matheus por alguns anos e posso afirmar que ele é um profissional de front-end extremamente competente. Seu trabalho e dedicação são excelentes, sempre entregando soluções com qualidade e atenção aos detalhes.
+
+      Matheus se destaca pela ótima capacidade de resolução de problemas, domínio em testes de ambiente e postura proativa no dia a dia. Além disso, é uma pessoa muito inteligente, com grande facilidade de aprendizado, o que o torna ágil para lidar com novos desafios e tecnologias.
+
+      É também muito comprometido com prazos e entregas, trazendo confiança para o time e contribuindo de forma consistente para os resultados. Recomendo fortemente o Matheus para qualquer equipe ou projeto que busque um desenvolvedor responsável, dedicado e com excelente potencial profissional.
+
+      Além do excelente profissional que é, Matheus também se destaca como pessoa. É gentil, respeitoso e demonstra preocupação genuína com as pessoas ao seu redor, sempre contribuindo para um ambiente de trabalho positivo, colaborativo e saudável. Sua postura empática e seu cuidado com o time fazem toda a diferença no dia a dia.
     `,
-    highlight: "O crescimento dele é inevitável, e qualquer time teria sorte de contar com ele.",
+    highlight:
+      "Um profissional de front-end extremamente competente, sempre entregando soluções com qualidade e atenção aos detalhes.",
     relationship: "Trabalhamos juntos",
   },
   {
-    role: "Product Tech Lead",
+    role: "Product Design Specialist | Apresentador do Criativos Podcast",
+    descriptions: `Trabalhar com o Matheus foi uma experiência enriquecedora. Desde sua primeira experiência profissional, sua vontade de aprender e superar desafios sempre se destacou. Tive o privilégio de acompanhar sua evolução de perto, já que atuamos no mesmo time, e posso afirmar: ele é incansável. Sempre se dedica ao máximo, colabora com excelência, está pronto para ajudar e busca constantemente novos aprendizados.
+
+      Um ótimo exemplo disso foram nossas inúmeras trocas sobre design, não apenas aplicado ao produto, mas como disciplina. Matheus foi um dos grandes promotores da qualidade do design dentro do nosso contexto, sempre indo além do esperado para contribuir. Seu crescimento é inevitável, e qualquer time terá muita sorte em tê-lo. Profissional altamente recomendado!
+    `,
+    highlight: "Seu crescimento é inevitável, e qualquer time terá muita sorte em tê-lo.",
+    relationship: "Trabalhamos juntos",
+  },
+  {
+    role: "Desenvolvedor Front-End | Vue.js | React.js | TypeScript",
+    descriptions: `O Matheus é um dos melhores desenvolvedores com quem já trabalhei. Ele tem ótimas habilidades
+      técnicas e é um jogador de equipe, ajudando os colegas e contribuindo para um ambiente de trabalho melhor. Além disso,
+      é um excelente solucionador de problemas e ajudou o time a melhorar nossas plataformas com bom
+      desempenho e código limpo. Espero que possamos trabalhar juntos novamente algum dia.
+    `,
+    highlight: "Um dos melhores desenvolvedores com quem já trabalhei.",
+    relationship: "Trabalhamos juntos",
+  },
+  {
+    role: "Engenheiro DataOps na Sem Parar Doc",
+    descriptions: `O Matheus tem excelentes habilidades técnicas, capacidade de resolver problemas
+      complexos, ótima visão estratégica e liderança. Também tem qualidades como pessoa,
+      fundamentais em qualquer organização, como comunicação, resiliência e sempre
+      disposição para ajudar. Nos formamos juntos na faculdade e acredito que o Matheus tem todas as
+      condições de se desenvolver ainda mais na carreira, sendo um ativo de enorme valor
+      para qualquer organização.
+    `,
+    highlight: "Excelentes habilidades técnicas, ótima visão estratégica e liderança.",
+    relationship: "Estudamos juntos",
+  },
+  {
+    role: "Mentora de Liderança e Carreira",
+    descriptions: `Matheus apresenta uma sólida experiência como Engenheiro de Software Front-End, desenvolvedor de soluções com IA Integrada e desenvolvedor Front end com um forte perfil orientado a resultados, analítico, especialista na sua área, determinado e com nível de qualidade em suas entregas no trabalho.
+
+      Liderando a sua carreira para impulsionar o seu crescimento profissional, Matheus decidiu investir na Mentoria de Carreira para acelerar as conquistas dos seus objetivos profissionais com dedicação, alto comprometimento e estratégias. Decisão inteligente de quem se diferencia no mercado de trabalho na sua área de atuação.
+
+      Obrigada Matheus pela confiança no meu trabalho como Mentora de Carreira e Liderança e Parabéns pelos resultados alcançados... é só o começo.
+
+      Sucesso.
+    `,
+    highlight:
+      "Perfil analítico e orientado a resultados, determinado e com alto nível de qualidade em suas entregas.",
+    relationship: "Mentora de carreira",
+  },
+  {
+    role: "Engenheiro de Software Back-end | Java · Elasticsearch · MongoDB · AWS",
     descriptions: `O Matheus é uma daquelas pessoas que naturalmente elevam o ambiente
       só por estarem por perto. Seja resolvendo um problema ou ajudando alguém pelo caminho, ele
       traz clareza, foco e uma energia tranquila que faz tudo fluir melhor.
@@ -253,29 +312,7 @@ export const testimonials = [
     relationship: "Estudamos juntos",
   },
   {
-    role: "Engenheiro DataOps",
-    descriptions: `O Matheus tem excelentes habilidades técnicas, capacidade de resolver problemas
-      complexos, ótima visão estratégica e liderança. Também tem qualidades como pessoa,
-      fundamentais em qualquer organização, como comunicação, resiliência e sempre
-      disposição para ajudar. Nos formamos juntos na faculdade e acredito que o Matheus tem todas as
-      condições de se desenvolver ainda mais na carreira, sendo um ativo de enorme valor
-      para qualquer organização.
-    `,
-    highlight: "Excelentes habilidades técnicas, ótima visão estratégica e liderança.",
-    relationship: "Estudamos juntos",
-  },
-  {
-    role: "Desenvolvedor Front-End",
-    descriptions: `O Matheus é um dos melhores desenvolvedores com quem já trabalhei. Ele tem ótimas habilidades
-      técnicas e é um jogador de equipe, ajudando os colegas e contribuindo para um ambiente de trabalho melhor. Além disso,
-      é um excelente solucionador de problemas e ajudou o time a melhorar nossas plataformas com bom
-      desempenho e código limpo. Espero que possamos trabalhar juntos novamente algum dia.
-    `,
-    highlight: "Um dos melhores desenvolvedores com quem já trabalhei.",
-    relationship: "Trabalhamos juntos",
-  },
-  {
-    role: "Engenheiro de Dados",
+    role: "Engenheiro de Dados | GCP | Python | Git | Airflow | Spark",
     descriptions: `Tive o prazer de estudar ao lado do Matheus. Desde o início, ficou claro
       que ele se destacava pelas habilidades técnicas, pelo pensamento crítico e pelo espírito colaborativo. Ele
       sempre abordava os problemas com criatividade e estava sempre disposto a ajudar os outros a entender
