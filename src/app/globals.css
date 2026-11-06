@@ -178,6 +178,37 @@ button {
   }
 }
 
+/* Screen light: small, irregular brightness changes, like a live display. */
+@keyframes screen-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  18% {
+    opacity: 0.86;
+  }
+  32% {
+    opacity: 0.97;
+  }
+  55% {
+    opacity: 0.8;
+  }
+  74% {
+    opacity: 0.94;
+  }
+}
+
+/* Gentler than Tailwind's animate-pulse (which dips to 50%). */
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
 @keyframes float-slow {
   0%,
   100% {
@@ -314,6 +345,14 @@ button {
 
   .animate-pulse-slow {
     animation: pulse-slow 8s ease-in-out infinite;
+  }
+
+  .animate-soft-pulse {
+    animation: soft-pulse 4s ease-in-out infinite;
+  }
+
+  .animate-screen-flicker {
+    animation: screen-flicker 5s ease-in-out infinite;
   }
 
   .animate-float-slow {

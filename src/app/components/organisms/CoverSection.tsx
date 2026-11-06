@@ -6,7 +6,7 @@ import Image from "next/image";
 import Title from "@/app/components/atoms/Title";
 import DownloadButton from "../molecules/DownloadButton";
 import AnimatedComponent from "../molecules/AnimatedComponent";
-import { mergeClassNames } from "@/utils/classNames";
+import CoverLight from "../molecules/CoverLight";
 import { useLanguage } from "@/contexts/LanguageContext";
 import NavigationButton from "../atoms/NavigationButton";
 import Subtitle from "../atoms/Subtitle";
@@ -47,25 +47,19 @@ export default function CoverSection() {
                 HTMLtag="div"
                 className="flex sm:hidden items-center justify-center px-4"
               >
-                <Image
-                  src="/cover/me.webp"
-                  width={556}
-                  height={500}
-                  priority
-                  fetchPriority="high"
-                  placeholder="empty"
-                  alt={t("cover.alt")}
-                  className="relative block z-10"
-                />
-
-                <div
-                  className={mergeClassNames(
-                    "absolute top-[24%] left-[12%] ",
-                    "w-[240px] h-[240px]",
-                    "bg-[var(--action)]/60 opacity-40 rounded-full ",
-                    "blur-[24px] animate-pulse z-0"
-                  )}
-                />
+                <div className="relative">
+                  <Image
+                    src="/cover/me.webp"
+                    width={556}
+                    height={500}
+                    priority
+                    fetchPriority="high"
+                    placeholder="empty"
+                    alt={t("cover.alt")}
+                    className="relative block z-10"
+                  />
+                  <CoverLight imageSrc="/cover/me.webp" />
+                </div>
               </AnimatedComponent>
 
               <div className="flex gap-6 pt-8 px-4 sm:px-0 sm:w-[296px] w-full">
@@ -90,15 +84,7 @@ export default function CoverSection() {
                 alt={t("cover.alt")}
                 className="relative block z-10"
               />
-
-              <div
-                className={mergeClassNames(
-                  "absolute top-[20%] left-[10%] ",
-                  "sm:w-[400px] sm:h-[400px]",
-                  "bg-[var(--action)]/60 opacity-40 rounded-full ",
-                  "blur-[68px] animate-pulse z-0"
-                )}
-              />
+              <CoverLight imageSrc="/cover/me.webp" />
             </AnimatedComponent>
           </div>
 
