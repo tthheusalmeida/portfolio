@@ -7,11 +7,17 @@ import { DictionaryKey } from "@/i18n/dictionary";
 
 interface LevelBadgeProps {
   level: EducationLevel;
+  // Short degree name (e.g. "B.Sc."), shown after the level.
+  abbreviation?: string | null;
   className?: string;
 }
 
 // Postgraduate uses the action color; undergraduate stays neutral.
-export default function LevelBadge({ level, className }: LevelBadgeProps) {
+export default function LevelBadge({
+  level,
+  abbreviation,
+  className,
+}: LevelBadgeProps) {
   const { t } = useLanguage();
 
   return (
@@ -26,6 +32,7 @@ export default function LevelBadge({ level, className }: LevelBadgeProps) {
       )}
     >
       {t(`education.level.${level}` as DictionaryKey)}
+      {abbreviation && ` · ${abbreviation}`}
     </span>
   );
 }

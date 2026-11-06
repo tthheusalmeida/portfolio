@@ -55,10 +55,11 @@ const en = {
   "experiences.type.self-employed": "self-employed",
 
   "education.title": "Education",
-  "education.level.undergraduate": "Undergraduate",
+  "education.level.undergraduate": "Bachelor's",
   "education.level.postgraduate": "Postgraduate",
   "education.inProgress": "In progress",
   "education.activities": "Academic activities",
+  "education.activitiesHint": "Click an activity to see the details",
   "education.subtitle":
     "Where **theory**, **research**, and **teaching** shaped the foundations of how I think and build",
 
@@ -170,10 +171,11 @@ const pt: Record<DictionaryKey, string> = {
   "experiences.type.self-employed": "autônomo",
 
   "education.title": "Formação",
-  "education.level.undergraduate": "Graduação",
+  "education.level.undergraduate": "Bacharelado",
   "education.level.postgraduate": "Pós-graduação",
   "education.inProgress": "Em andamento",
   "education.activities": "Atividades acadêmicas",
+  "education.activitiesHint": "Clique em uma atividade para ver os detalhes",
   "education.subtitle":
     "Onde **teoria**, **pesquisa** e **ensino** moldaram as bases de como penso e construo",
 

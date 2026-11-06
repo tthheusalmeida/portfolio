@@ -164,8 +164,10 @@ export const impacts = [
 
 export const educations = [
   {
-    title: "Bacharelado em Ciência da Computação",
+    title: "Ciência da Computação",
     abbreviation: "B.Sc.",
+    description:
+      "Graduação em Ciência da Computação com base sólida em algoritmos e estruturas de dados, construída junto com monitoria, pesquisa e programação competitiva.",
     university: {
       name: "Universidade Federal de Ouro Preto",
       originalName: "",
@@ -187,7 +189,9 @@ export const educations = [
   },
   {
     title:
-      "Pós-graduação em DevOps & Engenharia de Plataformas em Nuvem com Inteligência Artificial",
+      "DevOps & Engenharia de Plataformas em Nuvem com Inteligência Artificial",
+    description:
+      "Especialização em andamento com foco em DevOps, engenharia de plataformas em nuvem e Inteligência Artificial.",
     university: {
       name: "Pontifícia Universidade Católica de Minas Gerais",
       originalName: "",

@@ -2,7 +2,7 @@
 
 import SectionTemplate from "@/templates/SectionTemplate";
 import TitleAndSubtitleSection from "../molecules/TitleAndSubtitleSection";
-import Education from "../molecules/Education";
+import EducationAccordion from "./EducationAccordion";
 import { useLanguage, useData } from "@/contexts/LanguageContext";
 
 export default function EducationSection() {
@@ -14,22 +14,18 @@ export default function EducationSection() {
   );
 
   return (
-    <>
-      <SectionTemplate
-        id="education"
-        className="flex flex-col items-center justify-center"
+    <SectionTemplate
+      id="education"
+      className="flex flex-col items-center justify-center"
+    >
+      <TitleAndSubtitleSection
+        title={t("education.title")}
+        subtitle={rich("education.subtitle")}
       >
-        <TitleAndSubtitleSection
-          title={t("education.title")}
-          subtitle={rich("education.subtitle")}
-        >
-          <div className="flex flex-col gap-6 sm:gap-8">
-            {educations.map((education) => (
-              <Education key={`${education.level}-${education.university.abbreviation}`} {...education} />
-            ))}
-          </div>
-        </TitleAndSubtitleSection>
-      </SectionTemplate>
-    </>
+        <div className="mt-11 w-full">
+          <EducationAccordion educations={educations} />
+        </div>
+      </TitleAndSubtitleSection>
+    </SectionTemplate>
   );
 }

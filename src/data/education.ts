@@ -18,6 +18,7 @@ export interface EducationInterface {
   level: EducationLevel;
   title: string;
   abbreviation: string | null;
+  description: string;
   university: EducationUniversity;
   start: string;
   end: string | null;
@@ -27,8 +28,10 @@ export interface EducationInterface {
 export const educations: EducationInterface[] = [
   {
     level: "undergraduate",
-    title: "Bachelor of Science in Computer Science",
+    title: "Computer Science",
     abbreviation: "B.Sc.",
+    description:
+      "Computer Science degree with a solid base in algorithms and data structures, built alongside teaching, research and competitive programming.",
     university: {
       name: "Federal University of Ouro Preto",
       originalName: "Universidade Federal de Ouro Preto",
@@ -60,16 +63,17 @@ export const educations: EducationInterface[] = [
   },
   {
     level: "postgraduate",
-    title:
-      "Postgraduate Degree of DevOps & Cloud Platform Engineering with Artificial Intelligence",
+    title: "DevOps & Cloud Platform Engineering with Artificial Intelligence",
     abbreviation: null,
+    description:
+      "Ongoing specialization focused on DevOps, cloud platform engineering and Artificial Intelligence.",
     university: {
       name: "Pontifical Catholic University of Minas Gerais",
       originalName: "Pontifícia Universidade Católica de Minas Gerais",
       abbreviation: "PUC Minas",
       image: "/educations/puc_minas_logo.webp",
     },
-    start: "01/07/2018",
+    start: "01/07/2026",
     end: null,
     experiences: [],
   },
