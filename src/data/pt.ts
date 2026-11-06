@@ -21,13 +21,12 @@ export const experiences = [
       "Ministrei aulas práticas e teóricas sobre programação, desenvolvimento de software, redes de computadores, arquitetura de sistemas, sistemas operacionais e manutenção de software.",
       "Elaborei atividades práticas e exercícios técnicos para desenvolver a resolução de problemas, a programação e o pensamento sistêmico dos alunos.",
       "Apresentei conceitos de desenvolvimento de software, como programação orientada a objetos, algoritmos, desenvolvimento de aplicações e arquitetura de software.",
-      "Ensinei fundamentos de redes de computadores, incluindo DNS, DHCP e conceitos essenciais de redes.",
       "Desenvolvi materiais didáticos, exercícios e avaliações adaptados ao nível técnico e aos objetivos de aprendizagem dos alunos.",
     ],
     highlights: [
-      "Aulas de programação e desenvolvimento de software",
-      "Fundamentos de redes: DNS e DHCP",
-      "Materiais didáticos e avaliações próprios",
+      "Mentoria em programação, estruturas de dados e fundamentos de software",
+      "Comunicação técnica clara: transformar temas complexos em aprendizado prático",
+      "Materiais didáticos, exercícios e avaliações próprios",
     ],
     roles: [
       {
@@ -315,13 +314,29 @@ export const projects = [
     para analisar e transformar código legado com base nas melhores práticas atuais. Projeto de TCC.`,
   },
   {
+    about: `O Roomio é uma plataforma de jogos multiplayer online com integração em tempo real via WebSocket.`,
+  },
+  {
     about: `Projeto que ajuda os usuários a gerenciar suas finanças pessoais.
       O Finance.AI usa inteligência artificial para analisar transações e gerar
       insights personalizados. Na plataforma, os usuários podem registrar receitas e despesas,
       categorizar movimentações e visualizar resumos inteligentes para entender melhor seu orçamento.`,
   },
   {
-    about: `O Roomio é uma plataforma de jogos multiplayer online com integração em tempo real via WebSocket.`,
+    about: `Construtor visual de fluxos, parecido com o n8n, para mapear e controlar processos de uma
+    empresa. Processos, subprocessos, ferramentas e responsáveis são nós de um grafo interativo
+    feito com React Flow, com edição por arrastar e soltar. Estudo de caso full-stack, com
+    front-end em Next.js e API REST em NestJS.`,
+  },
+  {
+    about: `Laboratório de IA local e de fronteira rodando no meu servidor doméstico. Modelos locais
+    cuidam de tarefas como transcrição (Whisper) e resumo de vídeos por meio de jobs no back-end,
+    enquanto modelos de fronteira, como o Gemini, atendem chat e resumos. Um painel cria,
+    inspeciona e acompanha tudo, sobre uma API REST em NestJS.`,
+  },
+  {
+    about: `Extensão do Chrome que aplica estilos CSS personalizados à listagem de diretórios
+    locais do navegador, transformando a página padrão em uma interface escura e limpa.`,
   },
   {
     about: `Projeto que conecta alunos e professores.

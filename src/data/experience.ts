@@ -38,13 +38,12 @@ export const experiences: ExperienceInterface[] = [
       "Delivered practical and theoretical lessons covering programming, software development, computer networks, systems architecture, operating systems, and software maintenance.",
       "Designed hands-on activities and technical exercises to develop students' problem-solving, programming, and systems thinking skills.",
       "Introduced software development concepts including object-oriented programming, algorithms, application development, and software architecture.",
-      "Taught computer networking fundamentals, including DNS, DHCP and core networking concepts.",
       "Developed teaching materials, exercises, and assessments adapted to students' technical level and learning objectives.",
     ],
     highlights: [
-      "Programming & software development classes",
-      "Networking fundamentals: DNS and DHCP",
-      "Own teaching materials and assessments",
+      "Mentoring in programming, data structures and software fundamentals",
+      "Clear technical communication: turning complex topics into practical learning",
+      "Own teaching materials, exercises and assessments",
     ],
     roles: [
       {

@@ -80,6 +80,24 @@ export const projects: ProjectInterface[] = [
     categories: ["personal"],
   },
   {
+    title: "Room.IO",
+    about: ` Roomio is an online multiplayer gaming platform with real-time integration with Web Socket.`,
+    technologies: [
+      "Next.js",
+      "Firebase",
+      "Tailwind",
+      "SWR",
+      "Jest",
+      "Socket.IO",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+    ],
+    image: "/projects/room_io.webp",
+    link: "https://roomio-rust.vercel.app/",
+    categories: ["personal"],
+  },
+  {
     title: "Finance.AI",
     about: `Project that helps users manage their personal finances. 
       Finance.AI uses artificial intelligence to analyze transactions and generate 
@@ -100,24 +118,57 @@ export const projects: ProjectInterface[] = [
     categories: ["personal"],
   },
   {
-    title: "Room.IO",
-    about: ` Roomio is an online multiplayer gaming platform with real-time integration with Web Socket.`,
+    title: "Process Flow",
+    about: `Visual workflow builder, similar to n8n, to map and control company processes.
+    Processes, subprocesses, tools and owners are nodes in an interactive graph built
+    with React Flow, with drag-and-drop editing. Full-stack study case, with a
+    Next.js front end and a NestJS REST API.`,
     technologies: [
+      "React",
       "Next.js",
-      "Firebase",
+      "Typescript",
       "Tailwind",
+      "Shadcn/ui",
+      "React Flow",
       "SWR",
+      "NestJS",
+      "Swagger",
       "Jest",
-      "Socket.IO",
-      "Node.js",
-      "Express",
-      "PostgreSQL",
     ],
-    image: "/projects/room_io.webp",
-    link: "https://roomio-rust.vercel.app/",
+    image: "/projects/process_flow.webp",
+    link: "https://github.com/tthheusalmeida/process-flow-front",
     categories: ["personal"],
   },
-
+  {
+    title: "Homelab",
+    about: `Local and frontier AI lab running on my home server. Local models handle tasks
+    like video transcription (Whisper) and summarization through back-end jobs, while
+    frontier models like Gemini cover chat and summaries. A dashboard creates,
+    inspects and tracks everything, on top of a NestJS REST API.`,
+    technologies: [
+      "React",
+      "Vite",
+      "Typescript",
+      "Tailwind",
+      "Shadcn/ui",
+      "TanStack Query",
+      "Recharts",
+      "NestJS",
+      "Gemini",
+    ],
+    image: "/projects/homelab.webp",
+    link: "https://github.com/tthheusalmeida/homelab-front",
+    categories: ["personal"],
+  },
+  {
+    title: "File Styled Directory",
+    about: `Chrome extension that applies custom CSS styles to the browser's local
+    file directory listing, turning the plain default page into a clean dark UI.`,
+    technologies: ["HTML", "CSS", "Javascript", "Chrome Extension"],
+    image: "/projects/file_styled_directory.webp",
+    link: "https://github.com/tthheusalmeida/file-styled-directory",
+    categories: ["personal"],
+  },
   {
     title: "Proffy",
     about: `Project that connects students and teachers. 
