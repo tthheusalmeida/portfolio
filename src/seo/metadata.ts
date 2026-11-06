@@ -41,7 +41,7 @@ const KEYWORDS = [
 const TEXTS = {
   pt: {
     homeTitle:
-      "Matheus Almeida - Engenheiro de Software Full Stack & DevOps | TypeScript, Node.js, React",
+      "Matheus Almeida - Engenheiro de Software Full Stack & DevOps",
     homeDescription:
       "Engenheiro de Software Full Stack & DevOps com TypeScript, Node.js, React, PostgreSQL, Docker e CI/CD na AWS e GCP. Construo, entrego e opero software com monitoramento e visão de design e negócio.",
     projectsTitle: "Projetos",
@@ -52,7 +52,7 @@ const TEXTS = {
   },
   en: {
     homeTitle:
-      "Matheus Almeida - Full Stack & DevOps Software Engineer | TypeScript, Node.js, React",
+      "Matheus Almeida - Full Stack & DevOps Software Engineer",
     homeDescription:
       "Full Stack & DevOps Software Engineer working with TypeScript, Node.js, React, PostgreSQL, Docker and CI/CD on AWS and GCP. I build, ship and run software with monitoring and a design and business mindset.",
     projectsTitle: "Projects",
