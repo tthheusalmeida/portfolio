@@ -2,7 +2,8 @@ import { Toaster } from "react-hot-toast";
 import Providers from "./Providers";
 import { poppinsSans } from "./fonts";
 import { Lang } from "@/i18n/dictionary";
-import { personJsonLd } from "@/seo/metadata";
+import { siteJsonLd } from "@/seo/metadata";
+import JsonLd from "@/seo/JsonLd";
 
 const HTML_LANG: Record<Lang, string> = { pt: "pt-BR", en: "en" };
 
@@ -18,12 +19,7 @@ export default function RootShell({
   return (
     <html lang={HTML_LANG[lang]}>
       <body className={`${poppinsSans.variable} antialiased`}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personJsonLd(lang)),
-          }}
-        />
+        <JsonLd data={siteJsonLd(lang)} />
         <Toaster position="bottom-center" toastOptions={{ duration: 5000 }} />
         <Providers lang={lang}>{children}</Providers>
       </body>

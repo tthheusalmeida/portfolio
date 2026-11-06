@@ -1,8 +1,14 @@
 import ProjectsTemplate from "@/templates/ProjectsTemplate";
-import { pageMetadata } from "@/seo/metadata";
+import { pageMetadata, projectsJsonLd } from "@/seo/metadata";
+import JsonLd from "@/seo/JsonLd";
 
 export const metadata = pageMetadata("en", "/projects");
 
 export default function Projects() {
-  return <ProjectsTemplate />;
+  return (
+    <>
+      <JsonLd data={projectsJsonLd("en")} />
+      <ProjectsTemplate />
+    </>
+  );
 }
