@@ -17,7 +17,9 @@ export default function EducationAccordion({
 }: {
   educations: Array<EducationInterface>;
 }) {
-  const [open, setOpen] = useState<number | null>(0);
+  // Rows toggle independently: closing one while opening another would shift
+  // the clicked row (the one above shrinks) and make its year jump.
+  const [open, setOpen] = useState<ReadonlySet<number>>(new Set([0]));
   const id = useId();
 
   return (
@@ -33,7 +35,7 @@ export default function EducationAccordion({
           end,
           experiences,
         } = education;
-        const isOpen = open === index;
+        const isOpen = open.has(index);
         const panelId = `${id}-${index}`;
 
         return (
@@ -42,7 +44,13 @@ export default function EducationAccordion({
               type="button"
               aria-expanded={isOpen}
               aria-controls={panelId}
-              onClick={() => setOpen(isOpen ? null : index)}
+              onClick={() =>
+                setOpen((prev) => {
+                  const next = new Set(prev);
+                  if (!next.delete(index)) next.add(index);
+                  return next;
+                })
+              }
               className="group/row grid w-full cursor-pointer grid-cols-[4.5rem_1fr_auto] items-center gap-4 py-6 text-left sm:grid-cols-[7rem_1fr_auto] sm:gap-6"
             >
               <span
