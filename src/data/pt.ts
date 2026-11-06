@@ -17,7 +17,7 @@ export const experiences = [
   {
     name: "Escola Estadual de Ouro Preto",
     achievements: [
-      "Lecionei disciplinas de Tecnologia da Informação e Desenvolvimento de Sistemas para alunos do ensino técnico de nível médio.",
+      "Lecionei disciplinas de Informática e Desenvolvimento de Sistemas para alunos do ensino técnico de nível médio.",
       "Ministrei aulas práticas e teóricas sobre programação, desenvolvimento de software, redes de computadores, arquitetura de sistemas, sistemas operacionais e manutenção de software.",
       "Elaborei atividades práticas e exercícios técnicos para desenvolver a resolução de problemas, a programação e o pensamento sistêmico dos alunos.",
       "Apresentei conceitos de desenvolvimento de software, como programação orientada a objetos, algoritmos, desenvolvimento de aplicações e arquitetura de software.",
@@ -30,7 +30,7 @@ export const experiences = [
     ],
     roles: [
       {
-        role: "Professor de Tecnologia da Informação e Desenvolvimento de Sistemas",
+        role: "Professor de Informática e Desenvolvimento de Sistemas",
       },
     ],
   },

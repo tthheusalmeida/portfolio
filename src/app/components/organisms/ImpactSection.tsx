@@ -12,9 +12,9 @@ export default function ImpactSection() {
   return (
     <SectionTemplate id="impact" className="min-h-0 py-10 sm:py-14">
       <div className="mx-auto w-full max-w-[var(--page-width)]">
-        <h2 className="mb-6 text-center text-xs sm:text-sm font-bold uppercase tracking-wider text-[var(--foreground)]/50">
+        <AnimatedComponent HTMLtag="h2" className="mb-6 text-center text-xs sm:text-sm font-bold uppercase tracking-wider text-[var(--foreground)]/50">
           {t("impact.title")}
-        </h2>
+        </AnimatedComponent>
 
         <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {impacts.map(({ value, prefix, suffix, label, company }, index) => (

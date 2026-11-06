@@ -8,6 +8,7 @@ import { DictionaryKey } from "@/i18n/dictionary";
 import { stripLocale } from "@/i18n/routes";
 import PageTemplate from "@/templates/PageTemplate";
 import { mergeClassNames } from "@/utils/classNames";
+import AnimatedComponent from "../molecules/AnimatedComponent";
 import FooterLabels from "../molecules/FooterLabels";
 import Logo from "../molecules/Logo";
 import SocialMedia from "../molecules/SocialMedia";
@@ -57,15 +58,22 @@ export default function Footer({ className }: FooterProps) {
     <PageTemplate className={mergeClassNames(className, "px-0 pb-6")}>
       <footer className="w-full">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
-          <div className="flex flex-col items-start gap-3">
+          <AnimatedComponent
+            HTMLtag="div"
+            className="flex flex-col items-start gap-3"
+          >
             <Logo className="text-4xl" />
             <p className="text-lg font-semibold">Matheus Almeida</p>
             <p className="max-w-xs text-sm text-[var(--foreground)]/60">
               {t("cover.tagline")}
             </p>
-          </div>
+          </AnimatedComponent>
 
-          <nav aria-label={t("footer.sections")}>
+          <AnimatedComponent
+            HTMLtag="nav"
+            delay={0.1}
+            aria-label={t("footer.sections")}
+          >
             <ColumnTitle>{t("footer.sections")}</ColumnTitle>
             <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
               {SECTIONS.map((id) => (
@@ -80,15 +88,15 @@ export default function Footer({ className }: FooterProps) {
                 </li>
               ))}
             </ul>
-          </nav>
+          </AnimatedComponent>
 
-          <div>
+          <AnimatedComponent HTMLtag="div" delay={0.2}>
             <ColumnTitle>{t("footer.social")}</ColumnTitle>
             <SocialMedia
               className="flex-wrap"
               svgClassName="bg-transparent border-none drop-shadow-none"
             />
-          </div>
+          </AnimatedComponent>
         </div>
 
         <div className="mt-10 flex justify-center">

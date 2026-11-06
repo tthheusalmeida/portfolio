@@ -34,7 +34,7 @@ export const experiences: ExperienceInterface[] = [
     logo: null,
     description: null,
     achievements: [
-      "Taught Information Technology and Systems Development subjects for high school technical education students.",
+      "Taught Computer Science and Systems Development subjects for high school technical education students.",
       "Delivered practical and theoretical lessons covering programming, software development, computer networks, systems architecture, operating systems, and software maintenance.",
       "Designed hands-on activities and technical exercises to develop students' problem-solving, programming, and systems thinking skills.",
       "Introduced software development concepts including object-oriented programming, algorithms, application development, and software architecture.",
@@ -47,7 +47,7 @@ export const experiences: ExperienceInterface[] = [
     ],
     roles: [
       {
-        role: "Information Technology & Systems Development Teacher",
+        role: "Computer Science & Systems Development Teacher",
         type: "full-time",
         start: "01/09/2026",
         end: null,
