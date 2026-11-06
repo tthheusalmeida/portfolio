@@ -1,6 +1,10 @@
 /* ===== Tailwind Import ===== */
 @import "tailwindcss";
 
+/* Desktop with a real hover (mouse): enables hover-to-reveal patterns. Touch
+   devices, even wide ones like tablets, keep everything visible. */
+@custom-variant reveal (@media (hover: hover) and (min-width: 40rem));
+
 /* ===== CSS Variables ===== */
 :root {
   --background: #161413;

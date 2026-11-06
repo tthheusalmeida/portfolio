@@ -29,7 +29,8 @@ const en = {
 
   "projects.title": "Projects",
   "projects.subtitle": "A reflection of my **Growth** and **Passion**",
-  "projects.seeAll": "See all projects",
+  "projects.seeAll": "See all",
+  "projects.opensInNewTab": "opens in a new tab",
   "projects.pageSubtitle":
     "A collection of **freelance**, **personal**, and **pro bono** projects that shaped my journey",
   "projects.empty": "Oops! No projects match your filter. Maybe in the future :)",
@@ -144,7 +145,8 @@ const pt: Record<DictionaryKey, string> = {
 
   "projects.title": "Projetos",
   "projects.subtitle": "Um reflexo do meu **Crescimento** e da minha **Paixão**",
-  "projects.seeAll": "Ver todos os projetos",
+  "projects.seeAll": "Ver todos",
+  "projects.opensInNewTab": "abre em nova aba",
   "projects.pageSubtitle":
     "Uma coleção de projetos **freelance**, **pessoais** e **voluntários** que moldaram minha jornada",
   "projects.empty":
