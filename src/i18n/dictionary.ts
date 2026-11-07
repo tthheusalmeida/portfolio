@@ -33,7 +33,8 @@ const en = {
   "projects.opensInNewTab": "opens in a new tab",
   "projects.pageSubtitle":
     "A collection of **freelance**, **personal**, and **pro bono** projects that shaped my journey",
-  "projects.empty": "Oops! No projects match your filter. Maybe in the future :)",
+  "projects.empty":
+    "Oops! No projects match your filter. Maybe in the future :)",
   "projects.filter.categories": "Categories",
   "projects.filter.technologies": "Technologies",
   "projects.filter.all": "All",
@@ -79,8 +80,6 @@ const en = {
   "contact.title": "Do you like my work?",
   "contact.subtitle":
     "Have a **project in mind**, a **question**, or just want to **say hello**?\nFeel free to reach out, I'm always open to connect!",
-
-  "contact.direct.title": "Prefer to talk directly?",
   "contact.email": "E-mail",
   "contact.email.copy": "Copy e-mail",
   "contact.email.copied": "E-mail copied!",
@@ -144,7 +143,8 @@ const pt: Record<DictionaryKey, string> = {
   "a11y.language": "Idioma",
 
   "projects.title": "Projetos",
-  "projects.subtitle": "Um reflexo do meu **Crescimento** e da minha **Paixão**",
+  "projects.subtitle":
+    "Um reflexo do meu **Crescimento** e da minha **Paixão**",
   "projects.seeAll": "Ver todos",
   "projects.opensInNewTab": "abre em nova aba",
   "projects.pageSubtitle":
@@ -196,8 +196,6 @@ const pt: Record<DictionaryKey, string> = {
   "contact.title": "Gostou do meu trabalho?",
   "contact.subtitle":
     "Tem um **projeto em mente**, uma **dúvida** ou só quer **dizer olá**?\nFique à vontade para entrar em contato, estou sempre aberto a conversar!",
-
-  "contact.direct.title": "Prefere falar direto?",
   "contact.email": "E-mail",
   "contact.email.copy": "Copiar e-mail",
   "contact.email.copied": "E-mail copiado!",
@@ -216,7 +214,8 @@ const pt: Record<DictionaryKey, string> = {
   "form.send": "Enviar",
   "form.error.name": "O nome deve ter pelo menos 3 caracteres.",
   "form.error.email": "Informe um e-mail válido.",
-  "form.error.messageShort": "A mensagem deve ter pelo menos 4 caracteres. (Ei!)",
+  "form.error.messageShort":
+    "A mensagem deve ter pelo menos 4 caracteres. (Ei!)",
   "form.error.messageLong": "A mensagem deve ter no máximo 300 caracteres.",
   "form.success": "Recebido! Entraremos em contato em breve.",
   "form.fail": "Ops! Algo deu errado. Tente novamente?",

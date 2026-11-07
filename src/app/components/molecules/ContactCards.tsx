@@ -85,10 +85,6 @@ export default function ContactCards() {
 
   return (
     <AnimatedComponent HTMLtag="div" className="flex flex-col gap-3">
-      <h3 className="text-lg sm:text-xl font-semibold">
-        {t("contact.direct.title")}
-      </h3>
-
       {emailLink && email && (
         <div className={mergeClassNames(CARD, "gap-2")}>
           <a
