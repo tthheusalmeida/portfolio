@@ -23,13 +23,24 @@ interface BaloonProps {
   image?: { src: string | null; alt: string | null };
 }
 
-// Collapsible block: on mobile it is always open; from `sm` it follows the
-// card hover/focus. The content stays in the DOM (only clipped), so
-// the full text remains available to crawlers and screen readers.
+// Collapsible blocks: on mobile the details are always open and the summary
+// is hidden; from `sm` they swap on card hover/focus. The content stays in the
+// DOM (only clipped), so the full text remains available to crawlers and
+// screen readers.
 const EXPANDED =
   "sm:group-hover/card:grid-rows-[1fr] sm:group-focus-within/card:grid-rows-[1fr]";
 const COLLAPSED =
   "sm:group-hover/card:grid-rows-[0fr] sm:group-focus-within/card:grid-rows-[0fr]";
+
+// Slow, soft-landing curve (ease-out-quart style): it does not jump at the
+// start like a plain ease-out, so the layout changes are spread over more
+// frames. The delays are hover intent: closing waits a bit so the card does
+// not flap when the pointer grazes its edge while the layout is moving, and
+// opening waits a little so a pointer just passing by does not trigger it.
+const MOTION =
+  "duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] delay-150 " +
+  "sm:group-hover/card:delay-100 sm:group-focus-within/card:delay-100 " +
+  "motion-reduce:transition-none";
 
 export default function Balloon({
   label,
@@ -50,12 +61,14 @@ export default function Balloon({
       className={mergeClassNames(
         "group/card relative w-full min-w-0 max-w-full overflow-hidden",
         "p-4 rounded-lg outline-none border border-white/10",
-        "bg-white/[0.04] backdrop-blur-3xl",
+        "bg-white/[0.05]",
         "sm:w-[26rem] sm:hover:w-[34rem] sm:focus-within:w-[34rem]",
         "hover:bg-white/[0.08] focus-within:bg-white/[0.08]",
         "hover:shadow-lg hover:shadow-black/30",
         "focus-visible:ring-2 focus-visible:ring-[var(--action)]",
-        "transition-[width,background-color,box-shadow] duration-500 ease-out motion-reduce:transition-none",
+        "transition-[width,background-color,box-shadow]",
+        "delay-150 sm:hover:delay-100 sm:focus-within:delay-100",
+        "duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] motion-reduce:transition-none",
       )}
     >
       <div className="flex items-start justify-between gap-3">
@@ -114,7 +127,8 @@ export default function Balloon({
       <div
         className={mergeClassNames(
           "hidden sm:grid grid-rows-[1fr] mt-4",
-          "transition-[grid-template-rows,opacity,margin] duration-500 ease-out motion-reduce:transition-none",
+          "transition-[grid-template-rows,opacity,margin]",
+          MOTION,
           COLLAPSED,
           "sm:group-hover/card:opacity-0 sm:group-hover/card:mt-0",
           "sm:group-focus-within/card:opacity-0 sm:group-focus-within/card:mt-0",
@@ -136,7 +150,8 @@ export default function Balloon({
           "grid grid-rows-[1fr] sm:grid-rows-[0fr] mt-4 sm:mt-0",
           "sm:opacity-0 sm:group-hover/card:opacity-100 sm:group-focus-within/card:opacity-100",
           "sm:group-hover/card:mt-4 sm:group-focus-within/card:mt-4",
-          "transition-[grid-template-rows,opacity,margin] duration-500 ease-out motion-reduce:transition-none",
+          "transition-[grid-template-rows,opacity,margin]",
+          MOTION,
           EXPANDED,
         )}
       >

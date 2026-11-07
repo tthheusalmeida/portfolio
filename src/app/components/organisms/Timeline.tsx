@@ -26,22 +26,26 @@ export default function Timeline({ items }: TimelineProps) {
               key={`${date.start}-${index}`}
               className="group/row relative flex flex-col sm:flex-row sm:items-start pl-8 sm:pl-0"
             >
-              <span
+              <div
                 aria-hidden
-                className={mergeClassNames(
-                  "absolute left-2 sm:left-1/2 top-3 sm:top-5 -translate-x-1/2 z-10",
-                  "size-4 sm:size-6 rounded-full bg-gray-200",
-                  "transition-all duration-300",
-                  "group-has-[article:hover]/row:bg-[var(--action)] group-has-[article:hover]/row:scale-125",
-                  "group-has-[article:hover]/row:drop-shadow-[0_0_6px_var(--action)]",
-                  "group-has-[article:focus-within]/row:bg-[var(--action)] group-has-[article:focus-within]/row:scale-125",
-                )}
-              />
+                className="absolute inset-y-0 left-2 sm:left-1/2 w-0 z-10 pt-3 sm:pt-5"
+              >
+                <span
+                  className={mergeClassNames(
+                    "sticky block top-[5.5rem] sm:top-[6.75rem] -translate-x-1/2",
+                    "size-4 sm:size-6 rounded-full bg-gray-200",
+                    "transition-[background-color,transform,filter] duration-500 ease-out",
+                    "group-has-[article:hover]/row:bg-[var(--action)] group-has-[article:hover]/row:scale-125",
+                    "group-has-[article:hover]/row:drop-shadow-[0_0_6px_var(--action)]",
+                    "group-has-[article:focus-within]/row:bg-[var(--action)] group-has-[article:focus-within]/row:scale-125",
+                  )}
+                />
+              </div>
 
               <AnimatedComponent
                 HTMLtag="div"
                 className={mergeClassNames(
-                  "w-full sm:w-1/2 mb-3 sm:mb-0 sm:pt-2",
+                  "w-full sm:w-1/2 mb-3 sm:mb-0 sm:pt-2 sm:self-stretch sm:items-start",
                   cardOnLeft
                     ? "sm:order-2 sm:pl-12"
                     : "sm:order-1 sm:pr-12 sm:flex sm:justify-end",
@@ -50,6 +54,7 @@ export default function Timeline({ items }: TimelineProps) {
                 <TimelineDate
                   {...date}
                   align={cardOnLeft ? "left" : "right"}
+                  className="sm:sticky sm:top-24"
                 />
               </AnimatedComponent>
 
