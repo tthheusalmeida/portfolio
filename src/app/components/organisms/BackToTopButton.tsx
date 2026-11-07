@@ -66,7 +66,7 @@ export default function BackToTopButton() {
       onClick={scrollToTop}
       aria-label={t("a11y.backToTop")}
       tabIndex={isVisible ? 0 : -1}
-      className={`fixed bottom-[88px] right-7 z-20 flex items-center justify-center
+      className={`fixed bottom-[88px] right-7 z-40 flex items-center justify-center
         w-11 h-11 rounded-full shadow-lg cursor-pointer
         transition-[opacity,transform,visibility,background-color,color] duration-300
         ${isNearEnd ? "bg-[var(--action)] text-stone-900" : "bg-stone-800 text-[var(--action)]"}

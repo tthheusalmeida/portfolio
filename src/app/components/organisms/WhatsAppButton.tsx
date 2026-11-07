@@ -18,7 +18,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t("a11y.whatsapp")}
-      className="fixed bottom-6 right-6 z-20 flex items-center justify-center
+      className="fixed bottom-6 right-6 z-40 flex items-center justify-center
         w-[52px] h-[52px] rounded-full shadow-lg
         bg-[var(--action)] text-stone-900
         transition-colors duration-300 hover:bg-stone-800 hover:text-[var(--action)]"
