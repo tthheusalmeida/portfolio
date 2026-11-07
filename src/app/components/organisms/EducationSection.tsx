@@ -17,6 +17,7 @@ export default function EducationSection() {
     <SectionTemplate
       id="education"
       className="flex flex-col items-center"
+      fitContent
     >
       <TitleAndSubtitleSection
         title={t("education.title")}

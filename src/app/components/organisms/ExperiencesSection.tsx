@@ -36,7 +36,10 @@ export default function Experiences() {
   );
 
   return (
-    <SectionTemplate id="experiences" className="flex flex-col items-center">
+    <SectionTemplate
+      id="experiences"
+      className="flex flex-col items-center pb-20 sm:pb-32"
+    >
       <TitleAndSubtitleSection
         title={t("experiences.title")}
         subtitle={rich("experiences.subtitle")}

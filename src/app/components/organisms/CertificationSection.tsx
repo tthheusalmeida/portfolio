@@ -13,7 +13,8 @@ export default function CertificationSection() {
     <>
       <SectionTemplate
         id="certification"
-        className="flex flex-col items-center justify-center"
+        className="flex flex-col items-center pb-20 sm:pb-32"
+        fitContent
       >
         <TitleAndSubtitleSection
           title={t("certifications.title")}
