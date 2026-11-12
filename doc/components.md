@@ -14,5 +14,5 @@ A component that needs texts uses `useLanguage().t("key")` (UI texts) or `useDat
 ## Styling
 Tailwind CSS 4 with CSS variables defined in `src/app/globals.css` (`--color-background`, `--color-foreground`, `--action`...). Join classes with `mergeClassNames` from `src/utils/classNames.tsx`. Page font: Poppins (`src/layouts/fonts.ts`).
 
-## Cover section and the CV button
-`CoverSection` renders `DownloadCvButton` (`molecules/DownloadCvButton.tsx`). It calls `downloadCv(lang)` from `src/cv/downloadCv.ts`, shows the button loader while the PDF is built and a toast on error. The old static file button (`DownloadButton`) is no longer used by the cover.
+## The CV button
+`DownloadCvButton` (`molecules/DownloadCvButton.tsx`) is rendered in `CoverSection` and in the `Footer` (column "Find me online"). It calls `downloadCv(lang)` from `src/cv/downloadCv.ts`, shows the button loader while the PDF is built and a toast on error.

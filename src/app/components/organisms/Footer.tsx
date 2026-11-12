@@ -9,6 +9,7 @@ import { stripLocale } from "@/i18n/routes";
 import PageTemplate from "@/templates/PageTemplate";
 import { mergeClassNames } from "@/utils/classNames";
 import AnimatedComponent from "../molecules/AnimatedComponent";
+import DownloadCvButton from "../molecules/DownloadCvButton";
 import FooterLabels from "../molecules/FooterLabels";
 import Logo from "../molecules/Logo";
 import SocialMedia from "../molecules/SocialMedia";
@@ -96,6 +97,9 @@ export default function Footer({ className }: FooterProps) {
               className="flex-wrap"
               svgClassName="bg-transparent border-none drop-shadow-none"
             />
+            <div className="mt-6 w-full max-w-[200px]">
+              <DownloadCvButton />
+            </div>
           </AnimatedComponent>
         </div>
 
