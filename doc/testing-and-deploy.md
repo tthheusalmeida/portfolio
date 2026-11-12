@@ -23,9 +23,9 @@ The owner usually has `next dev` running. `next build` writes to the same `.next
 - Files are `tests/**/*.test.{ts,tsx}`. Component tests start with `// @vitest-environment jsdom` (other tests run in Node) and call `afterEach(cleanup)`.
 - Wrap the component in `<LanguageProvider lang="en">` and read expected texts from `dictionary[lang]` instead of hard-coding them.
 - Mock the boundaries (`@/services/sendEmail`, `@/cv/downloadCv`, the `Toast` module), never the component under test. Use `userEvent`.
-- jsdom is pinned to v25 because newer versions need a newer Node than the one in use (18).
+- Vitest 4 needs Node 20 or newer (22 recommended). The tests fail to start on Node 18. jsdom is kept on v25.
 
-`vitest.config.ts` aliases `@` to `src` and uses automatic JSX (the app's tsconfig keeps `jsx: preserve` for Next).
+`vitest.config.mts` aliases `@` to `src` and sets automatic JSX through the `oxc` option (Vitest 4 / Vite 8 no longer use esbuild; the app's tsconfig keeps `jsx: preserve` for Next).
 
 ## Commits
 Conventional style used in the history: `feat: ...`, `fix: ...`, `chore: ...`, `docs: ...`, with a short imperative summary.
