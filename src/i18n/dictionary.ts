@@ -17,6 +17,8 @@ const en = {
     "I build, ship, run and monitor software, with a design and business mindset.",
   "cover.contact": "Contact me",
   "cover.cv": "Download CV",
+  "cover.cvGenerating": "Generating CV...",
+  "cover.cvError": "Could not generate the CV. Please try again.",
   "cover.stack": "Current stack",
   "cover.alt":
     "Matheus, a focused programmer wearing a hoodie and headset, working on a laptop.",
@@ -132,6 +134,8 @@ const pt: Record<DictionaryKey, string> = {
     "Construo, entrego, opero e monitoro software, com visão de design e negócio.",
   "cover.contact": "Fale comigo",
   "cover.cv": "Baixar CV",
+  "cover.cvGenerating": "Gerando CV...",
+  "cover.cvError": "Não foi possível gerar o CV. Tente novamente.",
   "cover.stack": "Stack atual",
   "cover.alt":
     "Matheus, programador concentrado, de moletom e headset, trabalhando em um notebook.",

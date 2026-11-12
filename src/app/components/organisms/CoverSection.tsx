@@ -4,7 +4,7 @@ import Stack from "@/app/components/molecules/Stack";
 import SectionTemplate from "@/templates/SectionTemplate";
 import Image from "next/image";
 import Title from "@/app/components/atoms/Title";
-import DownloadButton from "../molecules/DownloadButton";
+import DownloadCvButton from "../molecules/DownloadCvButton";
 import AnimatedComponent from "../molecules/AnimatedComponent";
 import CoverLight from "../molecules/CoverLight";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -13,8 +13,6 @@ import Subtitle from "../atoms/Subtitle";
 
 export default function CoverSection() {
   const { t } = useLanguage();
-  const cvFileName = "Matheus_Almeida_CV_Front-End_Software_Engineer.pdf";
-  const cvFilePath = `/files/${cvFileName}`;
 
   return (
     <>
@@ -64,9 +62,7 @@ export default function CoverSection() {
 
               <div className="flex gap-6 pt-8 px-4 sm:px-0 sm:w-[296px] w-full">
                 <NavigationButton>{t("cover.contact")}</NavigationButton>
-                <DownloadButton fileName={cvFileName} filePath={cvFilePath}>
-                  {t("cover.cv")}
-                </DownloadButton>
+                <DownloadCvButton />
               </div>
             </div>
 
