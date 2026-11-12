@@ -18,10 +18,10 @@ The portfolio data in `src/data/` also feeds a **CV PDF generated in the browser
 |---|---|
 | Stack, static export, routing, languages, folder map, deploy | `doc/architecture.md` |
 | Portfolio content, `pt.ts` overrides, dictionary, experience model | `doc/data-and-i18n.md` |
-| UI components, atomic layers, toasts, styling, the CV button | `doc/components.md` |
+| UI components, atomic layers, dialogs/focus, contact form and WhatsApp fallback, toasts, styling, the CV button | `doc/components.md` |
 | The CV: layers, content files, fitting to 2 pages, fonts, writing bullets | `doc/cv-generation.md` |
 | Adding or changing a work experience (checklist) | `doc/work-experience-workflow.md` |
-| Commands, tests, dev server vs build, commits, deploy secrets | `doc/testing-and-deploy.md` |
+| Commands, tests (incl. how to write component tests), dev server vs build, commits, deploy secrets | `doc/testing-and-deploy.md` |
 
 ## Quick map
 - `src/data/` content (EN) + `pt.ts` (PT) -> `DATA_BY_LANG` -> `useData()`.

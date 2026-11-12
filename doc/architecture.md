@@ -7,12 +7,12 @@ Personal portfolio of Matheus Almeida, published at https://almeida-matheus.com.
 - `react-hot-toast` for toasts, `react-icons` for icons, `tailwind-merge` for class merging.
 - Firebase Analytics only (loaded lazily after the page is idle, see `src/layouts/Providers.tsx`).
 - `@react-pdf/renderer` generates the CV PDF in the browser (see `cv-generation.md`).
-- Tests: Vitest (`tests/`).
+- Tests: Vitest + Testing Library + jsdom (`tests/`).
 
 ## Static export
 `next.config.ts` sets `output: "export"` and `trailingSlash: true`, so the build is plain static files in `out/`.
 There is **no server at runtime**: anything dynamic (contact form, CV PDF) runs in the visitor's browser or calls an external service.
-- Contact form: `src/services/sendEmail.ts` -> `baseService` (`src/services/base.ts`) posts to an external mail gateway.
+- Contact form: `src/services/sendEmail.ts` -> `baseService` (`src/services/base.ts`) posts to an external mail gateway; if it fails, the form offers the same message on WhatsApp.
 - CV PDF: generated client side when the visitor clicks "Download CV".
 
 ## Routing and languages
