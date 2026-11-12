@@ -60,7 +60,7 @@ export default function Project({
         <div className="relative flex-1 min-h-40 reveal:absolute reveal:inset-0 reveal:min-h-0">
           <Image
             src={image}
-            alt=""
+            alt={`${t("projects.imageAlt")} ${title}`}
             fill
             sizes="(min-width: 640px) 50vw, 100vw"
             className="object-cover transition-transform duration-500 reveal:group-hover:scale-105 reveal:group-focus-within:scale-105 motion-reduce:transition-none"

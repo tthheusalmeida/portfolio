@@ -35,6 +35,7 @@ const en = {
   "projects.opensInNewTab": "opens in a new tab",
   "projects.pageSubtitle":
     "A collection of **freelance**, **personal**, and **pro bono** projects that shaped my journey",
+  "projects.imageAlt": "Preview of the project",
   "projects.empty":
     "Oops! No projects match your filter. Maybe in the future :)",
   "projects.filter.categories": "Categories",
@@ -153,6 +154,7 @@ const pt: Record<DictionaryKey, string> = {
   "projects.opensInNewTab": "abre em nova aba",
   "projects.pageSubtitle":
     "Uma coleção de projetos **freelance**, **pessoais** e **voluntários** que moldaram minha jornada",
+  "projects.imageAlt": "Prévia do projeto",
   "projects.empty":
     "Ops! Nenhum projeto corresponde ao filtro. Quem sabe no futuro :)",
   "projects.filter.categories": "Categorias",

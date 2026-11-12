@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { IoCloseSharp } from "react-icons/io5";
 import Button from "../atoms/Button";
 import { mergeClassNames } from "@/utils/classNames";
+import { useDialogFocus } from "@/hooks/useDialogFocus";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ModalProps {
@@ -39,6 +40,8 @@ export default function Modal({
     }
   }, [isOpen, shouldRender]);
 
+  useDialogFocus(modalRef, isOpen && shouldRender, onClose);
+
   useEffect(() => {
     const node = modalRef.current;
     if (!node) return;
@@ -70,7 +73,12 @@ export default function Modal({
     <div className="fixed inset-0 flex z-[99] items-center justify-center w-full">
       <div
         ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={title ?? t("a11y.menu")}
+        tabIndex={-1}
         className={mergeClassNames(
+          "outline-none",
           "h-dvh w-full px-4 flex flex-col items-center justify-center",
           "bg-[var(--color-background)]/60 backdrop-blur-sm",
           "transition-[background-color,transform] duration-300 ease-in-out",
