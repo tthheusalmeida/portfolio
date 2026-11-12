@@ -7,8 +7,10 @@ import Textarea from "../molecules/Textarea";
 import { useState } from "react";
 import { sendEmail } from "@/services/sendEmail";
 import { Toast } from "./Toast";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useData, useLanguage } from "@/contexts/LanguageContext";
 import { DictionaryKey } from "@/i18n/dictionary";
+import { fillMessageTemplate, withWhatsAppText } from "@/utils/whatsapp";
+import SendFailureNotice from "../molecules/SendFailureNotice";
 
 const MESSAGE_MAX_LENGTH = 300;
 
@@ -33,6 +35,10 @@ function validateMessage(message: string, t: Translate) {
 
 export default function Form() {
   const { t } = useLanguage();
+  const whatsappLink = useData().socialMedia.find(
+    (item) => item.name === "whatsapp",
+  )?.link;
+  const [sendError, setSendError] = useState<DictionaryKey | null>(null);
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -128,6 +134,7 @@ export default function Form() {
 
     if (nameError || emailError || messageError) return;
 
+    setSendError(null);
     setLoading(true);
     try {
       const mailPayload = {
@@ -147,14 +154,10 @@ export default function Form() {
         setEmail("");
         setMessage("");
       } else {
-        Toast.error(t("form.fail"));
+        setSendError("form.fail");
       }
-    } catch (error) {
-      Toast.error(
-        error instanceof Error
-          ? error.message
-          : t("form.unexpected"),
-      );
+    } catch {
+      setSendError("form.unexpected");
     } finally {
       setLoading(false);
     }
@@ -169,6 +172,22 @@ export default function Form() {
       <Input {...inputName} />
       <Input {...inputEmail} />
       <Textarea {...inputMessage} />
+
+      {sendError && whatsappLink && (
+        <SendFailureNotice
+          message={t(sendError)}
+          hint={t("form.whatsapp.hint")}
+          buttonLabel={t("form.whatsapp.button")}
+          whatsappHref={withWhatsAppText(
+            whatsappLink,
+            fillMessageTemplate(t("form.whatsapp.message"), {
+              name,
+              email,
+              message,
+            }),
+          )}
+        />
+      )}
 
       <div className="flex justify-end">
         <Button

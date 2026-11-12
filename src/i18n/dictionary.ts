@@ -106,6 +106,10 @@ const en = {
   "form.success": "Got it! We’ll get back to you soon.",
   "form.fail": "Uh-oh! That didn’t work. Try again?",
   "form.unexpected": "Unexpected error. Please try again.",
+  "form.whatsapp.hint":
+    "Prefer not to wait? Send the same message on WhatsApp, with your name, e-mail and text already filled in.",
+  "form.whatsapp.button": "Send on WhatsApp",
+  "form.whatsapp.message": "Hi! I'm {name} ({email}). {message}",
 
   "footer.rights": "All Rights Reserved",
 
@@ -226,6 +230,10 @@ const pt: Record<DictionaryKey, string> = {
   "form.success": "Recebido! Entraremos em contato em breve.",
   "form.fail": "Ops! Algo deu errado. Tente novamente?",
   "form.unexpected": "Erro inesperado. Tente novamente.",
+  "form.whatsapp.hint":
+    "Prefere não esperar? Envie a mesma mensagem pelo WhatsApp, já com seu nome, e-mail e texto preenchidos.",
+  "form.whatsapp.button": "Enviar pelo WhatsApp",
+  "form.whatsapp.message": "Olá! Sou {name} ({email}). {message}",
 
   "footer.rights": "Todos os direitos reservados",
 
