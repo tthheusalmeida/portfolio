@@ -62,7 +62,7 @@ export const experiences: ExperienceInterface[] = [
     description: null,
     achievements: [
       "Led the development of the Humanamente SaaS platform, defining the application UI/UX, architecture, APIs, and infrastructure",
-      "Built the application using implementing a multi-tenant architecture with Role-Based Access Control (RBAC).",
+      "Built the application implementing a multi-tenant architecture with Role-Based Access Control (RBAC).",
       "Developed security mechanisms including encryption, data anonymization, and sensitive data validation to ensure LGPD compliance.",
       "Implemented automated backup and disaster recovery routines to improve platform reliability.",
       "Leveraged Generative AI to accelerate software development, documentation, and code refactoring.",
