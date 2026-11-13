@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import usePortal from "@/hooks/usePortal";
+import { isLowPowerDevice } from "@/utils/devicePower";
 import { HAND_HEIGHT, HAND_X, type MascotAction } from "@/mascot/createMascot";
 import { advancePerch, firstPerch, hopPoint, reachLine, topLine } from "@/mascot/perch";
 
@@ -43,13 +44,6 @@ type Perch = Point & {
   scale: number;
 };
 
-// Weak devices get a cheaper renderer: no antialiasing, pixel ratio 1, 30fps.
-// Following the page does not depend on the frame rate (see above).
-function isLowPower() {
-  const nav = navigator as Navigator & { deviceMemory?: number };
-  return (nav.hardwareConcurrency ?? 8) <= 4 || (nav.deviceMemory ?? 8) <= 4;
-}
-
 const textNodes = new WeakMap<Element, Text | null>();
 
 function lastTextNode(el: Element): Text | null {
@@ -64,11 +58,13 @@ function lastTextNode(el: Element): Text | null {
   return last;
 }
 
+let sharedRange: Range | null = null;
+
 /** Box of the element's text, or only of its last character. */
 function textBox(el: Element, lastChar: boolean): DOMRect {
   const node = lastTextNode(el);
   if (!node) return el.getBoundingClientRect();
-  const range = document.createRange();
+  const range = (sharedRange ??= document.createRange()); // reused: no allocation per frame
   if (lastChar) {
     const end = (node.textContent ?? "").trimEnd().length;
     range.setStart(node, Math.max(0, end - 1));
@@ -96,7 +92,8 @@ export default function ClaudeMascot() {
     if (!portal || !box) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const lowPower = isLowPower();
+    // Weak devices: no antialiasing, pixel ratio 1, lower frame rates.
+    const lowPower = isLowPowerDevice();
     let cancelled = false;
     let cleanup = () => {};
 
@@ -266,6 +263,13 @@ export default function ClaudeMascot() {
         let lastPlace = "";
         let lastOpacity = "";
         let lastZ = "";
+        let lastBusy = true;
+        const headsBuf: number[] = [];
+        const feetBuf: number[] = [];
+        const indexOfEl = (el: Element | null | undefined) => {
+          for (let i = 0; i < perches.length; i++) if (perches[i].el === el) return i;
+          return -1;
+        };
         const pressed = new WeakSet<Element>();
         const timers: number[] = [];
         let raf = 0;
@@ -273,7 +277,10 @@ export default function ClaudeMascot() {
         const frame = () => {
           timer.update();
           const t = timer.getElapsed();
-          if (lowPower && !reduceMotion && t - lastT < 1 / 30) {
+          // Full rate only while something moves (hop, click action, transformation,
+          // hanging swing); parked, the idle breathing and blinking do not need it.
+          const interval = reduceMotion ? 0 : lastBusy ? (lowPower ? 1 / 30 : 0) : lowPower ? 1 / 20 : 1 / 30;
+          if (interval && t - lastT < interval - 0.002) {
             raf = requestAnimationFrame(frame);
             return;
           }
@@ -285,7 +292,7 @@ export default function ClaudeMascot() {
           const headLine = topLine(vh);
           const reach = reachLine(vh);
 
-          if (dirty || t - lastCollect > 0.6) {
+          if (dirty || t - lastCollect > 1) {
             perches = collect();
             docHeight = document.body.offsetHeight;
             dirty = false;
@@ -300,7 +307,7 @@ export default function ClaudeMascot() {
 
           // Re-measure the perch it stands on (sticky cards, entrance animations).
           if (current) {
-            const at = perches.findIndex((p) => p.el === current?.el);
+            const at = indexOfEl(current?.el);
             const fresh = at === -1 ? null : measure(current.el);
             if (fresh) perches[at] = fresh;
             else dirty = true;
@@ -309,9 +316,14 @@ export default function ClaudeMascot() {
           // Viewport position of a perch's feet.
           const restOf = (p: Perch) => ({ x: p.x - sx, y: p.y - sy });
 
-          const heads = perches.map((p) => p.head - sy);
-          const feet = perches.map((p) => p.reach - sy);
-          let index = perches.findIndex((p) => p.el === current?.el);
+          const heads = headsBuf;
+          const feet = feetBuf;
+          heads.length = feet.length = perches.length;
+          for (let i = 0; i < perches.length; i++) {
+            heads[i] = perches[i].head - sy;
+            feet[i] = perches[i].reach - sy;
+          }
+          let index = indexOfEl(current?.el);
           if (index === -1) {
             // First frame, or the perch left the page (layout changed): start over.
             index = firstPerch(heads, headLine);
@@ -482,15 +494,21 @@ export default function ClaudeMascot() {
             lastOpacity = opacityText;
           }
 
-          mascot.update({
-            time: t,
-            yaw,
-            hop: hopping,
-            sit: target.kind === "shoulder" && attached ? 1 : 0,
-            hang: target.kind === "hang" && attached ? 1 : 0,
-            scale: target.scale,
-          });
-          renderer.render(scene, camera);
+          // Nothing to update or draw while its box is outside the screen.
+          const boxTop = shown.y - size * (1 - FEET);
+          const onScreen = hopping !== null || (boxTop < vh && boxTop + size > 0);
+          if (onScreen) {
+            mascot.update({
+              time: t,
+              yaw,
+              hop: hopping,
+              sit: target.kind === "shoulder" && attached ? 1 : 0,
+              hang: target.kind === "hang" && attached ? 1 : 0,
+              scale: target.scale,
+            });
+            renderer.render(scene, camera);
+          }
+          lastBusy = onScreen && (hopping !== null || mascot.isBusy() || (target.kind === "hang" && attached));
           if (!reduceMotion) raf = requestAnimationFrame(frame);
         };
         frame();

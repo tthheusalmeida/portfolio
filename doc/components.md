@@ -40,3 +40,11 @@ Tailwind CSS 4 with CSS variables defined in `src/app/globals.css` (`--color-bac
 - `src/mascot/createMascot.ts`: the model (boxes only, no model files): sit, hang/swing, hop squash, click actions, transformation.
 - Three.js loads lazily after the page is idle; the box is `aria-hidden` and `pointer-events-none` except the character itself (clicks). With `prefers-reduced-motion` there is no animation loop (it snaps to the perch on scroll, no intro/stomp); without WebGL nothing is shown.
 - The subtle statement ("Yes, I use AI in my development, especially Claude Code.") is the `cover.ai` text in `CoverSection`.
+
+## Performance rules
+- Animate only `transform` and `opacity` (compositor, no layout). Do not animate `width`, `height`, `top/left` or `box-shadow` on scroll-driven or infinite effects. The timeline fill is a full-height line moved with `scaleY` for this reason.
+- Scroll handlers are `passive`, throttled with `requestAnimationFrame`, write only styles that do not trigger layout, and live only while their block is near the screen (`IntersectionObserver`, see `Timeline`).
+- Infinite decorative animations (hero light, soft skills carousel) are paused while off screen: put `ref={pauseOffscreen}` (`src/utils/pauseOffscreen.ts`) on the animated block; `globals.css` pauses its animations when it is marked `data-offscreen="true"`.
+- Weak devices (`src/utils/devicePower.ts`: <= 4 cores or <= 4 GB) get fewer falling-code layers in `BackgroundBlur` and a lighter mascot renderer.
+- The mascot renders only while it is on screen, at full frame rate only while something moves (hop, click action, transformation, hanging swing), 30fps parked (20fps on weak devices). It uses `MeshLambertMaterial`, reuses one `Range` and its per-frame buffers, and measures perch geometry once a second (plus on resize/layout changes).
+- Known costly effects left as they are (they change the look; decide before touching): `backdrop-blur` on the header (fixed, re-blurs every scroll frame), on certification cards and toasts (`backdrop-blur-3xl`) and on many cards; the `Balloon` hover that animates `width`; `grid-template-rows` transitions of accordions.

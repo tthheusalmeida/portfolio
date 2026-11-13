@@ -4,7 +4,8 @@ import {
   Group,
   Mesh,
   MeshBasicMaterial,
-  MeshStandardMaterial,
+  MeshLambertMaterial,
+  type Material,
   type Object3D,
 } from "three";
 
@@ -51,6 +52,8 @@ export type Mascot = {
   /** Skips the transformation: already in the theme color. */
   setThemed: () => void;
   update: (inputs: MascotInputs) => void;
+  /** True while a click action or the color transformation is playing. */
+  isBusy: () => boolean;
   dispose: () => void;
 };
 
@@ -63,14 +66,15 @@ const smooth = (v: number) => v * v * (3 - 2 * v);
 export function createMascot(themeColor: number | string): Mascot {
   const orange = new Color(CLAUDE_ORANGE);
   const theme = new Color(themeColor);
-  const material = new MeshStandardMaterial({ color: orange, roughness: 0.7 });
+  // Lambert (diffuse only) is cheaper than Standard (PBR) and looks the same on matte boxes.
+  const material = new MeshLambertMaterial({ color: orange });
   material.emissive = new Color(theme);
   material.emissiveIntensity = 0;
-  const eyeMaterial = new MeshStandardMaterial({ color: EYE_COLOR, roughness: 0.4 });
+  const eyeMaterial = new MeshLambertMaterial({ color: EYE_COLOR });
   const sparkleMaterial = new MeshBasicMaterial({ color: theme, transparent: true });
   const geometries: BoxGeometry[] = [];
 
-  const box = (w: number, h: number, d: number, mat: MeshStandardMaterial | MeshBasicMaterial) => {
+  const box = (w: number, h: number, d: number, mat: Material) => {
     const geometry = new BoxGeometry(w, h, d);
     geometries.push(geometry);
     return new Mesh(geometry, mat);
@@ -276,6 +280,9 @@ export function createMascot(themeColor: number | string): Mascot {
       }
       const closed = time < blinkUntil;
       eyes.forEach((eye) => eye.scale.set(1, closed ? 0.1 : eyeScale, 1));
+    },
+    isBusy() {
+      return action !== null || (transformAt !== null && !themed);
     },
     dispose() {
       geometries.forEach((g) => g.dispose());
