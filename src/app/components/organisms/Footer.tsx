@@ -57,7 +57,7 @@ export default function Footer({ className }: FooterProps) {
 
   return (
     <PageTemplate className={mergeClassNames(className, "px-0 pb-6")}>
-      <footer className="w-full">
+      <footer className="w-full" data-mascot-perch="ground">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
           <AnimatedComponent
             HTMLtag="div"

@@ -19,7 +19,7 @@ export default function EducationAccordion({
 }) {
   // Rows toggle independently: closing one while opening another would shift
   // the clicked row (the one above shrinks) and make its year jump.
-  const [open, setOpen] = useState<ReadonlySet<number>>(new Set([0]));
+  const [open, setOpen] = useState<ReadonlySet<number>>(new Set());
   const id = useId();
 
   return (
@@ -39,7 +39,10 @@ export default function EducationAccordion({
         const panelId = `${id}-${index}`;
 
         return (
-          <li key={`${level}-${university.abbreviation}`}>
+          <li
+            key={`${level}-${university.abbreviation}`}
+            data-mascot-perch={index === 0 ? "press" : undefined}
+          >
             <button
               type="button"
               aria-expanded={isOpen}

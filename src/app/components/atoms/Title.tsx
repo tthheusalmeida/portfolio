@@ -5,9 +5,16 @@ interface TitleProps {
   children?: React.ReactNode;
   className?: string;
   as?: "h1" | "h2";
+  // Where the Claude Code mascot perches on this title (see ClaudeMascot).
+  perch?: string;
 }
 
-export default function Title({ children, className, as = "h1" }: TitleProps) {
+export default function Title({
+  children,
+  className,
+  as = "h1",
+  perch,
+}: TitleProps) {
   return (
     <AnimatedComponent
       className={mergeClassNames(
@@ -15,6 +22,7 @@ export default function Title({ children, className, as = "h1" }: TitleProps) {
         className
       )}
       HTMLtag={as}
+      data-mascot-perch={perch}
     >
       {children}
     </AnimatedComponent>

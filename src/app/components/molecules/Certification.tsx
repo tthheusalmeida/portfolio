@@ -22,6 +22,7 @@ export default function Certification({
   return (
     <AnimatedComponent
       HTMLtag="article"
+      data-mascot-perch="stand-right"
       className="group/card relative w-full max-w-xl p-4 sm:p-6 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-3xl"
     >
       <CertificationStamp className="absolute top-3 right-3 w-[4.8rem] sm:w-[6.4rem] pointer-events-none" />

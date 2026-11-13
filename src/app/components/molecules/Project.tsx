@@ -54,6 +54,7 @@ export default function Project({
   return (
     <AnimatedComponent
       HTMLtag="div"
+      data-mascot-perch="stand-right"
       className={mergeClassNames("relative w-full group", className)}
     >
       <div className="relative flex flex-col h-[30rem] reveal:block reveal:h-96 overflow-hidden rounded-2xl bg-stone-800">

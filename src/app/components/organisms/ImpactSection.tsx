@@ -18,7 +18,11 @@ export default function ImpactSection() {
 
         <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {impacts.map(({ value, prefix, suffix, label, company }, index) => (
-            <li key={label} className="flex">
+            <li
+              key={label}
+              className="flex"
+              data-mascot-perch={index === impacts.length - 1 ? "" : undefined}
+            >
               <AnimatedComponent
                 HTMLtag="div"
                 delay={index * 0.1}
