@@ -39,13 +39,20 @@ export default function CoverSection() {
                 <Subtitle className="mt-4 max-w-md text-center sm:text-left sm:text-lg text-sm">
                   {t("cover.tagline")}
                 </Subtitle>
+                <AnimatedComponent
+                  HTMLtag="p"
+                  className="mt-3 inline-flex max-w-md items-center gap-2 text-center text-xs text-[var(--foreground)]/50 sm:text-left"
+                >
+                  <span aria-hidden="true" className="text-[var(--action)]/70">✦</span>
+                  {t("cover.ai")}
+                </AnimatedComponent>
               </div>
 
               <AnimatedComponent
                 HTMLtag="div"
                 className="flex sm:hidden items-center justify-center px-4"
               >
-                <div className="relative">
+                <div className="relative" data-mascot-shoulder="">
                   <Image
                     src="/cover/me.webp"
                     width={556}
@@ -68,6 +75,7 @@ export default function CoverSection() {
 
             <AnimatedComponent
               HTMLtag="div"
+              data-mascot-shoulder=""
               className="relative sm:inline-block hidden"
             >
               <Image
