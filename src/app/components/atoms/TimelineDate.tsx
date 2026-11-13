@@ -34,11 +34,14 @@ export default function TimelineDate({
       )}
     >
       <span
+        data-mascot-perch="hang"
         className={mergeClassNames(
           "font-bold leading-none tracking-tight tabular-nums",
-          "text-4xl sm:text-7xl text-[var(--foreground)]/25",
+          "text-4xl sm:text-7xl text-[#4c4b4a]",
           "transition-colors duration-500",
-          "group-has-[article:hover]/row:text-[var(--action)] group-has-[article:focus-within]/row:text-[var(--action)]",
+          // The Claude Code mascot hangs from this year (see ClaudeMascot).
+          "data-mascot-on:text-[var(--foreground)]",
+          "group-has-[article:hover]/row:text-[var(--foreground)] group-has-[article:focus-within]/row:text-[var(--foreground)]",
         )}
       >
         {year}

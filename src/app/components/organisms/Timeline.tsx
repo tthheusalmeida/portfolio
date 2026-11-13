@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { isEven } from "@/utils/math";
 import TimelineDate, { TimelineDateProps } from "../atoms/TimelineDate";
 import { mergeClassNames } from "@/utils/classNames";
@@ -12,10 +15,71 @@ interface TimelineProps {
   items: Array<TimelineItem>;
 }
 
+// Fraction of the viewport height where the dot sits while scrolling.
+const REFERENCE = 0.4;
+// Scroll distance (px) over which the dot is born / dies at the ends.
+const FADE = 48;
+
+// A single dot follows the scroll down the central line and lights it up
+// behind it: it is born when the timeline arrives and dies when it ends.
 export default function Timeline({ items }: TimelineProps) {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const fillRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    const fill = fillRef.current;
+    const dot = dotRef.current;
+    if (!root || !fill || !dot) return;
+
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const { top, height } = root.getBoundingClientRect();
+      const passed = window.innerHeight * REFERENCE - top; // px of the timeline above the reference line
+      const y = Math.min(height, Math.max(0, passed));
+      const life = Math.max(0, Math.min(1, passed / FADE, (height - passed) / FADE));
+
+      fill.style.height = `${y}px`;
+      dot.style.opacity = String(life);
+      dot.style.transform = `translate3d(-50%, ${y - dot.offsetHeight / 2}px, 0) scale(${life})`;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
-    <div className="relative w-full">
-      <div className="absolute left-2 sm:left-1/2 top-0 h-full border-l-2 border-gray-300/40 -translate-x-1/2" />
+    <div ref={rootRef} className="relative w-full">
+      <div
+        aria-hidden
+        className="absolute left-2 sm:left-1/2 top-0 h-full border-l-2 border-gray-300/40 -translate-x-1/2"
+      />
+      <div
+        ref={fillRef}
+        aria-hidden
+        className="absolute left-2 sm:left-1/2 top-0 h-0 w-[2px] -translate-x-1/2 bg-[var(--foreground)]"
+      />
+      <div
+        ref={dotRef}
+        aria-hidden
+        style={{ opacity: 0 }}
+        className="absolute left-2 sm:left-1/2 top-0 z-10 size-4 sm:size-6 rounded-full bg-[var(--foreground)] shadow-[0_0_8px_rgba(255,255,255,0.6)]"
+      />
 
       <div className="flex flex-col gap-16 sm:gap-20 relative">
         {items.map(({ component, date }, index) => {
@@ -26,22 +90,6 @@ export default function Timeline({ items }: TimelineProps) {
               key={`${date.start}-${index}`}
               className="group/row relative flex flex-col sm:flex-row sm:items-start pl-8 sm:pl-0"
             >
-              <div
-                aria-hidden
-                className="absolute inset-y-0 left-2 sm:left-1/2 w-0 z-10 pt-3 sm:pt-5"
-              >
-                <span
-                  className={mergeClassNames(
-                    "sticky block top-[5.5rem] sm:top-[6.75rem] -translate-x-1/2",
-                    "size-4 sm:size-6 rounded-full bg-gray-200",
-                    "transition-[background-color,transform,filter] duration-500 ease-out",
-                    "group-has-[article:hover]/row:bg-[var(--action)] group-has-[article:hover]/row:scale-125",
-                    "group-has-[article:hover]/row:drop-shadow-[0_0_6px_var(--action)]",
-                    "group-has-[article:focus-within]/row:bg-[var(--action)] group-has-[article:focus-within]/row:scale-125",
-                  )}
-                />
-              </div>
-
               <AnimatedComponent
                 HTMLtag="div"
                 className={mergeClassNames(
@@ -54,7 +102,7 @@ export default function Timeline({ items }: TimelineProps) {
                 <TimelineDate
                   {...date}
                   align={cardOnLeft ? "left" : "right"}
-                  className="sm:sticky sm:top-24"
+                  className="relative z-[35] sm:sticky sm:top-24"
                 />
               </AnimatedComponent>
 
