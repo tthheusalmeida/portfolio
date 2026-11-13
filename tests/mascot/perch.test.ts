@@ -1,39 +1,62 @@
 import { describe, expect, it } from "vitest";
-import { advancePerch, firstPerch, hopPoint } from "@/mascot/perch";
+import { advancePerch, firstPerch, hopPoint, reachLine, topLine } from "@/mascot/perch";
 
+// 800px viewport: the head line is at 208 (25% + margin), the reach line at 740.
 const VH = 800;
+const top = topLine(VH);
+const reach = reachLine(VH);
+
+describe("lines", () => {
+  it("puts the top line at 25% of the screen and the reach line near the fold", () => {
+    expect(top).toBe(208);
+    expect(reach).toBe(740);
+  });
+});
 
 describe("advancePerch", () => {
-  it("stays on the current perch while it is on screen", () => {
-    expect(advancePerch([300, 500, 900], 0, VH)).toBe(0);
+  it("stays on the current perch while its head is below the top line", () => {
+    expect(advancePerch([300, 500], [360, 560], 0, top, reach)).toBe(0);
   });
 
-  it("moves on once the current perch left and the next is visible", () => {
-    expect(advancePerch([50, 500, 900], 0, VH)).toBe(1);
+  it("hops to the next perch as soon as the head reaches the top line", () => {
+    expect(advancePerch([150, 450], [210, 500], 0, top, reach)).toBe(1);
   });
 
-  it("waits when the next perch is still below the fold", () => {
-    expect(advancePerch([50, 900], 0, VH)).toBe(0);
+  it("waits while the next perch is not on screen yet", () => {
+    expect(advancePerch([150, 800], [210, 860], 0, top, reach)).toBe(0);
+  });
+
+  it("skips perches that are all above the top line", () => {
+    expect(advancePerch([100, 120, 400], [160, 180, 460], 0, top, reach)).toBe(2);
   });
 
   it("goes back when scrolling up past the current perch", () => {
-    expect(advancePerch([100, 500, 850], 2, VH)).toBe(1);
+    expect(advancePerch([300, 500, 800], [360, 560, 860], 2, top, reach)).toBe(1);
   });
 
-  it("does not go back to a perch hidden under the header", () => {
-    expect(advancePerch([60, 900], 1, VH)).toBe(1);
+  it("does not go back to a perch that is still above the top line", () => {
+    expect(advancePerch([100, 800], [160, 860], 1, top, reach)).toBe(1);
+  });
+
+  it("does not bounce between two perches", () => {
+    const heads = [250, 800];
+    const feet = [310, 860];
+    const back = advancePerch(heads, feet, 1, top, reach);
+    expect(back).toBe(0);
+    expect(advancePerch(heads, feet, back, top, reach)).toBe(back);
   });
 
   it("handles an empty list", () => {
-    expect(advancePerch([], 0, VH)).toBe(-1);
+    expect(advancePerch([], [], 0, top, reach)).toBe(-1);
   });
 });
 
 describe("firstPerch", () => {
-  it("picks the first visible perch, or the end of the page", () => {
-    expect(firstPerch([200, 500], VH)).toBe(0);
-    expect(firstPerch([-900, -400], VH)).toBe(1);
-    expect(firstPerch([1200, 1500], VH)).toBe(0);
+  it("picks the first perch whose head is not above the top line, or the last one", () => {
+    expect(firstPerch([250, 500], top)).toBe(0);
+    expect(firstPerch([-900, -400], top)).toBe(1);
+    expect(firstPerch([100, 900], top)).toBe(1);
+    expect(firstPerch([], top)).toBe(-1);
   });
 });
 

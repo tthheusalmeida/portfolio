@@ -1,34 +1,55 @@
 // Pure helpers for the mascot's "perch" logic (no DOM, no Three.js).
 // A perch is a spot the mascot stands on: the author's shoulder, then the top
-// edge of cards, in reading order.
+// edge of cards, titles, years..., in reading order.
+//
+// The mascot always stays on its perch (the page scrolls it). These lines only
+// decide WHEN it hops: as soon as its head reaches a line at 25% of the viewport
+// height (the top of the central half of the screen) it jumps to the next perch,
+// which must already be on screen. Nothing here ever moves it. `head` is the top
+// of the figure, `feet` where it stands; all values are viewport y, in px.
 
-export const LEAVE_TOP = 120; // a perch above this line (px) is "left behind"
-export const ENTER_BOTTOM = 60; // a perch must be this far above the fold to be reachable
+export const TOP_REGION = 0.25;
+export const MARGIN_TOP = 8;
+export const ENTER_BOTTOM = 60; // a perch must be this far above the fold to be reached
+
+/** Line (viewport y) its head reaches when it is time to hop to the next perch. */
+export function topLine(viewportHeight: number) {
+  return viewportHeight * TOP_REGION + MARGIN_TOP;
+}
+
+/** Line (viewport y) a perch's feet must be above for the mascot to hop onto it. */
+export function reachLine(viewportHeight: number) {
+  return viewportHeight - ENTER_BOTTOM;
+}
 
 /**
- * Which perch the mascot should stand on. It stays on the current one while
- * it is on screen and moves to the next one only after the current one scrolled
- * away and the next one is visible (or back to the previous one when scrolling
- * up, once that one is visible again).
- * `tops` are the perches' top edges in viewport px, in reading order.
+ * Which perch the mascot should be on. It stays on the current one until its head
+ * reaches the top line, then hops to the next one if that is on screen (reachable).
+ * Scrolling up it goes back to the previous one once the current perch fell below
+ * the reach line and the previous one is back below the top line (never to one
+ * that is still above the screen, where it would be hidden under the header).
  */
-export function advancePerch(tops: number[], index: number, viewportHeight: number): number {
-  const last = tops.length - 1;
+export function advancePerch(
+  heads: number[],
+  feet: number[],
+  index: number,
+  top: number,
+  reach: number
+): number {
+  const last = heads.length - 1;
   if (last < 0) return -1;
   let i = Math.min(Math.max(index, 0), last);
-  const reachable = viewportHeight - ENTER_BOTTOM;
 
-  while (i < last && tops[i] < LEAVE_TOP && tops[i + 1] < reachable) i++;
-  // Going back needs the previous perch to be visible, not hidden under the header.
-  while (i > 0 && tops[i] > reachable && tops[i - 1] >= LEAVE_TOP) i--;
+  while (i < last && heads[i] < top && feet[i + 1] < reach) i++;
+  while (i > 0 && feet[i] > reach && heads[i - 1] >= top) i--;
   return i;
 }
 
 /** First perch to use when the page loads (or the list changes) at some scroll. */
-export function firstPerch(tops: number[], viewportHeight: number): number {
-  if (tops.length === 0) return -1;
-  const found = tops.findIndex((top) => top >= LEAVE_TOP && top < viewportHeight - ENTER_BOTTOM);
-  return found === -1 ? (tops[0] > viewportHeight ? 0 : tops.length - 1) : found;
+export function firstPerch(heads: number[], top: number): number {
+  if (heads.length === 0) return -1;
+  const found = heads.findIndex((head) => head >= top);
+  return found === -1 ? heads.length - 1 : found;
 }
 
 /**

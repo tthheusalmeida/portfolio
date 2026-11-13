@@ -34,6 +34,8 @@ Tailwind CSS 4 with CSS variables defined in `src/app/globals.css` (`--color-bac
   - `"press"`: the first education row (postgraduate). The accordion starts closed; the mascot stomps and clicks the row's button to open it.
   - `"hang-end"`: the contact title; it hangs from the "?".
   - `"ground"`: the `<footer>`; at the end of the page it stands at the bottom of the screen waving every few seconds.
+- Position: the mascot is rendered into a layer on `<body>` (`usePortal`) and, while it stands on a perch, drawn `absolute` in document coordinates, so the browser scrolls it with the page (no JS writes and no lag while scrolling). Only hops and the ground perch use `position: fixed`. Perch geometry is measured now and then (resize, `ResizeObserver`, every 0.6s); only the current perch is re-measured each frame (sticky cards). Weak devices (<=4 cores or <=4GB) get no antialiasing, pixel ratio 1 and 30fps.
+- It hops when its head reaches a line at 25% of the viewport height and the next perch is on screen (`topLine`/`reachLine` in `perch.ts`). Cards that share a DOM column split (projects) declare `data-mascot-order` so the visit follows reading order on mobile.
 - `src/mascot/perch.ts`: pure perch/hop logic (`advancePerch`, `firstPerch`, `hopPoint`), covered by `tests/mascot/`.
 - `src/mascot/createMascot.ts`: the model (boxes only, no model files): sit, hang/swing, hop squash, click actions, transformation.
 - Three.js loads lazily after the page is idle; the box is `aria-hidden` and `pointer-events-none` except the character itself (clicks). With `prefers-reduced-motion` there is no animation loop (it snaps to the perch on scroll, no intro/stomp); without WebGL nothing is shown.

@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
+import usePortal from "@/hooks/usePortal";
 import { HAND_HEIGHT, HAND_X, type MascotAction } from "@/mascot/createMascot";
-import { advancePerch, firstPerch, hopPoint } from "@/mascot/perch";
+import { advancePerch, firstPerch, hopPoint, reachLine, topLine } from "@/mascot/perch";
 
 // The character must never exceed 100px in width or height in any pose (arms
 // out, perspective included, is ~3.6 units wide), so it is drawn at ~28px per
@@ -21,19 +23,32 @@ const GRIP_YEAR = 0.75;
 const GRIP_QUESTION = 0.27;
 // Width of the column taken by the floating WhatsApp / back-to-top buttons.
 const BUTTONS_CLEARANCE = 100;
-const HEADER = 64; // height of the fixed header (px)
 const SHOULDER = { x: 0.8, y: 0.33 }; // where on the cover photo the shoulder is
 const CLICK_ACTIONS: MascotAction[] = ["flip", "spin", "dance", "squish", "wave"];
 
 type Kind = "shoulder" | "stand" | "title" | "hang" | "press" | "ground";
 type Point = { x: number; y: number };
+
+// All coordinates are DOCUMENT coordinates (viewport + scroll), not viewport ones.
+// While it stands on a perch the mascot is drawn in an absolutely positioned
+// layer, so the browser scrolls it together with the page (on the compositor,
+// with zero lag) and we do not write anything while the page scrolls.
 type Perch = Point & {
   el: Element;
   kind: Kind;
-  /** y used to decide when to leave/enter this perch (viewport px). */
-  gate: number;
+  /** `y` is where the feet stand. `head` is the top of the figure. */
+  head: number;
+  /** Where the perch is "reached" from below (the footer's top for the ground). */
+  reach: number;
   scale: number;
 };
+
+// Weak devices get a cheaper renderer: no antialiasing, pixel ratio 1, 30fps.
+// Following the page does not depend on the frame rate (see above).
+function isLowPower() {
+  const nav = navigator as Navigator & { deviceMemory?: number };
+  return (nav.hardwareConcurrency ?? 8) <= 4 || (nav.deviceMemory ?? 8) <= 4;
+}
 
 const textNodes = new WeakMap<Element, Text | null>();
 
@@ -72,14 +87,16 @@ function textBox(el: Element, lastChar: boolean): DOMRect {
 // title (hanging) and finally the bottom of the screen, waving goodbye.
 // Clicking it plays a random reaction. Three.js loads lazily when idle.
 export default function ClaudeMascot() {
+  const portal = usePortal("claude-mascot-layer");
   const boxRef = useRef<HTMLDivElement>(null);
   const clickRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     const box = boxRef.current;
-    if (!box) return;
+    if (!portal || !box) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const lowPower = isLowPower();
     let cancelled = false;
     let cleanup = () => {};
 
@@ -94,8 +111,12 @@ export default function ClaudeMascot() {
         const themeColor =
           getComputedStyle(document.documentElement).getPropertyValue("--action").trim() ||
           "#ffae23";
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        const renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: !lowPower,
+          powerPreference: "low-power",
+        });
+        renderer.setPixelRatio(lowPower ? 1 : Math.min(window.devicePixelRatio || 1, 1.5));
         const canvas = renderer.domElement;
         canvas.style.width = "100%";
         canvas.style.height = "100%";
@@ -119,10 +140,12 @@ export default function ClaudeMascot() {
         timer.connect(document);
 
         let size = sizeFor(window.innerWidth);
+        let dirty = true; // perch geometry must be measured again
         const resize = () => {
           size = sizeFor(window.innerWidth);
           box.style.width = box.style.height = `${size}px`;
           renderer.setSize(size, size, false);
+          dirty = true;
         };
         resize();
 
@@ -139,81 +162,95 @@ export default function ClaudeMascot() {
           mascot.play(CLICK_ACTIONS[next], timer.getElapsed());
         };
 
-        const collect = (): Perch[] => {
+        /** Measures one perch element, in document coordinates (null: not on the page). */
+        const measure = (el: Element): Perch | null => {
+          if (el.getClientRects().length === 0) return null;
           const vw = window.innerWidth;
-          const vh = window.innerHeight;
+          const sx = window.scrollX;
+          const sy = window.scrollY;
           const ppu = size / VIEW_HEIGHT;
           // Keep the whole body (arms included) clear of the floating buttons column.
           const bodyHalf = 1.5 * ppu;
           const maxX = Math.max(size * 0.3, vw - BUTTONS_CLEARANCE - bodyHalf);
-          const clampX = (x: number) => Math.min(maxX, Math.max(size * 0.3, x));
-          const perches: Perch[] = [];
+          const clampX = (x: number) => Math.min(maxX, Math.max(size * 0.3, x)) + sx;
+          const value = el.getAttribute("data-mascot-perch");
+          const r = el.getBoundingClientRect();
+          const figure = (scale: number) => HAND_HEIGHT * ppu * scale;
+          const make = (kind: Kind, x: number, y: number, scale: number, reach = y): Perch => ({
+            el,
+            kind,
+            x: clampX(x),
+            y,
+            head: y - figure(scale),
+            reach,
+            scale,
+          });
 
-          document
-            .querySelectorAll("[data-mascot-shoulder],[data-mascot-perch]")
-            .forEach((el) => {
-              if (el.getClientRects().length === 0) return;
-              const value = el.getAttribute("data-mascot-perch");
-              const r = el.getBoundingClientRect();
-
-              if (el.hasAttribute("data-mascot-shoulder")) {
-                const y = r.top + r.height * SHOULDER.y;
-                perches.push({ el, kind: "shoulder", x: clampX(r.left + r.width * SHOULDER.x), y, gate: y, scale: 0.8 });
-              } else if (value === "title") {
-                const t = textBox(el, false);
-                const y = t.top + t.height * 0.2;
-                perches.push({ el, kind: "title", x: clampX(t.left + t.width * 0.85), y, gate: y, scale: 1 });
-              } else if (value === "hang" || value === "hang-end") {
-                // Hangs by the hands from the top of the last character.
-                const c = textBox(el, true);
-                const scale = value === "hang" ? 0.75 : 0.85;
-                const anchorX = c.left + c.width / 2;
-                const anchorY = c.top + c.height * (value === "hang" ? GRIP_YEAR : GRIP_QUESTION);
-                perches.push({
-                  el,
-                  kind: "hang",
-                  // The gripping hand is to the side of the body, so shift the body over.
-                  x: clampX(anchorX - HAND_X * ppu * scale),
-                  y: anchorY + HAND_HEIGHT * ppu * scale,
-                  // Reachable only when the feet (not just the hand) fit on screen.
-                  gate: anchorY + HAND_HEIGHT * ppu * scale - 20,
-                  scale,
-                });
-              } else if (value === "press") {
-                const y = r.top + 2;
-                perches.push({ el, kind: "press", x: clampX(r.right - 40), y, gate: y, scale: 1 });
-              } else if (value === "ground") {
-                perches.push({
-                  el,
-                  kind: "ground",
-                  x: clampX(vw),
-                  y: vh - 6,
-                  gate: r.bottom + 50 - 90,
-                  scale: 1,
-                });
-              } else {
-                // "stand-right": only cards in the right-hand column (or full-width ones).
-                if (value === "stand-right" && r.left + r.width / 2 < vw * 0.5 - 8) return;
-                const y = r.top + 2;
-                perches.push({
-                  el,
-                  kind: "stand",
-                  x: clampX(r.right - Math.min(64, r.width / 4)),
-                  y,
-                  gate: y,
-                  scale: 1,
-                });
-              }
-            });
-          // Stable reading order = DOM order. Sorting by on-screen position would
-          // reshuffle them every frame once sticky cards stick (same top).
-          return perches.sort((a, b) =>
-            a.el.compareDocumentPosition(b.el) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
-          );
+          if (el.hasAttribute("data-mascot-shoulder")) {
+            return make("shoulder", r.left + r.width * SHOULDER.x, r.top + r.height * SHOULDER.y + sy, 0.8);
+          }
+          if (value === "title") {
+            const t = textBox(el, false);
+            return make("title", t.left + t.width * 0.85, t.top + t.height * 0.2 + sy, 1);
+          }
+          if (value === "hang" || value === "hang-end") {
+            // Hangs by one hand from the last character.
+            const c = textBox(el, true);
+            const scale = value === "hang" ? 0.75 : 0.85;
+            const anchorY = c.top + c.height * (value === "hang" ? GRIP_YEAR : GRIP_QUESTION) + sy;
+            // The gripping hand is to the side of the body, so shift the body over.
+            return make("hang", c.left + c.width / 2 - HAND_X * ppu * scale, anchorY + figure(scale), scale);
+          }
+          if (value === "press") return make("press", r.right - 40, r.top + 2 + sy, 1);
+          if (value === "ground") {
+            // Glued to the bottom of the screen (drawn fixed to it); reached once the
+            // footer is on screen.
+            return make("ground", vw, window.innerHeight - 6 + sy, 1, r.bottom + 50 - 90 + sy);
+          }
+          // "stand-right": only cards in the right-hand column (or full-width ones).
+          if (value === "stand-right" && r.left + r.width / 2 < vw * 0.5 - 8) return null;
+          return make("stand", r.right - Math.min(64, r.width / 4), r.top + 2 + sy, 1);
         };
 
+        // Stable reading order = DOM order. Sorting by on-screen position would
+        // reshuffle them every frame once sticky cards stick (same top).
+        const collect = (): Perch[] => {
+          const list: Perch[] = [];
+          document.querySelectorAll("[data-mascot-shoulder],[data-mascot-perch]").forEach((el) => {
+            const perch = measure(el);
+            if (perch) list.push(perch);
+          });
+          list.sort((a, b) =>
+            a.el.compareDocumentPosition(b.el) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
+          );
+          // Projects are split into two DOM columns (even / odd) that stack into one on
+          // mobile, so DOM order is not reading order. Those cards say their real
+          // position in data-mascot-order: put them back in order, in the same slots.
+          const slots = list.map((p, i) => i).filter((i) => list[i].el.hasAttribute("data-mascot-order"));
+          const ordered = slots
+            .map((i) => list[i])
+            .sort(
+              (a, b) =>
+                Number(a.el.getAttribute("data-mascot-order")) -
+                Number(b.el.getAttribute("data-mascot-order"))
+            );
+          slots.forEach((slot, n) => (list[slot] = ordered[n]));
+          return list;
+        };
+
+        // Perch geometry is measured only now and then (layout changes, resize), not
+        // every frame. Only the perch it stands on is measured every frame, to follow
+        // sticky cards and entrance animations.
+        let perches: Perch[] = [];
+        let docHeight = 0;
+        let lastCollect = -10;
+        const watchLayout = new ResizeObserver(() => (dirty = true));
+        watchLayout.observe(document.body);
+
+        // It stands on `current` and hops to the next perch.
         let current: Perch | null = null;
-        let pos: Point = { x: 0, y: 0 };
+        let pos: Point = { x: 0, y: 0 }; // document coordinates of the feet
+        let shown: Point = { x: 0, y: 0 }; // viewport coordinates of the feet, as drawn
         let hop: { from: Point; start: number; duration: number; arc: number } | null = null;
         let intro: 0 | 1 | 2 = 2;
         let introAt = 0;
@@ -225,6 +262,10 @@ export default function ClaudeMascot() {
         let opacity = 0;
         let snap = true;
         let transformStarted = false;
+        let isFixed = false;
+        let lastPlace = "";
+        let lastOpacity = "";
+        let lastZ = "";
         const pressed = new WeakSet<Element>();
         const timers: number[] = [];
         let raf = 0;
@@ -232,20 +273,48 @@ export default function ClaudeMascot() {
         const frame = () => {
           timer.update();
           const t = timer.getElapsed();
+          if (lowPower && !reduceMotion && t - lastT < 1 / 30) {
+            raf = requestAnimationFrame(frame);
+            return;
+          }
           const dt = Math.min(0.05, Math.max(0, t - lastT));
           lastT = t;
           const vh = window.innerHeight;
-          const perches = collect();
+          const sx = window.scrollX;
+          const sy = window.scrollY;
+          const headLine = topLine(vh);
+          const reach = reachLine(vh);
+
+          if (dirty || t - lastCollect > 0.6) {
+            perches = collect();
+            docHeight = document.body.offsetHeight;
+            dirty = false;
+            lastCollect = t;
+          }
           if (perches.length === 0) {
             box.style.opacity = "0";
+            lastOpacity = "0";
             if (!reduceMotion) raf = requestAnimationFrame(frame);
             return;
           }
 
-          const gates = perches.map((p) => p.gate);
+          // Re-measure the perch it stands on (sticky cards, entrance animations).
+          if (current) {
+            const at = perches.findIndex((p) => p.el === current?.el);
+            const fresh = at === -1 ? null : measure(current.el);
+            if (fresh) perches[at] = fresh;
+            else dirty = true;
+          }
+
+          // Viewport position of a perch's feet.
+          const restOf = (p: Perch) => ({ x: p.x - sx, y: p.y - sy });
+
+          const heads = perches.map((p) => p.head - sy);
+          const feet = perches.map((p) => p.reach - sy);
           let index = perches.findIndex((p) => p.el === current?.el);
           if (index === -1) {
-            index = firstPerch(gates, vh);
+            // First frame, or the perch left the page (layout changed): start over.
+            index = firstPerch(heads, headLine);
             current = perches[index];
             hop = null;
             landed = null;
@@ -257,19 +326,19 @@ export default function ClaudeMascot() {
               if (current.kind !== "shoulder") mascot.setThemed();
             }
           } else {
-            const next = advancePerch(gates, index, vh);
+            const next = advancePerch(heads, feet, index, headLine, reach);
             if (next !== index) {
               const target = perches[next];
-              const from = { x: pos.x, y: Math.min(vh - 40, Math.max(HEADER + size * 0.3, pos.y)) };
-              const dist = Math.hypot(target.x - from.x, target.y - from.y);
+              const to = restOf(target);
+              const dist = Math.hypot(to.x - shown.x, to.y - shown.y);
               hop = reduceMotion
                 ? null
                 : {
-                    from,
+                    from: { ...shown },
                     start: t,
                     // crouch (15%) -> flight (70%) -> landing squash (15%)
                     duration: 0.7 + Math.min(0.3, dist / 3000),
-                    arc: Math.min(120, 30 + dist * 0.18),
+                    arc: Math.min(70, 24 + dist * 0.1),
                   };
               if (current?.kind === "shoulder") {
                 if (reduceMotion) mascot.setThemed();
@@ -282,6 +351,7 @@ export default function ClaudeMascot() {
 
           const target = perches[index];
           current = target;
+          const rest = restOf(target);
           let hopping: number | null = null;
           if (hop) {
             const p = (t - hop.start) / hop.duration;
@@ -289,32 +359,42 @@ export default function ClaudeMascot() {
             else {
               hopping = p;
               // Stays crouched in place first, then flies on a parabola.
-              pos = hopPoint(hop.from, target, (p - 0.15) / 0.7, hop.arc);
+              const v = hopPoint(hop.from, rest, (p - 0.15) / 0.7, hop.arc);
+              pos = { x: v.x + sx, y: v.y + sy };
             }
           }
+          // Attached: standing on its perch, drawn in document coordinates (the page
+          // scrolls it). Otherwise drawn fixed to the screen: flying, or on the ground
+          // perch.
+          const attached = hopping === null && target.kind !== "ground";
           if (hopping === null) {
-            // Scrolling runs off the main thread, so the perch's position is one
-            // frame behind the page. Following it with a damped ease (instead of
-            // snapping) turns that mismatch into a smooth glide, not a jitter.
-            if (snap || reduceMotion) {
-              pos = { x: target.x, y: target.y };
+            if (!attached || snap || reduceMotion) {
+              pos = { x: rest.x + sx, y: rest.y + sy };
               snap = false;
             } else {
+              // Only a layout change (entrance animation, sticky card, hover resize)
+              // moves it, and then it eases there instead of snapping.
               const k = 1 - Math.exp(-dt * 30);
-              pos = { x: pos.x + (target.x - pos.x) * k, y: pos.y + (target.y - pos.y) * k };
+              const dx = target.x - pos.x;
+              const dy = target.y - pos.y;
+              pos =
+                Math.abs(dx) < 0.2 && Math.abs(dy) < 0.2
+                  ? { x: target.x, y: target.y }
+                  : { x: pos.x + dx * k, y: pos.y + dy * k };
             }
           }
+          shown = { x: pos.x - sx, y: pos.y - sy };
 
           // The color transformation starts with the first scroll, while the mascot
-          // is still on screen on the shoulder (a later hop would be too late to see).
-          if (!transformStarted && target.kind === "shoulder" && window.scrollY > 10) {
+          // is still on screen on the shoulder.
+          if (!transformStarted && target.kind === "shoulder" && sy > 10) {
             transformStarted = true;
             if (reduceMotion) mascot.setThemed();
             else mascot.transform(t);
           }
 
           // The year it hangs from turns light, like on hover.
-          const markEl = hopping === null && target.kind === "hang" ? target.el : null;
+          const markEl = attached && target.kind === "hang" ? target.el : null;
           if (markEl !== marked) {
             marked?.removeAttribute("data-mascot-on");
             markEl?.setAttribute("data-mascot-on", "");
@@ -323,10 +403,15 @@ export default function ClaudeMascot() {
 
           // While hanging it goes behind the page content (the year / title it
           // holds on to sit above it), so it never covers the text.
-          box.style.zIndex = target.kind === "hang" ? "20" : "30";
+          const z = attached && target.kind === "hang" ? "20" : "30";
+          if (z !== lastZ) {
+            box.style.zIndex = z;
+            lastZ = z;
+          }
 
           // Arrival reactions.
-          if (hopping === null && landed !== target.el) {
+          const settled = hopping === null;
+          if (settled && landed !== target.el) {
             landed = target.el;
             if (target.kind === "ground") nextWave = t + 0.3;
             if (target.kind === "press" && !reduceMotion && !pressed.has(target.el)) {
@@ -342,7 +427,7 @@ export default function ClaudeMascot() {
               }
             }
           }
-          if (target.kind === "ground" && hopping === null && !reduceMotion && t >= nextWave) {
+          if (target.kind === "ground" && settled && !reduceMotion && t >= nextWave) {
             mascot.play("wave", t);
             nextWave = t + 4.5;
           }
@@ -350,16 +435,15 @@ export default function ClaudeMascot() {
           // Where is it looking?
           let yaw: number;
           if (hopping !== null) {
-            yaw = Math.sign(target.x - (hop?.from.x ?? target.x)) * 0.8;
+            yaw = Math.sign(rest.x - (hop?.from.x ?? rest.x)) * 0.8;
           } else {
             const lookAtPointer =
-              pointerX === null ? 0 : Math.max(-1, Math.min(1, (pointerX - pos.x) / (window.innerWidth / 2))) * 0.6;
+              pointerX === null ? 0 : Math.max(-1, Math.min(1, (pointerX - shown.x) / (window.innerWidth / 2))) * 0.6;
             yaw = lookAtPointer + Math.sin(t * 0.5) * 0.12;
           }
 
           // Intro on the shoulder: look at the laptop, turn to the screen, wave.
-          const onScreen = pos.y > 80 && pos.y < vh - 40;
-          if (intro < 2 && target.kind === "shoulder" && onScreen && hopping === null) {
+          if (intro < 2 && target.kind === "shoulder" && settled) {
             if (intro === 0) {
               intro = 1;
               introAt = t;
@@ -373,22 +457,37 @@ export default function ClaudeMascot() {
             intro = 2;
           }
 
-          // Fade out gradually as it leaves the screen, instead of popping. The feet
-          // can sit at the very bottom (footer), so the fade only starts past it.
-          // The top fade is based on the head, so it never sits under the fixed header.
-          const headY = pos.y - HAND_HEIGHT * (size / VIEW_HEIGHT) * target.scale;
-          const edge = Math.min((headY - (HEADER - 32)) / 32, (vh + 70 - pos.y) / 60);
-          const wanted = hopping !== null ? 1 : Math.max(0, Math.min(1, edge));
-          opacity = reduceMotion ? wanted : opacity + (wanted - opacity) * (1 - Math.exp(-dt * 12));
-          box.style.opacity = opacity.toFixed(3);
-          box.style.transform = `translate3d(${pos.x - size / 2}px, ${pos.y - size * (1 - FEET)}px, 0)`;
+          // Placement: document coordinates when attached, screen coordinates otherwise
+          // (fixed also means the box never grows the page below its end).
+          const fixed = !attached;
+          if (fixed !== isFixed) {
+            box.style.position = fixed ? "fixed" : "absolute";
+            isFixed = fixed;
+            lastPlace = "";
+          }
+          const left = (fixed ? shown.x : pos.x) - size / 2;
+          let top = (fixed ? shown.y : pos.y) - size * (1 - FEET);
+          if (!fixed) top = Math.min(top, Math.max(0, docHeight - size));
+          const place = `${left.toFixed(1)},${top.toFixed(1)}`;
+          if (place !== lastPlace) {
+            box.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+            lastPlace = place;
+          }
+
+          // It only fades in when the page loads; it never fades out.
+          opacity = reduceMotion ? 1 : Math.min(1, opacity + dt * 3);
+          const opacityText = opacity.toFixed(2);
+          if (opacityText !== lastOpacity) {
+            box.style.opacity = opacityText;
+            lastOpacity = opacityText;
+          }
 
           mascot.update({
             time: t,
             yaw,
             hop: hopping,
-            sit: target.kind === "shoulder" && hopping === null ? 1 : 0,
-            hang: target.kind === "hang" && hopping === null ? 1 : 0,
+            sit: target.kind === "shoulder" && attached ? 1 : 0,
+            hang: target.kind === "hang" && attached ? 1 : 0,
             scale: target.scale,
           });
           renderer.render(scene, camera);
@@ -397,12 +496,15 @@ export default function ClaudeMascot() {
         frame();
 
         window.addEventListener("resize", resize);
+        // The page scrolls the mascot by itself; the scroll only matters for
+        // switching perches and fading, which reduced-motion mode does here.
         if (reduceMotion) window.addEventListener("scroll", frame, { passive: true });
 
         cleanup = () => {
           cancelAnimationFrame(raf);
           timers.forEach((id) => window.clearTimeout(id));
           marked?.removeAttribute("data-mascot-on");
+          watchLayout.disconnect();
           window.removeEventListener("resize", resize);
           window.removeEventListener("scroll", frame);
           window.removeEventListener("pointermove", onPointer);
@@ -431,19 +533,24 @@ export default function ClaudeMascot() {
       window.clearTimeout(timeoutId);
       cleanup();
     };
-  }, []);
+  }, [portal]);
 
-  return (
+  if (!portal) return null;
+
+  // Rendered into a layer on <body>, outside the page layout, so it is
+  // positioned against the document (see the Perch type).
+  return createPortal(
     <div
       ref={boxRef}
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 top-0 z-30 opacity-0 will-change-transform"
+      className="pointer-events-none absolute left-0 top-0 opacity-0 will-change-transform"
     >
       {/* Only the character itself is clickable, not the whole canvas. */}
       <div
         onClick={() => clickRef.current()}
         className="pointer-events-auto absolute bottom-[16%] left-[30%] h-[34%] w-[40%] cursor-pointer"
       />
-    </div>
+    </div>,
+    portal
   );
 }
