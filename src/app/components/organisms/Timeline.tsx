@@ -35,6 +35,8 @@ export default function Timeline({ items }: TimelineProps) {
 
     let ticking = false;
 
+    // Only transform and opacity are written, so scrolling never triggers layout:
+    // the fill is a full-height line scaled from its top.
     const update = () => {
       ticking = false;
       const { top, height } = root.getBoundingClientRect();
@@ -42,7 +44,7 @@ export default function Timeline({ items }: TimelineProps) {
       const y = Math.min(height, Math.max(0, passed));
       const life = Math.max(0, Math.min(1, passed / FADE, (height - passed) / FADE));
 
-      fill.style.height = `${y}px`;
+      fill.style.transform = `translateX(-50%) scaleY(${height > 0 ? y / height : 0})`;
       dot.style.opacity = String(life);
       dot.style.transform = `translate3d(-50%, ${y - dot.offsetHeight / 2}px, 0) scale(${life})`;
     };
@@ -54,12 +56,28 @@ export default function Timeline({ items }: TimelineProps) {
       }
     };
 
+    // The scroll listener only lives while the timeline is near the screen.
+    let listening = false;
+    const listen = (on: boolean) => {
+      if (on === listening) return;
+      listening = on;
+      const method = on ? "addEventListener" : "removeEventListener";
+      window[method]("scroll", onScroll);
+      window[method]("resize", onScroll);
+    };
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        listen(entry.isIntersecting);
+        if (entry.isIntersecting) update();
+      },
+      { rootMargin: "300px 0px" }
+    );
+    io.observe(root);
     update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      io.disconnect();
+      listen(false);
     };
   }, []);
 
@@ -72,13 +90,14 @@ export default function Timeline({ items }: TimelineProps) {
       <div
         ref={fillRef}
         aria-hidden
-        className="absolute left-2 sm:left-1/2 top-0 h-0 w-[2px] -translate-x-1/2 bg-[var(--foreground)]"
+        className="absolute left-2 sm:left-1/2 top-0 h-full w-[2px] origin-top bg-[var(--foreground)] will-change-transform"
+        style={{ transform: "translateX(-50%) scaleY(0)" }}
       />
       <div
         ref={dotRef}
         aria-hidden
         style={{ opacity: 0 }}
-        className="absolute left-2 sm:left-1/2 top-0 z-10 size-4 sm:size-6 rounded-full bg-[var(--foreground)] shadow-[0_0_8px_rgba(255,255,255,0.6)]"
+        className="absolute left-2 sm:left-1/2 top-0 z-10 size-4 sm:size-6 rounded-full bg-[var(--foreground)] shadow-[0_0_8px_rgba(255,255,255,0.6)] will-change-transform"
       />
 
       <div className="flex flex-col gap-16 sm:gap-20 relative">
