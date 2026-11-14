@@ -41,6 +41,7 @@ export default function Testimonial({
   return (
     <AnimatedComponent
       HTMLtag="figure"
+      data-mascot-perch="stand-right"
       className={mergeClassNames(
         "flex flex-col w-full p-5 sm:p-6 rounded-xl",
         "bg-white/[0.04] border border-white/10 backdrop-blur-sm",

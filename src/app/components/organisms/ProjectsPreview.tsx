@@ -47,7 +47,7 @@ export default function ProjectsPreview({
               className="sticky top-16 flex w-full mb-12"
               style={{ order: index, zIndex: index }}
             >
-              <Project {...project} />
+              <Project {...project} mascotOrder={index} />
             </div>
           ))}
         </div>

@@ -1,4 +1,5 @@
 import { mergeClassNames } from "@/utils/classNames";
+import { pauseOffscreen } from "@/utils/pauseOffscreen";
 import AnimatedComponent from "./AnimatedComponent";
 
 interface CarouselProps {
@@ -21,6 +22,7 @@ export default function Carousel({ list }: CarouselProps) {
       {[...Array(2)].map((_, index) => (
         <div
           key={index}
+          ref={pauseOffscreen}
           className={mergeClassNames(
             "inline-block animate-[carousel-left_45s_linear_infinite]",
             "group-hover:[animation-play-state:paused]"

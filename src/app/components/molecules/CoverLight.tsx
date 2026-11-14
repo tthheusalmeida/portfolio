@@ -1,4 +1,5 @@
 import { mergeClassNames } from "@/utils/classNames";
+import { pauseOffscreen } from "@/utils/pauseOffscreen";
 
 interface CoverLightProps {
   imageSrc: string;
@@ -26,7 +27,7 @@ export default function CoverLight({ imageSrc }: CoverLightProps) {
   } as const;
 
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0">
+    <div ref={pauseOffscreen} aria-hidden className="pointer-events-none absolute inset-0">
       {/* 1. ambient halo */}
       <div
         className={mergeClassNames(

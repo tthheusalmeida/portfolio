@@ -17,6 +17,8 @@ export interface ProjectProps {
   image: string;
   link: string;
   categories?: Array<Category>;
+  // Position in the list (the Claude Code mascot visits the cards in this order).
+  mascotOrder?: number;
 }
 
 // Technologies always visible in the collapsed state; the rest appear on hover.
@@ -44,6 +46,7 @@ export default function Project({
   image,
   link,
   categories,
+  mascotOrder,
 }: ProjectProps) {
   const { t } = useLanguage();
   const shown = technologies.slice(0, MAX_TECHNOLOGIES);
@@ -54,6 +57,8 @@ export default function Project({
   return (
     <AnimatedComponent
       HTMLtag="div"
+      data-mascot-perch="stand-right"
+      data-mascot-order={mascotOrder}
       className={mergeClassNames("relative w-full group", className)}
     >
       <div className="relative flex flex-col h-[30rem] reveal:block reveal:h-96 overflow-hidden rounded-2xl bg-stone-800">

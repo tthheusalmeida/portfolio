@@ -20,6 +20,7 @@ export default function CTASection() {
           title={t("contact.title")}
           subtitle={rich("contact.subtitle")}
           className="my-16 sm:mt-28 sm:mb-12"
+          titlePerch="hang-end"
         >
           <div className="w-full max-w-5xl mx-auto grid gap-8 lg:grid-cols-5 lg:items-start">
             <div className="lg:col-span-2">

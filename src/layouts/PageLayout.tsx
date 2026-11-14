@@ -4,6 +4,7 @@ import BackgroundBlur from "@/app/components/molecules/BackgroundBlur";
 import BackToTopButton from "@/app/components/organisms/BackToTopButton";
 import WhatsAppButton from "@/app/components/organisms/WhatsAppButton";
 import { TabsProvider } from "@/contexts/TabsContext";
+import ClaudeMascot from "@/app/components/organisms/ClaudeMascot";
 import ScrollSpy from "@/app/components/organisms/ScrollSpy";
 
 export default function PageLayout({
@@ -20,6 +21,7 @@ export default function PageLayout({
         <BackgroundBlur />
         <BackToTopButton />
         <WhatsAppButton />
+        <ClaudeMascot />
       </TabsProvider>
     </PageTemplate>
   );

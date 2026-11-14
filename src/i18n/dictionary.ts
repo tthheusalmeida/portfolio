@@ -15,6 +15,7 @@ const en = {
 
   "cover.tagline":
     "I build, ship, run and monitor software, with a design and business mindset.",
+  "cover.ai": "Yes, I use AI in my development, especially Claude Code.",
   "cover.contact": "Contact me",
   "cover.cv": "Download CV",
   "cover.cvGenerating": "Generating CV...",
@@ -137,6 +138,7 @@ const pt: Record<DictionaryKey, string> = {
 
   "cover.tagline":
     "Construo, entrego, opero e monitoro software, com visão de design e negócio.",
+  "cover.ai": "Sim, eu uso IA no meu desenvolvimento, especialmente o Claude Code.",
   "cover.contact": "Fale comigo",
   "cover.cv": "Baixar CV",
   "cover.cvGenerating": "Gerando CV...",

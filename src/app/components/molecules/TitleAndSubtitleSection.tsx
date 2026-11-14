@@ -7,6 +7,7 @@ interface TitleAndSubtitleSectionProps {
   title: string;
   subtitle: string | React.ReactNode;
   className?: string;
+  titlePerch?: string;
 }
 
 export default function TitleAndSubtitleSection({
@@ -14,6 +15,7 @@ export default function TitleAndSubtitleSection({
   title,
   subtitle,
   className,
+  titlePerch = "title",
 }: TitleAndSubtitleSectionProps) {
   return (
     <>
@@ -23,7 +25,7 @@ export default function TitleAndSubtitleSection({
           className
         )}
       >
-        <Title className="text-center">{title}</Title>
+        <Title className="text-center" perch={titlePerch}>{title}</Title>
         <Subtitle className="pt-4 text-center">{subtitle}</Subtitle>
       </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { isLowPowerDevice } from "@/utils/devicePower";
 
 interface LineConfig {
   left: number;
@@ -22,7 +23,8 @@ function LineDrops() {
   const [lines, setLines] = useState<LineConfig[]>([]);
   useEffect(() => {
     const isSmall = window.matchMedia("(max-width: 640px)").matches;
-    const total = isSmall ? 12 : 28;
+    // Each falling column is its own animated layer: fewer on phones and weak devices.
+    const total = isLowPowerDevice() ? (isSmall ? 6 : 12) : isSmall ? 12 : 28;
     setLines(
       Array.from({ length: total }, () => ({
         left: Math.random() * 140 - 20,

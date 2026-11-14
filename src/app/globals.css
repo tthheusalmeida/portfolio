@@ -436,3 +436,10 @@ button {
     animation: none;
   }
 }
+
+/* Infinite decorative animations stop while their block is off screen
+   (see utils/pauseOffscreen.ts). */
+[data-offscreen="true"],
+[data-offscreen="true"] * {
+  animation-play-state: paused !important;
+}
