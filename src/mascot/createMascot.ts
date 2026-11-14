@@ -51,6 +51,8 @@ export type Mascot = {
   transform: (time: number) => void;
   /** Skips the transformation: already in the theme color. */
   setThemed: () => void;
+  /** Back to Claude orange, ready to transform again. */
+  reset: () => void;
   update: (inputs: MascotInputs) => void;
   /** True while a click action or the color transformation is playing. */
   isBusy: () => boolean;
@@ -147,6 +149,13 @@ export function createMascot(themeColor: number | string): Mascot {
     setThemed() {
       themed = true;
       material.color.copy(theme);
+    },
+    reset() {
+      themed = false;
+      transformAt = null;
+      material.color.copy(orange);
+      material.emissiveIntensity = 0;
+      sparkles.forEach((s) => (s.visible = false));
     },
     update(inputs) {
       const { time, hop } = inputs;

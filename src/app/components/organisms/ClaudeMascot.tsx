@@ -352,7 +352,11 @@ export default function ClaudeMascot() {
                     duration: 0.7 + Math.min(0.3, dist / 3000),
                     arc: Math.min(70, 24 + dist * 0.1),
                   };
-              if (current?.kind === "shoulder") {
+              if (target.kind === "shoulder") {
+                // Back on the shoulder: orange again. It transforms when it leaves.
+                mascot.reset();
+                transformStarted = true;
+              } else if (current?.kind === "shoulder") {
                 if (reduceMotion) mascot.setThemed();
                 else mascot.transform(t);
               }

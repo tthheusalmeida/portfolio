@@ -41,9 +41,9 @@ export default function CoverSection() {
                 </Subtitle>
                 <AnimatedComponent
                   HTMLtag="p"
-                  className="mt-3 inline-flex max-w-md items-center gap-2 text-center text-xs text-[var(--foreground)]/50 sm:text-left"
+                  className="mt-3 max-w-md text-center text-xs text-[var(--foreground)]/50 sm:text-left"
                 >
-                  <span aria-hidden="true" className="text-[var(--action)]/70">✦</span>
+                  <span aria-hidden="true" className="mr-2 text-[var(--action)]/70">✦</span>
                   {t("cover.ai")}
                 </AnimatedComponent>
               </div>
